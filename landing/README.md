@@ -22,8 +22,35 @@ Todo lo que cambia seguido está en el objeto `CONFIG`, al principio del `<scrip
 - **Dominio y hosting no incluidos** en el precio (FAQ).
 - **Textos de los casos** (desafío, solución y resultado): los escribí a partir de tu CV. Revísalos.
 
-## Antes de publicar en producción
-1. **Compilar Tailwind** en vez de usar el CDN. El CDN compila los estilos en el navegador del visitante, es lento y la propia landing no llegaría a PageSpeed 90+. Con Tailwind CLI: `npx @tailwindcss/cli -i input.css -o styles.css --minify`, y reemplazar el `<script>` del CDN por `<link rel="stylesheet" href="styles.css">`.
-2. Autoalojar las fuentes (o usar `font-display: swap`, ya incluido) y agregar imagen Open Graph (`og:image`).
-3. Si tienes Calendly o Google Calendar, cambiar el modal "Agendar llamada" por tu enlace de agenda.
-4. Agregar analítica (por ejemplo, eventos al hacer clic en "Solicitar este proyecto por WhatsApp").
+## Versión de producción (`dist/`)
+
+`dist/` es la versión lista para subir al hosting: el mismo sitio, con Tailwind compilado en `dist/styles.css` (46 KB, minificado) en vez del script del CDN. Se ve idéntica al prototipo (comparación píxel a píxel en escritorio y móvil: 0 diferencias).
+
+**Para publicar:** sube el contenido de `dist/` (`index.html` + `styles.css`) a tu hosting.
+
+**Si editas la landing:** edita siempre `index.html` (el prototipo) y vuelve a compilar:
+
+```bash
+cd landing
+npm install      # solo la primera vez
+npm run build    # genera src/tailwind.css, dist/styles.css y dist/index.html
+```
+
+Los colores y fuentes (tokens) se editan en un solo lugar: el bloque `<style type="text/tailwindcss">` de `index.html`. La compilación los copia a `src/tailwind.css`, así que no hay que tocar ese archivo.
+
+### Resultado de Lighthouse (móvil, versión `dist/`)
+
+| Rendimiento | Accesibilidad | Buenas prácticas | SEO |
+|:-:|:-:|:-:|:-:|
+| **98** | **100** | 96 | **100** |
+
+LCP 1,8 s · TBT 0 ms · CLS 0. Medido con Lighthouse 13.5 en un servidor local, así que en tu hosting real puede variar unos puntos según el servidor y la red.
+
+- El 96 de buenas prácticas viene de un error de consola del entorno de prueba (no pudo descargar Google Fonts); en un servidor normal debería desaparecer.
+- Para llegar al 100 en accesibilidad subí el contraste de varios textos: el verde de WhatsApp pasó de `#1FAF5A` a `#15803D` (el blanco sobre el verde anterior quedaba en 2,9:1), el rosa sobre cobalto ahora es opaco y los grises chicos tienen al menos 65 % de opacidad.
+
+## Pendiente antes de publicar
+1. Si tienes Calendly o Google Calendar, cambiar el modal "Agendar llamada" por tu enlace de agenda.
+2. Agregar imagen Open Graph (`og:image`) para que el enlace se vea bien al compartirlo.
+3. Agregar analítica (por ejemplo, eventos al hacer clic en "Cotizar este Diseño por WhatsApp").
+4. Opcional: autoalojar las fuentes en vez de cargarlas desde Google Fonts.

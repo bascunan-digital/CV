@@ -1,0 +1,16 @@
+/* Archivo generado por scripts/tokens.mjs: no editar a mano.
+   Los tokens se editan en index.html (bloque <style type="text/tailwindcss">). */
+@import "tailwindcss" source(none);
+@source "../index.html";
+@theme {
+  --color-cobalt: #2B44FF;
+  --color-cobalt-deep: #1E33E6;
+  --color-blush: #FDE8F0;
+  --color-sand: #FAF8F5;
+  --color-platinum: #ECEBE6;
+  --color-graphite: #0F172A;
+  --color-ink: #1F1B18;
+  --color-wa: #15803D;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}

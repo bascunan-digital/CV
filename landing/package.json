@@ -1,0 +1,16 @@
+{
+  "name": "bascunan-digital-landing",
+  "private": true,
+  "description": "Landing de servicios de bascunan.digital: compilación de producción (Tailwind compilado, sin CDN).",
+  "type": "module",
+  "scripts": {
+    "build:tokens": "node scripts/tokens.mjs",
+    "build:css": "tailwindcss -i src/tailwind.css -o dist/styles.css --minify",
+    "build:html": "node scripts/build-html.mjs",
+    "build": "npm run build:tokens && npm run build:css && npm run build:html"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.3",
+    "tailwindcss": "4.3.3"
+  }
+}
