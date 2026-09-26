@@ -1,0 +1,73 @@
+ALONSO BASCUÑÁN LOYOLA
+Senior UX/UI Designer & Front-End Developer
+Valparaíso, Chile (UTC-4) | Open to remote full-time, contract or freelance
+hola@bascunan.digital | +56 9 6366 0958
+www.bascunan.digital | linkedin.com/in/[your-handle] | github.com/[your-handle]
+
+
+SUMMARY
+
+Senior UX/UI Designer & Front-End Developer with 15+ years taking digital products from research and Figma prototypes to production code. A background in editorial design gives me a sharp eye for visual hierarchy and information architecture, which I apply to design systems, responsive and accessible (WCAG) interfaces, and front-end builds with HTML5, CSS3, JavaScript, TypeScript, Tailwind CSS and custom WordPress. I use AI (Claude, Gemini) as a productivity multiplier: I own the architecture, data models and quality bar, and the assistant speeds up implementation that I review and test. With this approach I deliver full-stack products in PHP/MySQL and NestJS/Prisma/PostgreSQL.
+
+
+CORE SKILLS
+
+UX/UI Design, Design Systems, Design Tokens, Figma Prototyping, Information Architecture, Responsive Design, WCAG Accessibility, HTML5, CSS3, JavaScript, TypeScript, Tailwind CSS, WordPress, Custom Post Types, ACF, PWA, Technical SEO, Core Web Vitals, AI-Augmented Engineering, Cross-functional Collaboration
+
+
+EXPERIENCE
+
+Senior UX/UI Designer & Front-End Developer
+La Vitamina (Digital Agency), Viña del Mar, Chile
+2010 - Present
+- Led end-to-end design-to-code delivery (discovery, information architecture, Figma prototypes, front-end build and deployment) across [40+] projects for clients in Chile and the US.
+- Built Figma design systems (components, design tokens, variants) that cut development rework by [30%] and reduced new-page build time from [5] to [2] days.
+- Developed [25+] custom WordPress themes with Custom Post Types and ACF/SCF, letting clients publish on their own and reducing content-change requests by [50%].
+- Brought Claude and Gemini into the engineering workflow (scaffolding, refactoring, tests, documentation), reducing full-stack delivery time by [40%], with human review of code, accessibility and security.
+- Improved web performance (WebP/AVIF images, lazy loading, critical CSS), reaching Lighthouse [90+] and LCP under [2.5] seconds.
+
+Graphic & Exhibition Designer
+City of Viña del Mar, Palacio Vergara Museum (concurrent contract)
+2012 - 2023
+- Directed visual identity and wayfinding for [15+] large-scale exhibitions reaching [XX,000+] visitors per year.
+- Produced [200+] digital and print pieces to institutional brand standards, always on schedule.
+- Carried typographic hierarchy and editorial layout over to digital interfaces, the foundation of my information architecture work.
+
+Design & Communications Instructor
+INACAP, Valparaíso Campus (part-time)
+2017 - 2018
+- Designed and taught [3] courses on web layout (responsive HTML/CSS) and design methodologies to [80+] students.
+
+
+SELECTED PROJECTS
+
+Valeria Estética Integral - Full-stack booking engine and PWA
+- Built a PHP and MySQL booking system with an installable PWA admin panel that automated [80%] of manual bookings.
+- Implemented local SEO with Schema.org structured data. The business reached a 4.9/5 rating across 38 Google reviews.
+
+Notas Libro de Clases - Multi-tenant education SaaS
+- Designed a multi-tenant architecture with per-school data isolation, JWT authentication and role-based access control (RBAC) using NestJS, TypeScript, Prisma and PostgreSQL.
+
+DAV Valparaíso - Digital governance and custom WordPress theme
+- Defined a digital governance plan, recovered [N] institutional accounts and delivered a custom WordPress theme with Custom Post Types.
+
+
+TECHNICAL SKILLS
+
+UX/UI Design: Figma, Adobe XD, Design Systems, Design Tokens, Prototyping, Wireframing, Information Architecture, WCAG Accessibility
+Front-End: HTML5, CSS3, JavaScript ES6+, TypeScript, Tailwind CSS, Bootstrap 5, Responsive Design, PWA
+CMS: WordPress, custom theme development, Custom Post Types, ACF, SCF
+Back-End and Full-Stack (AI-augmented): PHP, MySQL, NestJS, Prisma, PostgreSQL, REST APIs, JWT, RBAC
+Artificial Intelligence: Claude, Gemini, AI Pair Programming, Prompt Engineering, AI-Augmented Engineering
+Workflow: Git, GitHub, Technical SEO, Core Web Vitals, Lighthouse
+
+
+EDUCATION
+
+[Degree] - [Institution] - [Year]
+
+
+LANGUAGES
+
+Spanish: Native
+English: Professional working proficiency (client-facing)

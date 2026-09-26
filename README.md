@@ -15,6 +15,8 @@ Repositorio de trabajo del CV optimizado para ATS, su adaptación a vacantes y l
 | 4b | [`entregables/04b-cv-ats-texto-plano.txt`](entregables/04b-cv-ats-texto-plano.txt) | CV final en texto plano (para pegar en portales de empleo) |
 | 5 | [`entregables/05-entrevistas-star.md`](entregables/05-entrevistas-star.md) | 5 preguntas de entrevista difíciles con respuestas modelo STAR |
 | 6 | [`entregables/06-prospeccion-directa.md`](entregables/06-prospeccion-directa.md) | 3 guiones de contacto directo: cold email, InMail a reclutador y mensaje a VP/Head of Product |
+| 7a | [`entregables/07a-cv-english-markdown.md`](entregables/07a-cv-english-markdown.md) | CV en inglés, versión visual (vacantes en EE.UU.) |
+| 7b | [`entregables/07b-cv-english-ats-plain-text.txt`](entregables/07b-cv-english-ats-plain-text.txt) | CV en inglés, texto plano ATS |
 
 ## Convención de cifras
 
