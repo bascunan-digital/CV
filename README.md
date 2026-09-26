@@ -17,6 +17,8 @@ Repositorio de trabajo del CV optimizado para ATS, su adaptación a vacantes y l
 | 6 | [`entregables/06-prospeccion-directa.md`](entregables/06-prospeccion-directa.md) | 3 guiones de contacto directo: cold email, InMail a reclutador y mensaje a VP/Head of Product |
 | 7a | [`entregables/07a-cv-english-markdown.md`](entregables/07a-cv-english-markdown.md) | CV en inglés, versión visual (vacantes en EE.UU.) |
 | 7b | [`entregables/07b-cv-english-ats-plain-text.txt`](entregables/07b-cv-english-ats-plain-text.txt) | CV en inglés, texto plano ATS |
+| 8 | [`entregables/08-perfil-linkedin.md`](entregables/08-perfil-linkedin.md) | Perfil de LinkedIn en español e inglés: titular, Acerca de, experiencia, aptitudes, destacados y plan de publicaciones |
+| 9 | [`entregables/09-proyecto-react-typescript.md`](entregables/09-proyecto-react-typescript.md) | Proyecto React + TypeScript (Agenda UI) para cerrar la brecha de React: alcance, stack, estructura y plan de 3 semanas |
 
 ## Convención de cifras
 
