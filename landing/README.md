@@ -4,24 +4,28 @@ Prototipo de landing page en un solo archivo (`index.html`): HTML5, Tailwind CSS
 
 Estética: editorial SaaS por bloques de color (cobalto `#2B44FF`, rosa `#FDE8F0`, arena `#FAF8F5`, grafito `#0F172A`), inspirada en el lenguaje visual de sitios como Weav, Framer o Stripe. El código, los textos, las ilustraciones y la onda divisoria son propios: no se reutilizan imágenes, fuentes con licencia ni textos de otros sitios.
 
+**Versión 3.** Simplificada a partir de un recorrido con tres personas (nivel digital bajo, intermedio y experto): ver [`ux/personas-y-recorrido.md`](ux/personas-y-recorrido.md).
+
 ## Cómo verla
 Abre `index.html` en el navegador (doble clic). No necesita servidor ni instalación.
 
 ## Cómo editar precios, plazos y textos
 Todo lo que cambia seguido está en el objeto `CONFIG`, al principio del `<script>` final:
 
-- `CONFIG`: WhatsApp, correo y tipo de sitio que aparece elegido al cargar.
-- `TIPOS`: los 6 tipos de sitio del cotizador (landing, corporativo, portafolio, tienda, blog, SaaS). Cada uno tiene precio y plazo «desde», secciones incluidas (`incluye`), secciones opcionales con su precio (`extras`), el orden en la vista previa y los textos de la portada de muestra.
+- `CONFIG`: WhatsApp, correo y `tipoInicial` (por defecto `null`: el cotizador parte con el cliente eligiendo su meta).
+- `TIPOS`: los 6 tipos de sitio del cotizador (landing, corporativo, portafolio, tienda, blog, SaaS). Cada uno tiene precio y plazo «desde», secciones incluidas (`incluye`), secciones opcionales con su precio (`extras`, las marcadas con `true` se muestran como «Recomendado para ti» y el resto queda en «Ver más opciones»), el orden en la vista previa y los textos de la portada de muestra.
 - `SECCIONES`: nombre, descripción, término del glosario (`ayuda`), sello de conversión (`impacto`) y qué ítem del checklist cumple cada sección (`aporta`).
-- `DS`: la maqueta de cada sección en la vista previa. Usa el color (`--marca`) y el nombre que escribe el cliente. El modo Wireframe es la misma maqueta con CSS (`#sitio.wf`).
-- `CHECKS`: ítems del checklist de conversión. Solo se muestran los que el tipo de sitio puede cumplir.
-- `GLOSARIO`: términos del glosario y de los íconos (?). Para agregar un (?) en el HTML: `<button type="button" class="ayuda" data-ayuda="clave"></button>`.
-- `TECNOLOGIAS`: logos del carrusel, en 3 categorías (trazos de [Simple Icons](https://simpleicons.org), CC0; si no hay logo, monograma).
-- `COMPARATIVA`, `PASOS`, `CASOS`, `SINTOMAS` y `FAQS`: textos de las otras secciones.
+- `DS`: la maqueta de cada sección en la vista previa. Usa el color (`--marca`) y el nombre que escribe el cliente.
+- `CHECKS`: «Claves para vender». Se muestran solo las que el tipo de sitio puede cumplir, y lo que falta aparece como botón «+ Agregar».
+- `GLOSARIO`: términos del glosario (se abre en una ventana con `data-abrir-glosario`) y de los íconos (?). Para agregar un (?) en el HTML: `<button type="button" class="ayuda" data-ayuda="clave"></button>`. Úsalos solo en términos técnicos.
+- `TEC_VISIBLES`: las 12 tecnologías del carrusel, por nombre. `TECNOLOGIAS_TODAS` tiene 51 logos para elegir (trazos de [Simple Icons](https://simpleicons.org), CC0; si no hay logo, monograma).
+- `COMPARATIVA` (tabla «Mi enfoque, en 10 segundos»), `PASOS`, `CASOS`, `SINTOMAS` y `FAQS`: textos de las otras secciones.
+- Ondas: `.wave-*` en el CSS (generadas como SVG de relleno, sin costuras).
 
 ## Supuestos que debes confirmar
 - **Precios y plazos «desde» de cada tipo de sitio:** landing $250.000 / 3 días, corporativo $490.000 / 7, portafolio $320.000 / 4, tienda $890.000 / 12, blog $420.000 / 6 y SaaS desde $1.500.000 / 25. También los precios de cada sección opcional (en `TIPOS[].extras`).
 - **Tecnologías del carrusel:** deja solo las que realmente usas; un cliente o reclutador puede preguntar por cualquiera.
+- **Promesas nuevas de la v3:** diagnóstico por WhatsApp **en 48 horas** y «te respondo yo, **el mismo día**».
 - **Garantía PageSpeed:** la FAQ promete seguir optimizando sin costo hasta llegar a 90+, midiendo solo las páginas que desarrollas y excluyendo scripts de terceros agregados después.
 - **Dominio y hosting no incluidos** en el precio (FAQ).
 - **Textos de los casos** (desafío, solución y resultado): los escribí a partir de tu CV. Revísalos.
@@ -46,7 +50,7 @@ Los colores y fuentes (tokens) se editan en un solo lugar: el bloque `<style typ
 
 | Rendimiento | Accesibilidad | Buenas prácticas | SEO |
 |:-:|:-:|:-:|:-:|
-| **92** | **100** | 96 | **100** |
+| **91** | **100** | 96 | **100** |
 
 LCP 2,6 s · TBT 0 ms · CLS 0 (escritorio: 100 en rendimiento). Medido con Lighthouse 13.5 en un servidor local, así que en tu hosting real puede variar unos puntos según el servidor y la red.
 
