@@ -15,6 +15,11 @@ Todo lo que cambia seguido está en el objeto `CONFIG`, al principio del `<scrip
 - `CONFIG.presets`: combinaciones de "Empieza con:".
 - `CONFIG.whatsapp` / `CONFIG.email`: datos de contacto.
 - `COMPARATIVA`, `PASOS`, `CASOS` y `FAQS`: textos de la comparativa, del proceso en 5 pasos, de los casos de éxito y de las preguntas frecuentes.
+- `impacto` en cada módulo: sello amarillo de conversión ("Reservas 24/7", "Cobra online", "Más contactos").
+- `CHECKS`: ítems del checklist de conversión bajo la vista previa y qué módulo agrega cada uno.
+- `SINTOMAS`: opciones de "¿Qué le pasa a tu sitio?" del diagnóstico. Se agregan al mensaje de WhatsApp.
+- `TECNOLOGIAS`: logos del carrusel (nombre + trazo SVG de [Simple Icons](https://simpleicons.org), licencia CC0).
+- `DS` y `WF`: plantillas de la vista previa en modo Diseño y en modo Wireframe.
 
 ## Supuestos que debes confirmar
 - **Precio base de $250.000 CLP y 3 días hábiles** para "Header + Hero Banner Base". El brief no lo definía.
@@ -42,9 +47,9 @@ Los colores y fuentes (tokens) se editan en un solo lugar: el bloque `<style typ
 
 | Rendimiento | Accesibilidad | Buenas prácticas | SEO |
 |:-:|:-:|:-:|:-:|
-| **98** | **100** | 96 | **100** |
+| **94** | **100** | 96 | **100** |
 
-LCP 1,8 s · TBT 0 ms · CLS 0. Medido con Lighthouse 13.5 en un servidor local, así que en tu hosting real puede variar unos puntos según el servidor y la red.
+LCP 2,1 s · TBT 0 ms · CLS 0 (escritorio: 100 en rendimiento). Medido con Lighthouse 13.5 en un servidor local, así que en tu hosting real puede variar unos puntos según el servidor y la red.
 
 - El 96 de buenas prácticas viene de un error de consola del entorno de prueba (no pudo descargar Google Fonts); en un servidor normal debería desaparecer.
 - Para llegar al 100 en accesibilidad subí el contraste de varios textos: el verde de WhatsApp pasó de `#1FAF5A` a `#15803D` (el blanco sobre el verde anterior quedaba en 2,9:1), el rosa sobre cobalto ahora es opaco y los grises chicos tienen al menos 65 % de opacidad.
