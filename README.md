@@ -1,5 +1,7 @@
 # CV — Alonso Bascuñán Loyola
 
+> También incluye [`landing/`](landing/): prototipo de landing page para vender servicios de diseño y desarrollo web.
+
 Diseñador UX/UI & Desarrollador Front-End (perfil híbrido) · Ingeniería aumentada con IA
 
 Repositorio de trabajo del CV optimizado para ATS, su adaptación a vacantes y los materiales de búsqueda.
