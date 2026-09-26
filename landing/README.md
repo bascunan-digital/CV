@@ -2,6 +2,8 @@
 
 Prototipo de landing page en un solo archivo (`index.html`): HTML5, Tailwind CSS vía CDN y JavaScript sin dependencias.
 
+Estética: editorial SaaS por bloques de color (cobalto `#2B44FF`, rosa `#FDE8F0`, arena `#FAF8F5`, grafito `#0F172A`), inspirada en el lenguaje visual de sitios como Weav, Framer o Stripe. El código, los textos, las ilustraciones y la onda divisoria son propios: no se reutilizan imágenes, fuentes con licencia ni textos de otros sitios.
+
 ## Cómo verla
 Abre `index.html` en el navegador (doble clic). No necesita servidor ni instalación.
 
@@ -12,7 +14,7 @@ Todo lo que cambia seguido está en el objeto `CONFIG`, al principio del `<scrip
 - `CONFIG.modulos`: nombre, descripción, precio (CLP) y días hábiles de cada sección del cotizador.
 - `CONFIG.presets`: combinaciones de "Empieza con:".
 - `CONFIG.whatsapp` / `CONFIG.email`: datos de contacto.
-- `COMPARATIVA` y `CASOS`: textos de la tabla comparativa y de los casos de éxito.
+- `COMPARATIVA`, `PASOS`, `CASOS` y `FAQS`: textos de la comparativa, del proceso en 5 pasos, de los casos de éxito y de las preguntas frecuentes.
 
 ## Supuestos que debes confirmar
 - **Precio base de $250.000 CLP y 3 días hábiles** para "Header + Hero Banner Base". El brief no lo definía.

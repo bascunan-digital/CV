@@ -4,22 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Diseño y Desarrollo Web a Medida | Alonso Bascuñán · bascunan.digital</title>
-  <meta name="description" content="Sitios web a medida, ultrarrápidos y autoadministrables. Diseño UX/UI de nivel editorial y desarrollo optimizado con IA. Cotiza tu sitio en línea y recibe el precio al instante." />
-  <meta name="theme-color" content="#0F172A" />
+  <meta name="description" content="No construyas solo un sitio web: construye un canal de ventas autoadministrable. Diseño UX/UI editorial + desarrollo a medida optimizado con IA. Cotiza tu sitio en línea y recibe precio y plazo al instante." />
+  <meta name="theme-color" content="#2B44FF" />
   <meta property="og:title" content="bascunan.digital · Diseño y desarrollo web a medida" />
-  <meta property="og:description" content="Cotiza tu sitio web en línea: arma tus secciones, mira el wireframe en vivo y recibe precio y plazo al instante." />
+  <meta property="og:description" content="Arma tu sitio en el cotizador, mira el wireframe en vivo y recibe precio y plazo al instante." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.bascunan.digital/" />
 
-  <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS v4 vía CDN (solo prototipo: en producción se compila, ver README) -->
+  <!-- Tailwind CSS v4 vía CDN (prototipo: en producción se compila, ver README) -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-  <!-- Datos estructurados: SEO local -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,608 +37,592 @@
   <!-- Tokens del sistema de diseño -->
   <style type="text/tailwindcss">
     @theme {
-      --color-ink: #0F172A;
-      --color-ink-deep: #0B1120;
-      --color-card: #1E293B;
-      --color-line: #334155;
-      --color-accent: #6366F1;
-      --color-accent-soft: #A5B4FC;
-      --color-money: #10B981;
+      --color-cobalt: #2B44FF;
+      --color-cobalt-deep: #1E33E6;
+      --color-blush: #FDE8F0;
+      --color-sand: #FAF8F5;
+      --color-platinum: #ECEBE6;
+      --color-graphite: #0F172A;
+      --color-ink: #1F1B18;
+      --color-wa: #1FAF5A;
       --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
     }
   </style>
 
   <style>
-    :root { color-scheme: dark; }
-    html { scroll-padding-top: 5.5rem; }
-    body { background: #0F172A; }
+    html { scroll-padding-top: 5rem; }
+    body { background: #2B44FF; }
+    .tight { letter-spacing: -0.03em; }
+    .tighter { letter-spacing: -0.05em; }
 
-    /* Retícula editorial de fondo */
-    .grid-bg {
-      background-image:
-        linear-gradient(to right, rgba(148,163,184,.07) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(148,163,184,.07) 1px, transparent 1px);
-      background-size: 56px 56px;
-      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
-    }
-    .glow { background: radial-gradient(closest-side, rgba(99,102,241,.35), transparent); filter: blur(20px); }
-
-    /* Borde degradado para destacados */
-    .ring-gradient { position: relative; }
-    .ring-gradient::before {
-      content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
-      background: linear-gradient(135deg, rgba(99,102,241,.9), rgba(16,185,129,.6) 50%, rgba(99,102,241,.2));
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
-    }
+    /* ---------- Ondas divisorias (patrón propio: líneas onduladas que se adelgazan) ---------- */
+    .wave { height: 96px; }
+    .wave, .wave-top { background-repeat: repeat-x; background-size: 160px 96px; }
+    .wave-top { background-position: top left; }
+    .wave-cobalt-blush { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='96'%3E%3Crect width='160' height='96' fill='%23FDE8F0'/%3E%3Crect width='160' height='10' fill='%232B44FF'/%3E%3Cg fill='none' stroke='%232B44FF'%3E%3Cpath d='M0 10q20 12 40 0t40 0t40 0t40 0' stroke-width='16'/%3E%3Cpath d='M0 30q20 12 40 0t40 0t40 0t40 0' stroke-width='11'/%3E%3Cpath d='M0 48q20 12 40 0t40 0t40 0t40 0' stroke-width='7.5'/%3E%3Cpath d='M0 63q20 12 40 0t40 0t40 0t40 0' stroke-width='5'/%3E%3Cpath d='M0 76q20 12 40 0t40 0t40 0t40 0' stroke-width='3'/%3E%3Cpath d='M0 86q20 12 40 0t40 0t40 0t40 0' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E"); }
+    .wave-blush-cobalt { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='96'%3E%3Crect width='160' height='96' fill='%232B44FF'/%3E%3Crect width='160' height='10' fill='%23FDE8F0'/%3E%3Cg fill='none' stroke='%23FDE8F0'%3E%3Cpath d='M0 10q20 12 40 0t40 0t40 0t40 0' stroke-width='16'/%3E%3Cpath d='M0 30q20 12 40 0t40 0t40 0t40 0' stroke-width='11'/%3E%3Cpath d='M0 48q20 12 40 0t40 0t40 0t40 0' stroke-width='7.5'/%3E%3Cpath d='M0 63q20 12 40 0t40 0t40 0t40 0' stroke-width='5'/%3E%3Cpath d='M0 76q20 12 40 0t40 0t40 0t40 0' stroke-width='3'/%3E%3Cpath d='M0 86q20 12 40 0t40 0t40 0t40 0' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E"); }
+    .wave-sand-cobalt { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='96'%3E%3Crect width='160' height='96' fill='%232B44FF'/%3E%3Crect width='160' height='10' fill='%23FAF8F5'/%3E%3Cg fill='none' stroke='%23FAF8F5'%3E%3Cpath d='M0 10q20 12 40 0t40 0t40 0t40 0' stroke-width='16'/%3E%3Cpath d='M0 30q20 12 40 0t40 0t40 0t40 0' stroke-width='11'/%3E%3Cpath d='M0 48q20 12 40 0t40 0t40 0t40 0' stroke-width='7.5'/%3E%3Cpath d='M0 63q20 12 40 0t40 0t40 0t40 0' stroke-width='5'/%3E%3Cpath d='M0 76q20 12 40 0t40 0t40 0t40 0' stroke-width='3'/%3E%3Cpath d='M0 86q20 12 40 0t40 0t40 0t40 0' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E"); }
+    .wave-cobalt-sand { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='96'%3E%3Crect width='160' height='96' fill='%23FAF8F5'/%3E%3Crect width='160' height='10' fill='%232B44FF'/%3E%3Cg fill='none' stroke='%232B44FF'%3E%3Cpath d='M0 10q20 12 40 0t40 0t40 0t40 0' stroke-width='16'/%3E%3Cpath d='M0 30q20 12 40 0t40 0t40 0t40 0' stroke-width='11'/%3E%3Cpath d='M0 48q20 12 40 0t40 0t40 0t40 0' stroke-width='7.5'/%3E%3Cpath d='M0 63q20 12 40 0t40 0t40 0t40 0' stroke-width='5'/%3E%3Cpath d='M0 76q20 12 40 0t40 0t40 0t40 0' stroke-width='3'/%3E%3Cpath d='M0 86q20 12 40 0t40 0t40 0t40 0' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E"); }
 
     /* Aparición al hacer scroll */
-    .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .js .reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
     .js .reveal.is-visible { opacity: 1; transform: none; }
 
-    /* Pulso del badge de disponibilidad */
     .pulse-dot { position: relative; }
-    .pulse-dot::after { content: ""; position: absolute; inset: -4px; border-radius: 999px; background: rgba(16,185,129,.45); animation: pulse 2s ease-out infinite; }
-    @keyframes pulse { from { transform: scale(.6); opacity: 1; } to { transform: scale(1.8); opacity: 0; } }
+    .pulse-dot::after { content: ""; position: absolute; inset: -4px; border-radius: 999px; background: rgba(34,197,94,.5); animation: pulse 2s ease-out infinite; }
+    @keyframes pulse { from { transform: scale(.6); opacity: 1; } to { transform: scale(1.9); opacity: 0; } }
 
-    /* ---------- Constructor: interruptores ---------- */
-    .modulo { transition: border-color .2s, background-color .2s, transform .2s; }
-    .modulo:hover { transform: translateY(-1px); }
-    .modulo[aria-pressed="true"] { border-color: rgba(99,102,241,.8); background: rgba(99,102,241,.10); }
-    .switch { width: 42px; height: 24px; border-radius: 999px; background: #334155; position: relative; flex-shrink: 0; transition: background-color .2s; }
-    .switch .knob { position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 999px; background: #CBD5E1; transition: transform .25s cubic-bezier(.4,1.4,.6,1), background-color .2s; }
-    .modulo[aria-pressed="true"] .switch { background: #6366F1; }
-    .modulo[aria-pressed="true"] .switch .knob { transform: translateX(18px); background: #fff; }
-    .modulo:focus-visible, .preset:focus-visible { outline: 2px solid #A5B4FC; outline-offset: 2px; }
+    /* ---------- Chat del hero ---------- */
+    .msg { opacity: 0; transform: translateY(8px) scale(.98); animation: msgIn .5s cubic-bezier(.2,.8,.2,1) forwards; }
+    @keyframes msgIn { to { opacity: 1; transform: none; } }
+    .typing span { width: 6px; height: 6px; border-radius: 99px; background: #94A3B8; display: inline-block; animation: typing 1.2s infinite ease-in-out; }
+    .typing span:nth-child(2) { animation-delay: .15s; } .typing span:nth-child(3) { animation-delay: .3s; }
+    @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
+    .float-a { animation: floatA 6s ease-in-out infinite; }
+    .float-b { animation: floatA 7s ease-in-out infinite reverse; }
+    @keyframes floatA { 50% { transform: translateY(-10px); } }
 
-    /* ---------- Constructor: lienzo y wireframes ---------- */
-    .canvas { scrollbar-width: thin; scrollbar-color: #334155 transparent; }
-    .wf-block { position: relative; border: 1px dashed rgba(148,163,184,.28); border-radius: 12px; padding: 16px 14px 14px; background: rgba(15,23,42,.65); }
+    /* ---------- Acordeón temporizado (proceso) ---------- */
+    .step-bar { height: 2px; background: rgba(31,27,24,.1); position: relative; overflow: hidden; }
+    .step-bar i { position: absolute; inset: 0 auto 0 0; width: 0; background: #1F1B18; }
+    .step-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease; }
+    .step-body > div { overflow: hidden; }
+    .step[data-active="true"] .step-body { grid-template-rows: 1fr; }
+    .step[data-active="false"] .step-title { color: rgba(31,27,24,.42); }
+    .panel { transition: opacity .5s ease, transform .5s ease; }
+    .panel[hidden] { display: grid !important; opacity: 0; transform: translateY(12px) scale(.98); pointer-events: none; visibility: hidden; }
+
+    /* ---------- Constructor ---------- */
+    .modulo { transition: border-color .2s, background-color .2s, box-shadow .2s, transform .2s; }
+    .modulo:hover { transform: translateY(-1px); box-shadow: 0 8px 22px -12px rgba(43,68,255,.4); }
+    .modulo[aria-pressed="true"] { border-color: #2B44FF; background: #F3F5FF; }
+    .modulo[aria-pressed="true"] .mod-icon { background: #2B44FF; color: #fff; }
+    .switch { width: 40px; height: 24px; border-radius: 999px; background: #E2E1DC; position: relative; flex-shrink: 0; transition: background-color .2s; }
+    .switch .knob { position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 999px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.2); transition: transform .25s cubic-bezier(.4,1.4,.6,1); }
+    .modulo[aria-pressed="true"] .switch { background: #2B44FF; }
+    .modulo[aria-pressed="true"] .switch .knob { transform: translateX(16px); }
+    :focus-visible { outline: 2px solid #2B44FF; outline-offset: 3px; }
+    .bg-cobalt :focus-visible, .on-dark :focus-visible { outline-color: #FDE8F0; }
+
+    .canvas { scrollbar-width: thin; scrollbar-color: #D6D4CE transparent; }
+    .wf-block { position: relative; border: 1.5px dashed #D9D7D1; border-radius: 14px; padding: 18px 14px 14px; background: #fff; }
     .wf-block + .wf-block { margin-top: 14px; }
-    .wf-tag { position: absolute; top: -9px; left: 10px; font: 600 10px/1.6 "JetBrains Mono", monospace; letter-spacing: .02em; background: #6366F1; color: #fff; padding: 0 7px; border-radius: 4px; }
-    .wf-tag.base { background: #475569; }
+    .wf-tag { position: absolute; top: -10px; left: 12px; font: 600 10px/1.7 "JetBrains Mono", monospace; background: #2B44FF; color: #fff; padding: 0 8px; border-radius: 99px; }
+    .wf-tag.base { background: #1F1B18; }
     .wf-row { display: flex; gap: 8px; align-items: center; }
     .wf-col { display: flex; flex-direction: column; gap: 7px; }
     .wf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .wf-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .wf-line { height: 6px; border-radius: 3px; background: rgba(148,163,184,.28); }
-    .wf-line.strong { height: 10px; background: rgba(226,232,240,.7); }
-    .wf-line.title { height: 13px; background: rgba(226,232,240,.85); }
-    .wf-btn { height: 18px; border-radius: 5px; background: #6366F1; }
-    .wf-btn.ghost { background: transparent; border: 1px solid rgba(148,163,184,.45); }
-    .wf-btn.green { background: #10B981; }
-    .wf-logo { width: 16px; height: 16px; border-radius: 5px; background: linear-gradient(135deg, #6366F1, #10B981); }
-    .wf-chip { height: 12px; width: 70px; border-radius: 999px; background: rgba(16,185,129,.25); border: 1px solid rgba(16,185,129,.5); }
-    .wf-img { display: grid; place-items: center; border-radius: 8px; background: rgba(99,102,241,.10); border: 1px solid rgba(99,102,241,.25); color: rgba(165,180,252,.75); }
-    .wf-img svg { width: 22px; height: 22px; }
-    .wf-card { border: 1px solid rgba(148,163,184,.2); border-radius: 8px; padding: 7px; display: flex; flex-direction: column; gap: 6px; background: rgba(30,41,59,.6); }
-    .wf-price { height: 9px; width: 42%; border-radius: 3px; background: rgba(16,185,129,.7); }
-    .wf-input { height: 20px; border-radius: 5px; border: 1px solid rgba(148,163,184,.35); background: rgba(15,23,42,.8); }
+    .wf-line { height: 6px; border-radius: 3px; background: #ECEBE6; }
+    .wf-line.strong { height: 9px; background: #C9C6BF; }
+    .wf-line.title { height: 13px; background: #1F1B18; opacity: .85; }
+    .wf-btn { height: 18px; border-radius: 99px; background: #2B44FF; }
+    .wf-btn.ghost { background: transparent; border: 1.5px solid #D9D7D1; }
+    .wf-btn.green { background: #1FAF5A; }
+    .wf-logo { width: 16px; height: 16px; border-radius: 5px; background: #2B44FF; }
+    .wf-chip { height: 12px; width: 70px; border-radius: 999px; background: #FDE8F0; border: 1px solid #F6C9DA; }
+    .wf-img { display: grid; place-items: center; border-radius: 10px; background: #EEF1FF; color: #2B44FF; }
+    .wf-img svg { width: 22px; height: 22px; opacity: .7; }
+    .wf-card { border: 1px solid #ECEBE6; border-radius: 10px; padding: 7px; display: flex; flex-direction: column; gap: 6px; background: #FAF8F5; }
+    .wf-price { height: 9px; width: 42%; border-radius: 3px; background: #1FAF5A; opacity: .8; }
+    .wf-input { height: 20px; border-radius: 7px; border: 1.5px solid #E2E1DC; background: #fff; }
     .wf-cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-    .wf-cal span { aspect-ratio: 1; border-radius: 4px; background: rgba(148,163,184,.15); }
-    .wf-cal span.on { background: rgba(99,102,241,.6); }
-    .wf-cal span.sel { background: #10B981; }
-    .wf-slot { height: 16px; border-radius: 999px; border: 1px solid rgba(148,163,184,.35); flex: 1; }
-    .wf-slot.sel { background: rgba(16,185,129,.3); border-color: #10B981; }
-    .wf-pill { font: 600 9px/1 "JetBrains Mono", monospace; padding: 5px 7px; border-radius: 5px; border: 1px solid rgba(148,163,184,.35); color: #CBD5E1; }
-    .wf-icon { color: rgba(165,180,252,.85); display: inline-grid; }
+    .wf-cal span { aspect-ratio: 1; border-radius: 4px; background: #F1F0EC; }
+    .wf-cal span.on { background: #C7CEFF; }
+    .wf-cal span.sel { background: #2B44FF; }
+    .wf-slot { height: 16px; border-radius: 999px; border: 1.5px solid #E2E1DC; flex: 1; }
+    .wf-slot.sel { background: #E7F7EE; border-color: #1FAF5A; }
+    .wf-pill { font: 600 9px/1 "JetBrains Mono", monospace; padding: 5px 8px; border-radius: 99px; border: 1px solid #E2E1DC; color: #57534E; background: #fff; }
+    .wf-icon { color: #2B44FF; display: inline-grid; }
     .wf-icon svg { width: 14px; height: 14px; }
-    .wf-acc { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(148,163,184,.18); padding: 6px 0; }
-    .wf-wa { display: inline-flex; align-items: center; gap: 6px; background: #10B981; color: #04241a; border-radius: 999px; padding: 4px 10px; font: 700 9px/1 "Plus Jakarta Sans", sans-serif; }
-    .wf-wa svg { width: 12px; height: 12px; }
+    .wf-acc { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ECEBE6; padding: 7px 0; }
+    .wf-wa { display: inline-flex; align-items: center; gap: 6px; background: #1FAF5A; color: #fff; border-radius: 999px; padding: 4px 10px; font: 700 9px/1 "Plus Jakarta Sans", sans-serif; }
+    .wf-wa svg { width: 11px; height: 11px; }
 
-    .wf-enter { animation: wfIn .45s cubic-bezier(.2,.8,.2,1) both, wfGlow 1.4s ease-out both; }
+    .wf-enter { animation: wfIn .5s cubic-bezier(.2,.8,.2,1) both, wfGlow 1.4s ease-out both; }
     .wf-leave { animation: wfOut .25s ease-in both; }
-    @keyframes wfIn { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: none; } }
-    @keyframes wfOut { to { opacity: 0; transform: translateX(16px) scale(.97); } }
-    @keyframes wfGlow { 0% { box-shadow: 0 0 0 2px rgba(99,102,241,.8), 0 0 28px rgba(99,102,241,.35); } 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); } }
+    @keyframes wfIn { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: none; } }
+    @keyframes wfOut { to { opacity: 0; transform: translateX(18px) scale(.97); } }
+    @keyframes wfGlow { 0% { box-shadow: 0 0 0 3px rgba(43,68,255,.55), 0 12px 30px -8px rgba(43,68,255,.35); } 100% { box-shadow: 0 0 0 0 rgba(43,68,255,0); } }
     .bump { animation: bump .35s ease; }
-    @keyframes bump { 50% { transform: scale(1.06); } }
+    @keyframes bump { 50% { transform: scale(1.07); } }
 
-    /* ---------- Acordeón ---------- */
+    /* ---------- Acordeón FAQ ---------- */
     .acc-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
     .acc-panel > div { overflow: hidden; }
     .acc-item[data-open="true"] .acc-panel { grid-template-rows: 1fr; }
-    .acc-item[data-open="true"] .acc-chevron { transform: rotate(45deg); color: #10B981; }
+    .acc-item[data-open="true"] .acc-icon { transform: rotate(45deg); background: #2B44FF; color: #fff; }
 
     /* ---------- Modales ---------- */
-    dialog { background: transparent; padding: 0; max-width: min(560px, calc(100vw - 32px)); width: 100%; color: inherit; }
-    dialog::backdrop { background: rgba(2,6,23,.72); backdrop-filter: blur(6px); }
+    dialog { background: transparent; padding: 0; max-width: min(560px, calc(100vw - 32px)); width: 100%; color: inherit; margin: auto; }
+    dialog::backdrop { background: rgba(15,23,42,.55); backdrop-filter: blur(6px); }
     dialog[open] { animation: modalIn .3s cubic-bezier(.2,.8,.2,1); }
     @keyframes modalIn { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: none; } }
-
-    /* Barra móvil del cotizador */
-    #barra-movil { transition: transform .3s ease; }
-    #barra-movil.oculta { transform: translateY(110%); }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       .js .reveal { opacity: 1; transform: none; }
+      .msg { opacity: 1; transform: none; }
     }
   </style>
   <script>document.documentElement.classList.add('js');</script>
 </head>
 
-<body class="bg-ink font-sans text-slate-300 antialiased selection:bg-accent/40 selection:text-white">
+<body class="bg-cobalt font-sans text-ink antialiased selection:bg-blush selection:text-cobalt">
 
-  <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-white">Saltar al contenido</a>
+  <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-cobalt">Saltar al contenido</a>
 
   <!-- ===================== NAVEGACIÓN ===================== -->
-  <header id="cabecera" class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors duration-300">
-    <nav class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Principal">
-      <a href="#inicio" class="flex items-center gap-2.5 font-bold tracking-tight text-white">
-        <span class="grid size-8 place-items-center rounded-lg bg-gradient-to-br from-accent to-money font-mono text-sm text-white">ab</span>
-        <span>bascunan<span class="text-accent-soft">.digital</span></span>
+  <header id="cabecera" class="sticky top-0 z-50 bg-cobalt transition-shadow duration-300">
+    <nav class="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Principal">
+      <a href="#inicio" class="flex items-center gap-2 text-lg font-bold tight text-white">
+        <svg class="size-7" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#FDE8F0"/><path d="M9 7v14h5.5a3.5 3.5 0 0 0 0-7H9" fill="none" stroke="#2B44FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>bascunan<span class="text-blush/70">.digital</span></span>
       </a>
-      <ul class="hidden items-center gap-7 text-sm font-medium lg:flex">
-        <li><a class="transition hover:text-white" href="#diagnostico">Diagnóstico gratis</a></li>
-        <li><a class="transition hover:text-white" href="#comparativa">Por qué yo</a></li>
-        <li><a class="transition hover:text-white" href="#constructor">Cotizador</a></li>
-        <li><a class="transition hover:text-white" href="#casos">Casos</a></li>
-        <li><a class="transition hover:text-white" href="#faq">Preguntas</a></li>
+      <ul class="hidden items-center gap-1 text-[15px] font-medium text-blush lg:flex">
+        <li><a class="rounded-lg px-3 py-2 transition hover:bg-white/10" href="#problema">Por qué yo</a></li>
+        <li><a class="rounded-lg px-3 py-2 transition hover:bg-white/10" href="#proceso">Proceso</a></li>
+        <li><a class="rounded-lg px-3 py-2 transition hover:bg-white/10" href="#constructor">Cotizador</a></li>
+        <li><a class="rounded-lg px-3 py-2 transition hover:bg-white/10" href="#trabajos">Trabajos</a></li>
+        <li><a class="rounded-lg px-3 py-2 transition hover:bg-white/10" href="#faq">Preguntas</a></li>
       </ul>
       <div class="flex items-center gap-2">
-        <button type="button" data-abrir-llamada class="hidden rounded-lg bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:bg-slate-200 sm:inline-flex">Agendar llamada</button>
-        <button id="btn-menu" type="button" class="grid size-10 place-items-center rounded-lg border border-line text-white lg:hidden" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
-          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <a href="#constructor" class="hidden items-center gap-1.5 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-cobalt transition hover:bg-blush sm:inline-flex">Cotizar Sitio <span aria-hidden="true">→</span></a>
+        <button id="btn-menu" type="button" class="grid size-11 place-items-center rounded-full text-blush hover:bg-white/10 lg:hidden" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
+          <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 9h14M5 15h14"/></svg>
         </button>
       </div>
     </nav>
-    <div id="menu-movil" class="hidden border-t border-line bg-ink/95 backdrop-blur lg:hidden">
-      <ul class="space-y-1 px-4 py-4 text-base font-medium">
-        <li><a class="block rounded-lg px-3 py-2.5 hover:bg-card" href="#diagnostico">Diagnóstico gratis</a></li>
-        <li><a class="block rounded-lg px-3 py-2.5 hover:bg-card" href="#comparativa">Por qué yo</a></li>
-        <li><a class="block rounded-lg px-3 py-2.5 hover:bg-card" href="#constructor">Cotizador</a></li>
-        <li><a class="block rounded-lg px-3 py-2.5 hover:bg-card" href="#casos">Casos</a></li>
-        <li><a class="block rounded-lg px-3 py-2.5 hover:bg-card" href="#faq">Preguntas</a></li>
-        <li class="pt-2"><button type="button" data-abrir-llamada class="w-full rounded-lg bg-white px-4 py-3 font-semibold text-ink">Agendar llamada</button></li>
+    <div id="menu-movil" class="hidden border-t border-white/15 bg-cobalt lg:hidden">
+      <ul class="space-y-1 px-5 py-5 text-lg font-semibold text-blush">
+        <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#problema">Por qué yo</a></li>
+        <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#proceso">Proceso</a></li>
+        <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#constructor">Cotizador</a></li>
+        <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#trabajos">Trabajos</a></li>
+        <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#faq">Preguntas</a></li>
+        <li class="pt-3"><a href="#constructor" class="block rounded-full bg-white px-5 py-3.5 text-center text-base text-cobalt">Cotizar Sitio →</a></li>
       </ul>
     </div>
   </header>
 
   <main id="contenido">
 
-    <!-- ===================== 01 · HERO ===================== -->
-    <section id="inicio" class="relative overflow-hidden pt-28 pb-20 sm:pt-36 lg:pb-28">
-      <div class="grid-bg pointer-events-none absolute inset-0" aria-hidden="true"></div>
-      <div class="glow pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[820px] -translate-x-1/2" aria-hidden="true"></div>
-
-      <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
-        <div class="lg:col-span-7">
-          <p class="reveal inline-flex items-center gap-2.5 rounded-full border border-money/30 bg-money/10 px-3.5 py-1.5 text-sm font-medium text-emerald-300">
-            <span class="pulse-dot size-2 rounded-full bg-money" aria-hidden="true"></span>
-            Disponible para proyectos este mes
+    <!-- ===================== HERO (cobalto) ===================== -->
+    <section id="inicio" class="relative overflow-hidden bg-cobalt text-white">
+      <div class="mx-auto grid max-w-7xl items-center gap-16 px-5 pt-10 pb-16 sm:px-8 sm:pt-16 lg:grid-cols-12 lg:gap-10 lg:pb-24">
+        <div class="min-w-0 lg:col-span-6">
+          <p class="reveal inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold text-blush ring-1 ring-white/20">
+            <span class="pulse-dot size-2 rounded-full bg-green-400" aria-hidden="true"></span>
+            disponibilidad inmediata · chile y remoto
           </p>
-
-          <h1 class="reveal mt-6 text-4xl leading-[1.08] font-extrabold tracking-tight text-balance text-white sm:text-5xl lg:text-6xl">
-            Transformo la presencia digital de tu negocio en una
-            <span class="bg-gradient-to-r from-accent-soft via-accent to-money bg-clip-text text-transparent">plataforma de ventas autoadministrable.</span>
+          <h1 class="reveal mt-7 text-[1.85rem] leading-[1.05] font-extrabold tighter text-balance break-words text-blush min-[400px]:text-[2.4rem] sm:text-6xl lg:text-[3.7rem]">
+            No construyas solo un sitio web. Construye un canal de ventas autoadministrable.
           </h1>
-
-          <p class="reveal mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-slate-400 sm:text-xl">
-            Diseño UX/UI de nivel editorial + Desarrollo web optimizado con IA. Sitios ultrarrápidos, a medida y enfocados en conversión.
+          <p class="reveal mt-7 max-w-xl text-lg leading-relaxed text-blush/85 sm:text-xl">
+            Diseño UX/UI de nivel editorial + desarrollo a medida optimizado con IA. Rápido, elegante y sin depender de agencias.
           </p>
-
-          <div class="reveal mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href="#constructor" class="group inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-4 text-base font-semibold text-white shadow-lg shadow-accent/30 transition hover:bg-indigo-500">
-              Construir mi Sitio Web
-              <svg class="size-5 transition group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <div class="reveal mt-10 flex flex-col gap-3 sm:flex-row">
+            <a href="#constructor" class="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-base font-semibold text-cobalt shadow-xl shadow-black/15 transition hover:bg-blush">
+              Armar mi Sitio Web <span class="transition group-hover:translate-x-1" aria-hidden="true">→</span>
             </a>
-            <button type="button" data-abrir-llamada class="inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-card/50 px-6 py-4 text-base font-semibold text-white transition hover:border-slate-500 hover:bg-card">
-              <svg class="size-5 text-accent-soft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-              Agendar Llamada
-            </button>
+            <a href="#trabajos" class="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-base font-semibold text-blush ring-1 ring-blush/40 transition hover:bg-white/10 hover:ring-blush">
+              Ver Trabajos
+            </a>
           </div>
-
-          <dl class="reveal mt-12 grid max-w-2xl grid-cols-3 gap-6 border-t border-line pt-8">
-            <div><dt class="text-xs text-slate-500 sm:text-sm">Experiencia</dt><dd class="mt-1 font-mono text-xl font-semibold text-white sm:text-2xl">15+ años</dd></div>
-            <div><dt class="text-xs text-slate-500 sm:text-sm">PageSpeed</dt><dd class="mt-1 font-mono text-xl font-semibold text-money sm:text-2xl">90+</dd></div>
-            <div><dt class="text-xs text-slate-500 sm:text-sm">Entrega</dt><dd class="mt-1 font-mono text-xl font-semibold text-white sm:text-2xl">En días</dd></div>
+          <dl class="reveal mt-12 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/15 pt-8 text-blush">
+            <div><dt class="text-sm text-blush/70">Experiencia</dt><dd class="mt-0.5 text-2xl font-bold tight">15+ años</dd></div>
+            <div><dt class="text-sm text-blush/70">Google PageSpeed</dt><dd class="mt-0.5 text-2xl font-bold tight">90+</dd></div>
+            <div><dt class="text-sm text-blush/70">Entrega</dt><dd class="mt-0.5 text-2xl font-bold tight">En días</dd></div>
           </dl>
         </div>
 
-        <!-- Composición visual del hero -->
-        <div class="reveal relative lg:col-span-5" aria-hidden="true">
-          <div class="relative mx-auto max-w-md pb-20 lg:pb-0">
-            <div class="rounded-2xl border border-line bg-card/80 p-5 shadow-2xl shadow-black/40 backdrop-blur">
-              <div class="flex items-center justify-between">
-                <span class="font-mono text-xs text-slate-500">pagespeed.web.dev</span>
-                <span class="rounded-md bg-money/15 px-2 py-0.5 font-mono text-xs text-money">móvil</span>
-              </div>
-              <div class="mt-5 flex items-center gap-5">
-                <svg viewBox="0 0 120 120" class="size-28 shrink-0 -rotate-90">
-                  <circle cx="60" cy="60" r="50" fill="none" stroke="#334155" stroke-width="10"/>
-                  <circle cx="60" cy="60" r="50" fill="none" stroke="#10B981" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="22"/>
-                  <text x="60" y="68" text-anchor="middle" transform="rotate(90 60 60)" class="fill-white font-mono text-[26px] font-semibold">90+</text>
-                </svg>
-                <div>
-                  <p class="font-semibold text-white">Rendimiento garantizado</p>
-                  <p class="mt-1 text-sm text-slate-400">Código a medida, sin maquetadores pesados.</p>
+        <!-- Mockup: teléfono con conversación de cotización -->
+        <div class="relative lg:col-span-6" aria-hidden="true">
+          <div class="relative mx-auto w-[280px] text-ink sm:w-[310px]">
+            <div class="rounded-[2.8rem] bg-ink p-2.5 shadow-2xl shadow-black/40 ring-1 ring-white/10">
+              <div class="overflow-hidden rounded-[2.3rem] bg-[#F4F1EC]">
+                <div class="flex items-center justify-between px-6 pt-3 text-[11px] font-semibold text-ink"><span>9:41</span><span class="h-5 w-20 rounded-full bg-ink"></span><span>100%</span></div>
+                <div class="mt-2 flex items-center gap-3 border-b border-black/5 bg-white px-4 py-3">
+                  <span class="grid size-9 place-items-center rounded-full bg-cobalt text-xs font-bold text-white">AB</span>
+                  <div class="leading-tight"><p class="text-sm font-semibold">Alonso · bascunan.digital</p><p class="text-[11px] text-wa">en línea</p></div>
+                </div>
+                <div class="flex h-[390px] flex-col gap-2.5 px-3.5 py-4 text-[13px] leading-snug sm:h-[420px]">
+                  <div class="msg max-w-[82%] self-end rounded-2xl rounded-br-md bg-[#DCF6E4] px-3.5 py-2.5" style="animation-delay:.4s">Hola Alonso 👋 Quiero un sitio para mi centro de estética, con reservas online.</div>
+                  <div class="msg max-w-[90%] self-start rounded-2xl rounded-bl-md bg-white px-3.5 py-2.5 shadow-sm" style="animation-delay:1.3s">
+                    ¡Hola! Te armé la cotización 👇
+                    <div class="mt-2.5 space-y-1.5 rounded-xl bg-sand p-2.5 text-[12px]">
+                      <p class="flex justify-between gap-2"><span>Header + Hero</span><span class="font-semibold">$250.000</span></p>
+                      <p class="flex justify-between gap-2"><span>Reservas + PWA</span><span class="font-semibold">$250.000</span></p>
+                      <p class="flex justify-between gap-2"><span>Contacto + WhatsApp</span><span class="font-semibold">$60.000</span></p>
+                      <p class="flex justify-between gap-2 border-t border-black/10 pt-1.5 font-bold text-cobalt"><span>Total · 7 días</span><span>$560.000</span></p>
+                    </div>
+                  </div>
+                  <div class="msg max-w-[70%] self-end rounded-2xl rounded-br-md bg-[#DCF6E4] px-3.5 py-2.5" style="animation-delay:2.4s">¡Perfecto! ¿Partimos el lunes? 🙌</div>
+                  <div class="msg typing flex w-16 gap-1 self-start rounded-2xl bg-white px-3.5 py-3 shadow-sm" style="animation-delay:3.2s"><span></span><span></span><span></span></div>
                 </div>
               </div>
-              <div class="mt-5 grid grid-cols-3 gap-2 font-mono text-[11px]">
-                <div class="rounded-lg bg-ink/70 p-2"><p class="text-slate-500">LCP</p><p class="text-money">&lt; 2,5 s</p></div>
-                <div class="rounded-lg bg-ink/70 p-2"><p class="text-slate-500">CLS</p><p class="text-money">&lt; 0,1</p></div>
-                <div class="rounded-lg bg-ink/70 p-2"><p class="text-slate-500">SEO</p><p class="text-money">Schema</p></div>
+            </div>
+            <div class="float-a absolute top-48 -left-8 w-40 rounded-2xl bg-white p-3.5 text-ink shadow-xl sm:-left-24">
+              <p class="text-[11px] font-semibold text-ink/50">Google PageSpeed</p>
+              <div class="mt-1.5 flex items-center gap-2.5">
+                <svg viewBox="0 0 36 36" class="size-10 -rotate-90"><circle cx="18" cy="18" r="15" fill="none" stroke="#ECEBE6" stroke-width="4"/><circle cx="18" cy="18" r="15" fill="none" stroke="#1FAF5A" stroke-width="4" stroke-linecap="round" stroke-dasharray="94.2" stroke-dashoffset="7"/></svg>
+                <p class="text-2xl font-extrabold tight text-wa">90+</p>
               </div>
             </div>
-
-            <div class="absolute -bottom-24 left-2 w-60 rounded-2xl border border-line bg-ink-deep/95 p-4 shadow-2xl shadow-black/50 sm:-left-12">
+            <div class="float-b absolute -right-6 -bottom-6 w-52 rounded-2xl bg-white p-3.5 text-ink shadow-xl sm:-right-24">
               <div class="flex items-center gap-1 text-amber-400">
                 <svg class="size-4" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-                <span class="font-mono text-sm font-semibold text-white">4.9/5</span>
-                <span class="text-xs text-slate-500">· 38 reseñas</span>
+                <span class="text-sm font-bold text-ink">4.9/5</span><span class="text-xs text-ink/50">· 38 reseñas</span>
               </div>
-              <p class="mt-2 text-sm font-semibold text-white">Valeria Estética Integral</p>
-              <p class="text-xs text-slate-400">Reservas online + PWA</p>
-            </div>
-
-            <div class="absolute -top-16 -right-3 hidden rounded-xl border border-line bg-ink-deep/95 px-4 py-3 font-mono text-[11px] leading-relaxed shadow-2xl shadow-black/50 sm:block">
-              <span class="text-accent-soft">&lt;section</span> <span class="text-money">class</span>=<span class="text-amber-300">"hero"</span><span class="text-accent-soft">&gt;</span><br />
-              <span class="text-slate-500">  // diseño editorial → código</span>
+              <p class="mt-1 text-sm font-semibold">Valeria Estética Integral</p>
+              <p class="text-xs text-ink/55">Reservas online + PWA</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===================== 02 · LEAD MAGNET ===================== -->
-    <section id="diagnostico" class="px-4 py-16 sm:px-6 lg:px-8">
-      <div class="reveal ring-gradient relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-gradient-to-br from-card via-card to-ink p-6 sm:p-10 lg:p-12">
-        <div class="glow pointer-events-none absolute -right-20 -bottom-24 h-72 w-72" aria-hidden="true"></div>
-        <div class="relative grid items-center gap-10 lg:grid-cols-2">
-          <div>
-            <p class="font-mono text-xs font-medium tracking-widest text-money uppercase">Diagnóstico gratuito · Video de 3 min</p>
-            <h2 class="mt-4 text-2xl leading-tight font-bold text-balance text-white sm:text-3xl">
-              ¿Ya tienes un sitio web pero no convierte o carga lento?
-            </h2>
-            <p class="mt-4 text-lg leading-relaxed text-slate-400">
-              Ingresa tu URL y te enviaré un <strong class="font-semibold text-white">video grabado por mí de 3 minutos</strong> con un diagnóstico UX y de velocidad totalmente gratis.
-            </p>
-            <ul class="mt-6 space-y-2.5 text-sm text-slate-300">
-              <li class="flex gap-2.5"><svg class="mt-0.5 size-4 shrink-0 text-money" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Qué está frenando a tus visitas antes de comprar o escribirte</li>
-              <li class="flex gap-2.5"><svg class="mt-0.5 size-4 shrink-0 text-money" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Velocidad real en celulares y qué la está afectando</li>
-              <li class="flex gap-2.5"><svg class="mt-0.5 size-4 shrink-0 text-money" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>3 mejoras concretas que puedes aplicar aunque no trabajemos juntos</li>
-            </ul>
+    <div class="wave wave-cobalt-blush" aria-hidden="true"></div>
+
+    <!-- ===================== EMPATÍA (rosa) ===================== -->
+    <section id="problema" class="bg-blush pt-10 pb-20 sm:pt-14">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <button type="button" data-preguntar="¿Cuánto cuesta un sitio con reservas online?" class="reveal inline-flex max-w-full items-center gap-2 rounded-lg bg-cobalt/10 px-3.5 py-2.5 text-left text-xs text-cobalt transition hover:bg-cobalt/15">
+          <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg>
+          <span><strong class="font-semibold">Pregúntale a Alonso.</strong> ¿Cuánto cuesta un sitio con reservas online?</span>
+        </button>
+
+        <div class="mt-10 grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
+          <div class="lg:col-span-7">
+            <span class="reveal inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">el problema real</span>
+            <h2 class="reveal mt-5 text-4xl leading-[1.05] font-bold tighter text-balance text-cobalt sm:text-5xl lg:text-6xl">Sitios lentos, plantillas genéricas y agencias que demoran meses.</h2>
           </div>
+          <p class="reveal text-xl leading-relaxed font-light text-cobalt lg:col-span-5">Tu sitio debería vender mientras duermes. En cambio, carga lento, se ve igual a mil otros y cada cambio es un correo, una espera y una cotización nueva.</p>
+        </div>
 
-          <form id="form-diagnostico" class="rounded-2xl border border-line bg-ink/70 p-5 sm:p-6" novalidate>
-            <div class="space-y-4">
-              <div>
-                <label for="diag-url" class="text-sm font-medium text-white">URL de tu sitio web</label>
-                <div class="mt-2 flex items-center rounded-xl border border-line bg-ink-deep focus-within:border-accent focus-within:ring-2 focus-within:ring-accent/30">
-                  <span class="pl-4 font-mono text-sm text-slate-500" aria-hidden="true">https://</span>
-                  <input id="diag-url" name="url" type="text" inputmode="url" autocomplete="url" required placeholder="tunegocio.cl" class="w-full min-w-0 bg-transparent px-2 py-3.5 text-white placeholder:text-slate-600 focus:outline-none" aria-describedby="diag-error" />
-                </div>
-              </div>
-              <div>
-                <label for="diag-nombre" class="text-sm font-medium text-white">Tu nombre</label>
-                <input id="diag-nombre" name="nombre" type="text" autocomplete="name" required placeholder="Ej: Camila Rojas" class="mt-2 w-full rounded-xl border border-line bg-ink-deep px-4 py-3.5 text-white placeholder:text-slate-600 focus:border-accent focus:ring-2 focus:ring-accent/30 focus:outline-none" />
-              </div>
-              <p id="diag-error" class="hidden text-sm text-rose-400" role="alert"></p>
-              <button type="submit" class="flex w-full items-center justify-center gap-2 rounded-xl bg-money px-6 py-4 font-semibold text-emerald-950 transition hover:bg-emerald-400">
-                Quiero mi diagnóstico gratis
-                <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </button>
-              <p class="text-center text-xs text-slate-500">Se abrirá WhatsApp con tu solicitud lista para enviar. Sin spam, sin compromiso.</p>
-            </div>
-            <div id="diag-ok" class="hidden text-center" role="status" tabindex="-1">
-              <div class="mx-auto grid size-14 place-items-center rounded-full bg-money/15 text-money">
-                <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              </div>
-              <p class="mt-4 text-lg font-semibold text-white">¡Listo! Envía el mensaje en WhatsApp</p>
-              <p class="mt-2 text-sm text-slate-400">Apenas lo reciba, grabo tu diagnóstico. Si WhatsApp no se abrió, <a id="diag-mail" class="text-accent-soft underline underline-offset-2" href="mailto:hola@bascunan.digital">escríbeme por correo</a>.</p>
-            </div>
-          </form>
+        <div class="mt-14 grid gap-4 md:grid-cols-3">
+          <article class="reveal rounded-3xl bg-white p-7 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-cobalt/10">
+            <span class="grid size-12 place-items-center rounded-2xl bg-blush text-cobalt"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg></span>
+            <h3 class="mt-6 text-xl font-bold tight">Cada segundo de carga te cuesta clientes</h3>
+            <p class="mt-2 leading-relaxed text-ink/65">Las plantillas y los maquetadores visuales cargan código que tu sitio no usa. En el celular se nota, y la gente se va.</p>
+          </article>
+          <article class="reveal rounded-3xl bg-white p-7 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-cobalt/10" style="transition-delay:80ms">
+            <span class="grid size-12 place-items-center rounded-2xl bg-blush text-cobalt"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+            <h3 class="mt-6 text-xl font-bold tight">Una plantilla no cuenta tu historia</h3>
+            <p class="mt-2 leading-relaxed text-ink/65">Si tu sitio se parece al de tu competencia, compites solo por precio. El diseño es lo que te hace confiable antes de hablar.</p>
+          </article>
+          <article class="reveal rounded-3xl bg-white p-7 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-cobalt/10" style="transition-delay:160ms">
+            <span class="grid size-12 place-items-center rounded-2xl bg-blush text-cobalt"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+            <h3 class="mt-6 text-xl font-bold tight">Meses de espera para un cambio</h3>
+            <p class="mt-2 leading-relaxed text-ink/65">Con una agencia tradicional, publicar una promoción o cambiar un precio depende de un ticket. Tu negocio no puede esperar.</p>
+          </article>
+        </div>
+
+        <div class="mt-20">
+          <div class="reveal flex flex-col justify-between gap-4 md:flex-row md:items-end">
+            <h3 class="text-3xl leading-tight font-bold tighter text-cobalt sm:text-4xl">Ni agencia lenta, ni plantilla barata.</h3>
+            <p class="max-w-md text-ink/65">Trabajas directo con un diseñador y desarrollador senior, que usa la IA para entregar más rápido sin bajar la calidad.</p>
+          </div>
+          <div id="comparativa" class="mt-10 grid gap-4 md:grid-cols-3 md:items-start"></div>
         </div>
       </div>
     </section>
 
-    <!-- ===================== 03 · COMPARATIVA ===================== -->
-    <section id="comparativa" class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-6xl">
-        <div class="reveal max-w-2xl">
-          <p class="font-mono text-xs font-medium tracking-widest text-accent-soft uppercase">03 — La alternativa</p>
-          <h2 class="mt-4 text-3xl font-bold tracking-tight text-balance text-white sm:text-4xl">Ni agencia lenta, ni plantilla barata.</h2>
-          <p class="mt-4 text-lg text-slate-400">Trabajas directo con un diseñador y desarrollador senior. Sin intermediarios, sin plantillas, sin meses de espera.</p>
+    <!-- ===================== PROCESO (card blanca sobre rosa) ===================== -->
+    <section id="proceso" class="bg-blush px-2.5 pb-2.5 sm:px-3 sm:pb-3">
+      <div class="rounded-[2rem] bg-white px-5 py-16 sm:px-8 lg:py-24">
+        <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12 lg:gap-16">
+          <div class="lg:col-span-5">
+            <span class="reveal inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">cómo trabajo</span>
+            <h2 class="reveal mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">De la idea a un sitio que vende, en 5 pasos.</h2>
+            <div id="pasos" class="mt-10 space-y-6"></div>
+          </div>
+          <div id="panel-pasos" class="relative grid min-h-[380px] overflow-hidden rounded-3xl bg-platinum/60 sm:min-h-[460px] lg:col-span-7" aria-live="polite"></div>
         </div>
-
-        <!-- Se genera con JS desde los datos de COMPARATIVA -->
-        <div id="tabla-comparativa" class="reveal mt-12"></div>
       </div>
     </section>
 
-    <!-- ===================== 04 · CONSTRUCTOR / COTIZADOR ===================== -->
-    <section id="constructor" class="relative border-y border-line/60 bg-ink-deep px-4 py-20 sm:px-6 lg:px-8">
-      <div class="grid-bg pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-7xl">
+    <!-- ===================== DIAGNÓSTICO (cobalto) ===================== -->
+    <section id="diagnostico" class="wave-top wave-blush-cobalt bg-cobalt pt-32 pb-20 text-blush">
+      <div class="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:items-center">
+        <div class="reveal lg:col-span-6">
+          <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold ring-1 ring-blush/40">diagnóstico gratis · video de 3 min</span>
+          <h2 class="mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">¿Ya tienes un sitio que no convierte o carga lento?</h2>
+          <p class="mt-5 max-w-xl text-lg leading-relaxed text-blush/85">Ingresa tu URL y te envío un video grabado por mí, de 3 minutos, con un diagnóstico de UX y velocidad. Gratis y con 3 mejoras concretas que puedes aplicar aunque no trabajemos juntos.</p>
+        </div>
+        <form id="form-diagnostico" class="reveal rounded-3xl bg-white/10 p-5 ring-1 ring-white/20 sm:p-7 lg:col-span-6" novalidate>
+          <div id="diag-campos" class="space-y-3">
+            <label for="diag-url" class="sr-only">URL de tu sitio web</label>
+            <div class="flex items-center rounded-full bg-white pl-5 focus-within:ring-4 focus-within:ring-blush/60">
+              <span class="font-mono text-sm text-ink/40" aria-hidden="true">https://</span>
+              <input id="diag-url" type="text" inputmode="url" autocomplete="url" placeholder="tunegocio.cl" class="w-full min-w-0 bg-transparent px-2 py-4 text-ink placeholder:text-ink/35 focus:outline-none" aria-describedby="diag-error" />
+            </div>
+            <label for="diag-nombre" class="sr-only">Tu nombre</label>
+            <input id="diag-nombre" type="text" autocomplete="name" placeholder="Tu nombre" class="w-full rounded-full bg-white px-5 py-4 text-ink placeholder:text-ink/35 focus:ring-4 focus:ring-blush/60 focus:outline-none" />
+            <p id="diag-error" class="hidden px-2 text-sm font-semibold text-blush" role="alert"></p>
+            <button type="submit" class="flex w-full items-center justify-center gap-2 rounded-full bg-blush px-6 py-4 font-semibold text-cobalt transition hover:bg-white">Quiero mi diagnóstico gratis <span aria-hidden="true">→</span></button>
+            <p class="text-center text-xs text-blush/70">Se abre WhatsApp con tu solicitud lista para enviar. Sin spam, sin compromiso.</p>
+          </div>
+          <div id="diag-ok" class="hidden py-6 text-center" role="status" tabindex="-1">
+            <p class="text-2xl font-bold tight">¡Listo! Envía el mensaje en WhatsApp ✨</p>
+            <p class="mt-2 text-blush/80">Apenas lo reciba, grabo tu diagnóstico. ¿No se abrió WhatsApp? <a id="diag-mail" href="mailto:hola@bascunan.digital" class="font-semibold underline underline-offset-4">Escríbeme por correo</a>.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <div class="wave wave-cobalt-sand" aria-hidden="true"></div>
+
+    <!-- ===================== CONSTRUCTOR (arena) ===================== -->
+    <section id="constructor" class="bg-sand pt-10 pb-24 sm:pt-14">
+      <div class="mx-auto max-w-7xl px-4 sm:px-8">
         <div class="reveal mx-auto max-w-3xl text-center">
-          <p class="font-mono text-xs font-medium tracking-widest text-accent-soft uppercase">04 — Cotizador interactivo</p>
-          <h2 class="mt-4 text-3xl font-bold tracking-tight text-balance text-white sm:text-4xl">Arma tu sitio y mira el precio al instante.</h2>
-          <p class="mt-4 text-lg text-slate-400">Activa las secciones que necesitas. El wireframe se arma en vivo y el precio y el plazo se actualizan solos.</p>
+          <span class="inline-block rounded-full bg-cobalt px-4 py-1 text-xs font-semibold text-white">cotizador interactivo</span>
+          <h2 class="mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">Arma tu sitio y mira el precio al instante.</h2>
+          <p class="mt-5 text-lg text-ink/65">Activa las secciones que necesitas. El wireframe se arma en vivo y el precio y el plazo se actualizan solos.</p>
         </div>
 
         <div class="reveal mt-8 flex flex-wrap items-center justify-center gap-2" role="group" aria-label="Combinaciones recomendadas">
-          <span class="mr-1 text-sm text-slate-500">Empieza con:</span>
+          <span class="mr-1 text-sm text-ink/50">Empieza con:</span>
           <div id="presets" class="contents"></div>
         </div>
 
-        <div class="mt-10 grid gap-8 lg:grid-cols-12">
-          <!-- Columna izquierda: selección -->
-          <div class="lg:col-span-5">
-            <h3 class="mb-4 flex items-center gap-2 text-sm font-semibold text-white">
-              <span class="grid size-6 place-items-center rounded-md bg-accent/20 font-mono text-xs text-accent-soft">1</span>
-              Elige tus secciones
-            </h3>
-            <div id="lista-modulos" class="space-y-3"></div>
-          </div>
-
-          <!-- Columna derecha: lienzo + resumen -->
-          <div class="lg:col-span-7">
-            <div class="lg:sticky lg:top-24">
-              <h3 class="mb-4 flex items-center gap-2 text-sm font-semibold text-white">
-                <span class="grid size-6 place-items-center rounded-md bg-accent/20 font-mono text-xs text-accent-soft">2</span>
-                Vista previa en vivo
-              </h3>
-
-              <div class="overflow-hidden rounded-2xl border border-line bg-card shadow-2xl shadow-black/40">
-                <div class="flex items-center gap-3 border-b border-line px-4 py-3">
-                  <div class="flex gap-1.5" aria-hidden="true">
-                    <span class="size-3 rounded-full bg-rose-400/80"></span><span class="size-3 rounded-full bg-amber-400/80"></span><span class="size-3 rounded-full bg-emerald-400/80"></span>
+        <div class="mt-10 rounded-[2rem] border border-slate-200/80 bg-white p-2.5 shadow-[0_30px_80px_-40px_rgba(43,68,255,.35)] sm:p-4">
+          <div class="grid gap-4 lg:grid-cols-12">
+            <div class="rounded-3xl bg-sand p-3.5 sm:p-5 lg:col-span-5">
+              <p class="mb-4 flex items-center gap-2 text-sm font-semibold"><span class="grid size-6 place-items-center rounded-full bg-cobalt font-mono text-[11px] text-white"><span class="lg:hidden">2</span><span class="hidden lg:inline">1</span></span>Elige tus secciones</p>
+              <div id="lista-modulos" class="space-y-2.5"></div>
+            </div>
+            <div class="order-first lg:order-none lg:col-span-7">
+              <div class="lg:sticky lg:top-24">
+                <p class="mb-4 flex items-center gap-2 px-1 pt-2 text-sm font-semibold lg:pt-5"><span class="grid size-6 place-items-center rounded-full bg-cobalt font-mono text-[11px] text-white"><span class="lg:hidden">1</span><span class="hidden lg:inline">2</span></span>Vista previa en vivo <span id="contador-secciones" class="ml-auto rounded-full bg-sand px-3 py-1 font-mono text-[11px] font-medium text-ink/60">1 sección</span></p>
+                <div class="overflow-hidden rounded-3xl border border-slate-200/80 bg-white">
+                  <div class="flex items-center gap-3 border-b border-slate-200/80 px-4 py-3">
+                    <div class="flex gap-1.5" aria-hidden="true"><span class="size-3 rounded-full bg-[#FF5F57]"></span><span class="size-3 rounded-full bg-[#FEBC2E]"></span><span class="size-3 rounded-full bg-[#28C840]"></span></div>
+                    <div class="flex min-w-0 flex-1 items-center justify-center gap-1.5 rounded-full bg-sand px-3 py-1.5 font-mono text-xs text-ink/55">
+                      <svg class="size-3 shrink-0 text-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                      <span class="truncate">tunegocio.cl</span>
+                    </div>
                   </div>
-                  <div class="flex min-w-0 flex-1 items-center gap-2 rounded-md bg-ink/70 px-3 py-1.5 font-mono text-xs text-slate-400">
-                    <svg class="size-3 shrink-0 text-money" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-                    <span class="truncate">https://tunegocio.cl</span>
-                  </div>
-                  <span id="contador-secciones" class="hidden font-mono text-xs text-slate-500 sm:inline">1 sección</span>
+                  <div id="lienzo" class="canvas h-[300px] overflow-y-auto bg-[#F4F2EE] p-4 sm:h-[480px] sm:p-6" role="region" aria-label="Wireframe del sitio" aria-live="polite"></div>
                 </div>
-                <div id="lienzo" class="canvas h-[420px] overflow-y-auto bg-ink p-4 sm:h-[460px] sm:p-6" aria-label="Wireframe del sitio" role="region" aria-live="polite"></div>
-              </div>
-
-              <!-- Resumen dinámico -->
-              <div id="resumen" class="mt-5 rounded-2xl border border-line bg-card p-5 sm:p-6">
-                <div class="grid grid-cols-2 gap-4">
-                  <div>
-                    <p class="text-sm text-slate-400">Precio estimado</p>
-                    <p class="mt-1 font-mono text-2xl font-semibold text-money sm:text-3xl"><span id="total-precio">$0</span></p>
-                    <p class="font-mono text-xs text-slate-500">CLP</p>
-                  </div>
-                  <div class="border-l border-line pl-4">
-                    <p class="text-sm text-slate-400">Entrega estimada</p>
-                    <p class="mt-1 font-mono text-2xl font-semibold text-white sm:text-3xl"><span id="total-dias">0</span></p>
-                    <p id="total-dias-label" class="font-mono text-xs text-slate-500">días hábiles</p>
-                  </div>
-                </div>
-                <ul id="resumen-lista" class="mt-5 flex flex-wrap gap-2" aria-label="Secciones seleccionadas"></ul>
-                <a id="cta-whatsapp" href="#" target="_blank" rel="noopener" class="mt-6 flex w-full items-center justify-center gap-2.5 rounded-xl bg-money px-6 py-4 text-center font-semibold text-emerald-950 shadow-lg shadow-money/20 transition hover:bg-emerald-400">
-                  <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8 8 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4 3.5 3.5 0 0 0-1.1 2.6 6 6 0 0 0 1.3 3.2 13.9 13.9 0 0 0 5.3 4.7c2 .8 2.7.9 3.7.8a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.2-.3-.2-.6-.4ZM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8Zm0-21.6A11.8 11.8 0 0 0 1.9 17.9L.2 24l6.3-1.6A11.8 11.8 0 1 0 12 .2Z"/></svg>
-                  Solicitar este proyecto por WhatsApp
-                </a>
-                <p class="mt-3 text-center text-xs text-slate-500">Valores referenciales. El precio final se confirma en una llamada de 15 minutos, sin compromiso.</p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ===================== 05 · CASOS ===================== -->
-    <section id="casos" class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-7xl">
-        <div class="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div class="max-w-2xl">
-            <p class="font-mono text-xs font-medium tracking-widest text-accent-soft uppercase">05 — Casos de éxito</p>
-            <h2 class="mt-4 text-3xl font-bold tracking-tight text-balance text-white sm:text-4xl">Proyectos reales, en producción.</h2>
+          <!-- Barra de resumen (sticky) -->
+          <div id="resumen" class="sticky bottom-3 z-20 mt-4 rounded-3xl bg-ink p-4 text-white shadow-2xl shadow-black/25 sm:p-5">
+            <div class="flex flex-col gap-4 lg:flex-row lg:items-center">
+              <div class="flex items-center gap-6 sm:gap-10">
+                <div>
+                  <p class="text-xs text-white/55">Precio estimado</p>
+                  <p class="text-2xl font-extrabold tight sm:text-3xl"><span id="total-precio">$0</span> <span class="text-sm font-medium text-white/50">CLP</span></p>
+                </div>
+                <div class="border-l border-white/15 pl-6 sm:pl-10">
+                  <p class="text-xs text-white/55">Entrega estimada</p>
+                  <p class="text-2xl font-extrabold tight sm:text-3xl"><span id="total-dias">0</span> <span id="total-dias-label" class="text-sm font-medium text-white/50">días hábiles</span></p>
+                </div>
+              </div>
+              <ul id="resumen-lista" class="hidden flex-1 flex-wrap gap-1.5 xl:flex" aria-label="Secciones seleccionadas"></ul>
+              <a id="cta-whatsapp" href="#" target="_blank" rel="noopener" class="group inline-flex items-center justify-center gap-2 rounded-full bg-wa px-6 py-4 text-center font-semibold text-white transition hover:bg-[#189a4d] lg:ml-auto">
+                <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8 8 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4 3.5 3.5 0 0 0-1.1 2.6 6 6 0 0 0 1.3 3.2 13.9 13.9 0 0 0 5.3 4.7c2 .8 2.7.9 3.7.8a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.2-.3-.2-.6-.4ZM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8Zm0-21.6A11.8 11.8 0 0 0 1.9 17.9L.2 24l6.3-1.6A11.8 11.8 0 1 0 12 .2Z"/></svg>
+                Cotizar este Diseño por WhatsApp <span class="transition group-hover:translate-x-1" aria-hidden="true">→</span>
+              </a>
+            </div>
           </div>
-          <p class="max-w-md text-slate-400">Desde un centro de estética hasta una plataforma para colegios: cada proyecto, diseñado y programado por mí.</p>
         </div>
-        <div id="grid-casos" class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+        <p class="mt-4 text-center text-sm text-ink/50">Valores referenciales en CLP. El precio final se confirma en una llamada de 15 minutos, sin compromiso.</p>
       </div>
     </section>
 
-    <!-- ===================== 06 · GARANTÍA ===================== -->
-    <section id="garantia" class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="reveal ring-gradient relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-card/60 p-6 sm:p-10 lg:p-14">
-        <div class="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <p class="font-mono text-xs font-medium tracking-widest text-money uppercase">06 — Garantía técnica</p>
-            <h2 class="mt-4 text-3xl font-bold tracking-tight text-balance text-white sm:text-4xl">Sin maquetadores pesados. <span class="text-slate-500">Cero Elementor/Divi.</span></h2>
-            <p class="mt-5 text-lg leading-relaxed text-slate-400">Código limpio optimizado para Google PageSpeed (<strong class="font-semibold text-money">puntaje 90+ garantizado</strong>) y SEO Local con Schema desde el día 1.</p>
-            <ul class="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-              <li class="rounded-xl border border-line bg-ink/60 p-4">
-                <p class="font-mono text-2xl font-semibold text-money">90+</p>
-                <p class="mt-1 text-sm text-slate-400">PageSpeed en las páginas que desarrollo</p>
-              </li>
-              <li class="rounded-xl border border-line bg-ink/60 p-4">
-                <p class="font-mono text-2xl font-semibold text-white">0</p>
-                <p class="mt-1 text-sm text-slate-400">Maquetadores visuales ni plantillas compradas</p>
-              </li>
-              <li class="rounded-xl border border-line bg-ink/60 p-4">
-                <p class="font-mono text-2xl font-semibold text-accent-soft">Día 1</p>
-                <p class="mt-1 text-sm text-slate-400">Datos estructurados para Google Maps y búsquedas locales</p>
-              </li>
+    <!-- ===================== TRABAJOS (arena) ===================== -->
+    <section id="trabajos" class="bg-sand pb-24">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="reveal flex flex-col justify-between gap-6 border-t border-ink/10 pt-20 md:flex-row md:items-end">
+          <div class="max-w-2xl">
+            <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">casos de éxito</span>
+            <h2 class="mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">Proyectos reales, en producción.</h2>
+          </div>
+          <p class="max-w-md text-lg text-ink/65">De un centro de estética a una plataforma para colegios: cada proyecto, diseñado y programado por mí.</p>
+        </div>
+        <div id="grid-casos" class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- ===================== GARANTÍA (grafito) ===================== -->
+    <section id="garantia" class="bg-sand px-2.5 sm:px-3">
+      <div class="on-dark rounded-[2rem] bg-graphite px-5 py-16 text-white sm:px-8 lg:py-24">
+        <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div class="reveal">
+            <span class="inline-block rounded-full bg-blush/10 px-4 py-1 text-xs font-semibold text-blush">sin código basura</span>
+            <h2 class="mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">0% Elementor. <span class="text-white/45">100% código limpio.</span></h2>
+            <p class="mt-5 max-w-xl text-lg leading-relaxed text-white/70">Sin maquetadores pesados como Elementor o Divi. Código a medida optimizado para Google PageSpeed, con puntaje 90+ garantizado y SEO local con Schema desde el día 1.</p>
+            <ul class="mt-10 grid gap-3 sm:grid-cols-3">
+              <li class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10"><p class="text-3xl font-extrabold tight text-[#4ADE80]">90+</p><p class="mt-1 text-sm text-white/60">Google PageSpeed garantizado</p></li>
+              <li class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10"><p class="text-3xl font-extrabold tight">0%</p><p class="mt-1 text-sm text-white/60">Elementor, Divi o plantillas compradas</p></li>
+              <li class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10"><p class="text-3xl font-extrabold tight text-blush">Día 1</p><p class="mt-1 text-sm text-white/60">SEO local con Schema incluido</p></li>
             </ul>
           </div>
-          <div class="rounded-2xl border border-line bg-ink-deep p-5 font-mono text-[12px] leading-relaxed shadow-2xl shadow-black/40 sm:text-[13px]" aria-label="Ejemplo de datos estructurados Schema para SEO local">
-            <div class="mb-4 flex items-center justify-between text-slate-500">
-              <span>schema-local.json</span><span class="rounded bg-money/15 px-2 py-0.5 text-money">válido ✓</span>
+          <div class="reveal min-w-0 rounded-3xl bg-white/[.04] p-2 ring-1 ring-white/10">
+            <div class="flex items-center justify-between px-4 py-3 font-mono text-xs text-white/45">
+              <span>schema-local.json</span><span class="rounded-full bg-[#4ADE80]/15 px-2.5 py-0.5 text-[#4ADE80]">válido ✓</span>
             </div>
-<pre class="overflow-x-auto whitespace-pre text-slate-300"><code><span class="text-slate-500">{</span>
-  <span class="text-accent-soft">"@type"</span>: <span class="text-amber-300">"LocalBusiness"</span>,
-  <span class="text-accent-soft">"name"</span>: <span class="text-amber-300">"Tu Negocio"</span>,
-  <span class="text-accent-soft">"address"</span>: <span class="text-slate-500">{</span>
-    <span class="text-accent-soft">"addressLocality"</span>: <span class="text-amber-300">"Viña del Mar"</span>
-  <span class="text-slate-500">}</span>,
-  <span class="text-accent-soft">"aggregateRating"</span>: <span class="text-slate-500">{</span>
-    <span class="text-accent-soft">"ratingValue"</span>: <span class="text-money">4.9</span>
-  <span class="text-slate-500">}</span>,
-  <span class="text-accent-soft">"openingHours"</span>: <span class="text-amber-300">"Mo-Sa 10:00-19:00"</span>
-<span class="text-slate-500">}</span></code></pre>
+<pre class="overflow-x-auto rounded-2xl bg-black/30 p-5 font-mono text-[12px] leading-relaxed text-white/85 sm:text-[13.5px]" aria-label="Ejemplo de datos estructurados para SEO local"><code><span class="text-white/40">{</span>
+  <span class="text-[#A5B4FC]">"@type"</span>: <span class="text-blush">"LocalBusiness"</span>,
+  <span class="text-[#A5B4FC]">"name"</span>: <span class="text-blush">"Tu Negocio"</span>,
+  <span class="text-[#A5B4FC]">"address"</span>: <span class="text-white/40">{</span>
+    <span class="text-[#A5B4FC]">"addressLocality"</span>: <span class="text-blush">"Viña del Mar"</span>
+  <span class="text-white/40">}</span>,
+  <span class="text-[#A5B4FC]">"aggregateRating"</span>: <span class="text-white/40">{</span>
+    <span class="text-[#A5B4FC]">"ratingValue"</span>: <span class="text-[#4ADE80]">4.9</span>
+  <span class="text-white/40">}</span>,
+  <span class="text-[#A5B4FC]">"openingHours"</span>: <span class="text-blush">"Mo-Sa 10:00-19:00"</span>
+<span class="text-white/40">}</span></code></pre>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===================== 07 · FAQ ===================== -->
-    <section id="faq" class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-12">
+    <!-- ===================== FAQ (arena) ===================== -->
+    <section id="faq" class="bg-sand py-24">
+      <div class="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-12">
         <div class="reveal lg:col-span-4">
-          <p class="font-mono text-xs font-medium tracking-widest text-accent-soft uppercase">07 — Preguntas frecuentes</p>
-          <h2 class="mt-4 text-3xl font-bold tracking-tight text-balance text-white sm:text-4xl">Lo que todos preguntan antes de partir.</h2>
-          <p class="mt-4 text-slate-400">¿Tienes otra duda? <button type="button" data-abrir-llamada class="font-semibold text-accent-soft underline underline-offset-4 hover:text-white">Agenda 15 minutos</button> y la vemos juntos.</p>
+          <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">preguntas frecuentes</span>
+          <h2 class="mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">Lo que todos preguntan antes de partir.</h2>
+          <p class="mt-5 text-lg text-ink/65">¿Tienes otra duda? <button type="button" data-abrir-llamada class="font-semibold text-cobalt underline underline-offset-4">Agenda 15 minutos</button> y la vemos juntos.</p>
         </div>
-        <div id="acordeon" class="reveal divide-y divide-line border-y border-line lg:col-span-8">
-
-          <div class="acc-item" data-open="false">
-            <h3><button type="button" class="acc-btn flex w-full items-center justify-between gap-6 py-5 text-left text-lg font-semibold text-white" aria-expanded="false" aria-controls="faq-1" id="faq-1-btn">¿El precio del cotizador es el precio final?<span class="acc-chevron text-2xl leading-none text-accent-soft transition" aria-hidden="true">+</span></button></h3>
-            <div id="faq-1" class="acc-panel" role="region" aria-labelledby="faq-1-btn"><div><p class="pb-5 leading-relaxed text-slate-400">Es una estimación honesta basada en proyectos reales. Antes de partir tenemos una llamada de 15 minutos para confirmar el alcance y te envío una propuesta formal con precio y plazo cerrados. Sin letra chica ni cobros sorpresa.</p></div></div>
-          </div>
-
-          <div class="acc-item" data-open="false">
-            <h3><button type="button" class="acc-btn flex w-full items-center justify-between gap-6 py-5 text-left text-lg font-semibold text-white" aria-expanded="false" aria-controls="faq-2" id="faq-2-btn">¿Voy a poder editar mi sitio yo mismo?<span class="acc-chevron text-2xl leading-none text-accent-soft transition" aria-hidden="true">+</span></button></h3>
-            <div id="faq-2" class="acc-panel" role="region" aria-labelledby="faq-2-btn"><div><p class="pb-5 leading-relaxed text-slate-400">Sí. Tu sitio queda 100% autoadministrable: textos, fotos, productos, servicios y preguntas frecuentes se editan desde un panel con campos a la medida de tu negocio, sin tocar código y sin miedo a “romper” el diseño.</p></div></div>
-          </div>
-
-          <div class="acc-item" data-open="false">
-            <h3><button type="button" class="acc-btn flex w-full items-center justify-between gap-6 py-5 text-left text-lg font-semibold text-white" aria-expanded="false" aria-controls="faq-3" id="faq-3-btn">¿Cómo usas la inteligencia artificial?<span class="acc-chevron text-2xl leading-none text-accent-soft transition" aria-hidden="true">+</span></button></h3>
-            <div id="faq-3" class="acc-panel" role="region" aria-labelledby="faq-3-btn"><div><p class="pb-5 leading-relaxed text-slate-400">Como un multiplicador de productividad, no como reemplazo del criterio. Yo defino el diseño, la arquitectura y los estándares de calidad; la IA me ayuda a escribir y probar código más rápido, y yo reviso cada línea antes de publicarla. Por eso puedo entregar en días lo que a una agencia le toma meses.</p></div></div>
-          </div>
-
-          <div class="acc-item" data-open="false">
-            <h3><button type="button" class="acc-btn flex w-full items-center justify-between gap-6 py-5 text-left text-lg font-semibold text-white" aria-expanded="false" aria-controls="faq-4" id="faq-4-btn">¿Qué pasa si mi sitio no llega a 90 en PageSpeed?<span class="acc-chevron text-2xl leading-none text-accent-soft transition" aria-hidden="true">+</span></button></h3>
-            <div id="faq-4" class="acc-panel" role="region" aria-labelledby="faq-4-btn"><div><p class="pb-5 leading-relaxed text-slate-400">Sigo optimizando sin costo adicional hasta lograrlo. La garantía se mide con Google PageSpeed Insights sobre las páginas que yo desarrollo; los scripts de terceros que se agreguen después (chats, píxeles publicitarios, etc.) quedan fuera, y te aviso cuánto impacta cada uno antes de instalarlo.</p></div></div>
-          </div>
-
-          <div class="acc-item" data-open="false">
-            <h3><button type="button" class="acc-btn flex w-full items-center justify-between gap-6 py-5 text-left text-lg font-semibold text-white" aria-expanded="false" aria-controls="faq-5" id="faq-5-btn">¿El precio incluye dominio y hosting?<span class="acc-chevron text-2xl leading-none text-accent-soft transition" aria-hidden="true">+</span></button></h3>
-            <div id="faq-5" class="acc-panel" role="region" aria-labelledby="faq-5-btn"><div><p class="pb-5 leading-relaxed text-slate-400">No, porque quedan a tu nombre y son tuyos. Te recomiendo opciones según tu presupuesto, las configuro por ti y dejo todo funcionando: dominio .cl, correo, certificado SSL y respaldos.</p></div></div>
-          </div>
-
-          <div class="acc-item" data-open="false">
-            <h3><button type="button" class="acc-btn flex w-full items-center justify-between gap-6 py-5 text-left text-lg font-semibold text-white" aria-expanded="false" aria-controls="faq-6" id="faq-6-btn">¿Qué pasa después de enviar mi solicitud por WhatsApp?<span class="acc-chevron text-2xl leading-none text-accent-soft transition" aria-hidden="true">+</span></button></h3>
-            <div id="faq-6" class="acc-panel" role="region" aria-labelledby="faq-6-btn"><div><p class="pb-5 leading-relaxed text-slate-400">Te respondo personalmente (no un bot ni un ejecutivo de cuentas) para agendar una llamada corta. Revisamos tus objetivos, ajustamos las secciones y te envío la propuesta. Si seguimos, parto con el diseño en Figma para que veas tu sitio antes de programarlo.</p></div></div>
-          </div>
-
-          <div class="acc-item" data-open="false">
-            <h3><button type="button" class="acc-btn flex w-full items-center justify-between gap-6 py-5 text-left text-lg font-semibold text-white" aria-expanded="false" aria-controls="faq-7" id="faq-7-btn">¿Trabajas con empresas fuera de Chile?<span class="acc-chevron text-2xl leading-none text-accent-soft transition" aria-hidden="true">+</span></button></h3>
-            <div id="faq-7" class="acc-panel" role="region" aria-labelledby="faq-7-btn"><div><p class="pb-5 leading-relaxed text-slate-400">Sí. Trabajo con clientes en Chile y Estados Unidos, en español o inglés. Estoy en Valparaíso (UTC-4), en el mismo horario que la costa este de EE.UU.</p></div></div>
-          </div>
-
-        </div>
+        <div id="acordeon" class="reveal space-y-3 lg:col-span-8"></div>
       </div>
     </section>
 
-    <!-- ===================== 08 · CONTACTO ===================== -->
-    <section id="contacto" class="px-4 pt-10 pb-24 sm:px-6 lg:px-8">
-      <div class="reveal relative mx-auto max-w-6xl overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-accent/20 via-card to-ink p-6 text-center sm:p-12 lg:p-16">
-        <div class="glow pointer-events-none absolute -top-24 left-1/2 h-72 w-[600px] -translate-x-1/2" aria-hidden="true"></div>
-        <div class="relative">
-          <p class="font-mono text-xs font-medium tracking-widest text-accent-soft uppercase">08 — Contacto directo</p>
-          <h2 class="mx-auto mt-4 max-w-3xl text-3xl font-bold tracking-tight text-balance text-white sm:text-5xl">Hablemos de tu próximo sitio web.</h2>
-          <p class="mx-auto mt-5 max-w-xl text-lg text-slate-400">Sin intermediarios: hablas directamente con quien diseña y programa tu proyecto.</p>
-
-          <div class="mt-10 grid gap-4 text-left sm:grid-cols-3">
-            <a id="contacto-wa" href="#" target="_blank" rel="noopener" class="group rounded-2xl border border-line bg-ink/70 p-5 transition hover:border-money/60">
-              <span class="grid size-10 place-items-center rounded-xl bg-money/15 text-money">
-                <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8 8 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4 3.5 3.5 0 0 0-1.1 2.6 6 6 0 0 0 1.3 3.2 13.9 13.9 0 0 0 5.3 4.7c2 .8 2.7.9 3.7.8a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.2-.3-.2-.6-.4ZM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8Zm0-21.6A11.8 11.8 0 0 0 1.9 17.9L.2 24l6.3-1.6A11.8 11.8 0 1 0 12 .2Z"/></svg>
-              </span>
-              <p class="mt-4 font-semibold text-white">WhatsApp</p>
-              <p class="mt-1 font-mono text-sm text-slate-400 group-hover:text-money">+56 9 6366 0958</p>
-            </a>
-            <a href="mailto:hola@bascunan.digital?subject=Proyecto%20web" class="group rounded-2xl border border-line bg-ink/70 p-5 transition hover:border-accent/60">
-              <span class="grid size-10 place-items-center rounded-xl bg-accent/15 text-accent-soft">
-                <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-              </span>
-              <p class="mt-4 font-semibold text-white">Correo</p>
-              <p class="mt-1 font-mono text-sm text-slate-400 group-hover:text-accent-soft">hola@bascunan.digital</p>
-            </a>
-            <button type="button" data-abrir-llamada class="group rounded-2xl border border-line bg-ink/70 p-5 text-left transition hover:border-white/40">
-              <span class="grid size-10 place-items-center rounded-xl bg-white/10 text-white">
-                <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-              </span>
-              <p class="mt-4 font-semibold text-white">Llamada de 15 min</p>
-              <p class="mt-1 text-sm text-slate-400 group-hover:text-white">Elige el horario que te acomode →</p>
-            </button>
+    <!-- ===================== CTA FINAL (cobalto) ===================== -->
+    <section id="contacto" class="wave-top wave-sand-cobalt bg-cobalt text-blush">
+      <div class="mx-auto max-w-7xl px-5 pt-36 pb-24 sm:px-8 lg:pt-40 lg:pb-32">
+        <div class="reveal max-w-4xl">
+          <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold ring-1 ring-blush/40">hablemos</span>
+          <h2 class="mt-6 text-5xl leading-[1.02] font-extrabold tighter text-balance sm:text-6xl lg:text-7xl">Ya viste cómo trabajo. Ahora pongamos tu sitio a vender.</h2>
+          <p class="mt-6 max-w-2xl text-xl leading-relaxed text-blush/85">Sin intermediarios: hablas directamente con quien diseña y programa tu proyecto.</p>
+          <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+            <a id="cta-final-wa" href="#" target="_blank" rel="noopener" class="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-cobalt transition hover:bg-blush">Escribirme por WhatsApp <span class="transition group-hover:translate-x-1" aria-hidden="true">→</span></a>
+            <button type="button" data-abrir-llamada class="inline-flex items-center justify-center rounded-full px-7 py-4 font-semibold ring-1 ring-blush/40 transition hover:bg-white/10 hover:ring-blush">Agendar llamada de 15 min</button>
+          </div>
+        </div>
+        <div class="reveal mt-16 grid gap-3 md:grid-cols-3">
+          <a id="contacto-wa" href="#" target="_blank" rel="noopener" class="flex items-center gap-4 rounded-2xl p-4 ring-1 ring-blush/15 transition hover:bg-white/5 hover:ring-blush/40">
+            <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-blush/10"><svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .2A11.8 11.8 0 0 0 1.9 17.9L.2 24l6.3-1.6A11.8 11.8 0 1 0 12 .2Zm0 21.6a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8Z"/></svg></span>
+            <span><span class="block text-sm text-blush/60">WhatsApp</span><span class="block font-semibold">+56 9 6366 0958</span></span>
+          </a>
+          <a href="mailto:hola@bascunan.digital?subject=Proyecto%20web" class="flex items-center gap-4 rounded-2xl p-4 ring-1 ring-blush/15 transition hover:bg-white/5 hover:ring-blush/40">
+            <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-blush/10"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+            <span><span class="block text-sm text-blush/60">Correo</span><span class="block font-semibold">hola@bascunan.digital</span></span>
+          </a>
+          <div class="flex items-center gap-4 rounded-2xl p-4 ring-1 ring-blush/15">
+            <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-blush/10"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <span><span class="block text-sm text-blush/60">Valparaíso, Chile · UTC-4</span><span class="block font-semibold">Mismo horario que la costa este de EE.UU.</span></span>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-line px-4 py-10 sm:px-6 lg:px-8">
-    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-sm text-slate-500 sm:flex-row">
-      <p>© <span id="anio">2026</span> Alonso Bascuñán · bascunan.digital · Valparaíso, Chile</p>
-      <p class="font-mono text-xs">Diseñado y programado a mano (con IA como copiloto) · Cero Elementor</p>
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-cobalt px-2.5 sm:px-3">
+    <div class="rounded-t-[2rem] bg-white px-5 pt-16 pb-10 sm:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="flex flex-col justify-between gap-12 md:flex-row">
+          <div class="max-w-xs">
+            <a href="#inicio" class="flex items-center gap-2 text-lg font-bold tight">
+              <svg class="size-7" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#2B44FF"/><path d="M9 7v14h5.5a3.5 3.5 0 0 0 0-7H9" fill="none" stroke="#FDE8F0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>bascunan<span class="text-ink/40">.digital</span></span>
+            </a>
+            <p class="mt-4 text-ink/60">Diseño UX/UI editorial y desarrollo web a medida para negocios de Chile y EE.UU.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-10 sm:grid-cols-3">
+            <div>
+              <p class="font-semibold">Servicios</p>
+              <ul class="mt-4 space-y-2.5 text-ink/60">
+                <li><a class="hover:text-cobalt" href="#constructor">Cotizador</a></li>
+                <li><a class="hover:text-cobalt" href="#diagnostico">Diagnóstico gratis</a></li>
+                <li><a class="hover:text-cobalt" href="#proceso">Proceso</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold">Sitio</p>
+              <ul class="mt-4 space-y-2.5 text-ink/60">
+                <li><a class="hover:text-cobalt" href="#trabajos">Trabajos</a></li>
+                <li><a class="hover:text-cobalt" href="#garantia">Garantía</a></li>
+                <li><a class="hover:text-cobalt" href="#faq">Preguntas</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold">Contacto</p>
+              <ul class="mt-4 space-y-2.5 text-ink/60">
+                <li><a class="hover:text-cobalt" href="mailto:hola@bascunan.digital">Correo</a></li>
+                <li><a id="footer-wa" class="hover:text-cobalt" href="#" target="_blank" rel="noopener">WhatsApp</a></li>
+                <li><button type="button" data-abrir-llamada class="hover:text-cobalt">Agendar llamada</button></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="mt-16 flex flex-col justify-between gap-3 border-t border-ink/10 pt-6 text-sm text-ink/50 sm:flex-row">
+          <p>© <span id="anio">2026</span> Alonso Bascuñán · bascunan.digital</p>
+          <p>Diseñado y programado a mano, con IA como copiloto.</p>
+        </div>
+      </div>
     </div>
   </footer>
 
-  <!-- Barra fija del cotizador en móvil -->
-  <div id="barra-movil" class="oculta fixed inset-x-0 bottom-0 z-40 border-t border-line bg-ink/95 px-4 py-3 backdrop-blur lg:hidden" aria-hidden="true">
-    <div class="mx-auto flex max-w-xl items-center justify-between gap-3">
-      <div class="min-w-0">
-        <p class="font-mono text-lg font-semibold text-money"><span id="movil-precio">$0</span> <span class="text-xs text-slate-500">CLP</span></p>
-        <p class="font-mono text-xs text-slate-400"><span id="movil-dias">0</span> días hábiles</p>
-      </div>
-      <a href="#resumen" tabindex="-1" class="shrink-0 rounded-lg bg-money px-4 py-2.5 text-sm font-semibold text-emerald-950">Ver resumen</a>
-    </div>
-  </div>
-
   <!-- ===================== MODAL: AGENDAR LLAMADA ===================== -->
   <dialog id="modal-llamada" aria-labelledby="llamada-titulo">
-    <div class="rounded-2xl border border-line bg-card p-6 shadow-2xl sm:p-8">
+    <div class="rounded-3xl bg-white p-6 shadow-2xl sm:p-8">
       <div class="flex items-start justify-between gap-4">
         <div>
-          <p class="font-mono text-xs tracking-widest text-accent-soft uppercase">Llamada de 15 min · Gratis</p>
-          <h2 id="llamada-titulo" class="mt-2 text-2xl font-bold text-white">Agendemos una llamada</h2>
+          <span class="inline-block rounded-full bg-blush px-3 py-1 text-xs font-semibold text-cobalt">llamada de 15 min · gratis</span>
+          <h2 id="llamada-titulo" class="mt-3 text-2xl font-bold tight">Agendemos una llamada</h2>
         </div>
-        <button type="button" data-cerrar class="grid size-9 shrink-0 place-items-center rounded-lg border border-line text-slate-400 hover:text-white" aria-label="Cerrar">
-          <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-        </button>
+        <button type="button" data-cerrar class="grid size-10 shrink-0 place-items-center rounded-full bg-sand text-ink/60 hover:text-ink" aria-label="Cerrar"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
       </div>
-      <form id="form-llamada" class="mt-6 space-y-4">
+      <form id="form-llamada" class="mt-6 space-y-4" novalidate>
         <div>
-          <label for="ll-nombre" class="text-sm font-medium text-white">Nombre</label>
-          <input id="ll-nombre" type="text" autocomplete="name" required class="mt-2 w-full rounded-xl border border-line bg-ink px-4 py-3 text-white focus:border-accent focus:ring-2 focus:ring-accent/30 focus:outline-none" />
+          <label for="ll-nombre" class="text-sm font-semibold">Nombre</label>
+          <input id="ll-nombre" type="text" autocomplete="name" required class="mt-2 w-full rounded-2xl border border-slate-200 bg-sand px-4 py-3 focus:border-cobalt focus:ring-4 focus:ring-cobalt/15 focus:outline-none" />
         </div>
         <div>
-          <label for="ll-negocio" class="text-sm font-medium text-white">Negocio o empresa <span class="font-normal text-slate-500">(opcional)</span></label>
-          <input id="ll-negocio" type="text" autocomplete="organization" class="mt-2 w-full rounded-xl border border-line bg-ink px-4 py-3 text-white focus:border-accent focus:ring-2 focus:ring-accent/30 focus:outline-none" />
+          <label for="ll-negocio" class="text-sm font-semibold">Negocio o empresa <span class="font-normal text-ink/45">(opcional)</span></label>
+          <input id="ll-negocio" type="text" autocomplete="organization" class="mt-2 w-full rounded-2xl border border-slate-200 bg-sand px-4 py-3 focus:border-cobalt focus:ring-4 focus:ring-cobalt/15 focus:outline-none" />
         </div>
         <fieldset>
-          <legend class="text-sm font-medium text-white">¿Qué horario te acomoda?</legend>
+          <legend class="text-sm font-semibold">¿Qué horario te acomoda?</legend>
           <div class="mt-2 grid grid-cols-3 gap-2">
-            <label class="cursor-pointer"><input type="radio" name="horario" value="mañana (9:00–13:00)" class="peer sr-only" checked /><span class="block rounded-xl border border-line bg-ink px-3 py-3 text-center text-sm peer-checked:border-accent peer-checked:bg-accent/15 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-accent-soft">Mañana</span></label>
-            <label class="cursor-pointer"><input type="radio" name="horario" value="tarde (14:00–18:00)" class="peer sr-only" /><span class="block rounded-xl border border-line bg-ink px-3 py-3 text-center text-sm peer-checked:border-accent peer-checked:bg-accent/15 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-accent-soft">Tarde</span></label>
-            <label class="cursor-pointer"><input type="radio" name="horario" value="cualquier horario" class="peer sr-only" /><span class="block rounded-xl border border-line bg-ink px-3 py-3 text-center text-sm peer-checked:border-accent peer-checked:bg-accent/15 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-accent-soft">Me da igual</span></label>
+            <label class="cursor-pointer"><input type="radio" name="horario" value="en la mañana (9:00–13:00)" class="peer sr-only" checked /><span class="block rounded-full border border-slate-200 px-3 py-2.5 text-center text-sm font-medium peer-checked:border-cobalt peer-checked:bg-cobalt peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-cobalt/25">Mañana</span></label>
+            <label class="cursor-pointer"><input type="radio" name="horario" value="en la tarde (14:00–18:00)" class="peer sr-only" /><span class="block rounded-full border border-slate-200 px-3 py-2.5 text-center text-sm font-medium peer-checked:border-cobalt peer-checked:bg-cobalt peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-cobalt/25">Tarde</span></label>
+            <label class="cursor-pointer"><input type="radio" name="horario" value="en cualquier horario" class="peer sr-only" /><span class="block rounded-full border border-slate-200 px-3 py-2.5 text-center text-sm font-medium peer-checked:border-cobalt peer-checked:bg-cobalt peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-cobalt/25">Me da igual</span></label>
           </div>
         </fieldset>
         <div>
-          <label for="ll-tema" class="text-sm font-medium text-white">¿Qué te gustaría lograr? <span class="font-normal text-slate-500">(opcional)</span></label>
-          <textarea id="ll-tema" rows="3" class="mt-2 w-full resize-none rounded-xl border border-line bg-ink px-4 py-3 text-white focus:border-accent focus:ring-2 focus:ring-accent/30 focus:outline-none" placeholder="Ej: quiero que mis clientes reserven horas online"></textarea>
+          <label for="ll-tema" class="text-sm font-semibold">¿Qué te gustaría lograr? <span class="font-normal text-ink/45">(opcional)</span></label>
+          <textarea id="ll-tema" rows="3" class="mt-2 w-full resize-none rounded-2xl border border-slate-200 bg-sand px-4 py-3 focus:border-cobalt focus:ring-4 focus:ring-cobalt/15 focus:outline-none" placeholder="Ej: que mis clientes reserven horas online"></textarea>
         </div>
-        <button type="submit" class="flex w-full items-center justify-center gap-2 rounded-xl bg-accent px-6 py-4 font-semibold text-white transition hover:bg-indigo-500">Coordinar por WhatsApp</button>
-        <p class="text-center text-xs text-slate-500">¿Prefieres correo? <a class="text-accent-soft underline underline-offset-2" href="mailto:hola@bascunan.digital?subject=Agendar%20llamada">hola@bascunan.digital</a></p>
+        <button type="submit" class="flex w-full items-center justify-center gap-2 rounded-full bg-cobalt px-6 py-4 font-semibold text-white transition hover:bg-cobalt-deep">Coordinar por WhatsApp <span aria-hidden="true">→</span></button>
+        <p class="text-center text-xs text-ink/50">¿Prefieres correo? <a class="font-semibold text-cobalt underline underline-offset-2" href="mailto:hola@bascunan.digital?subject=Agendar%20llamada">hola@bascunan.digital</a></p>
       </form>
     </div>
   </dialog>
 
-  <!-- ===================== MODAL: CASO DE ÉXITO ===================== -->
+  <!-- ===================== MODAL: CASO ===================== -->
   <dialog id="modal-caso" aria-labelledby="caso-titulo">
-    <div class="rounded-2xl border border-line bg-card p-6 shadow-2xl sm:p-8">
+    <div class="rounded-3xl bg-white p-6 shadow-2xl sm:p-8">
       <div class="flex items-start justify-between gap-4">
         <div>
-          <p id="caso-tipo" class="font-mono text-xs tracking-widest text-accent-soft uppercase"></p>
-          <h2 id="caso-titulo" class="mt-2 text-2xl font-bold text-white"></h2>
+          <span id="caso-tipo" class="inline-block rounded-full bg-blush px-3 py-1 text-xs font-semibold text-cobalt"></span>
+          <h2 id="caso-titulo" class="mt-3 text-2xl font-bold tight"></h2>
         </div>
-        <button type="button" data-cerrar class="grid size-9 shrink-0 place-items-center rounded-lg border border-line text-slate-400 hover:text-white" aria-label="Cerrar">
-          <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-        </button>
+        <button type="button" data-cerrar class="grid size-10 shrink-0 place-items-center rounded-full bg-sand text-ink/60 hover:text-ink" aria-label="Cerrar"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
       </div>
       <div id="caso-cuerpo" class="mt-6 space-y-5"></div>
-      <a href="#constructor" data-cerrar class="mt-8 flex w-full items-center justify-center rounded-xl bg-accent px-6 py-4 font-semibold text-white transition hover:bg-indigo-500">Quiero algo así para mi negocio</a>
+      <a href="#constructor" data-cerrar class="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-cobalt px-6 py-4 font-semibold text-white transition hover:bg-cobalt-deep">Quiero algo así para mi negocio <span aria-hidden="true">→</span></a>
     </div>
   </dialog>
 
@@ -654,15 +636,15 @@
     var CONFIG = {
       whatsapp: '56963660958',
       email: 'hola@bascunan.digital',
-      // Precio y plazo de la base: SUPUESTO, el brief no los define. Ajustar.
-      base: { id: 'base', nombre: 'Header + Hero Banner Base', corto: 'Header + Hero', descripcion: 'Navegación, portada con tu mensaje principal, llamados a la acción y footer.', precio: 250000, dias: 3 },
+      // Precio y plazo de la base: SUPUESTO (el brief no los define). Ajustar.
+      base: { id: 'base', icono: 'layout', nombre: 'Header + Hero Banner Base', corto: 'Header + Hero', descripcion: 'Navegación, portada con tu mensaje, llamados a la acción y footer.', precio: 250000, dias: 3 },
       modulos: [
-        { id: 'nosotros', nombre: 'Sección Sobre Nosotros / Historia', corto: 'Sobre nosotros', descripcion: 'Tu historia, tu equipo y lo que te diferencia.', precio: 80000, dias: 1 },
-        { id: 'catalogo', nombre: 'Catálogo de Productos / Servicios', corto: 'Catálogo', descripcion: 'Fichas autoadministrables con fotos, precios y categorías.', precio: 120000, dias: 2 },
-        { id: 'reservas', nombre: 'Motor de Reservas Online / PWA', corto: 'Reservas + PWA', descripcion: 'Agenda en línea y panel instalable en tu celular.', precio: 250000, dias: 3 },
-        { id: 'pagos', nombre: 'Integración Pasarela de Pagos (Webpay/PayPal)', corto: 'Pagos online', descripcion: 'Cobra con tarjetas chilenas e internacionales.', precio: 180000, dias: 2 },
-        { id: 'faq', nombre: 'Sección FAQ Interactivas', corto: 'FAQ', descripcion: 'Responde las dudas antes de que te escriban.', precio: 50000, dias: 1 },
-        { id: 'contacto', nombre: 'Formulario de Contacto + Integración WhatsApp', corto: 'Contacto + WhatsApp', descripcion: 'Formulario con aviso a tu correo y botón directo a WhatsApp.', precio: 60000, dias: 1 }
+        { id: 'nosotros', icono: 'users', nombre: 'Sobre Nosotros / Historia', corto: 'Sobre nosotros', descripcion: 'Tu historia, tu equipo y lo que te diferencia.', precio: 80000, dias: 1 },
+        { id: 'catalogo', icono: 'bag', nombre: 'Catálogo de Productos / Servicios', corto: 'Catálogo', descripcion: 'Fichas autoadministrables con fotos y precios.', precio: 120000, dias: 2 },
+        { id: 'reservas', icono: 'cal', nombre: 'Motor de Reservas Online / PWA', corto: 'Reservas + PWA', descripcion: 'Agenda en línea y panel instalable en tu celular.', precio: 250000, dias: 3 },
+        { id: 'pagos', icono: 'card', nombre: 'Pasarela de Pagos (Webpay/PayPal)', corto: 'Pagos online', descripcion: 'Cobra con tarjetas chilenas e internacionales.', precio: 180000, dias: 2 },
+        { id: 'faq', icono: 'help', nombre: 'Sección FAQ Interactivas', corto: 'FAQ', descripcion: 'Responde las dudas antes de que te escriban.', precio: 50000, dias: 1 },
+        { id: 'contacto', icono: 'chat', nombre: 'Formulario de Contacto + WhatsApp', corto: 'Contacto + WhatsApp', descripcion: 'Formulario con aviso a tu correo y botón a WhatsApp.', precio: 60000, dias: 1 }
       ],
       presets: [
         { nombre: 'Landing esencial', ids: ['contacto'] },
@@ -672,50 +654,43 @@
       seleccionInicial: ['nosotros', 'contacto']
     };
 
-    var COMPARATIVA = {
-      columnas: [
-        { titulo: 'Agencia tradicional', sub: 'Estructura grande, procesos lentos' },
-        { titulo: 'Freelancer junior', sub: 'Precio bajo, resultado incierto' },
-        { titulo: 'Mi enfoque', sub: 'bascunan.digital', destacado: true }
-      ],
-      filas: [
-        { criterio: 'Inversión', valores: [['no', 'Costosa: pagas oficinas, ejecutivos y reuniones'], ['medio', 'Barata al inicio, cara al tener que rehacerlo'], ['si', 'Precio transparente, lo ves antes de hablar']] },
-        { criterio: 'Plazo', valores: [['no', '2 a 3 meses de espera'], ['medio', 'Fechas poco claras'], ['si', 'Entrega en días hábiles']] },
-        { criterio: 'Diseño', valores: [['medio', 'Bueno, pero lo ejecuta el equipo junior'], ['no', 'Plantillas genéricas, sin criterio visual'], ['si', 'Diseño editorial senior, 100% a medida']] },
-        { criterio: 'Velocidad y código', valores: [['medio', 'Depende del equipo que te toque'], ['no', 'Plantillas y plugins pesados, carga lenta'], ['si', 'Código limpio con IA · PageSpeed 90+']] },
-        { criterio: 'Autoadministrable', valores: [['no', 'Cada cambio es un ticket y una cotización'], ['medio', 'Se desarma al editarlo'], ['si', '100% autoadministrable, sin tocar código']] },
-        { criterio: 'Comunicación', valores: [['no', 'A través de un ejecutivo de cuentas'], ['medio', 'Irregular'], ['si', 'Directo conmigo, de principio a fin']] }
-      ]
-    };
+    var COMPARATIVA = [
+      { titulo: 'Agencia tradicional', sub: 'Estructura grande, procesos lentos', puntos: [['no', 'Costosa: pagas oficinas y ejecutivos'], ['no', '2 a 3 meses de espera'], ['medio', 'El diseño lo ejecuta el equipo junior'], ['no', 'Cada cambio es un ticket']] },
+      { titulo: 'Freelancer junior', sub: 'Precio bajo, resultado incierto', puntos: [['medio', 'Barato al inicio, caro al rehacerlo'], ['no', 'Plantillas lentas y pesadas'], ['no', 'Sin criterio visual ni de UX'], ['medio', 'Comunicación irregular']] },
+      { titulo: 'Mi enfoque', sub: 'bascunan.digital', destacado: true, puntos: [['si', 'Diseño editorial senior, 100% a medida'], ['si', 'Código limpio con IA · PageSpeed 90+'], ['si', 'Entrega en días, no en meses'], ['si', '100% autoadministrable, directo conmigo']] }
+    ];
+
+    var PASOS = [
+      { titulo: 'Diagnóstico y estrategia', texto: 'Conversamos 15 minutos sobre tu negocio y tus clientes. Reviso tu sitio actual y definimos qué tiene que lograr el nuevo: reservas, ventas o contactos.' },
+      { titulo: 'Diseño editorial en Figma', texto: 'Diseño tu sitio a medida, con jerarquía visual clara y pensado para el celular. Lo ves y lo apruebas antes de escribir una línea de código.' },
+      { titulo: 'Desarrollo aumentado con IA', texto: 'Programo tu sitio a mano, con la IA como copiloto para avanzar más rápido. Yo defino la arquitectura y reviso cada línea antes de publicarla.' },
+      { titulo: 'Autoadministrable de verdad', texto: 'Te dejo un panel con campos a la medida de tu negocio: cambias textos, fotos, precios y servicios sin tocar código y sin miedo a romper nada.' },
+      { titulo: 'Lanzamiento, velocidad y SEO', texto: 'Publico tu sitio con PageSpeed 90+ y datos estructurados para Google. Y sigo disponible para lo que venga.' }
+    ];
 
     var CASOS = [
-      {
-        id: 'valeria', nombre: 'Valeria Estética Integral', tipo: 'PWA + Motor de reservas',
-        resumen: 'Reservas online con panel instalable en el celular y SEO local desde el día 1.',
-        metrica: '4.9/5', metricaLabel: '38 reseñas en Google', estrellas: true,
-        stack: ['PHP', 'MySQL', 'PWA', 'Schema.org'],
+      { id: 'valeria', nombre: 'Valeria Estética Integral', tipo: 'PWA + reservas', resumen: 'Reservas online con panel instalable en el celular y SEO local desde el día 1.', metrica: '4.9/5', metricaLabel: '38 reseñas en Google', estrellas: true, stack: ['PHP', 'MySQL', 'PWA'], fondo: 'bg-blush',
         desafio: 'Un centro de estética necesitaba que sus clientas pudieran reservar solas y administrar la agenda desde el celular, sin depender de mensajes y llamadas.',
         solucion: 'Diseñé y programé un motor de reservas full-stack a medida, con un panel de administración PWA que se instala como app en el teléfono, más datos estructurados para SEO local.',
-        resultado: 'Una experiencia de reserva simple que respaldan 38 reseñas en Google con calificación 4.9/5.'
-      },
-      {
-        id: 'dav', nombre: 'DAV Valparaíso', tipo: 'WordPress a medida + Gobernanza',
-        resumen: 'Plan de gobernanza digital y tema WordPress a medida para publicar sin depender de nadie.',
-        metrica: 'CPT', metricaLabel: 'Contenido 100% autoadministrable',
-        stack: ['WordPress', 'Custom Post Types', 'ACF', 'Gobernanza digital'],
+        resultado: 'Una experiencia de reserva simple que respaldan 38 reseñas en Google con calificación 4.9/5.' },
+      { id: 'dav', nombre: 'DAV Valparaíso', tipo: 'WordPress a medida', resumen: 'Plan de gobernanza digital y tema WordPress a medida para publicar sin depender de nadie.', metrica: 'CPT + ACF', metricaLabel: 'Contenido autoadministrable', stack: ['WordPress', 'CPT', 'ACF'], fondo: 'bg-cobalt',
         desafio: 'La institución había perdido el control de algunas de sus cuentas digitales y publicar contenido dependía de terceros.',
         solucion: 'Definí un plan de gobernanza digital (roles, accesos y respaldos), recuperé las cuentas institucionales y desarrollé un tema WordPress a medida con Custom Post Types.',
-        resultado: 'El equipo recuperó el control de su presencia digital y publica su contenido de forma autónoma.'
-      },
-      {
-        id: 'notas', nombre: 'Notas Libro de Clases', tipo: 'Plataforma SaaS multi-tenant',
-        resumen: 'Plataforma educativa para varios colegios, con los datos de cada uno completamente aislados.',
-        metrica: 'JWT + RBAC', metricaLabel: 'Datos aislados por colegio',
-        stack: ['NestJS', 'Prisma', 'PostgreSQL', 'JWT', 'RBAC'],
+        resultado: 'El equipo recuperó el control de su presencia digital y publica su contenido de forma autónoma.' },
+      { id: 'notas', nombre: 'Notas Libro de Clases', tipo: 'SaaS multi-tenant', resumen: 'Plataforma educativa para varios colegios, con los datos de cada uno completamente aislados.', metrica: 'JWT + RBAC', metricaLabel: 'Datos aislados por colegio', stack: ['NestJS', 'Prisma', 'PostgreSQL'], fondo: 'bg-platinum',
         desafio: 'Construir una sola plataforma para muchos colegios, donde cada uno vea solo su información y cada usuario solo lo que su rol le permite.',
         solucion: 'Arquitectura multi-tenant con aislamiento de datos por colegio, autenticación con JWT y control de acceso por roles (RBAC), más una interfaz pensada para docentes.',
-        resultado: 'Una plataforma escalable y segura, lista para sumar colegios sin duplicar sistemas.'
-      }
+        resultado: 'Una plataforma escalable y segura, lista para sumar colegios sin duplicar sistemas.' }
+    ];
+
+    var FAQS = [
+      ['¿El precio del cotizador es el precio final?', 'Es una estimación honesta basada en proyectos reales. Antes de partir tenemos una llamada de 15 minutos para confirmar el alcance y te envío una propuesta formal con precio y plazo cerrados. Sin letra chica ni cobros sorpresa.'],
+      ['¿Voy a poder editar mi sitio yo mismo?', 'Sí. Tu sitio queda 100% autoadministrable: textos, fotos, productos, servicios y preguntas frecuentes se editan desde un panel con campos a la medida de tu negocio, sin tocar código y sin miedo a “romper” el diseño.'],
+      ['¿Cómo usas la inteligencia artificial?', 'Como un multiplicador de productividad, no como reemplazo del criterio. Yo defino el diseño, la arquitectura y los estándares de calidad; la IA me ayuda a escribir y probar código más rápido, y yo reviso cada línea antes de publicarla.'],
+      ['¿Qué pasa si mi sitio no llega a 90 en PageSpeed?', 'Sigo optimizando sin costo adicional hasta lograrlo. La garantía se mide con Google PageSpeed Insights sobre las páginas que yo desarrollo; los scripts de terceros que se agreguen después (chats, píxeles publicitarios, etc.) quedan fuera, y te aviso cuánto impacta cada uno antes de instalarlo.'],
+      ['¿El precio incluye dominio y hosting?', 'No, porque quedan a tu nombre y son tuyos. Te recomiendo opciones según tu presupuesto, las configuro por ti y dejo todo funcionando: dominio .cl, correo, certificado SSL y respaldos.'],
+      ['¿Qué pasa después de enviar mi solicitud por WhatsApp?', 'Te respondo personalmente (no un bot ni un ejecutivo de cuentas) para agendar una llamada corta. Revisamos tus objetivos, ajustamos las secciones y te envío la propuesta. Si seguimos, parto con el diseño en Figma para que veas tu sitio antes de programarlo.'],
+      ['¿Trabajas con empresas fuera de Chile?', 'Sí. Trabajo con clientes en Chile y Estados Unidos, en español o inglés. Estoy en Valparaíso (UTC-4), en el mismo horario que la costa este de EE.UU.']
     ];
 
     /* =========================================================
@@ -723,471 +698,342 @@
        ========================================================= */
     var clp = new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 });
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function $(sel, ctx) { return (ctx || document).querySelector(sel); }
-    function $$(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
+    function $(s, c) { return (c || document).querySelector(s); }
+    function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
     function dias(n) { return n === 1 ? '1 día' : n + ' días'; }
-    function wa(texto) { return 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(texto); }
-    function escapar(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+    function wa(t) { return 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(t); }
+    function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+    function svg(d, extra) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ' + (extra || '') + '>' + d + '</svg>'; }
+    function conClase(icono, clase) { return icono.replace('<svg', '<svg class="' + clase + '"'); }
 
     var ICON = {
-      img: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>',
+      layout: svg('<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>'),
+      users: svg('<circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M16 3.1a4 4 0 0 1 0 7.8M21 21v-2a4 4 0 0 0-3-3.9"/>'),
+      bag: svg('<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4ZM3 6h18M16 10a4 4 0 0 1-8 0"/>'),
+      cal: svg('<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'),
+      card: svg('<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>'),
+      help: svg('<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/>'),
+      chat: svg('<path d="M21 12a8 8 0 0 1-11.7 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/>'),
+      img: svg('<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/>'),
+      phone: svg('<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/>'),
+      lock: svg('<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'),
+      mail: svg('<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>'),
+      plus: svg('<path d="M12 5v14M5 12h14"/>'),
+      check: svg('<path d="M20 6 9 17l-5-5"/>'),
+      minus: svg('<path d="M5 12h14"/>'),
+      x: svg('<path d="M18 6 6 18M6 6l12 12"/>'),
       star: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>',
-      cal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
-      phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>',
-      lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
-      card: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>',
-      users: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M16 3.1a4 4 0 0 1 0 7.8M21 21v-2a4 4 0 0 0-3-3.9"/></svg>',
-      wa: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .2A11.8 11.8 0 0 0 1.9 17.9L.2 24l6.3-1.6A11.8 11.8 0 1 0 12 .2Z"/></svg>',
-      mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
-      plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>'
+      wa: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .2A11.8 11.8 0 0 0 1.9 17.9L.2 24l6.3-1.6A11.8 11.8 0 1 0 12 .2Z"/></svg>'
     };
-
-    /* =========================================================
-       PLANTILLAS DE WIREFRAME
-       ========================================================= */
-    function L(w, cls) { return '<div class="wf-line ' + (cls || '') + '" style="width:' + w + '"></div>'; }
-
-    var WIREFRAMES = {
-      base:
-        '<div class="wf-row" style="justify-content:space-between">' +
-          '<div class="wf-row"><div class="wf-logo"></div>' + L('56px', 'strong') + '</div>' +
-          '<div class="wf-row">' + L('28px') + L('28px') + L('28px') + '</div>' +
-          '<div class="wf-btn" style="width:54px"></div>' +
-        '</div>' +
-        '<div class="wf-grid-2" style="margin-top:18px;align-items:center">' +
-          '<div class="wf-col"><div class="wf-chip"></div>' + L('95%', 'title') + L('72%', 'title') + L('92%') + L('78%') +
-            '<div class="wf-row" style="margin-top:6px"><div class="wf-btn" style="width:40%"></div><div class="wf-btn ghost" style="width:32%"></div></div></div>' +
-          '<div class="wf-img" style="height:118px">' + ICON.img + '</div>' +
-        '</div>',
-      nosotros:
-        '<div class="wf-grid-2" style="align-items:center">' +
-          '<div class="wf-img" style="height:96px">' + ICON.users + '</div>' +
-          '<div class="wf-col">' + L('40%', 'strong') + L('90%', 'title') + L('100%') + L('94%') + L('70%') + '</div>' +
-        '</div>' +
-        '<div class="wf-grid-3" style="margin-top:12px">' +
-          ['', '', ''].map(function () { return '<div class="wf-card" style="align-items:center">' + L('50%', 'strong') + L('70%') + '</div>'; }).join('') +
-        '</div>',
-      catalogo:
-        '<div class="wf-row" style="justify-content:space-between;margin-bottom:10px">' + L('38%', 'title') + '<div class="wf-row"><span class="wf-pill">Todos</span><span class="wf-pill">Servicios</span></div></div>' +
-        '<div class="wf-grid-3">' +
-          ['', '', ''].map(function () { return '<div class="wf-card"><div class="wf-img" style="height:48px">' + ICON.img + '</div>' + L('85%', 'strong') + L('60%') + '<div class="wf-price"></div><div class="wf-btn" style="height:14px"></div></div>'; }).join('') +
-        '</div>',
-      reservas:
-        '<div class="wf-row" style="justify-content:space-between;margin-bottom:10px"><div class="wf-row"><span class="wf-icon">' + ICON.cal + '</span>' + L('90px', 'title') + '</div><span class="wf-pill" style="display:inline-flex;gap:4px;align-items:center"><span class="wf-icon" style="color:#10B981">' + ICON.phone + '</span>PWA</span></div>' +
-        '<div class="wf-grid-2">' +
-          '<div class="wf-cal">' + (function () { var s = ''; for (var i = 0; i < 21; i++) { s += '<span class="' + (i === 10 ? 'sel' : ([3, 5, 8, 12, 15, 17].indexOf(i) > -1 ? 'on' : '')) + '"></span>'; } return s; })() + '</div>' +
-          '<div class="wf-col">' + L('60%', 'strong') +
-            '<div class="wf-row"><div class="wf-slot"></div><div class="wf-slot sel"></div></div>' +
-            '<div class="wf-row"><div class="wf-slot"></div><div class="wf-slot"></div></div>' +
-            '<div class="wf-row"><div class="wf-slot"></div><div class="wf-slot"></div></div>' +
-            '<div class="wf-btn green" style="margin-top:4px"></div></div>' +
-        '</div>',
-      pagos:
-        '<div class="wf-grid-2" style="align-items:start">' +
-          '<div class="wf-col">' + L('55%', 'title') +
-            '<div class="wf-row" style="justify-content:space-between">' + L('50%') + L('20%', 'strong') + '</div>' +
-            '<div class="wf-row" style="justify-content:space-between">' + L('40%') + L('18%', 'strong') + '</div>' +
-            '<div class="wf-row" style="justify-content:space-between;border-top:1px solid rgba(148,163,184,.2);padding-top:6px">' + L('30%', 'strong') + '<div class="wf-price" style="width:28%"></div></div>' +
-          '</div>' +
-          '<div class="wf-card">' +
-            '<div class="wf-row" style="flex-wrap:wrap"><span class="wf-pill">Webpay</span><span class="wf-pill">PayPal</span></div>' +
-            '<div class="wf-input"></div><div class="wf-row"><div class="wf-input" style="flex:1"></div><div class="wf-input" style="flex:1"></div></div>' +
-            '<div class="wf-row" style="gap:6px"><span class="wf-icon" style="color:#10B981">' + ICON.lock + '</span><div class="wf-btn green" style="flex:1"></div></div>' +
-          '</div>' +
-        '</div>',
-      faq:
-        '<div style="margin-bottom:6px">' + L('42%', 'title') + '</div>' +
-        ['80%', '65%', '72%'].map(function (w, i) {
-          return '<div class="wf-acc">' + L(w, 'strong') + '<span class="wf-icon">' + ICON.plus + '</span></div>' + (i === 0 ? '<div class="wf-col" style="padding:6px 0">' + L('95%') + L('70%') + '</div>' : '');
-        }).join(''),
-      contacto:
-        '<div class="wf-grid-2" style="align-items:start">' +
-          '<div class="wf-col">' + L('70%', 'title') + L('90%') + L('75%') +
-            '<div class="wf-row" style="margin-top:6px"><span class="wf-icon">' + ICON.mail + '</span>' + L('60%') + '</div>' +
-            '<div style="margin-top:6px"><span class="wf-wa">' + ICON.wa + 'WhatsApp</span></div></div>' +
-          '<div class="wf-col"><div class="wf-input"></div><div class="wf-input"></div><div class="wf-input" style="height:40px"></div><div class="wf-btn"></div></div>' +
-        '</div>',
-      footer:
-        '<div class="wf-row" style="justify-content:space-between"><div class="wf-row"><div class="wf-logo"></div>' + L('50px') + '</div><div class="wf-row">' + L('24px') + L('24px') + L('24px') + '</div></div>'
-    };
-
-    /* =========================================================
-       CONSTRUCTOR / COTIZADOR
-       ========================================================= */
-    var seleccion = new Set(CONFIG.seleccionInicial);
-    var ORDEN = ['base'].concat(CONFIG.modulos.map(function (m) { return m.id; })).concat(['footer']);
-    var lista = $('#lista-modulos');
-    var lienzo = $('#lienzo');
-
-    function moduloPorId(id) {
-      if (id === 'base') return CONFIG.base;
-      if (id === 'footer') return { id: 'footer', corto: 'Footer' };
-      return CONFIG.modulos.filter(function (m) { return m.id === id; })[0];
-    }
-
-    // Panel de selección
-    function renderLista() {
-      var b = CONFIG.base;
-      var html =
-        '<div class="flex items-center gap-4 rounded-xl border border-line bg-card/60 p-4">' +
-          '<span class="grid size-[42px] shrink-0 place-items-center rounded-full bg-money/15 text-money"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>' +
-          '<span class="min-w-0 flex-1"><span class="block font-semibold text-white">' + escapar(b.nombre) + '</span><span class="block text-sm text-slate-400">' + escapar(b.descripcion) + '</span></span>' +
-          '<span class="shrink-0 text-right"><span class="block rounded-md bg-money/15 px-2 py-0.5 font-mono text-xs font-semibold text-money">Incluido</span><span class="mt-1 block font-mono text-xs text-slate-500">' + clp.format(b.precio) + '</span></span>' +
-        '</div>';
-      CONFIG.modulos.forEach(function (m) {
-        html +=
-          '<button type="button" class="modulo flex w-full items-center gap-4 rounded-xl border border-line bg-card/40 p-4 text-left" aria-pressed="' + seleccion.has(m.id) + '" data-id="' + m.id + '">' +
-            '<span class="switch" aria-hidden="true"><span class="knob"></span></span>' +
-            '<span class="min-w-0 flex-1"><span class="block font-semibold text-white">' + escapar(m.nombre) + '</span><span class="block text-sm text-slate-400">' + escapar(m.descripcion) + '</span></span>' +
-            '<span class="shrink-0 text-right font-mono text-sm"><span class="block font-semibold text-money">+' + clp.format(m.precio) + '</span><span class="block text-xs text-slate-500">+' + dias(m.dias) + '</span></span>' +
-          '</button>';
-      });
-      lista.innerHTML = html;
-    }
-
-    function crearBloque(id) {
-      var el = document.createElement('div');
-      el.className = 'wf-block';
-      el.dataset.id = id;
-      var m = moduloPorId(id);
-      el.innerHTML = '<span class="wf-tag' + (id === 'base' || id === 'footer' ? ' base' : '') + '"></span>' + WIREFRAMES[id];
-      el.querySelector('.wf-tag').dataset.nombre = m.corto;
-      return el;
-    }
-
-    function renumerar() {
-      $$('.wf-block', lienzo).forEach(function (b, i) {
-        var tag = b.querySelector('.wf-tag');
-        tag.textContent = String(i + 1).padStart(2, '0') + ' · ' + tag.dataset.nombre;
-      });
-    }
-
-    function renderLienzoInicial() {
-      lienzo.innerHTML = '';
-      ORDEN.forEach(function (id) {
-        if (id === 'base' || id === 'footer' || seleccion.has(id)) lienzo.appendChild(crearBloque(id));
-      });
-      renumerar();
-    }
-
-    function agregarBloque(id) {
-      var idx = ORDEN.indexOf(id), siguiente = null;
-      for (var i = idx + 1; i < ORDEN.length; i++) {
-        siguiente = lienzo.querySelector('.wf-block[data-id="' + ORDEN[i] + '"]');
-        if (siguiente) break;
-      }
-      var bloque = crearBloque(id);
-      lienzo.insertBefore(bloque, siguiente);
-      renumerar();
-      if (!reduceMotion) bloque.classList.add('wf-enter');
-      // Desplaza el lienzo (no la página) hasta el bloque nuevo
-      var destino = bloque.offsetTop - lienzo.offsetTop - 24;
-      lienzo.scrollTo({ top: Math.max(0, destino), behavior: reduceMotion ? 'auto' : 'smooth' });
-    }
-
-    function quitarBloque(id) {
-      var bloque = lienzo.querySelector('.wf-block[data-id="' + id + '"]');
-      if (!bloque) return;
-      if (reduceMotion) { bloque.remove(); renumerar(); return; }
-      bloque.classList.remove('wf-enter');
-      bloque.classList.add('wf-leave');
-      setTimeout(function () { bloque.remove(); renumerar(); }, 240);
-    }
-
-    function totales() {
-      var precio = CONFIG.base.precio, d = CONFIG.base.dias;
-      CONFIG.modulos.forEach(function (m) { if (seleccion.has(m.id)) { precio += m.precio; d += m.dias; } });
-      return { precio: precio, dias: d };
-    }
-
-    // Animación de números
-    var valoresActuales = { precio: 0, dias: 0 };
-    function animarNumero(clave, destino, pintar) {
-      var desde = valoresActuales[clave];
-      valoresActuales[clave] = destino;
-      if (reduceMotion || desde === destino) { pintar(destino); return; }
-      var inicio = null, dur = 450;
-      function paso(t) {
-        if (!inicio) inicio = t;
-        var p = Math.min(1, (t - inicio) / dur), e = 1 - Math.pow(1 - p, 3);
-        pintar(Math.round(desde + (destino - desde) * e));
-        if (p < 1) requestAnimationFrame(paso);
-      }
-      requestAnimationFrame(paso);
-    }
-
-    function mensajeWhatsApp(t) {
-      var lineas = ['Hola Alonso 👋 Armé mi sitio en el cotizador de bascunan.digital y quiero solicitar este proyecto:', ''];
-      lineas.push('Secciones seleccionadas:');
-      lineas.push('• ' + CONFIG.base.nombre + ' (base): ' + clp.format(CONFIG.base.precio));
-      CONFIG.modulos.forEach(function (m) {
-        if (seleccion.has(m.id)) lineas.push('• ' + m.nombre + ': +' + clp.format(m.precio) + ' / +' + dias(m.dias));
-      });
-      lineas.push('');
-      lineas.push('💰 Precio estimado: ' + clp.format(t.precio) + ' CLP');
-      lineas.push('📅 Plazo estimado: ' + t.dias + ' días hábiles');
-      lineas.push('');
-      lineas.push('¿Cuándo podemos conversar?');
-      return lineas.join('\n');
-    }
-
-    function actualizarResumen() {
-      var t = totales();
-      animarNumero('precio', t.precio, function (v) { $('#total-precio').textContent = clp.format(v); $('#movil-precio').textContent = clp.format(v); });
-      animarNumero('dias', t.dias, function (v) { $('#total-dias').textContent = v; $('#movil-dias').textContent = v; });
-      $('#total-dias-label').textContent = t.dias === 1 ? 'día hábil' : 'días hábiles';
-
-      var chips = '<li class="rounded-md border border-line bg-ink/60 px-2.5 py-1 text-xs text-slate-300">' + escapar(CONFIG.base.corto) + '</li>';
-      CONFIG.modulos.forEach(function (m) {
-        if (seleccion.has(m.id)) chips += '<li class="rounded-md border border-accent/40 bg-accent/10 px-2.5 py-1 text-xs text-accent-soft">' + escapar(m.corto) + '</li>';
-      });
-      $('#resumen-lista').innerHTML = chips;
-
-      var n = seleccion.size + 1;
-      $('#contador-secciones').textContent = n + (n === 1 ? ' sección' : ' secciones');
-      $('#cta-whatsapp').href = wa(mensajeWhatsApp(t));
-
-      if (!reduceMotion) {
-        var el = $('#total-precio').parentElement;
-        el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump');
-      }
-      marcarPresetActivo();
-    }
-
-    function alternar(id, forzar) {
-      var activo = typeof forzar === 'boolean' ? forzar : !seleccion.has(id);
-      if (activo === seleccion.has(id)) return;
-      if (activo) { seleccion.add(id); agregarBloque(id); } else { seleccion.delete(id); quitarBloque(id); }
-      var btn = lista.querySelector('[data-id="' + id + '"]');
-      if (btn) btn.setAttribute('aria-pressed', String(activo));
-    }
-
-    lista.addEventListener('click', function (e) {
-      var btn = e.target.closest('.modulo');
-      if (!btn) return;
-      alternar(btn.dataset.id);
-      actualizarResumen();
-    });
-
-    // Combinaciones recomendadas
-    var presetsEl = $('#presets');
-    presetsEl.innerHTML = CONFIG.presets.map(function (p, i) {
-      return '<button type="button" class="preset rounded-full border border-line bg-card/50 px-4 py-2 text-sm font-medium text-slate-300 transition hover:border-accent hover:text-white" data-preset="' + i + '" aria-pressed="false">' + escapar(p.nombre) + '</button>';
-    }).join('');
-    presetsEl.addEventListener('click', function (e) {
-      var btn = e.target.closest('.preset');
-      if (!btn) return;
-      var ids = CONFIG.presets[+btn.dataset.preset].ids;
-      CONFIG.modulos.forEach(function (m) { alternar(m.id, ids.indexOf(m.id) > -1); });
-      actualizarResumen();
-    });
-    function marcarPresetActivo() {
-      $$('.preset').forEach(function (b) {
-        var ids = CONFIG.presets[+b.dataset.preset].ids;
-        var igual = ids.length === seleccion.size && ids.every(function (id) { return seleccion.has(id); });
-        b.setAttribute('aria-pressed', String(igual));
-        b.classList.toggle('border-accent', igual);
-        b.classList.toggle('bg-accent/15', igual);
-        b.classList.toggle('text-white', igual);
-      });
-    }
-
-    renderLista();
-    renderLienzoInicial();
-    actualizarResumen();
-
-    // Barra fija móvil: visible dentro del cotizador mientras el resumen no está en pantalla
-    var barra = $('#barra-movil'), enConstructor = false, resumenVisible = false;
-    function pintarBarra() { barra.classList.toggle('oculta', !(enConstructor && !resumenVisible)); }
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (en) { enConstructor = en[0].isIntersecting; pintarBarra(); }, { threshold: 0.05 }).observe($('#constructor'));
-      new IntersectionObserver(function (en) { resumenVisible = en[0].isIntersecting; pintarBarra(); }, { threshold: 0.2 }).observe($('#resumen'));
-    }
 
     /* =========================================================
        COMPARATIVA
        ========================================================= */
-    (function renderComparativa() {
+    (function () {
       var ic = {
-        si: '<svg class="size-5 shrink-0 text-money" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Sí"><path d="M20 6 9 17l-5-5"/></svg>',
-        medio: '<svg class="size-5 shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-label="Parcial"><path d="M5 12h14"/></svg>',
-        no: '<svg class="size-5 shrink-0 text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-label="No"><path d="M18 6 6 18M6 6l12 12"/></svg>'
+        si: '<span class="grid size-6 shrink-0 place-items-center rounded-full bg-white/20 text-white" role="img" aria-label="Sí">' + conClase(ICON.check, 'size-3.5') + '</span>',
+        medio: '<span class="grid size-6 shrink-0 place-items-center rounded-full bg-amber-100 text-amber-600" role="img" aria-label="Parcial">' + conClase(ICON.minus, 'size-3.5') + '</span>',
+        no: '<span class="grid size-6 shrink-0 place-items-center rounded-full bg-rose-100 text-rose-500" role="img" aria-label="No">' + conClase(ICON.x, 'size-3.5') + '</span>'
       };
-      var cols = COMPARATIVA.columnas;
-
-      // Escritorio: tabla
-      var tabla = '<div class="hidden overflow-hidden rounded-2xl border border-line md:block"><table class="w-full border-collapse text-left">' +
-        '<caption class="sr-only">Comparativa entre agencia tradicional, freelancer junior y bascunan.digital</caption><thead><tr>' +
-        '<th scope="col" class="w-[19%] bg-card/40 p-5 align-bottom text-sm font-medium text-slate-500">Criterio</th>' +
-        cols.map(function (c) {
-          return '<th scope="col" class="p-5 align-bottom ' + (c.destacado ? 'bg-accent/15 border-x border-t border-accent/50' : 'bg-card/40') + '">' +
-            (c.destacado ? '<span class="mb-2 inline-block rounded-full bg-money/15 px-2.5 py-0.5 font-mono text-[11px] font-semibold text-money">RECOMENDADO</span>' : '') +
-            '<span class="block text-lg font-bold text-white">' + c.titulo + '</span><span class="block text-sm font-normal ' + (c.destacado ? 'text-accent-soft' : 'text-slate-500') + '">' + c.sub + '</span></th>';
-        }).join('') + '</tr></thead><tbody>';
-      COMPARATIVA.filas.forEach(function (f, fi) {
-        var ultima = fi === COMPARATIVA.filas.length - 1;
-        tabla += '<tr class="border-t border-line"><th scope="row" class="p-5 text-sm font-semibold text-white">' + f.criterio + '</th>' +
-          f.valores.map(function (v, i) {
-            var dest = cols[i].destacado;
-            return '<td class="p-5 text-sm ' + (dest ? 'bg-accent/10 border-x border-accent/50 font-medium text-white' + (ultima ? ' border-b' : '') : 'text-slate-400') + '"><span class="flex gap-3">' + ic[v[0]] + '<span>' + v[1] + '</span></span></td>';
-          }).join('') + '</tr>';
-      });
-      tabla += '</tbody></table></div>';
-
-      // Móvil: tarjetas (mi enfoque primero)
-      var orden = [2, 0, 1];
-      var tarjetas = '<div class="space-y-4 md:hidden">' + orden.map(function (i) {
-        var c = cols[i];
-        return '<div class="rounded-2xl border p-5 ' + (c.destacado ? 'border-accent/60 bg-accent/10' : 'border-line bg-card/40') + '">' +
-          (c.destacado ? '<span class="mb-2 inline-block rounded-full bg-money/15 px-2.5 py-0.5 font-mono text-[11px] font-semibold text-money">RECOMENDADO</span>' : '') +
-          '<p class="text-lg font-bold text-white">' + c.titulo + '</p><p class="text-sm ' + (c.destacado ? 'text-accent-soft' : 'text-slate-500') + '">' + c.sub + '</p>' +
-          '<dl class="mt-4 space-y-3">' + COMPARATIVA.filas.map(function (f) {
-            var v = f.valores[i];
-            return '<div class="flex gap-3">' + ic[v[0]] + '<div><dt class="text-xs text-slate-500">' + f.criterio + '</dt><dd class="text-sm ' + (c.destacado ? 'text-white' : 'text-slate-300') + '">' + v[1] + '</dd></div></div>';
-          }).join('') + '</dl></div>';
-      }).join('') + '</div>';
-
-      $('#tabla-comparativa').innerHTML = tabla + tarjetas;
+      $('#comparativa').innerHTML = COMPARATIVA.map(function (c, i) {
+        var d = c.destacado;
+        return '<article class="reveal rounded-3xl p-7 ' + (d ? 'order-first bg-cobalt text-white shadow-2xl shadow-cobalt/30 md:order-none' : 'bg-white') + '" style="transition-delay:' + i * 80 + 'ms">' +
+          (d ? '<span class="inline-block rounded-full bg-blush px-3 py-1 text-xs font-semibold text-cobalt">recomendado</span>' : '<span class="inline-block rounded-full bg-sand px-3 py-1 text-xs font-semibold text-ink/50">alternativa</span>') +
+          '<h4 class="mt-5 text-2xl font-bold tight">' + c.titulo + '</h4><p class="text-sm ' + (d ? 'text-blush/80' : 'text-ink/50') + '">' + c.sub + '</p>' +
+          '<ul class="mt-6 space-y-3.5">' + c.puntos.map(function (p) {
+            return '<li class="flex items-start gap-3 ' + (d ? '' : 'text-ink/75') + '">' + ic[p[0]] + '<span>' + p[1] + '</span></li>';
+          }).join('') + '</ul></article>';
+      }).join('');
     })();
 
     /* =========================================================
-       CASOS DE ÉXITO
+       PROCESO: acordeón temporizado
        ========================================================= */
-    var VISUAL_CASO = {
-      valeria: '<div class="flex h-full flex-col justify-between p-5"><div class="flex items-center justify-between"><span class="rounded-md bg-money/20 px-2 py-0.5 font-mono text-[10px] text-money">RESERVA CONFIRMADA</span><span class="size-6 rounded-md border border-white/20 text-white/70 grid place-items-center">' + ICON.phone.replace('<svg', '<svg class="size-3.5"') + '</span></div><div class="grid grid-cols-7 gap-1">' + Array.apply(null, Array(14)).map(function (_, i) { return '<span class="aspect-square rounded ' + (i === 9 ? 'bg-money' : ([2, 4, 11].indexOf(i) > -1 ? 'bg-accent/60' : 'bg-white/10')) + '"></span>'; }).join('') + '</div></div>',
-      dav: '<div class="flex h-full flex-col justify-between p-5"><div class="flex gap-2"><span class="h-2 w-10 rounded bg-white/60"></span><span class="h-2 w-6 rounded bg-white/20"></span><span class="h-2 w-6 rounded bg-white/20"></span></div><div class="grid grid-cols-3 gap-2">' + [0, 1, 2].map(function () { return '<div class="space-y-1.5 rounded-md border border-white/10 bg-white/5 p-2"><div class="h-8 rounded bg-accent/30"></div><div class="h-1.5 w-4/5 rounded bg-white/40"></div><div class="h-1.5 w-3/5 rounded bg-white/15"></div></div>'; }).join('') + '</div></div>',
-      notas: '<div class="flex h-full flex-col justify-between p-5"><div class="flex items-center gap-2 font-mono text-[10px] text-white/60"><span class="rounded bg-white/10 px-1.5 py-0.5">colegio_a</span><span class="rounded bg-white/10 px-1.5 py-0.5">colegio_b</span><span class="rounded bg-accent/40 px-1.5 py-0.5 text-white">rol: docente</span></div><div class="space-y-1.5">' + ['6,5', '5,8', '6,9'].map(function (n) { return '<div class="flex items-center justify-between rounded border border-white/10 bg-white/5 px-2 py-1"><span class="h-1.5 w-20 rounded bg-white/30"></span><span class="font-mono text-[11px] text-money">' + n + '</span></div>'; }).join('') + '</div></div>'
-    };
-    var GRADIENTE_CASO = { valeria: 'from-emerald-500/25 via-card to-ink', dav: 'from-accent/30 via-card to-ink', notas: 'from-sky-500/20 via-card to-ink' };
+    var PANELES = [
+      '<div class="w-full max-w-md rounded-2xl bg-white p-5 shadow-xl"><div class="flex items-center justify-between gap-2"><p class="font-semibold">Diagnóstico · tunegocio.cl</p><span class="shrink-0 rounded-full bg-blush px-2.5 py-0.5 text-xs font-semibold text-cobalt">video 3 min</span></div>' +
+        [['Velocidad en celular', 38, 'bg-rose-400'], ['Claridad del mensaje', 55, 'bg-amber-400'], ['Llamados a la acción', 42, 'bg-rose-400'], ['SEO local', 30, 'bg-rose-400']].map(function (r) {
+          return '<div class="mt-4"><div class="flex justify-between text-sm"><span class="text-ink/70">' + r[0] + '</span><span class="font-mono text-xs">' + r[1] + '/100</span></div><div class="mt-1.5 h-2 rounded-full bg-sand"><div class="h-2 rounded-full ' + r[2] + '" style="width:' + r[1] + '%"></div></div></div>';
+        }).join('') + '<p class="mt-5 rounded-xl bg-sand p-3 text-sm text-ink/70">🎯 Objetivo del nuevo sitio: <strong class="text-ink">reservas online</strong></p></div>',
+      '<div class="grid w-full max-w-lg grid-cols-[96px_1fr] overflow-hidden rounded-2xl bg-white shadow-xl sm:grid-cols-[110px_1fr]"><div class="border-r border-slate-100 p-3 text-[11px] text-ink/60"><p class="mb-2 font-semibold text-ink">Capas</p>' + ['Hero', 'Servicios', 'Reservas', 'Testimonios', 'Footer'].map(function (c, i) { return '<p class="rounded px-2 py-1 ' + (i === 0 ? 'bg-cobalt/10 font-semibold text-cobalt' : '') + '">▢ ' + c + '</p>'; }).join('') + '</div>' +
+        '<div class="bg-[#F4F2EE] p-4"><div class="rounded-lg bg-white p-3 ring-2 ring-cobalt"><div class="h-2 w-12 rounded bg-cobalt"></div><div class="mt-3 h-3 w-4/5 rounded bg-ink"></div><div class="mt-1.5 h-3 w-3/5 rounded bg-ink"></div><div class="mt-3 h-1.5 w-full rounded bg-platinum"></div><div class="mt-1 h-1.5 w-4/5 rounded bg-platinum"></div><div class="mt-3 flex gap-1.5"><div class="h-4 w-16 rounded-full bg-cobalt"></div><div class="h-4 w-12 rounded-full ring-1 ring-platinum"></div></div></div><div class="mt-2 grid grid-cols-3 gap-2"><div class="h-12 rounded-md bg-white"></div><div class="h-12 rounded-md bg-white"></div><div class="h-12 rounded-md bg-white"></div></div><p class="mt-2 font-mono text-[10px] text-cobalt">Hero · 1440 × 820</p></div></div>',
+      '<div class="w-full max-w-lg overflow-hidden rounded-2xl bg-graphite font-mono text-[12px] leading-relaxed text-white/80 shadow-xl"><div class="flex items-center gap-1.5 border-b border-white/10 px-4 py-3"><span class="size-2.5 rounded-full bg-white/20"></span><span class="size-2.5 rounded-full bg-white/20"></span><span class="size-2.5 rounded-full bg-white/20"></span><span class="ml-3 text-white/40">reservas.php</span></div><div class="overflow-x-auto p-4"><p><span class="text-[#A5B4FC]">function</span> <span class="text-blush">crearReserva</span>($datos) {</p><p class="pl-4 text-white/40">// validar horario disponible</p><p class="pl-4"><span class="text-[#A5B4FC]">if</span> (!horarioLibre($datos)) {</p><p class="pl-8"><span class="text-[#A5B4FC]">return</span> error(<span class="text-[#4ADE80]">"Horario ocupado"</span>);</p><p class="pl-4">}</p><p class="rounded bg-cobalt/30 pl-4">notificarWhatsApp($datos);</p><p>}</p></div><div class="flex flex-wrap gap-2 border-t border-white/10 px-4 py-3 font-sans text-xs"><span class="rounded-full bg-cobalt px-2.5 py-1 text-white">✦ IA sugiere</span><span class="rounded-full bg-[#4ADE80]/15 px-2.5 py-1 text-[#4ADE80]">✓ Alonso revisó y aprobó</span></div></div>',
+      '<div class="w-full max-w-md rounded-2xl bg-white p-5 shadow-xl"><p class="font-semibold">Editar servicio</p><div class="mt-4 space-y-3 text-sm"><div><p class="text-xs text-ink/50">Nombre</p><p class="mt-1 rounded-xl border border-slate-200 px-3 py-2">Limpieza facial profunda</p></div><div class="grid grid-cols-2 gap-3"><div><p class="text-xs text-ink/50">Precio</p><p class="mt-1 rounded-xl border border-slate-200 px-3 py-2">$35.000</p></div><div><p class="text-xs text-ink/50">Duración</p><p class="mt-1 rounded-xl border border-slate-200 px-3 py-2">60 min</p></div></div><div><p class="text-xs text-ink/50">Foto</p><div class="mt-1 grid h-16 place-items-center rounded-xl border border-dashed border-slate-300 text-xs text-ink/40">Arrastra una imagen</div></div></div><div class="mt-4 flex items-center justify-between"><span class="text-xs text-ink/45">Sin tocar código ✨</span><span class="rounded-full bg-cobalt px-4 py-2 text-sm font-semibold text-white">Publicar</span></div></div>',
+      '<div class="w-full max-w-md rounded-2xl bg-white p-5 shadow-xl"><div class="flex items-center justify-between gap-2"><p class="font-semibold">Google PageSpeed · móvil</p><span class="shrink-0 rounded-full bg-[#E7F7EE] px-2.5 py-0.5 text-xs font-semibold text-wa">publicado</span></div><div class="mt-5 grid grid-cols-4 gap-2 text-center">' +
+        ['Rendimiento', 'Accesibilidad', 'Buenas prácticas', 'SEO'].map(function (r) {
+          return '<div><div class="relative mx-auto size-14"><svg viewBox="0 0 36 36" class="size-14 -rotate-90"><circle cx="18" cy="18" r="15" fill="none" stroke="#ECEBE6" stroke-width="3.5"/><circle cx="18" cy="18" r="15" fill="none" stroke="#1FAF5A" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="94.2" stroke-dashoffset="7"/></svg><span class="absolute inset-0 grid place-items-center text-sm font-bold text-wa">90+</span></div><p class="mt-2 text-[10px] leading-tight text-ink/55">' + r + '</p></div>';
+        }).join('') + '</div><p class="mt-5 rounded-xl bg-sand p-3 text-sm text-ink/70">✓ Datos estructurados LocalBusiness validados</p></div>'
+    ];
 
+    (function () {
+      var cont = $('#pasos'), panelCont = $('#panel-pasos');
+      cont.innerHTML = PASOS.map(function (p, i) {
+        return '<div class="step" data-active="' + (i === 0) + '" data-i="' + i + '">' +
+          '<h3><button type="button" class="step-title flex w-full items-baseline gap-3 text-left text-xl font-bold tight transition hover:text-ink sm:text-2xl" aria-expanded="' + (i === 0) + '" aria-controls="paso-' + i + '"><span class="font-mono text-sm font-medium text-cobalt">0' + (i + 1) + '</span>' + p.titulo + '</button></h3>' +
+          '<div class="step-body" id="paso-' + i + '"><div><p class="pt-3 pl-8 text-lg leading-relaxed text-ink/70">' + p.texto + '</p></div></div>' +
+          '<div class="step-bar mt-5" aria-hidden="true"><i></i></div></div>';
+      }).join('');
+      panelCont.innerHTML = PANELES.map(function (h, i) {
+        return '<div class="panel col-start-1 row-start-1 grid place-items-center p-5 sm:p-10"' + (i === 0 ? '' : ' hidden') + '>' + h + '</div>';
+      }).join('');
+
+      var actual = 0, timer = null, auto = !reduceMotion, DUR = 6500;
+      function activar(i) {
+        actual = i;
+        $$('.step', cont).forEach(function (s, k) {
+          var on = k === i;
+          s.dataset.active = String(on);
+          s.querySelector('.step-title').setAttribute('aria-expanded', String(on));
+          var bar = s.querySelector('.step-bar i');
+          bar.style.transition = 'none';
+          bar.style.width = on && !auto ? '100%' : '0';
+          if (on && auto) { void bar.offsetWidth; bar.style.transition = 'width ' + DUR + 'ms linear'; bar.style.width = '100%'; }
+        });
+        $$('.panel', panelCont).forEach(function (p, k) { p.hidden = k !== i; });
+        clearTimeout(timer);
+        if (auto) timer = setTimeout(function () { activar((actual + 1) % PASOS.length); }, DUR);
+      }
+      cont.addEventListener('click', function (e) {
+        var b = e.target.closest('.step-title'); if (!b) return;
+        auto = false; // el usuario tomó el control: se detiene el avance automático
+        activar(+b.closest('.step').dataset.i);
+      });
+      if (auto && 'IntersectionObserver' in window) {
+        new IntersectionObserver(function (en, obs) {
+          if (!en[0].isIntersecting) return;
+          obs.disconnect();
+          if (auto) activar(0); // solo si el usuario aún no eligió un paso
+        }, { threshold: 0.3 }).observe($('#proceso'));
+      } else { activar(0); }
+    })();
+
+    /* =========================================================
+       CONSTRUCTOR / COTIZADOR
+       ========================================================= */
+    function L(w, c) { return '<div class="wf-line ' + (c || '') + '" style="width:' + w + '"></div>'; }
+    var WF = {
+      base: '<div class="wf-row" style="justify-content:space-between"><div class="wf-row"><div class="wf-logo"></div>' + L('56px', 'strong') + '</div><div class="wf-row">' + L('28px') + L('28px') + L('28px') + '</div><div class="wf-btn" style="width:56px"></div></div>' +
+        '<div class="wf-grid-2" style="margin-top:18px;align-items:center"><div class="wf-col"><div class="wf-chip"></div>' + L('95%', 'title') + L('72%', 'title') + L('92%') + L('78%') + '<div class="wf-row" style="margin-top:6px"><div class="wf-btn" style="width:42%"></div><div class="wf-btn ghost" style="width:32%"></div></div></div><div class="wf-img" style="height:120px">' + ICON.img + '</div></div>',
+      nosotros: '<div class="wf-grid-2" style="align-items:center"><div class="wf-img" style="height:96px">' + ICON.users + '</div><div class="wf-col">' + L('40%', 'strong') + L('90%', 'title') + L('100%') + L('94%') + L('70%') + '</div></div>' +
+        '<div class="wf-grid-3" style="margin-top:12px">' + [0, 1, 2].map(function () { return '<div class="wf-card" style="align-items:center">' + L('50%', 'strong') + L('70%') + '</div>'; }).join('') + '</div>',
+      catalogo: '<div class="wf-row" style="justify-content:space-between;margin-bottom:10px">' + L('38%', 'title') + '<div class="wf-row"><span class="wf-pill">Todos</span><span class="wf-pill">Servicios</span></div></div><div class="wf-grid-3">' +
+        [0, 1, 2].map(function () { return '<div class="wf-card"><div class="wf-img" style="height:48px">' + ICON.img + '</div>' + L('85%', 'strong') + L('60%') + '<div class="wf-price"></div><div class="wf-btn" style="height:14px"></div></div>'; }).join('') + '</div>',
+      reservas: '<div class="wf-row" style="justify-content:space-between;margin-bottom:10px"><div class="wf-row"><span class="wf-icon">' + ICON.cal + '</span>' + L('90px', 'title') + '</div><span class="wf-pill" style="display:inline-flex;gap:4px;align-items:center"><span class="wf-icon" style="color:#1FAF5A">' + ICON.phone + '</span>PWA</span></div>' +
+        '<div class="wf-grid-2"><div class="wf-cal">' + (function () { var s = ''; for (var i = 0; i < 21; i++) s += '<span class="' + (i === 10 ? 'sel' : ([3, 5, 8, 12, 15, 17].indexOf(i) > -1 ? 'on' : '')) + '"></span>'; return s; })() + '</div>' +
+        '<div class="wf-col">' + L('60%', 'strong') + '<div class="wf-row"><div class="wf-slot"></div><div class="wf-slot sel"></div></div><div class="wf-row"><div class="wf-slot"></div><div class="wf-slot"></div></div><div class="wf-row"><div class="wf-slot"></div><div class="wf-slot"></div></div><div class="wf-btn green" style="margin-top:4px"></div></div></div>',
+      pagos: '<div class="wf-grid-2" style="align-items:start"><div class="wf-col">' + L('55%', 'title') + '<div class="wf-row" style="justify-content:space-between">' + L('50%') + L('20%', 'strong') + '</div><div class="wf-row" style="justify-content:space-between">' + L('40%') + L('18%', 'strong') + '</div><div class="wf-row" style="justify-content:space-between;border-top:1px solid #ECEBE6;padding-top:6px">' + L('30%', 'strong') + '<div class="wf-price" style="width:28%"></div></div></div>' +
+        '<div class="wf-card"><div class="wf-row" style="flex-wrap:wrap"><span class="wf-pill">Webpay</span><span class="wf-pill">PayPal</span></div><div class="wf-input"></div><div class="wf-row"><div class="wf-input" style="flex:1"></div><div class="wf-input" style="flex:1"></div></div><div class="wf-row" style="gap:6px"><span class="wf-icon" style="color:#1FAF5A">' + ICON.lock + '</span><div class="wf-btn green" style="flex:1"></div></div></div></div>',
+      faq: '<div style="margin-bottom:6px">' + L('42%', 'title') + '</div>' + ['80%', '65%', '72%'].map(function (w, i) {
+        return '<div class="wf-acc">' + L(w, 'strong') + '<span class="wf-icon">' + ICON.plus + '</span></div>' + (i === 0 ? '<div class="wf-col" style="padding:6px 0">' + L('95%') + L('70%') + '</div>' : '');
+      }).join(''),
+      contacto: '<div class="wf-grid-2" style="align-items:start"><div class="wf-col">' + L('70%', 'title') + L('90%') + L('75%') + '<div class="wf-row" style="margin-top:6px"><span class="wf-icon">' + ICON.mail + '</span>' + L('60%') + '</div><div style="margin-top:6px"><span class="wf-wa">' + ICON.wa + 'WhatsApp</span></div></div>' +
+        '<div class="wf-col"><div class="wf-input"></div><div class="wf-input"></div><div class="wf-input" style="height:40px"></div><div class="wf-btn"></div></div></div>',
+      footer: '<div class="wf-row" style="justify-content:space-between"><div class="wf-row"><div class="wf-logo"></div>' + L('50px') + '</div><div class="wf-row">' + L('24px') + L('24px') + L('24px') + '</div></div>'
+    };
+
+    var seleccion = new Set(CONFIG.seleccionInicial);
+    var ORDEN = ['base'].concat(CONFIG.modulos.map(function (m) { return m.id; })).concat(['footer']);
+    var lista = $('#lista-modulos'), lienzo = $('#lienzo');
+    function mod(id) { return id === 'base' ? CONFIG.base : id === 'footer' ? { corto: 'Footer' } : CONFIG.modulos.filter(function (m) { return m.id === id; })[0]; }
+
+    (function renderLista() {
+      var b = CONFIG.base;
+      var h = '<div class="flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-white p-3.5">' +
+        '<span class="grid size-10 shrink-0 place-items-center rounded-xl bg-ink text-white">' + conClase(ICON[b.icono], 'size-5') + '</span>' +
+        '<span class="min-w-0 flex-1"><span class="block text-[15px] font-semibold leading-snug">' + esc(b.nombre) + '</span><span class="block text-sm leading-snug text-ink/55">' + esc(b.descripcion) + '</span></span>' +
+        '<span class="shrink-0 text-right"><span class="block rounded-full bg-ink px-2.5 py-1 text-[11px] font-semibold text-white">Incluido</span><span class="mt-1 block font-mono text-[11px] text-ink/45">' + clp.format(b.precio) + '</span></span></div>';
+      CONFIG.modulos.forEach(function (m) {
+        h += '<button type="button" class="modulo flex w-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white p-3.5 text-left" aria-pressed="' + seleccion.has(m.id) + '" data-id="' + m.id + '">' +
+          '<span class="mod-icon grid size-10 shrink-0 place-items-center rounded-xl bg-sand text-cobalt transition">' + conClase(ICON[m.icono], 'size-5') + '</span>' +
+          '<span class="min-w-0 flex-1"><span class="block text-[15px] font-semibold leading-snug">' + esc(m.nombre) + '</span><span class="block text-sm leading-snug text-ink/55">' + esc(m.descripcion) + '</span>' +
+          '<span class="mt-2 flex flex-wrap items-center gap-1.5"><span class="rounded-full bg-[#E7F7EE] px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[#15803D]">+' + clp.format(m.precio) + '</span><span class="font-mono text-[11px] text-ink/45">+' + dias(m.dias) + '</span></span></span>' +
+          '<span class="switch" aria-hidden="true"><span class="knob"></span></span></button>';
+      });
+      lista.innerHTML = h;
+    })();
+
+    function bloque(id) {
+      var el = document.createElement('div');
+      el.className = 'wf-block'; el.dataset.id = id;
+      el.innerHTML = '<span class="wf-tag' + (id === 'base' || id === 'footer' ? ' base' : '') + '"></span>' + WF[id];
+      el.querySelector('.wf-tag').dataset.nombre = mod(id).corto;
+      return el;
+    }
+    function renumerar() { $$('.wf-block', lienzo).forEach(function (b, i) { var t = b.querySelector('.wf-tag'); t.textContent = String(i + 1).padStart(2, '0') + ' · ' + t.dataset.nombre; }); }
+    ORDEN.forEach(function (id) { if (id === 'base' || id === 'footer' || seleccion.has(id)) lienzo.appendChild(bloque(id)); });
+    renumerar();
+
+    function agregar(id) {
+      var idx = ORDEN.indexOf(id), sig = null;
+      for (var i = idx + 1; i < ORDEN.length && !sig; i++) sig = lienzo.querySelector('.wf-block[data-id="' + ORDEN[i] + '"]');
+      var b = bloque(id);
+      lienzo.insertBefore(b, sig); renumerar();
+      if (!reduceMotion) b.classList.add('wf-enter');
+      lienzo.scrollTo({ top: Math.max(0, b.offsetTop - lienzo.offsetTop - 24), behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+    function quitar(id) {
+      var b = lienzo.querySelector('.wf-block[data-id="' + id + '"]'); if (!b) return;
+      if (reduceMotion) { b.remove(); renumerar(); return; }
+      b.classList.remove('wf-enter'); b.classList.add('wf-leave');
+      setTimeout(function () { b.remove(); renumerar(); }, 240);
+    }
+    function totales() {
+      var p = CONFIG.base.precio, d = CONFIG.base.dias;
+      CONFIG.modulos.forEach(function (m) { if (seleccion.has(m.id)) { p += m.precio; d += m.dias; } });
+      return { precio: p, dias: d };
+    }
+    var actuales = { precio: 0, dias: 0 };
+    function animar(k, dest, pintar) {
+      var desde = actuales[k]; actuales[k] = dest;
+      if (reduceMotion || desde === dest) { pintar(dest); return; }
+      var t0 = null;
+      function paso(t) { if (t0 === null) t0 = t; var p = Math.min(1, (t - t0) / 450), e = 1 - Math.pow(1 - p, 3); pintar(Math.round(desde + (dest - desde) * e)); if (p < 1) requestAnimationFrame(paso); }
+      requestAnimationFrame(paso);
+    }
+    function mensaje(t) {
+      var l = ['Hola Alonso 👋 Armé mi sitio en el cotizador de bascunan.digital y quiero solicitar este proyecto:', '', 'Secciones seleccionadas:', '• ' + CONFIG.base.nombre + ' (base): ' + clp.format(CONFIG.base.precio)];
+      CONFIG.modulos.forEach(function (m) { if (seleccion.has(m.id)) l.push('• ' + m.nombre + ': +' + clp.format(m.precio) + ' / +' + dias(m.dias)); });
+      l.push('', '💰 Precio estimado: ' + clp.format(t.precio) + ' CLP', '📅 Plazo estimado: ' + t.dias + ' días hábiles', '', '¿Cuándo podemos conversar?');
+      return l.join('\n');
+    }
+    function actualizar() {
+      var t = totales();
+      animar('precio', t.precio, function (v) { $('#total-precio').textContent = clp.format(v); });
+      animar('dias', t.dias, function (v) { $('#total-dias').textContent = v; });
+      $('#total-dias-label').textContent = t.dias === 1 ? 'día hábil' : 'días hábiles';
+      var chips = '<li class="rounded-full bg-white/10 px-3 py-1 text-xs">' + esc(CONFIG.base.corto) + '</li>';
+      CONFIG.modulos.forEach(function (m) { if (seleccion.has(m.id)) chips += '<li class="rounded-full bg-cobalt px-3 py-1 text-xs">' + esc(m.corto) + '</li>'; });
+      $('#resumen-lista').innerHTML = chips;
+      var n = seleccion.size + 1;
+      $('#contador-secciones').textContent = n + (n === 1 ? ' sección' : ' secciones');
+      $('#cta-whatsapp').href = wa(mensaje(t));
+      if (!reduceMotion) { var el = $('#total-precio').parentElement; el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
+      $$('.preset').forEach(function (b) {
+        var ids = CONFIG.presets[+b.dataset.preset].ids;
+        var igual = ids.length === seleccion.size && ids.every(function (id) { return seleccion.has(id); });
+        b.setAttribute('aria-pressed', String(igual));
+        b.classList.toggle('bg-cobalt', igual); b.classList.toggle('text-white', igual); b.classList.toggle('border-cobalt', igual);
+        b.classList.toggle('bg-white', !igual);
+      });
+    }
+    function alternar(id, forzar) {
+      var on = typeof forzar === 'boolean' ? forzar : !seleccion.has(id);
+      if (on === seleccion.has(id)) return;
+      if (on) { seleccion.add(id); agregar(id); } else { seleccion.delete(id); quitar(id); }
+      lista.querySelector('[data-id="' + id + '"]').setAttribute('aria-pressed', String(on));
+    }
+    lista.addEventListener('click', function (e) { var b = e.target.closest('.modulo'); if (!b) return; alternar(b.dataset.id); actualizar(); });
+
+    $('#presets').innerHTML = CONFIG.presets.map(function (p, i) {
+      return '<button type="button" class="preset rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold transition hover:border-cobalt" data-preset="' + i + '" aria-pressed="false">' + esc(p.nombre) + '</button>';
+    }).join('');
+    $('#presets').addEventListener('click', function (e) {
+      var b = e.target.closest('.preset'); if (!b) return;
+      var ids = CONFIG.presets[+b.dataset.preset].ids;
+      CONFIG.modulos.forEach(function (m) { alternar(m.id, ids.indexOf(m.id) > -1); });
+      actualizar();
+    });
+    actualizar();
+
+    /* =========================================================
+       CASOS
+       ========================================================= */
+    var VISUAL = {
+      valeria: '<div class="mx-auto w-40 rounded-[1.4rem] bg-ink p-1.5 shadow-xl"><div class="rounded-[1.1rem] bg-white p-3"><p class="text-[10px] font-semibold">Reservar hora</p><div class="mt-2 grid grid-cols-7 gap-1">' + Array.apply(null, Array(14)).map(function (_, i) { return '<span class="aspect-square rounded-[3px] ' + (i === 9 ? 'bg-cobalt' : [2, 4, 11].indexOf(i) > -1 ? 'bg-cobalt/25' : 'bg-sand') + '"></span>'; }).join('') + '</div><div class="mt-2 flex gap-1"><span class="h-3 flex-1 rounded-full ring-1 ring-platinum"></span><span class="h-3 flex-1 rounded-full bg-[#E7F7EE] ring-1 ring-wa"></span></div><div class="mt-2 h-4 rounded-full bg-wa"></div></div></div>',
+      dav: '<div class="mx-auto w-56 rounded-xl bg-white p-3 shadow-xl"><div class="flex gap-1.5"><span class="h-1.5 w-8 rounded bg-cobalt"></span><span class="h-1.5 w-5 rounded bg-platinum"></span><span class="h-1.5 w-5 rounded bg-platinum"></span></div><div class="mt-3 grid grid-cols-3 gap-1.5">' + [0, 1, 2].map(function () { return '<div class="space-y-1 rounded-md bg-sand p-1.5"><div class="h-7 rounded bg-blush"></div><div class="h-1 w-4/5 rounded bg-ink/40"></div><div class="h-1 w-3/5 rounded bg-platinum"></div></div>'; }).join('') + '</div><p class="mt-2 font-mono text-[9px] text-cobalt">post_type: noticias</p></div>',
+      notas: '<div class="mx-auto w-56 rounded-xl bg-white p-3 shadow-xl"><div class="flex gap-1 font-mono text-[9px]"><span class="rounded-full bg-sand px-1.5 py-0.5">colegio_a</span><span class="rounded-full bg-cobalt px-1.5 py-0.5 text-white">rol: docente</span></div><div class="mt-2 space-y-1">' + ['6,5', '5,8', '6,9'].map(function (n) { return '<div class="flex items-center justify-between rounded-md bg-sand px-2 py-1"><span class="h-1.5 w-16 rounded bg-ink/30"></span><span class="font-mono text-[10px] font-semibold text-cobalt">' + n + '</span></div>'; }).join('') + '</div></div>'
+    };
     $('#grid-casos').innerHTML = CASOS.map(function (c, i) {
-      return '<article class="reveal group flex flex-col overflow-hidden rounded-2xl border border-line bg-card/50 transition duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/10" style="transition-delay:' + (i * 60) + 'ms">' +
-        '<div class="h-44 bg-gradient-to-br ' + GRADIENTE_CASO[c.id] + '" aria-hidden="true">' + VISUAL_CASO[c.id] + '</div>' +
-        '<div class="flex flex-1 flex-col p-6">' +
-          '<p class="font-mono text-xs tracking-wider text-accent-soft uppercase">' + c.tipo + '</p>' +
-          '<h3 class="mt-2 text-xl font-bold text-white">' + c.nombre + '</h3>' +
-          '<p class="mt-2 flex-1 text-slate-400">' + c.resumen + '</p>' +
-          '<div class="mt-5 flex items-center gap-2 border-t border-line pt-4">' +
-            (c.estrellas ? '<span class="flex text-amber-400">' + [0, 1, 2, 3, 4].map(function () { return ICON.star.replace('<svg', '<svg class="size-4"'); }).join('') + '</span>' : '') +
-            '<span class="font-mono text-sm font-semibold text-money">' + c.metrica + '</span><span class="text-xs text-slate-500">· ' + c.metricaLabel + '</span>' +
-          '</div>' +
-          '<div class="mt-4 flex flex-wrap gap-1.5">' + c.stack.map(function (s) { return '<span class="rounded-md bg-ink/70 px-2 py-1 font-mono text-[11px] text-slate-400">' + s + '</span>'; }).join('') + '</div>' +
-          '<button type="button" class="mt-6 inline-flex items-center gap-2 self-start font-semibold text-white transition group-hover:text-accent-soft" data-caso="' + c.id + '">Ver caso completo <span aria-hidden="true" class="transition group-hover:translate-x-1">→</span></button>' +
-        '</div></article>';
+      return '<article class="reveal group flex flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-cobalt/10" style="transition-delay:' + i * 80 + 'ms">' +
+        '<div class="overflow-hidden"><div class="grid h-56 place-items-center ' + c.fondo + ' transition duration-500 group-hover:scale-[1.03]" aria-hidden="true">' + VISUAL[c.id] + '</div></div>' +
+        '<div class="flex flex-1 flex-col p-7"><div class="flex flex-wrap gap-1.5"><span class="rounded-full bg-cobalt px-3 py-1 text-xs font-semibold text-white">' + c.tipo + '</span>' + c.stack.map(function (s) { return '<span class="rounded-full bg-sand px-3 py-1 text-xs font-medium text-ink/60">' + s + '</span>'; }).join('') + '</div>' +
+        '<h3 class="mt-5 text-2xl font-bold tight">' + c.nombre + '</h3><p class="mt-2 flex-1 leading-relaxed text-ink/65">' + c.resumen + '</p>' +
+        '<p class="mt-6 flex flex-wrap items-center gap-1.5 border-t border-slate-100 pt-5 text-sm">' + (c.estrellas ? '<span class="flex text-amber-400">' + [0, 1, 2, 3, 4].map(function () { return conClase(ICON.star, 'size-4'); }).join('') + '</span>' : '') + '<strong>' + c.metrica + '</strong><span class="text-ink/50">· ' + c.metricaLabel + '</span></p>' +
+        '<button type="button" data-caso="' + c.id + '" class="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-sand px-5 py-3 font-semibold transition group-hover:bg-cobalt group-hover:text-white">Ver caso <span aria-hidden="true">→</span></button></div></article>';
     }).join('');
 
     /* =========================================================
-       MODALES
+       FAQ
        ========================================================= */
-    var modalLlamada = $('#modal-llamada'), modalCaso = $('#modal-caso');
-    function abrir(d) { if (typeof d.showModal === 'function') d.showModal(); else d.setAttribute('open', ''); }
-    function cerrar(d) { if (typeof d.close === 'function') d.close(); else d.removeAttribute('open'); }
-
-    $$('dialog').forEach(function (d) {
-      d.addEventListener('click', function (e) {
-        if (e.target === d) cerrar(d); // clic en el fondo
-        if (e.target.closest('[data-cerrar]')) cerrar(d);
-      });
+    $('#acordeon').innerHTML = FAQS.map(function (f, i) {
+      return '<div class="acc-item rounded-2xl border border-slate-200/80 bg-white px-5 sm:px-6" data-open="false"><h3><button type="button" class="acc-btn flex w-full items-center justify-between gap-6 py-5 text-left text-lg font-semibold" aria-expanded="false" aria-controls="faq-' + i + '" id="faq-' + i + '-btn">' + f[0] +
+        '<span class="acc-icon grid size-9 shrink-0 place-items-center rounded-full bg-sand text-ink transition duration-300" aria-hidden="true">' + conClase(ICON.plus, 'size-4') + '</span></button></h3>' +
+        '<div id="faq-' + i + '" class="acc-panel" role="region" aria-labelledby="faq-' + i + '-btn"><div><p class="pb-6 leading-relaxed text-ink/65">' + f[1] + '</p></div></div></div>';
+    }).join('');
+    $('#acordeon').addEventListener('click', function (e) {
+      var b = e.target.closest('.acc-btn'); if (!b) return;
+      var it = b.closest('.acc-item'), abierto = it.dataset.open === 'true';
+      $$('.acc-item').forEach(function (x) { x.dataset.open = 'false'; x.querySelector('.acc-btn').setAttribute('aria-expanded', 'false'); });
+      if (!abierto) { it.dataset.open = 'true'; b.setAttribute('aria-expanded', 'true'); }
     });
 
+    /* =========================================================
+       MODALES, FORMULARIOS Y NAVEGACIÓN
+       ========================================================= */
+    var mLlamada = $('#modal-llamada'), mCaso = $('#modal-caso');
+    function abrir(d) { if (typeof d.showModal === 'function') d.showModal(); else d.setAttribute('open', ''); }
+    function cerrar(d) { if (typeof d.close === 'function') d.close(); else d.removeAttribute('open'); }
+    $$('dialog').forEach(function (d) { d.addEventListener('click', function (e) { if (e.target === d || e.target.closest('[data-cerrar]')) cerrar(d); }); });
+
+    var btnMenu = $('#btn-menu'), menu = $('#menu-movil');
+    function cerrarMenu() { menu.classList.add('hidden'); btnMenu.setAttribute('aria-expanded', 'false'); btnMenu.setAttribute('aria-label', 'Abrir menú'); }
+
     document.addEventListener('click', function (e) {
-      if (e.target.closest('[data-abrir-llamada]')) {
-        cerrarMenu();
-        abrir(modalLlamada);
-        setTimeout(function () { $('#ll-nombre').focus(); }, 50);
-      }
-      var bCaso = e.target.closest('[data-caso]');
-      if (bCaso) {
-        var c = CASOS.filter(function (x) { return x.id === bCaso.dataset.caso; })[0];
-        $('#caso-tipo').textContent = c.tipo;
-        $('#caso-titulo').textContent = c.nombre;
-        $('#caso-cuerpo').innerHTML =
-          [['El desafío', c.desafio], ['La solución', c.solucion], ['El resultado', c.resultado]].map(function (b) {
-            return '<div><h3 class="text-sm font-semibold text-white">' + b[0] + '</h3><p class="mt-1 leading-relaxed text-slate-400">' + b[1] + '</p></div>';
-          }).join('') +
-          '<div class="flex flex-wrap gap-1.5">' + c.stack.map(function (s) { return '<span class="rounded-md bg-ink px-2 py-1 font-mono text-xs text-accent-soft">' + s + '</span>'; }).join('') + '</div>';
-        abrir(modalCaso);
+      if (e.target.closest('[data-abrir-llamada]')) { cerrarMenu(); abrir(mLlamada); setTimeout(function () { $('#ll-nombre').focus(); }, 50); }
+      var p = e.target.closest('[data-preguntar]');
+      if (p) window.open(wa('Hola Alonso 👋 ' + p.dataset.preguntar), '_blank', 'noopener');
+      var bc = e.target.closest('[data-caso]');
+      if (bc) {
+        var c = CASOS.filter(function (x) { return x.id === bc.dataset.caso; })[0];
+        $('#caso-tipo').textContent = c.tipo; $('#caso-titulo').textContent = c.nombre;
+        $('#caso-cuerpo').innerHTML = [['El desafío', c.desafio], ['La solución', c.solucion], ['El resultado', c.resultado]].map(function (b) {
+          return '<div><h3 class="text-sm font-semibold text-cobalt">' + b[0] + '</h3><p class="mt-1 leading-relaxed text-ink/70">' + b[1] + '</p></div>';
+        }).join('') + '<div class="flex flex-wrap gap-1.5">' + c.stack.map(function (s) { return '<span class="rounded-full bg-sand px-3 py-1 text-xs font-medium">' + s + '</span>'; }).join('') + '</div>';
+        abrir(mCaso);
       }
     });
 
     $('#form-llamada').addEventListener('submit', function (e) {
       e.preventDefault();
-      var nombre = $('#ll-nombre').value.trim();
-      if (!nombre) { $('#ll-nombre').focus(); $('#ll-nombre').setAttribute('aria-invalid', 'true'); return; }
-      var negocio = $('#ll-negocio').value.trim();
-      var horario = (document.querySelector('input[name="horario"]:checked') || {}).value;
-      var tema = $('#ll-tema').value.trim();
-      var msg = 'Hola Alonso 👋 Soy ' + nombre + (negocio ? ' de ' + negocio : '') + '. Me gustaría agendar una llamada de 15 minutos, idealmente en la ' + horario + '.' + (tema ? '\n\nLo que quiero lograr: ' + tema : '');
-      if (horario === 'cualquier horario') msg = msg.replace('idealmente en la cualquier horario', 'en cualquier horario');
-      window.open(wa(msg), '_blank', 'noopener');
-      cerrar(modalLlamada);
+      var inp = $('#ll-nombre'), n = inp.value.trim();
+      if (!n) { inp.setAttribute('aria-invalid', 'true'); inp.focus(); return; }
+      inp.removeAttribute('aria-invalid');
+      var neg = $('#ll-negocio').value.trim(), h = ($('input[name="horario"]:checked') || {}).value, t = $('#ll-tema').value.trim();
+      window.open(wa('Hola Alonso 👋 Soy ' + n + (neg ? ' de ' + neg : '') + '. Me gustaría agendar una llamada de 15 minutos, ' + h + '.' + (t ? '\n\nLo que quiero lograr: ' + t : '')), '_blank', 'noopener');
+      cerrar(mLlamada);
     });
 
-    /* =========================================================
-       LEAD MAGNET: DIAGNÓSTICO
-       ========================================================= */
     $('#form-diagnostico').addEventListener('submit', function (e) {
       e.preventDefault();
-      var err = $('#diag-error'), urlIn = $('#diag-url'), nomIn = $('#diag-nombre');
-      var bruto = urlIn.value.trim().replace(/^https?:\/\//i, '');
-      var url = null;
-      try { var u = new URL('https://' + bruto); if (u.hostname.indexOf('.') > 0) url = u.href.replace(/\/$/, ''); } catch (_) {}
-      err.classList.add('hidden'); urlIn.removeAttribute('aria-invalid'); nomIn.removeAttribute('aria-invalid');
-      if (!url) { err.textContent = 'Revisa la URL: debería verse como tunegocio.cl'; err.classList.remove('hidden'); urlIn.setAttribute('aria-invalid', 'true'); urlIn.focus(); return; }
-      if (!nomIn.value.trim()) { err.textContent = 'Cuéntame tu nombre para personalizar el video.'; err.classList.remove('hidden'); nomIn.setAttribute('aria-invalid', 'true'); nomIn.focus(); return; }
-      var msg = 'Hola Alonso 👋 Soy ' + nomIn.value.trim() + '. Quiero el diagnóstico gratuito en video (UX + velocidad) de mi sitio: ' + url;
+      var err = $('#diag-error'), u = $('#diag-url'), nom = $('#diag-nombre'), url = null;
+      var bruto = u.value.trim().replace(/^https?:\/\//i, '');
+      try { var x = new URL('https://' + bruto); if (bruto && x.hostname.indexOf('.') > 0) url = x.href.replace(/\/$/, ''); } catch (_) {}
+      err.classList.add('hidden'); u.removeAttribute('aria-invalid'); nom.removeAttribute('aria-invalid');
+      if (!url) { err.textContent = 'Revisa la URL: debería verse como tunegocio.cl'; err.classList.remove('hidden'); u.setAttribute('aria-invalid', 'true'); u.focus(); return; }
+      if (!nom.value.trim()) { err.textContent = 'Cuéntame tu nombre para personalizar el video.'; err.classList.remove('hidden'); nom.setAttribute('aria-invalid', 'true'); nom.focus(); return; }
+      var msg = 'Hola Alonso 👋 Soy ' + nom.value.trim() + '. Quiero el diagnóstico gratuito en video (UX + velocidad) de mi sitio: ' + url;
       window.open(wa(msg), '_blank', 'noopener');
       $('#diag-mail').href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent('Diagnóstico gratuito: ' + url) + '&body=' + encodeURIComponent(msg);
-      var form = e.currentTarget;
-      form.firstElementChild.classList.add('hidden');
+      $('#diag-campos').classList.add('hidden');
       var ok = $('#diag-ok'); ok.classList.remove('hidden'); ok.focus();
     });
 
-    /* =========================================================
-       ACORDEÓN FAQ
-       ========================================================= */
-    $('#acordeon').addEventListener('click', function (e) {
-      var btn = e.target.closest('.acc-btn');
-      if (!btn) return;
-      var item = btn.closest('.acc-item'), abierto = item.dataset.open === 'true';
-      $$('.acc-item', $('#acordeon')).forEach(function (it) { it.dataset.open = 'false'; it.querySelector('.acc-btn').setAttribute('aria-expanded', 'false'); });
-      if (!abierto) { item.dataset.open = 'true'; btn.setAttribute('aria-expanded', 'true'); }
-    });
-
-    /* =========================================================
-       NAVEGACIÓN, CONTACTO Y DETALLES
-       ========================================================= */
-    var btnMenu = $('#btn-menu'), menu = $('#menu-movil');
-    function cerrarMenu() { menu.classList.add('hidden'); btnMenu.setAttribute('aria-expanded', 'false'); btnMenu.setAttribute('aria-label', 'Abrir menú'); }
     btnMenu.addEventListener('click', function () {
-      var abierto = btnMenu.getAttribute('aria-expanded') === 'true';
-      if (abierto) { cerrarMenu(); return; }
+      if (btnMenu.getAttribute('aria-expanded') === 'true') { cerrarMenu(); return; }
       menu.classList.remove('hidden'); btnMenu.setAttribute('aria-expanded', 'true'); btnMenu.setAttribute('aria-label', 'Cerrar menú');
     });
     $$('a', menu).forEach(function (a) { a.addEventListener('click', cerrarMenu); });
+    var cab = $('#cabecera');
+    function sombra() { var s = window.scrollY > 10; cab.classList.toggle('shadow-lg', s); cab.classList.toggle('shadow-black/10', s); }
+    window.addEventListener('scroll', sombra, { passive: true }); sombra();
 
-    var cabecera = $('#cabecera');
-    function sombraCabecera() {
-      var s = window.scrollY > 12;
-      cabecera.classList.toggle('bg-ink/85', s);
-      cabecera.classList.toggle('backdrop-blur-md', s);
-      cabecera.classList.toggle('border-line', s);
-    }
-    window.addEventListener('scroll', sombraCabecera, { passive: true });
-    sombraCabecera();
-
-    $('#contacto-wa').href = wa('Hola Alonso 👋 Vi tu sitio bascunan.digital y quiero conversar sobre un proyecto web.');
+    var saludo = wa('Hola Alonso 👋 Vi tu sitio bascunan.digital y quiero conversar sobre un proyecto web.');
+    ['#contacto-wa', '#cta-final-wa', '#footer-wa'].forEach(function (s) { $(s).href = saludo; });
     $('#anio').textContent = new Date().getFullYear();
 
-    // Aparición al hacer scroll
     if ('IntersectionObserver' in window && !reduceMotion) {
-      var io = new IntersectionObserver(function (entradas) {
-        entradas.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); } });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      var io = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('is-visible'); io.unobserve(x.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       $$('.reveal').forEach(function (el) { io.observe(el); });
-    } else {
-      $$('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
-    }
+    } else { $$('.reveal').forEach(function (el) { el.classList.add('is-visible'); }); }
   })();
   </script>
 </body>
