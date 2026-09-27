@@ -1,0 +1,14 @@
+/* Estilos compartidos para generar las imágenes referenciales (ver scripts/imagenes.mjs) */
+@font-face { font-family: "Jakarta"; src: url("../fonts/plus-jakarta-sans.woff2") format("woff2"); font-weight: 200 800; }
+@font-face { font-family: "Mono"; src: url("../fonts/jetbrains-mono.woff2") format("woff2"); font-weight: 100 800; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Jakarta", sans-serif; color: #1F1B18; -webkit-font-smoothing: antialiased; overflow: hidden; }
+.lienzo { position: relative; overflow: hidden; }
+.ventana { position: absolute; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 70px -20px rgba(15, 23, 42, .35), 0 0 0 1px rgba(15, 23, 42, .06); }
+.barra { display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 14px; background: #F4F2EE; border-bottom: 1px solid #E7E4DE; }
+.barra i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.barra i:nth-child(1) { background: #FF5F57; } .barra i:nth-child(2) { background: #FEBC2E; } .barra i:nth-child(3) { background: #28C840; }
+.url { margin: 0 auto; padding: 4px 16px; border-radius: 99px; background: #fff; font: 500 12px "Mono", monospace; color: #6B665F; }
+.telefono { position: absolute; width: 250px; height: 510px; border-radius: 38px; background: #1F1B18; padding: 9px; box-shadow: 0 30px 60px -15px rgba(15, 23, 42, .45); }
+.telefono > div { width: 100%; height: 100%; border-radius: 30px; overflow: hidden; background: #fff; position: relative; }
+.mono { font-family: "Mono", monospace; }

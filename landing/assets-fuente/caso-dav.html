@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .lienzo { width: 1200px; height: 800px; background: linear-gradient(135deg, #E6F0F4, #EEF1FA); }
+  .azul { color: #0F3B5F; } .fondo-azul { background: #0F3B5F; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 16px 30px; }
+  .logo { display: flex; align-items: center; gap: 10px; font: 800 18px "Jakarta"; }
+  .logo i { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; color: #fff; font: 800 12px "Jakarta"; font-style: normal; }
+  header ul { display: flex; gap: 22px; list-style: none; font-size: 13px; color: #5D6B78; }
+  .banner { margin: 0 30px; height: 190px; border-radius: 18px; padding: 30px; color: #fff; position: relative; overflow: hidden; }
+  .banner::after { content: ""; position: absolute; right: -40px; top: -40px; width: 260px; height: 260px; border-radius: 50%; background: rgba(255, 255, 255, .08); }
+  .banner p { font: 600 12px "Jakarta"; letter-spacing: .12em; opacity: .8; } .banner h2 { margin-top: 10px; font: 800 32px/1.1 "Jakarta"; letter-spacing: -.03em; max-width: 480px; }
+  .cuerpo { display: grid; grid-template-columns: 1fr 230px; gap: 22px; padding: 24px 30px; }
+  .cuerpo h3 { font: 800 16px "Jakarta"; margin-bottom: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .post { border-radius: 14px; overflow: hidden; border: 1px solid #E3E9EF; }
+  .post div { height: 90px; background: linear-gradient(135deg, #CFE3EE, #9CC3D8); } .post:nth-child(2) div { background: linear-gradient(135deg, #D8E7D8, #A8CBA9); } .post:nth-child(3) div { background: linear-gradient(135deg, #E8E1F2, #BDB0DA); }
+  .post p { padding: 10px 12px 12px; font: 700 12.5px/1.3 "Jakarta"; } .post span { display: block; padding: 0 12px 12px; font: 500 10.5px "Mono"; color: #7C8894; }
+  .lateral { border-radius: 14px; background: #F4F7FA; padding: 16px; font-size: 12px; }
+  .lateral li { list-style: none; padding: 9px 0; border-bottom: 1px solid #E3E9EF; } .lateral b { display: block; font-size: 12.5px; } .lateral em { font-style: normal; color: #7C8894; font-size: 11px; }
+  .wp { background: #F0F0F1; }
+  .wp .top { height: 30px; background: #1D2327; }
+  .wp .menu { position: absolute; left: 0; top: 68px; bottom: 0; width: 120px; background: #2C3338; padding: 10px 0; }
+  .wp .menu p { padding: 7px 14px; font-size: 11.5px; color: #C3C4C7; } .wp .menu p.on { background: #2271B1; color: #fff; }
+  .wp .panel { position: absolute; left: 136px; top: 84px; right: 16px; }
+  .wp h4 { font: 700 17px "Jakarta"; color: #1D2327; }
+  .campo { margin-top: 12px; background: #fff; border: 1px solid #DCDCDE; border-radius: 6px; padding: 10px 12px; font-size: 11.5px; }
+  .campo label { display: block; font-weight: 700; font-size: 11px; color: #50575E; margin-bottom: 5px; } .campo span { color: #1D2327; }
+  .pub { margin-top: 14px; display: inline-block; padding: 8px 16px; border-radius: 5px; background: #2271B1; color: #fff; font: 700 12px "Jakarta"; }
+</style></head>
+<body><div class="lienzo">
+  <div class="ventana" style="left:40px;top:40px;width:830px;height:620px">
+    <div class="barra"><i></i><i></i><i></i><span class="url">davvalparaiso.cl</span></div>
+    <header><div class="logo azul"><i class="fondo-azul">DAV</i>DAV Valparaíso</div><ul><li>Institución</li><li>Noticias</li><li>Actividades</li><li>Contacto</li></ul></header>
+    <div class="banner fondo-azul"><p>COMUNIDAD · VALPARAÍSO</p><h2>Información oficial, siempre actualizada.</h2></div>
+    <div class="cuerpo">
+      <div><h3 class="azul">Últimas noticias</h3><div class="grid">
+        <div class="post"><div></div><p>Calendario de actividades del semestre</p><span>12 OCT 2026</span></div>
+        <div class="post"><div></div><p>Convocatoria abierta a nuevos integrantes</p><span>05 OCT 2026</span></div>
+        <div class="post"><div></div><p>Resumen de la asamblea anual</p><span>28 SEP 2026</span></div></div></div>
+      <ul class="lateral"><h3 class="azul">Próximas actividades</h3><li><b>Jornada abierta</b><em>Sáb 19 oct · 10:00</em></li><li><b>Taller comunitario</b><em>Mié 23 oct · 18:30</em></li><li><b>Reunión mensual</b><em>Jue 31 oct · 19:00</em></li></ul>
+    </div>
+  </div>
+  <div class="ventana wp" style="left:720px;top:330px;width:440px;height:420px">
+    <div class="barra"><i></i><i></i><i></i><span class="url">wp-admin · Noticias</span></div>
+    <div class="top"></div>
+    <div class="menu"><p>Escritorio</p><p class="on">Noticias</p><p>Actividades</p><p>Documentos</p><p>Medios</p></div>
+    <div class="panel"><h4>Añadir noticia</h4>
+      <div class="campo"><label>Título</label><span>Calendario de actividades del semestre</span></div>
+      <div class="campo"><label>Fecha de publicación</label><span>12/10/2026</span></div>
+      <div class="campo"><label>Imagen destacada</label><span>calendario-2026.webp ✓</span></div>
+      <span class="pub">Publicar</span></div>
+  </div>
+</div></body></html>

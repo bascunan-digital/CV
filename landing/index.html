@@ -12,9 +12,12 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.bascunan.digital/" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <!-- Fuentes autoalojadas (licencia OFL, ver fonts/) -->
+  <link rel="preload" href="fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin />
+  <meta property="og:image" content="https://www.bascunan.digital/img/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Tailwind CSS v4 vía CDN (prototipo: en producción se compila, ver README) -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -52,7 +55,11 @@
   </style>
 
   <style>
+    @font-face { font-family: "Plus Jakarta Sans"; src: url("fonts/plus-jakarta-sans.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+    @font-face { font-family: "JetBrains Mono"; src: url("fonts/jetbrains-mono.woff2") format("woff2"); font-weight: 100 800; font-display: swap; }
     html { scroll-padding-top: 5rem; }
+    /* Contenido de ejemplo: visible solo con CONFIG.modoSimulacion = true */
+    html:not(.simulacion) .sim { display: none !important; }
     body { background: #2B44FF; }
     .tight { letter-spacing: -0.03em; }
     .tighter { letter-spacing: -0.05em; }
@@ -254,7 +261,8 @@
             </a>
           </div>
           <a href="#trabajos" class="reveal mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-blush underline decoration-blush/50 underline-offset-4 hover:decoration-blush">O mira trabajos reales <span aria-hidden="true">→</span></a>
-          <dl class="reveal mt-12 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/15 pt-8 text-blush">
+          <p class="reveal mt-6 flex items-center gap-3 text-sm text-blush"><img src="img/alonso.jpg" width="40" height="40" alt="" class="size-10 shrink-0 rounded-full object-cover object-top ring-2 ring-blush" /><span>Hablas directo conmigo: <strong class="text-white">Alonso Bascuñán</strong></span></p>
+          <dl class="reveal mt-10 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/15 pt-8 text-blush">
             <div><dt class="text-sm text-blush">Experiencia</dt><dd class="mt-0.5 text-2xl font-bold tight">15+ años</dd></div>
             <div><dt class="text-sm text-blush">Google PageSpeed<button type="button" class="ayuda" data-ayuda="pagespeed"></button></dt><dd class="mt-0.5 text-2xl font-bold tight">90+</dd></div>
             <div><dt class="text-sm text-blush">Entrega</dt><dd class="mt-0.5 text-2xl font-bold tight">En días</dd></div>
@@ -539,6 +547,50 @@
       </div>
     </section>
 
+    <!-- ===================== TESTIMONIOS (arena) ===================== -->
+    <section id="testimonios" class="bg-sand pb-24" aria-labelledby="testimonios-titulo">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="reveal flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div class="max-w-2xl">
+            <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">testimonios</span>
+            <h2 id="testimonios-titulo" class="mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">Lo que dicen quienes ya trabajaron conmigo.</h2>
+          </div>
+          <div class="flex items-center gap-3 rounded-2xl bg-white px-5 py-4 ring-1 ring-slate-200/80">
+            <span class="flex text-amber-400" aria-hidden="true"><svg class="size-5" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span>
+            <p class="text-sm leading-snug"><strong class="text-base">4.9/5 · 38 reseñas</strong><span class="block text-ink/65">Valeria Estética Integral en Google</span></p>
+          </div>
+        </div>
+        <div id="grid-testimonios" class="mt-12 grid gap-5 md:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- ===================== SOBRE MÍ (arena) ===================== -->
+    <section id="sobre-mi" class="bg-sand pb-24" aria-labelledby="sobre-mi-titulo">
+      <div class="mx-auto grid max-w-7xl gap-6 px-5 sm:px-8 lg:grid-cols-12 lg:items-stretch">
+        <figure class="reveal relative overflow-hidden rounded-[2rem] bg-white lg:col-span-4">
+          <img src="img/alonso.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="Alonso Bascuñán, diseñador y desarrollador web" class="aspect-[4/5] h-full w-full object-cover" />
+          <span class="sim absolute top-4 left-4 rounded-full bg-ink/80 px-3 py-1 text-xs font-semibold text-white">Foto de ejemplo</span>
+        </figure>
+        <div class="reveal flex flex-col rounded-[2rem] bg-white p-7 sm:p-10 lg:col-span-8">
+          <span class="inline-block self-start rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">quién está detrás</span>
+          <h2 id="sobre-mi-titulo" class="mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">Hola, soy Alonso.</h2>
+          <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink/75">Llevo más de 15 años diseñando: partí en el diseño editorial y de exposiciones, y hoy diseño y programo sitios web para negocios que quieren vender más. Cuando me escribes, hablas conmigo, no con un ejecutivo de cuentas.</p>
+          <ul class="mt-8 grid gap-3 text-sm sm:grid-cols-3">
+            <li class="rounded-2xl bg-sand p-4"><strong class="block text-2xl font-extrabold tight text-cobalt">15+ años</strong>diseñando para marcas e instituciones</li>
+            <li class="rounded-2xl bg-sand p-4"><strong class="block text-2xl font-extrabold tight text-cobalt">Diseño + código</strong>de Figma al sitio publicado, sin intermediarios</li>
+            <li class="rounded-2xl bg-sand p-4"><strong class="block text-2xl font-extrabold tight text-cobalt">Docente</strong>de diseño web en INACAP: explico en simple</li>
+          </ul>
+          <div class="mt-8 grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Valpara%C3%ADso%2C%20Chile" target="_blank" rel="noopener" class="group flex items-center gap-4 rounded-2xl p-2 pr-4 ring-1 ring-slate-200 transition hover:ring-cobalt">
+              <svg class="h-20 w-28 shrink-0 rounded-xl" viewBox="0 0 112 80" aria-hidden="true"><rect width="112" height="80" fill="#E8EEE6"/><path d="M0 0h46c-6 10-4 20 4 28 7 7 6 16-2 24-7 8-6 18 0 28H0Z" fill="#C7D7F5"/><path d="M58 0v80M46 40h66M80 0l-14 80M100 10 60 70" stroke="#fff" stroke-width="3"/><circle cx="74" cy="34" r="11" fill="#2B44FF"/><circle cx="74" cy="34" r="4" fill="#fff"/></svg>
+              <span class="min-w-0"><strong class="block">Valparaíso, Chile</strong><span class="block text-sm text-ink/65">Reuniones presenciales en la V Región y online en todo Chile y EE.UU.</span><span class="mt-1 block text-sm font-semibold text-cobalt">Ver en Google Maps →</span></span>
+            </a>
+            <button type="button" data-abrir-llamada class="rounded-full bg-cobalt px-6 py-4 font-semibold text-white transition hover:bg-cobalt-deep">Agenda 15 min conmigo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== GARANTÍA (grafito) ===================== -->
     <section id="garantia" class="bg-sand px-2.5 sm:px-3">
       <div class="on-dark rounded-[2rem] bg-graphite px-5 py-16 text-white sm:px-8 lg:py-24">
@@ -647,6 +699,7 @@
               <p class="font-semibold">Sitio</p>
               <ul class="mt-4 space-y-2.5 text-ink/65">
                 <li><a class="hover:text-cobalt" href="#trabajos">Trabajos</a></li>
+                <li><a class="hover:text-cobalt" href="#sobre-mi">Sobre mí</a></li>
                 <li><a class="hover:text-cobalt" href="#garantia">Garantía</a></li>
                 <li><a class="hover:text-cobalt" href="#faq">Preguntas</a></li>
                 <li><button type="button" data-abrir-glosario class="text-left hover:text-cobalt">Glosario</button></li>
@@ -694,14 +747,18 @@
         </div>
         <button type="button" data-cerrar class="grid size-10 shrink-0 place-items-center rounded-full bg-sand text-ink/65 hover:text-ink" aria-label="Cerrar"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
       </div>
-      <form id="form-llamada" class="mt-6 space-y-4" novalidate>
+      <a id="agenda-link" href="#" target="_blank" rel="noopener" class="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-cobalt px-6 py-4 font-semibold text-white transition hover:bg-cobalt-deep"><svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Elegir día y hora en mi agenda <span aria-hidden="true">→</span></a>
+      <p id="agenda-nota" class="mt-2 text-center text-xs text-ink/65">Se abre mi agenda de Google: eliges el horario y te llega la invitación con el enlace a la videollamada.</p>
+      <details id="llamada-wa" class="group mt-6 rounded-2xl bg-sand p-4">
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-semibold [&::-webkit-details-marker]:hidden">¿Prefieres coordinar por WhatsApp?<svg class="size-4 shrink-0 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <form id="form-llamada" class="mt-4 space-y-4" novalidate>
         <div>
           <label for="ll-nombre" class="text-sm font-semibold">Nombre</label>
-          <input id="ll-nombre" type="text" autocomplete="name" required class="mt-2 w-full rounded-2xl border border-slate-200 bg-sand px-4 py-3 focus:border-cobalt focus:ring-4 focus:ring-cobalt/15 focus:outline-none" />
+          <input id="ll-nombre" type="text" autocomplete="name" required class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 focus:border-cobalt focus:ring-4 focus:ring-cobalt/15 focus:outline-none" />
         </div>
         <div>
           <label for="ll-negocio" class="text-sm font-semibold">Negocio o empresa <span class="font-normal text-ink/65">(opcional)</span></label>
-          <input id="ll-negocio" type="text" autocomplete="organization" class="mt-2 w-full rounded-2xl border border-slate-200 bg-sand px-4 py-3 focus:border-cobalt focus:ring-4 focus:ring-cobalt/15 focus:outline-none" />
+          <input id="ll-negocio" type="text" autocomplete="organization" class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 focus:border-cobalt focus:ring-4 focus:ring-cobalt/15 focus:outline-none" />
         </div>
         <fieldset>
           <legend class="text-sm font-semibold">¿Qué horario te acomoda?</legend>
@@ -713,11 +770,12 @@
         </fieldset>
         <div>
           <label for="ll-tema" class="text-sm font-semibold">¿Qué te gustaría lograr? <span class="font-normal text-ink/65">(opcional)</span></label>
-          <textarea id="ll-tema" rows="3" class="mt-2 w-full resize-none rounded-2xl border border-slate-200 bg-sand px-4 py-3 focus:border-cobalt focus:ring-4 focus:ring-cobalt/15 focus:outline-none" placeholder="Ej: que mis clientes reserven horas online"></textarea>
+          <textarea id="ll-tema" rows="3" class="mt-2 w-full resize-none rounded-2xl border border-slate-200 bg-white px-4 py-3 focus:border-cobalt focus:ring-4 focus:ring-cobalt/15 focus:outline-none" placeholder="Ej: que mis clientes reserven horas online"></textarea>
         </div>
-        <button type="submit" class="flex w-full items-center justify-center gap-2 rounded-full bg-cobalt px-6 py-4 font-semibold text-white transition hover:bg-cobalt-deep">Coordinar por WhatsApp <span aria-hidden="true">→</span></button>
+        <button type="submit" class="flex w-full items-center justify-center gap-2 rounded-full bg-wa px-6 py-4 font-semibold text-white transition hover:bg-[#166534]">Coordinar por WhatsApp <span aria-hidden="true">→</span></button>
         <p class="text-center text-xs text-ink/65">¿Prefieres correo? <a class="font-semibold text-cobalt underline underline-offset-2" href="mailto:hola@bascunan.digital?subject=Agendar%20llamada">hola@bascunan.digital</a></p>
       </form>
+      </details>
     </div>
   </dialog>
 
@@ -771,7 +829,11 @@
     var CONFIG = {
       whatsapp: '56963660958',
       email: 'hola@bascunan.digital',
-      tipoInicial: null // sin objetivo elegido: el cliente parte eligiendo
+      tipoInicial: null, // sin objetivo elegido: el cliente parte eligiendo
+      agenda: 'https://calendar.app.google/zBJBHs5d5jZjiope6', // página de reservas de Google Calendar ('' = solo WhatsApp)
+      // true: muestra contenido de EJEMPLO (testimonios, foto y capturas marcados como tales).
+      // La versión dist/ se genera con false: solo se ven los testimonios con real: true.
+      modoSimulacion: true
     };
 
     // Mi enfoque: [criterio, lo típico, conmigo]
@@ -791,15 +853,15 @@
     ];
 
     var CASOS = [
-      { id: 'valeria', nombre: 'Valeria Estética Integral', tipo: 'PWA + reservas', resumen: 'Reservas online con panel instalable en el celular y SEO local desde el día 1.', metrica: '4.9/5', metricaLabel: '38 reseñas en Google', estrellas: true, stack: ['PHP', 'MySQL', 'PWA'], fondo: 'bg-blush',
+      { id: 'valeria', nombre: 'Valeria Estética Integral', tipo: 'PWA + reservas', resumen: 'Reservas online con panel instalable en el celular y SEO local desde el día 1.', metrica: '4.9/5', metricaLabel: '38 reseñas en Google', estrellas: true, stack: ['PHP', 'MySQL', 'PWA'],
         desafio: 'Un centro de estética necesitaba que sus clientas pudieran reservar solas y administrar la agenda desde el celular, sin depender de mensajes y llamadas.',
         solucion: 'Diseñé y programé un motor de reservas full-stack a medida, con un panel de administración PWA que se instala como app en el teléfono, más datos estructurados para SEO local.',
         resultado: 'Una experiencia de reserva simple que respaldan 38 reseñas en Google con calificación 4.9/5.' },
-      { id: 'dav', nombre: 'DAV Valparaíso', tipo: 'WordPress a medida', resumen: 'Plan de gobernanza digital y tema WordPress a medida para publicar sin depender de nadie.', metrica: 'CPT + ACF', metricaLabel: 'Contenido autoadministrable', stack: ['WordPress', 'CPT', 'ACF'], fondo: 'bg-cobalt',
+      { id: 'dav', nombre: 'DAV Valparaíso', tipo: 'WordPress a medida', resumen: 'Plan de gobernanza digital y tema WordPress a medida para publicar sin depender de nadie.', metrica: 'CPT + ACF', metricaLabel: 'Contenido autoadministrable', stack: ['WordPress', 'CPT', 'ACF'],
         desafio: 'La institución había perdido el control de algunas de sus cuentas digitales y publicar contenido dependía de terceros.',
         solucion: 'Definí un plan de gobernanza digital (roles, accesos y respaldos), recuperé las cuentas institucionales y desarrollé un tema WordPress a medida con Custom Post Types.',
         resultado: 'El equipo recuperó el control de su presencia digital y publica su contenido de forma autónoma.' },
-      { id: 'notas', nombre: 'Notas Libro de Clases', tipo: 'SaaS multi-tenant', resumen: 'Plataforma educativa para varios colegios, con los datos de cada uno completamente aislados.', metrica: 'JWT + RBAC', metricaLabel: 'Datos aislados por colegio', stack: ['NestJS', 'Prisma', 'PostgreSQL'], fondo: 'bg-platinum',
+      { id: 'notas', nombre: 'Notas Libro de Clases', tipo: 'SaaS multi-tenant', resumen: 'Plataforma educativa para varios colegios, con los datos de cada uno completamente aislados.', metrica: 'JWT + RBAC', metricaLabel: 'Datos aislados por colegio', stack: ['NestJS', 'Prisma', 'PostgreSQL'],
         desafio: 'Construir una sola plataforma para muchos colegios, donde cada uno vea solo su información y cada usuario solo lo que su rol le permite.',
         solucion: 'Arquitectura multi-tenant con aislamiento de datos por colegio, autenticación con JWT y control de acceso por roles (RBAC), más una interfaz pensada para docentes.',
         resultado: 'Una plataforma escalable y segura, lista para sumar colegios sin duplicar sistemas.' }
@@ -954,6 +1016,13 @@
       login: ['Inicio de sesión', 'La entrada al área privada: crear cuenta, entrar y recuperar la contraseña.', 'Técnico'],
       dashboard: ['Dashboard (panel de control)', 'La pantalla privada donde tus usuarios ven su información y usan tu aplicación.', 'Técnico']
     };
+
+    // Testimonios: reemplaza por testimonios reales (con permiso del cliente) y marca real: true.
+    var TESTIMONIOS = [
+      { texto: 'Antes agendábamos todo por WhatsApp y se nos perdían horas. Ahora las clientas reservan solas, incluso de noche.', nombre: 'Nombre de clienta', rol: 'Centro de estética · Viña del Mar', real: false },
+      { texto: 'Me explicó todo en simple y en una semana tenía el sitio listo. Ahora cambio mis precios yo mismo.', nombre: 'Nombre de cliente', rol: 'Cafetería · Valparaíso', real: false },
+      { texto: 'Recuperamos el control de nuestras cuentas y publicamos noticias sin depender de nadie.', nombre: 'Nombre de cliente', rol: 'Institución · Valparaíso', real: false }
+    ];
 
     var SINTOMAS = ['Carga lento', 'Se ve mal en el celular', 'No aparece en Google', 'No puedo editarlo yo', 'No llegan consultas', 'Se ve anticuado', 'Quien lo hizo ya no responde'];
 
@@ -1545,6 +1614,25 @@
     })();
 
     /* =========================================================
+       TESTIMONIOS Y MODO SIMULACIÓN
+       ========================================================= */
+    document.documentElement.classList.toggle('simulacion', CONFIG.modoSimulacion);
+    (function () {
+      var lista = TESTIMONIOS.filter(function (t) { return t.real || CONFIG.modoSimulacion; });
+      if (!lista.length) { $('#testimonios').hidden = true; return; }
+      $('#grid-testimonios').innerHTML = lista.map(function (t, i) {
+        var ini = t.nombre.split(' ').map(function (x) { return x.charAt(0); }).join('').slice(0, 2).toUpperCase();
+        return '<figure class="reveal flex flex-col rounded-3xl bg-white p-7 ring-1 ring-slate-200/80" style="transition-delay:' + i * 80 + 'ms">' +
+          '<div class="flex items-center justify-between gap-3"><span class="flex text-amber-400" role="img" aria-label="5 de 5 estrellas">' + [0, 1, 2, 3, 4].map(function () { return conClase(ICON.star, 'size-4'); }).join('') + '</span>' +
+          (t.real ? '' : '<span class="rounded-full bg-[#FFF1CC] px-2.5 py-0.5 text-xs font-semibold text-[#7A4B00]">Ejemplo</span>') + '</div>' +
+          '<blockquote class="mt-4 flex-1 text-lg leading-relaxed">«' + esc(t.texto) + '»</blockquote>' +
+          '<figcaption class="mt-6 flex items-center gap-3 border-t border-slate-100 pt-5"><span class="grid size-11 shrink-0 place-items-center rounded-full bg-blush font-bold text-cobalt" aria-hidden="true">' + ini + '</span><span><strong class="block">' + esc(t.nombre) + '</strong><span class="text-sm text-ink/65">' + esc(t.rol) + '</span></span></figcaption></figure>';
+      }).join('');
+    })();
+    if (CONFIG.agenda) { $('#agenda-link').href = CONFIG.agenda; }
+    else { $('#agenda-link').hidden = true; $('#agenda-nota').hidden = true; $('#llamada-wa').open = true; }
+
+    /* =========================================================
        SÍNTOMAS DEL DIAGNÓSTICO
        ========================================================= */
     $('#sintomas').innerHTML = SINTOMAS.map(function (x, i) {
@@ -1559,14 +1647,10 @@
     /* =========================================================
        CASOS
        ========================================================= */
-    var VISUAL = {
-      valeria: '<div class="mx-auto w-40 rounded-[1.4rem] bg-ink p-1.5 shadow-xl"><div class="rounded-[1.1rem] bg-white p-3"><p class="text-[10px] font-semibold">Reservar hora</p><div class="mt-2 grid grid-cols-7 gap-1">' + Array.apply(null, Array(14)).map(function (_, i) { return '<span class="aspect-square rounded-[3px] ' + (i === 9 ? 'bg-cobalt' : [2, 4, 11].indexOf(i) > -1 ? 'bg-cobalt/25' : 'bg-sand') + '"></span>'; }).join('') + '</div><div class="mt-2 flex gap-1"><span class="h-3 flex-1 rounded-full ring-1 ring-platinum"></span><span class="h-3 flex-1 rounded-full bg-[#E7F7EE] ring-1 ring-wa"></span></div><div class="mt-2 h-4 rounded-full bg-wa"></div></div></div>',
-      dav: '<div class="mx-auto w-56 rounded-xl bg-white p-3 shadow-xl"><div class="flex gap-1.5"><span class="h-1.5 w-8 rounded bg-cobalt"></span><span class="h-1.5 w-5 rounded bg-platinum"></span><span class="h-1.5 w-5 rounded bg-platinum"></span></div><div class="mt-3 grid grid-cols-3 gap-1.5">' + [0, 1, 2].map(function () { return '<div class="space-y-1 rounded-md bg-sand p-1.5"><div class="h-7 rounded bg-blush"></div><div class="h-1 w-4/5 rounded bg-ink/40"></div><div class="h-1 w-3/5 rounded bg-platinum"></div></div>'; }).join('') + '</div><p class="mt-2 font-mono text-[9px] text-cobalt">post_type: noticias</p></div>',
-      notas: '<div class="mx-auto w-56 rounded-xl bg-white p-3 shadow-xl"><div class="flex gap-1 font-mono text-[9px]"><span class="rounded-full bg-sand px-1.5 py-0.5">colegio_a</span><span class="rounded-full bg-cobalt px-1.5 py-0.5 text-white">rol: docente</span></div><div class="mt-2 space-y-1">' + ['6,5', '5,8', '6,9'].map(function (n) { return '<div class="flex items-center justify-between rounded-md bg-sand px-2 py-1"><span class="h-1.5 w-16 rounded bg-ink/30"></span><span class="font-mono text-[10px] font-semibold text-cobalt">' + n + '</span></div>'; }).join('') + '</div></div>'
-    };
     $('#grid-casos').innerHTML = CASOS.map(function (c, i) {
       return '<article class="reveal group flex flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-cobalt/10" style="transition-delay:' + i * 80 + 'ms">' +
-        '<div class="overflow-hidden"><div class="grid h-56 place-items-center ' + c.fondo + ' transition duration-500 group-hover:scale-[1.03]" aria-hidden="true">' + VISUAL[c.id] + '</div></div>' +
+        '<div class="relative overflow-hidden bg-sand"><img src="img/caso-' + c.id + '.jpg" width="1200" height="800" loading="lazy" decoding="async" alt="Vista del proyecto ' + c.nombre + '" class="aspect-[3/2] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />' +
+        '<span class="sim absolute top-3 left-3 rounded-full bg-ink/80 px-3 py-1 text-xs font-semibold text-white">Imagen referencial</span></div>' +
         '<div class="flex flex-1 flex-col p-7"><div class="flex flex-wrap gap-1.5"><span class="rounded-full bg-cobalt px-3 py-1 text-xs font-semibold text-white">' + c.tipo + '</span>' + c.stack.map(function (s) { return '<span class="rounded-full bg-sand px-3 py-1 text-xs font-medium text-ink/65">' + s + '</span>'; }).join('') + '</div>' +
         '<h3 class="mt-5 text-2xl font-bold tight">' + c.nombre + '</h3><p class="mt-2 flex-1 leading-relaxed text-ink/65">' + c.resumen + '</p>' +
         '<p class="mt-6 flex flex-wrap items-center gap-1.5 border-t border-slate-100 pt-5 text-sm">' + (c.estrellas ? '<span class="flex text-amber-400">' + [0, 1, 2, 3, 4].map(function () { return conClase(ICON.star, 'size-4'); }).join('') + '</span>' : '') + '<strong>' + c.metrica + '</strong><span class="text-ink/65">· ' + c.metricaLabel + '</span></p>' +
@@ -1607,7 +1691,7 @@
       if (bc) {
         var c = CASOS.filter(function (x) { return x.id === bc.dataset.caso; })[0];
         $('#caso-tipo').textContent = c.tipo; $('#caso-titulo').textContent = c.nombre;
-        $('#caso-cuerpo').innerHTML = [['El desafío', c.desafio], ['La solución', c.solucion], ['El resultado', c.resultado]].map(function (b) {
+        $('#caso-cuerpo').innerHTML = '<img src="img/caso-' + c.id + '.jpg" width="1200" height="800" alt="Vista del proyecto ' + c.nombre + '" class="aspect-[3/2] w-full rounded-2xl object-cover" />' + [['El desafío', c.desafio], ['La solución', c.solucion], ['El resultado', c.resultado]].map(function (b) {
           return '<div><h3 class="text-sm font-semibold text-cobalt">' + b[0] + '</h3><p class="mt-1 leading-relaxed text-ink/70">' + b[1] + '</p></div>';
         }).join('') + '<div class="flex flex-wrap gap-1.5">' + c.stack.map(function (s) { return '<span class="rounded-full bg-sand px-3 py-1 text-xs font-medium">' + s + '</span>'; }).join('') + '</div>';
         abrir(mCaso);

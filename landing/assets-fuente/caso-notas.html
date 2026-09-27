@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .lienzo { width: 1200px; height: 800px; background: linear-gradient(135deg, #E9ECFF, #F4F2EE); }
+  .app { display: grid; grid-template-columns: 190px 1fr; height: calc(100% - 38px); }
+  aside { background: #0F172A; color: #94A3B8; padding: 20px 14px; font-size: 13px; }
+  aside .marca { display: flex; align-items: center; gap: 9px; color: #fff; font: 800 15px "Jakarta"; margin-bottom: 22px; }
+  aside .marca i { width: 28px; height: 28px; border-radius: 8px; background: #2B44FF; display: grid; place-items: center; font: 800 12px "Jakarta"; font-style: normal; }
+  aside p { padding: 9px 12px; border-radius: 9px; margin-bottom: 3px; } aside p.on { background: rgba(255, 255, 255, .09); color: #fff; }
+  main { padding: 20px 26px; background: #F8FAFC; }
+  .top { display: flex; align-items: center; gap: 10px; }
+  .top h2 { font: 800 21px "Jakarta"; letter-spacing: -.02em; margin-right: auto; }
+  .chip { padding: 6px 12px; border-radius: 99px; font: 600 11.5px "Mono"; background: #fff; box-shadow: inset 0 0 0 1px #E2E8F0; }
+  .chip.azul { background: #2B44FF; color: #fff; box-shadow: none; }
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+  .kpis div { background: #fff; border-radius: 14px; padding: 14px 16px; box-shadow: inset 0 0 0 1px #E2E8F0; }
+  .kpis span { font-size: 11.5px; color: #64748B; } .kpis b { display: block; margin-top: 4px; font: 800 24px "Jakarta"; }
+  table { width: 100%; margin-top: 16px; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: inset 0 0 0 1px #E2E8F0; font-size: 12.5px; }
+  th { text-align: left; padding: 11px 14px; background: #F1F5F9; font-size: 11px; color: #64748B; font-weight: 700; }
+  td { padding: 10px 14px; border-top: 1px solid #EEF2F6; } td.n { font: 600 12.5px "Mono"; } td.r { color: #DC2626; }
+  td.prom { font: 800 13px "Mono"; color: #2B44FF; }
+</style></head>
+<body><div class="lienzo">
+  <div class="ventana" style="left:60px;top:48px;width:1080px;height:704px">
+    <div class="barra"><i></i><i></i><i></i><span class="url">app.notaslibrodeclases.cl</span></div>
+    <div class="app">
+      <aside><div class="marca"><i>N</i>Notas</div><p>Inicio</p><p>Cursos</p><p class="on">Libro de notas</p><p>Asistencia</p><p>Reportes</p><p>Ajustes</p></aside>
+      <main>
+        <div class="top"><h2>2° Medio A · Matemática</h2><span class="chip">colegio_a ▾</span><span class="chip azul">rol: docente</span></div>
+        <div class="kpis"><div><span>Promedio del curso</span><b>5,8</b></div><div><span>Asistencia</span><b>94 %</b></div><div><span>Evaluaciones</span><b>5 de 8</b></div></div>
+        <table><tr><th>Estudiante</th><th>N1</th><th>N2</th><th>N3</th><th>N4</th><th>N5</th><th>Promedio</th></tr>
+          <tr><td>Estudiante 01</td><td class="n">6,5</td><td class="n">6,0</td><td class="n">5,8</td><td class="n">6,2</td><td class="n">6,8</td><td class="prom">6,3</td></tr>
+          <tr><td>Estudiante 02</td><td class="n">5,1</td><td class="n">4,8</td><td class="n">5,5</td><td class="n">5,9</td><td class="n">6,0</td><td class="prom">5,5</td></tr>
+          <tr><td>Estudiante 03</td><td class="n">6,9</td><td class="n">7,0</td><td class="n">6,7</td><td class="n">6,5</td><td class="n">6,8</td><td class="prom">6,8</td></tr>
+          <tr><td>Estudiante 04</td><td class="n r">3,8</td><td class="n">4,5</td><td class="n">4,9</td><td class="n">5,2</td><td class="n">5,6</td><td class="prom">4,8</td></tr>
+          <tr><td>Estudiante 05</td><td class="n">5,7</td><td class="n">6,1</td><td class="n">5,9</td><td class="n">6,4</td><td class="n">6,0</td><td class="prom">6,0</td></tr>
+          <tr><td>Estudiante 06</td><td class="n">6,2</td><td class="n">5,4</td><td class="n">6,0</td><td class="n">5,8</td><td class="n">6,3</td><td class="prom">5,9</td></tr></table>
+      </main>
+    </div>
+  </div>
+</div></body></html>

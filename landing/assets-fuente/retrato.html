@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .lienzo { width: 800px; height: 1000px; background: linear-gradient(160deg, #FDE8F0 0%, #E9ECFF 55%, #C7CEFF 100%); }
+  .arco { position: absolute; left: 90px; right: 90px; top: 150px; bottom: -40px; border-radius: 320px 320px 0 0; background: #2B44FF; }
+  .cabeza { position: absolute; left: 50%; top: 250px; width: 250px; height: 290px; margin-left: -125px; border-radius: 48% 48% 46% 46%; background: #F4D3BF; }
+  .pelo { position: absolute; left: 50%; top: 222px; width: 276px; height: 150px; margin-left: -138px; border-radius: 140px 140px 60px 60px; background: #2A2320; }
+  .lentes { position: absolute; left: 50%; top: 385px; width: 200px; margin-left: -100px; display: flex; justify-content: space-between; }
+  .lentes span { width: 82px; height: 58px; border: 7px solid #1F1B18; border-radius: 22px; }
+  .puente { position: absolute; left: 50%; top: 405px; width: 36px; height: 7px; margin-left: -18px; background: #1F1B18; }
+  .sonrisa { position: absolute; left: 50%; top: 482px; width: 70px; height: 24px; margin-left: -35px; border-bottom: 7px solid #B5563F; border-radius: 0 0 40px 40px; }
+  .cuello { position: absolute; left: 50%; top: 520px; width: 110px; height: 90px; margin-left: -55px; background: #E9BFA8; }
+  .cuerpo { position: absolute; left: 50%; top: 590px; width: 560px; height: 520px; margin-left: -280px; border-radius: 260px 260px 0 0; background: #1F1B18; }
+  .cuello-camisa { position: absolute; left: 50%; top: 590px; width: 150px; height: 90px; margin-left: -75px; background: #FDE8F0; clip-path: polygon(0 0, 100% 0, 50% 100%); }
+  .nota { position: absolute; left: 0; right: 0; bottom: 34px; text-align: center; font: 600 22px "Jakarta"; color: #fff; opacity: .9; }
+</style></head>
+<body><div class="lienzo">
+  <div class="arco"></div><div class="cuerpo"></div><div class="cuello"></div><div class="cuello-camisa"></div>
+  <div class="cabeza"></div><div class="pelo"></div>
+  <div class="lentes"><span></span><span></span></div><div class="puente"></div><div class="sonrisa"></div>
+  <p class="nota">Reemplazar por tu foto · retrato vertical 4:5</p>
+</div></body></html>

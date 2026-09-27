@@ -1,0 +1,23 @@
+# bascunan.digital · configuración para hostings Apache o LiteSpeed (Hostinger, cPanel, etc.).
+# En otros servidores este archivo se ignora sin problemas.
+
+# Forzar HTTPS
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Comprimir texto (HTML, CSS, JS, SVG)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript image/svg+xml application/xml
+</IfModule>
+
+# Caché: fuentes e imágenes por 1 año; el HTML siempre se revisa
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>

@@ -7,7 +7,9 @@
     "build:tokens": "node scripts/tokens.mjs",
     "build:css": "tailwindcss -i src/tailwind.css -o dist/styles.css --minify",
     "build:html": "node scripts/build-html.mjs",
-    "build": "npm run build:tokens && npm run build:css && npm run build:html"
+    "build": "npm run build:tokens && npm run build:css && npm run build:html",
+    "build:imagenes": "node scripts/imagenes.mjs",
+    "zip": "cd dist && rm -f ../entrega/bascunan-digital-sitio.zip && mkdir -p ../entrega && zip -qr ../entrega/bascunan-digital-sitio.zip . && echo entrega/bascunan-digital-sitio.zip"
   },
   "devDependencies": {
     "@tailwindcss/cli": "4.3.3",

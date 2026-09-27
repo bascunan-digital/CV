@@ -9,6 +9,13 @@ Estética: editorial SaaS por bloques de color (cobalto `#2B44FF`, rosa `#FDE8F0
 ## Cómo verla
 Abre `index.html` en el navegador (doble clic). No necesita servidor ni instalación.
 
+## Simulaciones y publicación
+- **Modo simulación** (`CONFIG.modoSimulacion`): en el prototipo (`index.html`) está en `true` y muestra una foto, capturas y testimonios **de ejemplo**, todos marcados como tales. `npm run build` genera `dist/` con `false`: en la versión publicada solo aparecen los testimonios con `real: true`.
+- **Imágenes** en `img/`: `alonso.jpg`, `caso-*.jpg` y `og.jpg`. Hoy son referenciales, generadas con `npm run build:imagenes` a partir de `assets-fuente/` (requiere Playwright). Reemplázalas por tus fotos y capturas reales **con el mismo nombre**.
+- **Agenda:** `CONFIG.agenda` apunta a tu página de reservas de Google Calendar; el botón "Agendar llamada" la abre, con WhatsApp como alternativa.
+- **Fuentes autoalojadas** en `fonts/` (Plus Jakarta Sans y JetBrains Mono, licencia OFL): no depende de Google Fonts.
+- **Entrega para tu dominio:** `npm run build && npm run zip` genera `entrega/bascunan-digital-sitio.zip`, con `index.html` (CSS incluido), `img/`, `fonts/`, `robots.txt`, `sitemap.xml` y `.htaccess` (HTTPS, compresión y caché). Los pasos para publicarlo están en `../marketing/05-semana-1-dia-a-dia.md`.
+
 ## Cómo editar precios, plazos y textos
 Todo lo que cambia seguido está en el objeto `CONFIG`, al principio del `<script>` final:
 
@@ -51,15 +58,13 @@ Los colores y fuentes (tokens) se editan en un solo lugar: el bloque `<style typ
 
 | Rendimiento | Accesibilidad | Buenas prácticas | SEO |
 |:-:|:-:|:-:|:-:|
-| **91** | **100** | 96 | **100** |
+| **100** | **100** | **100** | **100** |
 
-LCP 2,6 s · TBT 0 ms · CLS 0 (escritorio: 100 en rendimiento). Medido con Lighthouse 13.5 en un servidor local, así que en tu hosting real puede variar unos puntos según el servidor y la red.
+FCP 1,2 s · LCP 1,5 s (celular, servidor local con compresión Brotli como la de un hosting real; sin compresión el rendimiento baja a ~91). Escritorio: 100 en todo. Medido con Lighthouse 13.5.
 
-- El 96 de buenas prácticas viene de un error de consola del entorno de prueba (no pudo descargar Google Fonts); en un servidor normal debería desaparecer.
 - Para llegar al 100 en accesibilidad subí el contraste de varios textos: el verde de WhatsApp pasó de `#1FAF5A` a `#15803D` (el blanco sobre el verde anterior quedaba en 2,9:1), el rosa sobre cobalto ahora es opaco y los grises chicos tienen al menos 65 % de opacidad.
 
 ## Pendiente antes de publicar
-1. Si tienes Calendly o Google Calendar, cambiar el modal "Agendar llamada" por tu enlace de agenda.
-2. Agregar imagen Open Graph (`og:image`) para que el enlace se vea bien al compartirlo.
-3. Agregar analítica (por ejemplo, eventos al hacer clic en "Cotizar este Diseño por WhatsApp").
-4. Opcional: autoalojar las fuentes en vez de cargarlas desde Google Fonts.
+1. Reemplazar `img/alonso.jpg` y `img/caso-*.jpg` por tu foto y capturas reales.
+2. Cargar testimonios reales (`TESTIMONIOS`, con `real: true`).
+3. Agregar analítica (por ejemplo, eventos al hacer clic en «Enviar esta cotización por WhatsApp»).
