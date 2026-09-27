@@ -56,9 +56,9 @@
 | 0 | **Diagnóstico gratis en video** (3 min, en 24 h) | Gratis | Iniciar la conversación |
 | 1 | **Landing de 1 página** con WhatsApp y Google Maps | Desde $190.000 | Primera venta, rápida |
 | 2 | **Sitio con reservas online** (tu especialidad) | $390.000 + $190.000 | Ticket principal |
-| 3 | **Plan de mantención mensual:** hosting gestionado, respaldos, cambios menores y reporte de visitas | **$25.000 a $35.000 al mes** *(sugerencia)* | **Ingreso recurrente** |
+| 3 | **Plan de mantención mensual** (Esencial, Crecimiento o Pro) | **$25.000, $45.000 o $75.000 al mes** | **Ingreso recurrente** |
 
-> El escalón 3 es clave. Diez clientes en mantención son $250 a $350 mil fijos al mes, y cambian tu negocio. Ofrécelo siempre al entregar.
+> El escalón 3 es clave. Diez clientes en el plan Crecimiento son $450.000 fijos al mes, y eso cambia tu negocio. Ofrécelo siempre al entregar.
 
 ### Diferenciadores (dilo siempre en este orden)
 1. **Hablas directo con quien diseña y programa.** No hay ejecutivo de cuentas.

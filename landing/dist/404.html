@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página no encontrada | bascunan.digital</title>
+  <meta name="description" content="La página que buscas no existe. Vuelve al inicio de bascunan.digital." />
+  <meta name="robots" content="noindex" />
+  <base href="/" />
+  <meta name="theme-color" content="#2B44FF" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preload" href="fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; src: url("fonts/plus-jakarta-sans.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+    .tight { letter-spacing: -0.03em; } .tighter { letter-spacing: -0.05em; }
+    :focus-visible { outline: 2px solid #2B44FF; outline-offset: 3px; }
+    .legal h2 { margin-top: 2.5rem; font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; }
+    .legal p, .legal li { margin-top: .75rem; line-height: 1.7; color: rgba(31,27,24,.8); }
+    .legal ul { list-style: disc; padding-left: 1.25rem; }
+    .legal a { color: #2B44FF; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  </style>
+</head>
+<body class="min-h-screen bg-sand font-sans text-ink antialiased">
+  <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-cobalt">Saltar al contenido</a>
+  <header class="bg-cobalt text-white">
+    <div class="mx-auto flex h-[72px] max-w-4xl items-center justify-between gap-3 px-5 sm:px-8">
+      <a href="index.html" class="flex items-center gap-2 text-lg font-bold tight">
+        <svg class="size-7" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#FDE8F0"/><path d="M9 7v14h5.5a3.5 3.5 0 0 0 0-7H9" fill="none" stroke="#2B44FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>bascunan<span class="text-blush">.digital</span></span>
+      </a>
+      <a href="index.html" class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-cobalt hover:bg-blush">Volver al inicio</a>
+    </div>
+  </header>
+  <main id="contenido" class="mx-auto grid max-w-3xl place-items-center px-5 py-24 text-center sm:px-8">
+    <p class="font-mono text-sm font-semibold text-cobalt">Error 404</p>
+    <h1 class="mt-4 text-5xl font-extrabold tighter text-balance sm:text-6xl">Esta página se perdió en el camino.</h1>
+    <p class="mt-5 max-w-lg text-lg text-ink/70">Puede que el enlace esté mal escrito o que la página ya no exista. Te dejo tres atajos:</p>
+    <div class="mt-10 flex w-full max-w-md flex-col gap-3">
+      <a href="index.html" class="rounded-full bg-cobalt px-6 py-4 font-semibold text-white hover:bg-cobalt-deep">Ir al inicio</a>
+      <a href="index.html#constructor" class="rounded-full bg-white px-6 py-4 font-semibold text-cobalt ring-1 ring-cobalt/25 hover:bg-blush">Cotizar mi sitio</a>
+      <a href="https://wa.me/56963660958?text=Hola%20Alonso%2C%20llegu%C3%A9%20a%20una%20p%C3%A1gina%20que%20no%20existe%20en%20tu%20sitio." target="_blank" rel="noopener" class="rounded-full bg-wa px-6 py-4 font-semibold text-white hover:bg-[#166534]">Escribirme por WhatsApp</a>
+    </div>
+  </main>
+  <footer class="border-t border-slate-200/80 px-5 py-8 text-center text-sm text-ink/65">
+    © 2026 bascunan.digital · <a class="hover:text-cobalt" href="privacidad.html">Privacidad</a> · <a class="hover:text-cobalt" href="terminos.html">Términos</a> · <a class="hover:text-cobalt" href="index.html">Inicio</a>
+  </footer>
+  <script src="sitio.js" defer></script>
+</body>
+</html>

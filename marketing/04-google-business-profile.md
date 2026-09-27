@@ -57,7 +57,7 @@ Google muestra primero las fichas completas y con actividad.
 | Tienda online | Desde $690.000 |
 | Reservas online (agenda + app) | Desde $190.000 |
 | Rediseño de sitio web | A cotizar |
-| Mantención mensual | Desde $25.000/mes *(cuando lo definas)* |
+| Mantención mensual | Desde $25.000/mes |
 
 **Enlace para reservar:** en "Enlaces de citas" o "Reservas", pega tu agenda: `https://calendar.app.google/zBJBHs5d5jZjiope6`
 

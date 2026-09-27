@@ -10,6 +10,10 @@ const css = `/* Archivo generado por scripts/tokens.mjs: no editar a mano.
    Los tokens se editan en index.html (bloque <style type="text/tailwindcss">). */
 @import "tailwindcss" source(none);
 @source "../index.html";
+@source "../portal.html";
+@source "../privacidad.html";
+@source "../terminos.html";
+@source "../404.html";
 ${bloque[1].replace(/^\n+|\s+$/g, '').replace(/^ {4}/gm, '')}
 `;
 writeFileSync(new URL('../src/tailwind.css', import.meta.url), css);

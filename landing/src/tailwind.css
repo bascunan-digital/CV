@@ -2,6 +2,10 @@
    Los tokens se editan en index.html (bloque <style type="text/tailwindcss">). */
 @import "tailwindcss" source(none);
 @source "../index.html";
+@source "../portal.html";
+@source "../privacidad.html";
+@source "../terminos.html";
+@source "../404.html";
 @theme {
   --color-cobalt: #2B44FF;
   --color-cobalt-deep: #1E33E6;

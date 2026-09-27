@@ -9,10 +9,12 @@
     "build:html": "node scripts/build-html.mjs",
     "build": "npm run build:tokens && npm run build:css && npm run build:html",
     "build:imagenes": "node scripts/imagenes.mjs",
-    "zip": "cd dist && rm -f ../entrega/bascunan-digital-sitio.zip && mkdir -p ../entrega && zip -qr ../entrega/bascunan-digital-sitio.zip . && echo entrega/bascunan-digital-sitio.zip"
+    "zip": "cd dist && rm -f ../entrega/bascunan-digital-sitio.zip && mkdir -p ../entrega && zip -qr ../entrega/bascunan-digital-sitio.zip . && echo entrega/bascunan-digital-sitio.zip",
+    "build:optimizar": "node scripts/optimizar.mjs"
   },
   "devDependencies": {
     "@tailwindcss/cli": "4.3.3",
+    "sharp": "^0.34.5",
     "tailwindcss": "4.3.3"
   }
 }

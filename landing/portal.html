@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portal de clientes | bascunan.digital</title>
+  <meta name="description" content="Portal de clientes de bascunan.digital: crea tu cuenta y sube el logo, las fotos y los textos de tu sitio web." />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://www.bascunan.digital/portal.html" />
+  <meta name="theme-color" content="#2B44FF" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preload" href="fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Tailwind CSS v4 vía CDN (prototipo: en producción se compila, ver README) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Tokens del sistema de diseño -->
+  <style type="text/tailwindcss">
+    @theme {
+      --color-cobalt: #2B44FF;
+      --color-cobalt-deep: #1E33E6;
+      --color-blush: #FDE8F0;
+      --color-sand: #FAF8F5;
+      --color-platinum: #ECEBE6;
+      --color-graphite: #0F172A;
+      --color-ink: #1F1B18;
+      --color-wa: #15803D;
+      --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+  </style>
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; src: url("fonts/plus-jakarta-sans.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+    @font-face { font-family: "JetBrains Mono"; src: url("fonts/jetbrains-mono.woff2") format("woff2"); font-weight: 100 800; font-display: swap; }
+    .tight { letter-spacing: -0.03em; } .tighter { letter-spacing: -0.05em; }
+    :focus-visible { outline: 2px solid #2B44FF; outline-offset: 3px; }
+    .campo { width: 100%; border-radius: 1rem; border: 1px solid #E2E8F0; background: #fff; padding: .8rem 1rem; }
+    .campo:focus { outline: none; border-color: #2B44FF; box-shadow: 0 0 0 4px rgba(43,68,255,.15); }
+    .campo[aria-invalid="true"] { border-color: #E11D48; }
+    .tab[aria-selected="true"] { background: #fff; color: #1F1B18; box-shadow: 0 1px 3px rgba(31,27,24,.15); }
+    .etapa[data-estado="hecha"] .punto { background: #15803D; color: #fff; border-color: #15803D; }
+    .etapa[data-estado="actual"] .punto { background: #2B44FF; color: #fff; border-color: #2B44FF; box-shadow: 0 0 0 6px rgba(43,68,255,.15); }
+    .zona[data-arrastrando="true"] { border-color: #2B44FF; background: #F3F5FF; }
+    .trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  </style>
+</head>
+<body class="min-h-screen bg-sand font-sans text-ink antialiased">
+  <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-cobalt">Saltar al contenido</a>
+
+  <header class="bg-cobalt text-white">
+    <div class="mx-auto flex h-[72px] max-w-6xl items-center justify-between gap-3 px-5 sm:px-8">
+      <a href="index.html" class="flex items-center gap-2 text-lg font-bold tight">
+        <svg class="size-7" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#FDE8F0"/><path d="M9 7v14h5.5a3.5 3.5 0 0 0 0-7H9" fill="none" stroke="#2B44FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>bascunan<span class="text-blush">.digital</span></span>
+      </a>
+      <div class="flex items-center gap-3 text-sm">
+        <span class="hidden rounded-full bg-white/15 px-3 py-1 font-semibold sm:inline">Portal de clientes</span>
+        <span id="usuario" class="hidden max-w-[160px] truncate text-blush max-sm:!hidden"></span>
+        <button id="btn-salir" type="button" class="hidden rounded-full bg-white px-4 py-2 font-semibold text-cobalt hover:bg-blush">Salir</button>
+      </div>
+    </div>
+  </header>
+
+  <div id="aviso-demo" class="hidden border-b border-amber-200 bg-[#FFF1CC] px-5 py-2.5 text-center text-sm text-[#7A4B00]" role="note">
+    <strong>Modo demostración:</strong> los datos se guardan solo en este navegador y los archivos no se suben.
+  </div>
+
+  <main id="contenido" class="mx-auto max-w-6xl px-4 py-10 sm:px-8 sm:py-14">
+
+    <!-- ===================== SIN SESIÓN ===================== -->
+    <section id="vista-acceso" class="grid items-start gap-8 lg:grid-cols-2" hidden>
+      <div class="pt-2">
+        <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">portal de clientes</span>
+        <h1 class="mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">Adelanta tu sitio web desde aquí.</h1>
+        <p class="mt-5 max-w-lg text-lg text-ink/70">Crea tu cuenta y sube tu logo, tus fotos y tus textos cuando puedas. Así partimos el diseño sin esperar correos ni mensajes perdidos.</p>
+        <ul class="mt-8 space-y-4">
+          <li class="flex gap-3"><span class="grid size-8 shrink-0 place-items-center rounded-full bg-cobalt font-mono text-xs text-white">1</span><span><strong class="block">Todo en un solo lugar</strong><span class="text-ink/65">Datos de tu negocio, textos y archivos, ordenados por sección.</span></span></li>
+          <li class="flex gap-3"><span class="grid size-8 shrink-0 place-items-center rounded-full bg-cobalt font-mono text-xs text-white">2</span><span><strong class="block">Guías para cada texto</strong><span class="text-ink/65">Te digo qué escribir en cada parte, con ejemplos. No necesitas saber de diseño.</span></span></li>
+          <li class="flex gap-3"><span class="grid size-8 shrink-0 place-items-center rounded-full bg-cobalt font-mono text-xs text-white">3</span><span><strong class="block">Ves en qué etapa va tu sitio</strong><span class="text-ink/65">Material, diseño, desarrollo, revisión y publicación.</span></span></li>
+        </ul>
+        <p class="mt-8 text-sm text-ink/65">¿Aún no cotizas? <a href="index.html#constructor" class="font-semibold text-cobalt underline underline-offset-4">Arma tu sitio en el cotizador</a>.</p>
+      </div>
+
+      <div class="rounded-[2rem] bg-white p-6 shadow-[0_30px_80px_-40px_rgba(43,68,255,.35)] ring-1 ring-slate-200/80 sm:p-8">
+        <div class="flex rounded-full bg-sand p-1" role="tablist" aria-label="Acceso">
+          <button type="button" role="tab" id="tab-ingresar" class="tab flex-1 rounded-full px-4 py-2.5 text-sm font-semibold text-ink/70" aria-selected="true" aria-controls="panel-ingresar">Ingresar</button>
+          <button type="button" role="tab" id="tab-crear" class="tab flex-1 rounded-full px-4 py-2.5 text-sm font-semibold text-ink/70" aria-selected="false" aria-controls="panel-crear">Crear cuenta</button>
+        </div>
+
+        <div id="panel-ingresar" role="tabpanel" aria-labelledby="tab-ingresar"><form id="form-ingresar" class="mt-6 space-y-4" novalidate>
+          <div><label for="in-correo" class="text-sm font-semibold">Correo</label><input id="in-correo" type="email" autocomplete="email" required class="campo mt-2" /></div>
+          <div><label for="in-clave" class="text-sm font-semibold">Contraseña</label><input id="in-clave" type="password" autocomplete="current-password" required minlength="8" class="campo mt-2" /></div>
+          <p class="error hidden text-sm font-semibold text-rose-600" role="alert"></p>
+          <button type="submit" class="w-full rounded-full bg-cobalt px-6 py-4 font-semibold text-white transition hover:bg-cobalt-deep">Ingresar</button>
+          <button type="button" id="btn-olvide" class="w-full text-sm font-semibold text-cobalt underline underline-offset-4">Olvidé mi contraseña</button>
+        </form></div>
+
+        <div id="panel-crear" role="tabpanel" aria-labelledby="tab-crear" hidden><form id="form-crear" class="mt-6 space-y-4" novalidate>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div><label for="cr-nombre" class="text-sm font-semibold">Tu nombre</label><input id="cr-nombre" type="text" autocomplete="name" required maxlength="80" class="campo mt-2" /></div>
+            <div><label for="cr-negocio" class="text-sm font-semibold">Tu negocio</label><input id="cr-negocio" type="text" autocomplete="organization" required maxlength="80" class="campo mt-2" /></div>
+          </div>
+          <div><label for="cr-whatsapp" class="text-sm font-semibold">WhatsApp</label><input id="cr-whatsapp" type="tel" autocomplete="tel" required placeholder="+56 9 1234 5678" maxlength="20" class="campo mt-2" /></div>
+          <div><label for="cr-correo" class="text-sm font-semibold">Correo</label><input id="cr-correo" type="email" autocomplete="email" required class="campo mt-2" /></div>
+          <div><label for="cr-clave" class="text-sm font-semibold">Contraseña <span class="font-normal text-ink/65">(mínimo 8 caracteres)</span></label><input id="cr-clave" type="password" autocomplete="new-password" required minlength="8" class="campo mt-2" /></div>
+          <!-- Trampa anti-spam: las personas no ven este campo; los bots lo llenan -->
+          <div class="trampa" aria-hidden="true"><label for="cr-web">No completar</label><input id="cr-web" type="text" tabindex="-1" autocomplete="off" /></div>
+          <label class="flex items-start gap-3 text-sm"><input id="cr-acepto" type="checkbox" required class="mt-0.5 size-5 shrink-0 accent-cobalt" /><span>Acepto los <a href="terminos.html" class="font-semibold text-cobalt underline underline-offset-2" target="_blank">términos y condiciones</a> y la <a href="privacidad.html" class="font-semibold text-cobalt underline underline-offset-2" target="_blank">política de privacidad</a>.</span></label>
+          <p class="error hidden text-sm font-semibold text-rose-600" role="alert"></p>
+          <button type="submit" class="w-full rounded-full bg-cobalt px-6 py-4 font-semibold text-white transition hover:bg-cobalt-deep">Crear mi cuenta</button>
+        </form></div>
+        <p id="acceso-ok" class="mt-4 hidden rounded-2xl bg-[#E7F7EE] p-4 text-sm text-[#14532D]" role="status"></p>
+      </div>
+    </section>
+
+    <!-- ===================== CON SESIÓN ===================== -->
+    <section id="vista-panel" hidden>
+      <div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <p class="text-sm font-semibold text-cobalt">Hola, <span id="saludo-nombre">bienvenido</span> 👋</p>
+          <h1 class="mt-2 text-4xl leading-[1.05] font-bold tighter sm:text-5xl">Tu proyecto</h1>
+        </div>
+        <a id="btn-avisar" href="#" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full bg-wa px-6 py-3.5 font-semibold text-white transition hover:bg-[#166534]">Avisarle a Alonso que subí material <span aria-hidden="true">→</span></a>
+      </div>
+
+      <!-- Etapas -->
+      <ol id="etapas" class="mt-8 grid gap-3 rounded-3xl bg-white p-5 ring-1 ring-slate-200/80 sm:grid-cols-5" aria-label="Etapas del proyecto"></ol>
+
+      <!-- Progreso del material -->
+      <div class="mt-4 rounded-3xl bg-white p-5 ring-1 ring-slate-200/80">
+        <div class="flex items-center justify-between gap-3"><p class="font-semibold">Material para tu sitio</p><p class="font-mono text-sm"><span id="prog-n">0</span> %</p></div>
+        <div class="mt-3 h-2.5 overflow-hidden rounded-full bg-sand" aria-hidden="true"><div id="prog-barra" class="h-full rounded-full bg-wa transition-all duration-500" style="width:0"></div></div>
+        <ul id="prog-lista" class="mt-4 flex flex-wrap gap-2 text-sm"></ul>
+      </div>
+
+      <div class="mt-4 grid gap-4 lg:grid-cols-2">
+        <!-- Datos del negocio -->
+        <form id="form-negocio" class="rounded-3xl bg-white p-6 ring-1 ring-slate-200/80" novalidate>
+          <h2 class="text-xl font-bold tight">1 · Datos de tu negocio</h2>
+          <div class="mt-5 grid gap-4 sm:grid-cols-2">
+            <div><label for="p-negocio" class="text-sm font-semibold">Nombre del negocio</label><input id="p-negocio" name="negocio" type="text" maxlength="80" class="campo mt-2" /></div>
+            <div><label for="p-rubro" class="text-sm font-semibold">Rubro</label><input id="p-rubro" name="rubro" type="text" maxlength="80" placeholder="Ej: centro de estética" class="campo mt-2" /></div>
+            <div><label for="p-comuna" class="text-sm font-semibold">Comuna</label><input id="p-comuna" name="comuna" type="text" maxlength="60" class="campo mt-2" /></div>
+            <div><label for="p-whatsapp" class="text-sm font-semibold">WhatsApp</label><input id="p-whatsapp" name="whatsapp" type="tel" maxlength="20" class="campo mt-2" /></div>
+            <div><label for="p-instagram" class="text-sm font-semibold">Instagram</label><input id="p-instagram" name="instagram" type="text" maxlength="60" placeholder="@tunegocio" class="campo mt-2" /></div>
+            <div><label for="p-dominio" class="text-sm font-semibold">Dominio o sitio actual</label><input id="p-dominio" name="dominio" type="text" maxlength="120" placeholder="tunegocio.cl (si tienes)" class="campo mt-2" /></div>
+            <div class="sm:col-span-2"><label for="p-tipo" class="text-sm font-semibold">Tipo de sitio</label>
+              <select id="p-tipo" name="tipo_sitio" class="campo mt-2"><option value="">Elige una opción</option><option>Landing page</option><option>Sitio corporativo</option><option>Portafolio profesional</option><option>Tienda online</option><option>Blog o portal de noticias</option><option>Plataforma web / SaaS</option><option>Aún no lo sé</option></select></div>
+            <div><label for="p-color1" class="text-sm font-semibold">Color principal</label><input id="p-color1" name="color_1" type="color" value="#2B44FF" class="mt-2 h-12 w-full cursor-pointer rounded-2xl border border-slate-200 bg-white p-1" /></div>
+            <div><label for="p-color2" class="text-sm font-semibold">Color secundario</label><input id="p-color2" name="color_2" type="color" value="#FDE8F0" class="mt-2 h-12 w-full cursor-pointer rounded-2xl border border-slate-200 bg-white p-1" /></div>
+            <div class="sm:col-span-2"><label for="p-referencias" class="text-sm font-semibold">Sitios que te gustan <span class="font-normal text-ink/65">(opcional)</span></label><textarea id="p-referencias" name="referencias" rows="3" maxlength="1000" placeholder="Pega 2 o 3 enlaces y cuéntame qué te gusta de cada uno." class="campo mt-2 resize-y"></textarea></div>
+          </div>
+          <div class="mt-5 flex items-center gap-3"><button type="submit" class="rounded-full bg-cobalt px-6 py-3 font-semibold text-white hover:bg-cobalt-deep">Guardar</button><span class="estado text-sm text-ink/65" role="status"></span></div>
+        </form>
+
+        <!-- Textos -->
+        <form id="form-textos" class="rounded-3xl bg-white p-6 ring-1 ring-slate-200/80" novalidate>
+          <h2 class="text-xl font-bold tight">2 · Textos de tu sitio</h2>
+          <p class="mt-1 text-sm text-ink/65">Escribe como hablas. Yo los ordeno y los ajusto para que vendan.</p>
+          <div class="mt-5 space-y-4">
+            <div><label for="t-nosotros" class="text-sm font-semibold">Quiénes son</label><textarea id="t-nosotros" name="texto_nosotros" rows="4" maxlength="3000" placeholder="¿Desde cuándo existe el negocio? ¿Quiénes trabajan ahí? ¿Qué los hace distintos de la competencia?" class="campo mt-2 resize-y"></textarea></div>
+            <div><label for="t-servicios" class="text-sm font-semibold">Servicios o productos, con precios</label><textarea id="t-servicios" name="texto_servicios" rows="4" maxlength="3000" placeholder="Uno por línea. Ej: Limpieza facial · 60 min · $25.000" class="campo mt-2 resize-y"></textarea></div>
+            <div><label for="t-faq" class="text-sm font-semibold">Preguntas que siempre te hacen</label><textarea id="t-faq" name="texto_faq" rows="3" maxlength="3000" placeholder="Ej: ¿Aceptan tarjeta? ¿Atienden los sábados? ¿Tienen estacionamiento?" class="campo mt-2 resize-y"></textarea></div>
+            <div><label for="t-contacto" class="text-sm font-semibold">Horario, dirección y cómo llegar</label><textarea id="t-contacto" name="texto_contacto" rows="2" maxlength="1000" class="campo mt-2 resize-y"></textarea></div>
+          </div>
+          <div class="mt-5 flex items-center gap-3"><button type="submit" class="rounded-full bg-cobalt px-6 py-3 font-semibold text-white hover:bg-cobalt-deep">Guardar</button><span class="estado text-sm text-ink/65" role="status"></span></div>
+        </form>
+      </div>
+
+      <!-- Archivos -->
+      <div class="mt-4 rounded-3xl bg-white p-6 ring-1 ring-slate-200/80">
+        <h2 class="text-xl font-bold tight">3 · Archivos</h2>
+        <p class="mt-1 text-sm text-ink/65">Imágenes (JPG, PNG, WebP, SVG), PDF o documentos de Word, hasta 10 MB cada uno.</p>
+        <div id="categorias" class="mt-5 grid gap-4 md:grid-cols-3"></div>
+      </div>
+      <p class="mt-6 text-center text-sm text-ink/65">Tus archivos son privados: solo tú y Alonso pueden verlos. <a href="privacidad.html" class="font-semibold text-cobalt underline underline-offset-4">Política de privacidad</a></p>
+    </section>
+
+    <p id="cargando" class="py-20 text-center text-ink/65">Cargando…</p>
+  </main>
+
+  <footer class="border-t border-slate-200/80 px-5 py-8 text-center text-sm text-ink/65">
+    © <span id="anio">2026</span> bascunan.digital · <a class="hover:text-cobalt" href="privacidad.html">Privacidad</a> · <a class="hover:text-cobalt" href="terminos.html">Términos</a> · <a class="hover:text-cobalt" href="index.html">Volver al inicio</a>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+    /* =========================================================
+       CONFIGURACIÓN: pega aquí los datos de tu proyecto Supabase
+       (Project Settings → API). La "anon key" es pública por diseño:
+       la seguridad la dan las políticas RLS de portal/supabase.sql.
+       NUNCA pongas aquí la "service_role key".
+       ========================================================= */
+    var SUPABASE_URL = '';
+    var SUPABASE_ANON_KEY = '';
+    var WHATSAPP = '56963660958';
+    var BUCKET = 'recursos';
+    var MAX_MB = 10;
+    var TIPOS_OK = ['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+
+    var ETAPAS = [['material', 'Material'], ['diseno', 'Diseño en Figma'], ['desarrollo', 'Desarrollo'], ['revision', 'Revisión'], ['publicado', 'Publicado']];
+    var CATEGORIAS = [['logo', 'Logo', 'Idealmente en PNG o SVG, con fondo transparente.'], ['fotos', 'Fotos', 'De tu local, tu equipo y tus productos o servicios.'], ['otros', 'Otros documentos', 'Menú, catálogo, tarifas o lo que quieras mostrar.']];
+    var CAMPOS = ['negocio', 'rubro', 'comuna', 'whatsapp', 'instagram', 'dominio', 'tipo_sitio', 'color_1', 'color_2', 'referencias', 'texto_nosotros', 'texto_servicios', 'texto_faq', 'texto_contacto'];
+
+    function $(s, c) { return (c || document).querySelector(s); }
+    function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
+    function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+    function kb(n) { return n > 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(n / 1024)) + ' KB'; }
+    function limpio(nombre) { return nombre.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-zA-Z0-9._-]+/g, '-').slice(-80); }
+    function medir(ev, p) { if (typeof window.medir === 'function') window.medir(ev, p); }
+    $('#anio').textContent = new Date().getFullYear();
+
+    /* ---------- Capa de datos: Supabase o demostración ---------- */
+    var demo = !(SUPABASE_URL && SUPABASE_ANON_KEY), sb = null, usuario = null, proyecto = {};
+    var CLAVE_DEMO = 'bd-portal-demo';
+    var Datos = {
+      iniciar: function () {
+        if (demo) { $('#aviso-demo').classList.remove('hidden'); return Promise.resolve(); }
+        return new Promise(function (ok, mal) {
+          var s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+          s.onload = function () { sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); ok(); };
+          s.onerror = mal; document.head.appendChild(s);
+        });
+      },
+      sesion: function () {
+        if (demo) { var d = leerDemo(); return Promise.resolve(d.sesion ? { id: 'demo', email: d.sesion } : null); }
+        return sb.auth.getSession().then(function (r) { return r.data.session ? r.data.session.user : null; });
+      },
+      crear: function (correo, clave, meta) {
+        if (demo) { var d = leerDemo(); d.sesion = correo; d.proyecto = Object.assign({ etapa: 'material' }, meta); guardarDemo(d); return Promise.resolve({ confirmar: false }); }
+        return sb.auth.signUp({ email: correo, password: clave, options: { data: meta, emailRedirectTo: location.origin + location.pathname } })
+          .then(function (r) { if (r.error) throw r.error; return { confirmar: !r.data.session }; });
+      },
+      ingresar: function (correo, clave) {
+        if (demo) { var d = leerDemo(); d.sesion = correo; d.proyecto = d.proyecto || { etapa: 'material' }; guardarDemo(d); return Promise.resolve(); }
+        return sb.auth.signInWithPassword({ email: correo, password: clave }).then(function (r) { if (r.error) throw r.error; });
+      },
+      olvide: function (correo) {
+        if (demo) return Promise.resolve();
+        return sb.auth.resetPasswordForEmail(correo, { redirectTo: location.origin + location.pathname }).then(function (r) { if (r.error) throw r.error; });
+      },
+      salir: function () { if (demo) { var d = leerDemo(); d.sesion = null; guardarDemo(d); return Promise.resolve(); } return sb.auth.signOut(); },
+      leerProyecto: function () {
+        if (demo) return Promise.resolve(leerDemo().proyecto || { etapa: 'material' });
+        return sb.from('proyectos').select('nombre,negocio,whatsapp,rubro,comuna,instagram,dominio,tipo_sitio,color_1,color_2,referencias,texto_nosotros,texto_servicios,texto_faq,texto_contacto,etapa').eq('user_id', usuario.id).maybeSingle().then(function (r) { if (r.error) throw r.error; return r.data || { etapa: 'material' }; });
+      },
+      guardarProyecto: function (cambios) {
+        if (demo) { var d = leerDemo(); d.proyecto = Object.assign(d.proyecto || {}, cambios); guardarDemo(d); return Promise.resolve(); }
+        return sb.from('proyectos').update(cambios).eq('user_id', usuario.id).then(function (r) { if (r.error) throw r.error; });
+      },
+      listar: function (cat) {
+        if (demo) return Promise.resolve((leerDemo().archivos || {})[cat] || []);
+        return sb.storage.from(BUCKET).list(usuario.id + '/' + cat, { sortBy: { column: 'created_at', order: 'desc' } })
+          .then(function (r) { if (r.error) throw r.error; return r.data.filter(function (f) { return f.id; }).map(function (f) { return { nombre: f.name, tam: (f.metadata || {}).size || 0, ruta: usuario.id + '/' + cat + '/' + f.name }; }); });
+      },
+      subir: function (cat, archivo) {
+        var nombre = Date.now() + '-' + limpio(archivo.name);
+        if (demo) { var d = leerDemo(); d.archivos = d.archivos || {}; (d.archivos[cat] = d.archivos[cat] || []).unshift({ nombre: nombre, tam: archivo.size, ruta: cat + '/' + nombre }); guardarDemo(d); return Promise.resolve(); }
+        return sb.storage.from(BUCKET).upload(usuario.id + '/' + cat + '/' + nombre, archivo, { contentType: archivo.type }).then(function (r) { if (r.error) throw r.error; });
+      },
+      borrar: function (cat, ruta) {
+        if (demo) { var d = leerDemo(); d.archivos[cat] = (d.archivos[cat] || []).filter(function (f) { return f.ruta !== ruta; }); guardarDemo(d); return Promise.resolve(); }
+        return sb.storage.from(BUCKET).remove([ruta]).then(function (r) { if (r.error) throw r.error; });
+      },
+      verUrl: function (ruta) {
+        if (demo) return Promise.resolve(null);
+        return sb.storage.from(BUCKET).createSignedUrl(ruta, 300).then(function (r) { return r.data ? r.data.signedUrl : null; });
+      }
+    };
+    function leerDemo() { try { return JSON.parse(localStorage.getItem(CLAVE_DEMO)) || {}; } catch (e) { return {}; } }
+    function guardarDemo(d) { try { localStorage.setItem(CLAVE_DEMO, JSON.stringify(d)); } catch (e) {} }
+
+    function traducir(err) {
+      var m = (err && err.message) || '';
+      if (/Invalid login/i.test(m)) return 'El correo o la contraseña no coinciden.';
+      if (/already registered|already been registered/i.test(m)) return 'Ya existe una cuenta con ese correo. Prueba ingresar.';
+      if (/Email not confirmed/i.test(m)) return 'Confirma tu correo: te enviamos un enlace al registrarte.';
+      if (/rate limit|too many/i.test(m)) return 'Demasiados intentos. Espera un momento y vuelve a probar.';
+      return 'No pudimos completar la acción. Inténtalo de nuevo o escríbeme por WhatsApp.';
+    }
+
+    /* ---------- Vistas ---------- */
+    function mostrar(vista) {
+      $('#cargando').hidden = true;
+      $('#vista-acceso').hidden = vista !== 'acceso';
+      $('#vista-panel').hidden = vista !== 'panel';
+      $('#btn-salir').classList.toggle('hidden', vista !== 'panel');
+      $('#usuario').classList.toggle('hidden', vista !== 'panel');
+    }
+
+    // Pestañas ingresar / crear cuenta
+    $$('.tab').forEach(function (t) {
+      t.addEventListener('click', function () {
+        $$('.tab').forEach(function (x) { x.setAttribute('aria-selected', String(x === t)); });
+        $('#panel-ingresar').hidden = t.id !== 'tab-ingresar';
+        $('#panel-crear').hidden = t.id !== 'tab-crear';
+      });
+    });
+    if (location.hash === '#crear') $('#tab-crear').click();
+
+    // Validación accesible
+    function validar(form) {
+      var primero = null;
+      $$('input[required], select[required], textarea[required]', form).forEach(function (el) {
+        var ok = el.type === 'checkbox' ? el.checked : el.checkValidity() && el.value.trim() !== '';
+        if (el.type === 'tel' && ok) ok = /^[+\d][\d\s-]{7,}$/.test(el.value.trim());
+        el.setAttribute('aria-invalid', String(!ok));
+        if (!ok && !primero) primero = el;
+      });
+      var err = $('.error', form);
+      if (primero) { err.textContent = primero.type === 'checkbox' ? 'Debes aceptar los términos y la política de privacidad.' : primero.type === 'password' ? 'La contraseña debe tener al menos 8 caracteres.' : primero.type === 'email' ? 'Revisa tu correo: debería verse como nombre@correo.cl' : 'Completa los campos marcados.'; err.classList.remove('hidden'); primero.focus(); return false; }
+      err.classList.add('hidden'); return true;
+    }
+    var abiertoEn = Date.now();
+
+    $('#form-ingresar').addEventListener('submit', function (e) {
+      e.preventDefault(); if (!validar(this)) return;
+      var err = $('.error', this);
+      Datos.ingresar($('#in-correo').value.trim(), $('#in-clave').value).then(entrar).catch(function (x) { err.textContent = traducir(x); err.classList.remove('hidden'); });
+    });
+    $('#form-crear').addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Anti-spam: campo trampa lleno o formulario enviado en menos de 3 segundos
+      if ($('#cr-web').value || Date.now() - abiertoEn < 3000) return;
+      if (!validar(this)) return;
+      var err = $('.error', this), meta = { nombre: $('#cr-nombre').value.trim(), negocio: $('#cr-negocio').value.trim(), whatsapp: $('#cr-whatsapp').value.trim() };
+      Datos.crear($('#cr-correo').value.trim(), $('#cr-clave').value, meta).then(function (r) {
+        medir('sign_up', { method: 'portal' });
+        if (r.confirmar) { var ok = $('#acceso-ok'); ok.textContent = '¡Listo! Te envié un correo para confirmar tu cuenta. Ábrelo y vuelve a ingresar.'; ok.classList.remove('hidden'); $('#form-crear').reset(); }
+        else entrar();
+      }).catch(function (x) { err.textContent = traducir(x); err.classList.remove('hidden'); });
+    });
+    $('#btn-olvide').addEventListener('click', function () {
+      var c = $('#in-correo'), err = $('.error', $('#form-ingresar'));
+      if (!c.checkValidity() || !c.value.trim()) { c.setAttribute('aria-invalid', 'true'); err.textContent = 'Escribe tu correo arriba y vuelve a tocar "Olvidé mi contraseña".'; err.classList.remove('hidden'); c.focus(); return; }
+      Datos.olvide(c.value.trim()).then(function () { var ok = $('#acceso-ok'); ok.textContent = 'Si el correo existe, te llegará un enlace para crear una nueva contraseña.'; ok.classList.remove('hidden'); err.classList.add('hidden'); });
+    });
+    $('#btn-salir').addEventListener('click', function () { Datos.salir().then(function () { usuario = null; mostrar('acceso'); }); });
+
+    /* ---------- Panel ---------- */
+    function entrar() {
+      return Datos.sesion().then(function (u) {
+        if (!u) { mostrar('acceso'); return; }
+        usuario = u; $('#usuario').textContent = u.email;
+        return Datos.leerProyecto().then(function (p) { proyecto = p; pintarPanel(); mostrar('panel'); });
+      }).catch(function () { mostrar('acceso'); });
+    }
+    function pintarPanel() {
+      $('#saludo-nombre').textContent = proyecto.nombre || proyecto.negocio || 'bienvenido';
+      CAMPOS.forEach(function (c) { var el = document.querySelector('[name="' + c + '"]'); if (el && proyecto[c] != null && proyecto[c] !== '') el.value = proyecto[c]; });
+      var idx = Math.max(0, ETAPAS.map(function (x) { return x[0]; }).indexOf(proyecto.etapa || 'material'));
+      $('#etapas').innerHTML = ETAPAS.map(function (e, i) {
+        var estado = i < idx ? 'hecha' : i === idx ? 'actual' : 'pendiente';
+        return '<li class="etapa flex items-center gap-3 sm:flex-col sm:text-center" data-estado="' + estado + '"' + (estado === 'actual' ? ' aria-current="step"' : '') + '><span class="punto grid size-9 shrink-0 place-items-center rounded-full border-2 border-slate-200 font-mono text-sm font-semibold text-ink/60">' + (estado === 'hecha' ? '✓' : i + 1) + '</span><span class="text-sm font-semibold ' + (estado === 'pendiente' ? 'text-ink/55' : '') + '">' + e[1] + '</span></li>';
+      }).join('');
+      $('#categorias').innerHTML = CATEGORIAS.map(function (c) {
+        return '<div class="zona rounded-2xl border-2 border-dashed border-slate-200 p-4 transition" data-cat="' + c[0] + '">' +
+          '<p class="font-semibold">' + c[1] + '</p><p class="mt-0.5 text-sm text-ink/65">' + c[2] + '</p>' +
+          '<label class="mt-3 flex cursor-pointer items-center justify-center gap-2 rounded-full bg-sand px-4 py-3 text-sm font-semibold text-cobalt transition hover:bg-blush"><input type="file" multiple class="sr-only" data-subir="' + c[0] + '" accept="' + TIPOS_OK.join(',') + '" />+ Subir archivos</label>' +
+          '<p class="mt-2 text-xs text-ink/55">o arrástralos aquí</p><p class="msg mt-2 text-sm font-semibold" role="status"></p><ul class="lista mt-3 space-y-2 text-sm"></ul></div>';
+      }).join('');
+      CATEGORIAS.forEach(function (c) { refrescarLista(c[0]); });
+      $('#btn-avisar').href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent('Hola Alonso 👋 Soy ' + (proyecto.nombre || '') + (proyecto.negocio ? ' de ' + proyecto.negocio : '') + '. Subí material para mi sitio en el portal de clientes.');
+      progreso();
+    }
+    var archivosPorCat = {};
+    function refrescarLista(cat) {
+      return Datos.listar(cat).then(function (lista) {
+        archivosPorCat[cat] = lista;
+        var ul = $('.zona[data-cat="' + cat + '"] .lista');
+        ul.innerHTML = lista.length ? lista.map(function (f) {
+          var visible = f.nombre.replace(/^\d+-/, '');
+          return '<li class="flex items-center justify-between gap-2 rounded-xl bg-sand px-3 py-2"><button type="button" class="min-w-0 truncate text-left hover:text-cobalt" data-ver="' + esc(f.ruta) + '" title="' + esc(visible) + '">' + esc(visible) + '</button><span class="shrink-0 font-mono text-xs text-ink/55">' + kb(f.tam) + '</span><button type="button" class="shrink-0 rounded-full px-2 py-1 text-xs font-semibold text-rose-600 hover:bg-rose-50" data-borrar="' + esc(f.ruta) + '" data-cat="' + cat + '" aria-label="Eliminar ' + esc(visible) + '">Eliminar</button></li>';
+        }).join('') : '<li class="text-ink/55">Aún no hay archivos.</li>';
+        progreso();
+      }).catch(function () {});
+    }
+    function subirArchivos(cat, archivos) {
+      var zona = $('.zona[data-cat="' + cat + '"]'), msg = $('.msg', zona), lista = Array.prototype.slice.call(archivos);
+      var malos = lista.filter(function (f) { return TIPOS_OK.indexOf(f.type) < 0 || f.size > MAX_MB * 1048576; });
+      var buenos = lista.filter(function (f) { return malos.indexOf(f) < 0; });
+      msg.className = 'msg mt-2 text-sm font-semibold text-cobalt'; msg.textContent = buenos.length ? 'Subiendo ' + buenos.length + (buenos.length === 1 ? ' archivo…' : ' archivos…') : '';
+      Promise.all(buenos.map(function (f) { return Datos.subir(cat, f); })).then(function () {
+        msg.className = 'msg mt-2 text-sm font-semibold ' + (malos.length ? 'text-rose-600' : 'text-wa');
+        msg.textContent = (buenos.length ? '✓ ' + buenos.length + ' subido' + (buenos.length === 1 ? '' : 's') + '. ' : '') + (malos.length ? malos.length + ' no se subió: revisa el tipo o que pese menos de ' + MAX_MB + ' MB.' : '');
+        refrescarLista(cat);
+      }).catch(function (x) { msg.className = 'msg mt-2 text-sm font-semibold text-rose-600'; msg.textContent = traducir(x); });
+    }
+    document.addEventListener('change', function (e) { var inp = e.target.closest('[data-subir]'); if (inp && inp.files.length) { subirArchivos(inp.dataset.subir, inp.files); inp.value = ''; } });
+    ['dragenter', 'dragover'].forEach(function (ev) { document.addEventListener(ev, function (e) { var z = e.target.closest && e.target.closest('.zona'); if (z) { e.preventDefault(); z.dataset.arrastrando = 'true'; } }); });
+    ['dragleave', 'drop'].forEach(function (ev) { document.addEventListener(ev, function (e) { var z = e.target.closest && e.target.closest('.zona'); if (!z) return; e.preventDefault(); z.dataset.arrastrando = 'false'; if (ev === 'drop' && e.dataTransfer.files.length) subirArchivos(z.dataset.cat, e.dataTransfer.files); }); });
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-borrar]');
+      if (b) { if (!confirm('¿Eliminar este archivo?')) return; Datos.borrar(b.dataset.cat, b.dataset.borrar).then(function () { refrescarLista(b.dataset.cat); }); return; }
+      var v = e.target.closest('[data-ver]');
+      if (v) Datos.verUrl(v.dataset.ver).then(function (url) { if (url) window.open(url, '_blank', 'noopener'); });
+    });
+
+    function guardarForm(form) {
+      var cambios = {};
+      $$('[name]', form).forEach(function (el) { cambios[el.name] = el.value.trim(); });
+      var estado = $('.estado', form); estado.textContent = 'Guardando…';
+      Datos.guardarProyecto(cambios).then(function () { Object.assign(proyecto, cambios); estado.textContent = '✓ Guardado'; progreso(); setTimeout(function () { estado.textContent = ''; }, 2500); })
+        .catch(function (x) { estado.textContent = traducir(x); });
+    }
+    ['#form-negocio', '#form-textos'].forEach(function (s) { $(s).addEventListener('submit', function (e) { e.preventDefault(); guardarForm(this); }); });
+
+    function progreso() {
+      var items = [
+        ['Datos del negocio', !!(proyecto.negocio && proyecto.rubro && proyecto.whatsapp)],
+        ['Tipo de sitio', !!proyecto.tipo_sitio],
+        ['Quiénes son', (proyecto.texto_nosotros || '').length > 40],
+        ['Servicios y precios', (proyecto.texto_servicios || '').length > 20],
+        ['Logo', (archivosPorCat.logo || []).length > 0],
+        ['Fotos', (archivosPorCat.fotos || []).length >= 3]
+      ];
+      var ok = items.filter(function (x) { return x[1]; }).length, pct = Math.round(100 * ok / items.length);
+      $('#prog-n').textContent = pct; $('#prog-barra').style.width = pct + '%';
+      $('#prog-lista').innerHTML = items.map(function (x) { return '<li class="rounded-full px-3 py-1.5 ' + (x[1] ? 'bg-[#E7F7EE] text-[#14532D]' : 'bg-sand text-ink/70') + '">' + (x[1] ? '✓ ' : '○ ') + x[0] + '</li>'; }).join('');
+    }
+
+    Datos.iniciar().then(function () {
+      if (!demo) sb.auth.onAuthStateChange(function (ev) { if (ev === 'SIGNED_IN' && !usuario) entrar(); });
+      return entrar();
+    }).catch(function () { $('#cargando').textContent = 'No se pudo cargar el portal. Revisa tu conexión y recarga la página.'; });
+  })();
+  </script>
+  <script src="sitio.js" defer></script>
+</body>
+</html>

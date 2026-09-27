@@ -8,16 +8,31 @@
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 
-# Comprimir texto (HTML, CSS, JS, SVG)
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript image/svg+xml application/xml
+# Página de error propia
+ErrorDocument 404 /404.html
+
+# Cabeceras de seguridad
+<IfModule mod_headers.c>
+  # El navegador usará siempre HTTPS durante 1 año (activar solo cuando el SSL ya funcione)
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
 
-# Caché: fuentes e imágenes por 1 año; el HTML siempre se revisa
+# Comprimir texto (HTML, CSS, JS, SVG)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript image/svg+xml application/xml application/manifest+json
+</IfModule>
+
+# Caché: fuentes e imágenes por 1 año; HTML y JS siempre se revisan
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
   ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/javascript "access plus 0 seconds"
 </IfModule>

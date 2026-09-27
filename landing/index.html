@@ -3,13 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Diseño y Desarrollo Web a Medida | Alonso Bascuñán · bascunan.digital</title>
-  <meta name="description" content="No construyas solo un sitio web: construye un canal de ventas autoadministrable. Diseño UX/UI editorial + desarrollo a medida optimizado con IA. Cotiza tu sitio en línea y recibe precio y plazo al instante." />
+  <title>Diseño web a medida en Valparaíso | bascunan.digital</title>
+  <meta name="description" content="Sitios web que llenan tu agenda por WhatsApp. Diseño a medida, listos en días y editables por ti. Cotiza en 2 minutos o pide un diagnóstico gratis." />
+  <link rel="canonical" href="https://www.bascunan.digital/" />
   <meta name="theme-color" content="#2B44FF" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 28 28%27%3E%3Crect width=%2728%27 height=%2728%27 rx=%278%27 fill=%27%232B44FF%27/%3E%3Cpath d=%27M9 7v14h5.5a3.5 3.5 0 0 0 0-7H9%27 fill=%27none%27 stroke=%27%23FDE8F0%27 stroke-width=%272.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
   <meta property="og:title" content="bascunan.digital · Diseño y desarrollo web a medida" />
   <meta property="og:description" content="Cotiza tu sitio en 2 minutos o pide un diagnóstico gratis de tu sitio actual." />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="bascunan.digital" />
+  <meta property="og:locale" content="es_CL" />
   <meta property="og:url" content="https://www.bascunan.digital/" />
 
   <!-- Fuentes autoalojadas (licencia OFL, ver fonts/) -->
@@ -17,7 +23,11 @@
   <meta property="og:image" content="https://www.bascunan.digital/img/og.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="bascunan.digital: sitios web que llenan tu agenda por WhatsApp" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="bascunan.digital · Diseño y desarrollo web a medida" />
+  <meta name="twitter:description" content="Cotiza tu sitio en 2 minutos o pide un diagnóstico gratis de tu sitio actual." />
+  <meta name="twitter:image" content="https://www.bascunan.digital/img/og.jpg" />
 
   <!-- Tailwind CSS v4 vía CDN (prototipo: en producción se compila, ver README) -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -31,6 +41,9 @@
     "url": "https://www.bascunan.digital",
     "email": "hola@bascunan.digital",
     "telephone": "+56963660958",
+    "image": "https://www.bascunan.digital/img/og.jpg",
+    "logo": "https://www.bascunan.digital/icon-512.png",
+    "priceRange": "$$",
     "address": { "@type": "PostalAddress", "addressLocality": "Valparaíso", "addressRegion": "Valparaíso", "addressCountry": "CL" },
     "areaServed": ["CL", "US"],
     "founder": { "@type": "Person", "name": "Alonso Bascuñán Loyola", "jobTitle": "Diseñador UX/UI y Desarrollador Front-End" },
@@ -211,9 +224,11 @@
         <li><a class="nav-link rounded-lg px-3 py-2 transition hover:bg-white/10" href="#diagnostico">Diagnóstico gratis</a></li>
         <li><a class="nav-link rounded-lg px-3 py-2 transition hover:bg-white/10" href="#proceso">Cómo trabajo</a></li>
         <li><a class="nav-link rounded-lg px-3 py-2 transition hover:bg-white/10" href="#trabajos">Trabajos</a></li>
+        <li><a class="nav-link rounded-lg px-3 py-2 transition hover:bg-white/10" href="#mantencion">Mantención</a></li>
         <li><a class="nav-link rounded-lg px-3 py-2 transition hover:bg-white/10" href="#faq">Preguntas</a></li>
       </ul>
       <div class="flex items-center gap-2">
+        <a href="portal.html" class="hidden items-center gap-1.5 rounded-full px-3 py-2.5 text-sm font-semibold text-blush transition hover:bg-white/10 md:inline-flex"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>Ingresar</a>
         <a href="#constructor" class="hidden items-center gap-1.5 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-cobalt transition hover:bg-blush sm:inline-flex">Cotizar Sitio <span aria-hidden="true">→</span></a>
         <button id="btn-menu" type="button" class="grid size-11 place-items-center rounded-full text-blush hover:bg-white/10 lg:hidden" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
           <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 9h14M5 15h14"/></svg>
@@ -227,7 +242,9 @@
         <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#diagnostico">Diagnóstico gratis</a></li>
         <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#proceso">Cómo trabajo</a></li>
         <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#trabajos">Trabajos</a></li>
+        <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#mantencion">Mantención</a></li>
         <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#faq">Preguntas</a></li>
+        <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="portal.html">Portal de clientes</a></li>
         <li class="pt-3"><a href="#constructor" class="block rounded-full bg-white px-5 py-3.5 text-center text-base text-cobalt">Cotizar Sitio →</a></li>
       </ul>
     </div>
@@ -261,7 +278,7 @@
             </a>
           </div>
           <a href="#trabajos" class="reveal mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-blush underline decoration-blush/50 underline-offset-4 hover:decoration-blush">O mira trabajos reales <span aria-hidden="true">→</span></a>
-          <p class="reveal mt-6 flex items-center gap-3 text-sm text-blush"><img src="img/alonso.jpg" width="40" height="40" alt="" class="size-10 shrink-0 rounded-full object-cover object-top ring-2 ring-blush" /><span>Hablas directo conmigo: <strong class="text-white">Alonso Bascuñán</strong></span></p>
+          <p class="reveal mt-6 flex items-center gap-3 text-sm text-blush"><picture><source srcset="img/alonso.webp" type="image/webp" /><img src="img/alonso.jpg" width="40" height="40" alt="" class="size-10 shrink-0 rounded-full object-cover object-top ring-2 ring-blush" /></picture><span>Hablas directo conmigo: <strong class="text-white">Alonso Bascuñán</strong></span></p>
           <dl class="reveal mt-10 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/15 pt-8 text-blush">
             <div><dt class="text-sm text-blush">Experiencia</dt><dd class="mt-0.5 text-2xl font-bold tight">15+ años</dd></div>
             <div><dt class="text-sm text-blush">Google PageSpeed<button type="button" class="ayuda" data-ayuda="pagespeed"></button></dt><dd class="mt-0.5 text-2xl font-bold tight">90+</dd></div>
@@ -418,6 +435,7 @@
               <div id="sintomas" class="mt-2 flex flex-wrap gap-2"></div>
               <p id="sintomas-msg" class="mt-2 min-h-[1.25rem] text-sm font-semibold text-cobalt" aria-live="polite"></p>
             </fieldset>
+            <div class="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true"><label for="diag-web">No completar</label><input id="diag-web" type="text" tabindex="-1" autocomplete="off" /></div>
             <p id="diag-error" class="hidden text-sm font-semibold text-rose-600" role="alert"></p>
             <button type="submit" class="flex w-full items-center justify-center gap-2 rounded-full bg-cobalt px-6 py-4 font-semibold text-white transition hover:bg-cobalt-deep">Pedir mi diagnóstico gratis <span aria-hidden="true">→</span></button>
             <p class="text-center text-xs text-ink/65">Se abre WhatsApp con tu solicitud lista: solo tienes que enviarla. Sin costo ni compromiso.</p>
@@ -451,7 +469,7 @@
         <!-- Pasos 2 y 3: aparecen al elegir un objetivo -->
         <div id="cotizador-detalle" class="mt-10 rounded-[2rem] border border-slate-200/80 bg-white p-2.5 shadow-[0_30px_80px_-40px_rgba(43,68,255,.35)] sm:p-4" hidden>
           <div class="grid grid-cols-1 gap-4 lg:grid-cols-12">
-            <div id="paso-2" class="min-w-0 space-y-4 lg:col-span-5">
+            <div id="cotizador-secciones" class="min-w-0 space-y-4 lg:col-span-5">
               <div class="rounded-3xl bg-sand p-4 sm:p-5">
                 <p class="flex items-center gap-2 text-base font-semibold"><span class="grid size-7 place-items-center rounded-full bg-cobalt font-mono text-xs text-white" aria-hidden="true">2</span><span>Ajusta tu <span id="tipo-nombre">sitio</span></span></p>
                 <p class="mt-4 text-sm font-semibold">Ya incluye:</p>
@@ -528,7 +546,7 @@
               </div>
             </div>
           </div>
-          <p class="mt-3 px-2 pb-1 text-center text-xs text-ink/65">Siempre incluido: diseño a medida, adaptado a celular, autoadministrable y PageSpeed 90+. Valores referenciales en CLP; dominio y hosting aparte.</p>
+          <p class="mt-3 px-2 pb-1 text-center text-xs text-ink/65">Siempre incluido: diseño a medida, adaptado a celular, autoadministrable y PageSpeed 90+. Valores referenciales en CLP; dominio y hosting aparte. <a href="#mantencion" class="font-semibold text-cobalt underline underline-offset-2">Mantención mensual desde $25.000</a>.</p>
         </div>
       </div>
     </section>
@@ -568,7 +586,7 @@
     <section id="sobre-mi" class="bg-sand pb-24" aria-labelledby="sobre-mi-titulo">
       <div class="mx-auto grid max-w-7xl gap-6 px-5 sm:px-8 lg:grid-cols-12 lg:items-stretch">
         <figure class="reveal relative overflow-hidden rounded-[2rem] bg-white lg:col-span-4">
-          <img src="img/alonso.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="Alonso Bascuñán, diseñador y desarrollador web" class="aspect-[4/5] h-full w-full object-cover" />
+          <picture><source srcset="img/alonso.webp" type="image/webp" /><img src="img/alonso.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="Alonso Bascuñán, diseñador y desarrollador web" class="aspect-[4/5] h-full w-full object-cover" /></picture>
           <span class="sim absolute top-4 left-4 rounded-full bg-ink/80 px-3 py-1 text-xs font-semibold text-white">Foto de ejemplo</span>
         </figure>
         <div class="reveal flex flex-col rounded-[2rem] bg-white p-7 sm:p-10 lg:col-span-8">
@@ -625,8 +643,49 @@
       </div>
     </section>
 
+    <!-- ===================== MANTENCIÓN (arena) ===================== -->
+    <section id="mantencion" class="bg-sand py-24" aria-labelledby="mantencion-titulo">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="reveal flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div class="max-w-2xl">
+            <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">mantención mensual</span>
+            <h2 id="mantencion-titulo" class="mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">Tu sitio al día, sin que tengas que preocuparte.</h2>
+          </div>
+          <p class="max-w-md text-lg text-ink/65">Después de publicar, sigo cuidando tu sitio: seguridad, respaldos, cambios y reportes. Pagas mes a mes y cancelas cuando quieras.</p>
+        </div>
+        <div id="planes" class="mt-12 grid gap-5 lg:grid-cols-3 lg:items-start"></div>
+        <p class="reveal mt-6 text-center text-sm text-ink/65">Sin contrato de permanencia · Cancelas avisando con 30 días · Las horas de cambios no se acumulan · Hosting y dominio aparte, a tu nombre.</p>
+      </div>
+    </section>
+
+    <!-- ===================== PORTAL DE CLIENTES (arena) ===================== -->
+    <section id="portal" class="bg-sand pb-24" aria-labelledby="portal-titulo">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="reveal grid items-center gap-8 overflow-hidden rounded-[2rem] bg-white p-6 ring-1 ring-slate-200/80 sm:p-10 lg:grid-cols-2">
+          <div>
+            <span class="inline-block rounded-full bg-cobalt px-4 py-1 text-xs font-semibold text-white">portal de clientes</span>
+            <h2 id="portal-titulo" class="mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">Tu proyecto, ordenado en un solo lugar.</h2>
+            <p class="mt-5 text-lg text-ink/70">Crea tu cuenta y adelanta tu sitio: sube tu logo, tus fotos y tus textos cuando puedas, sin correos ni mensajes perdidos.</p>
+            <ul class="mt-6 space-y-3">
+              <li class="flex gap-3"><span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-[#E7F7EE] text-wa" aria-hidden="true">✓</span><span><strong>Guías para cada texto</strong>, con ejemplos: no necesitas saber de diseño.</span></li>
+              <li class="flex gap-3"><span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-[#E7F7EE] text-wa" aria-hidden="true">✓</span><span><strong>Archivos privados</strong>: solo tú y yo podemos verlos.</span></li>
+              <li class="flex gap-3"><span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-[#E7F7EE] text-wa" aria-hidden="true">✓</span><span><strong>Ves en qué etapa va tu sitio</strong>: material, diseño, desarrollo, revisión y publicación.</span></li>
+            </ul>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="portal.html#crear" class="rounded-full bg-cobalt px-6 py-4 text-center font-semibold text-white transition hover:bg-cobalt-deep">Crear mi cuenta</a>
+              <a href="portal.html" class="rounded-full px-6 py-4 text-center font-semibold text-cobalt ring-1 ring-cobalt/25 transition hover:bg-blush">Ya tengo cuenta</a>
+            </div>
+          </div>
+          <picture class="block overflow-hidden rounded-3xl ring-1 ring-slate-200/80">
+            <source srcset="img/portal.webp" type="image/webp" />
+            <img src="img/portal.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Vista del portal de clientes: etapas del proyecto, progreso del material y subida de archivos" class="aspect-[4/3] w-full object-cover object-top" />
+          </picture>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== FAQ (arena) ===================== -->
-    <section id="faq" class="bg-sand py-24">
+    <section id="faq" class="bg-sand pb-24">
       <div class="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-12">
         <div class="reveal lg:col-span-4">
           <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">preguntas frecuentes</span>
@@ -693,6 +752,8 @@
                 <li><a class="hover:text-cobalt" href="#constructor">Cotizador</a></li>
                 <li><a class="hover:text-cobalt" href="#diagnostico">Diagnóstico gratis</a></li>
                 <li><a class="hover:text-cobalt" href="#proceso">Proceso</a></li>
+                <li><a class="hover:text-cobalt" href="#mantencion">Mantención</a></li>
+                <li><a class="hover:text-cobalt" href="portal.html">Portal de clientes</a></li>
               </ul>
             </div>
             <div>
@@ -717,7 +778,7 @@
         </div>
         <div class="mt-16 flex flex-col justify-between gap-3 border-t border-ink/10 pt-6 text-sm text-ink/65 sm:flex-row">
           <p>© <span id="anio">2026</span> Alonso Bascuñán · bascunan.digital</p>
-          <p>Diseñado y programado a mano, con IA como copiloto.</p>
+          <p><a class="hover:text-cobalt" href="privacidad.html">Privacidad</a> · <a class="hover:text-cobalt" href="terminos.html">Términos</a> · Diseñado y programado a mano, con IA como copiloto.</p>
         </div>
       </div>
     </div>
@@ -772,6 +833,7 @@
           <label for="ll-tema" class="text-sm font-semibold">¿Qué te gustaría lograr? <span class="font-normal text-ink/65">(opcional)</span></label>
           <textarea id="ll-tema" rows="3" class="mt-2 w-full resize-none rounded-2xl border border-slate-200 bg-white px-4 py-3 focus:border-cobalt focus:ring-4 focus:ring-cobalt/15 focus:outline-none" placeholder="Ej: que mis clientes reserven horas online"></textarea>
         </div>
+        <div class="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true"><label for="ll-web">No completar</label><input id="ll-web" type="text" tabindex="-1" autocomplete="off" /></div>
         <button type="submit" class="flex w-full items-center justify-center gap-2 rounded-full bg-wa px-6 py-4 font-semibold text-white transition hover:bg-[#166534]">Coordinar por WhatsApp <span aria-hidden="true">→</span></button>
         <p class="text-center text-xs text-ink/65">¿Prefieres correo? <a class="font-semibold text-cobalt underline underline-offset-2" href="mailto:hola@bascunan.digital?subject=Agendar%20llamada">hola@bascunan.digital</a></p>
       </form>
@@ -1024,6 +1086,13 @@
       { texto: 'Recuperamos el control de nuestras cuentas y publicamos noticias sin depender de nadie.', nombre: 'Nombre de cliente', rol: 'Institución · Valparaíso', real: false }
     ];
 
+    // Planes de mantención mensual (precios SUPUESTOS: ajustar)
+    var PLANES = [
+      { nombre: 'Esencial', precio: 25000, para: 'Para que tu sitio nunca se caiga ni quede desactualizado.', incluye: ['Monitoreo de caídas 24/7', 'Respaldos semanales', 'Actualizaciones de seguridad', 'Certificado SSL siempre al día', '1 hora de cambios al mes', 'Reporte mensual por WhatsApp'] },
+      { nombre: 'Crecimiento', precio: 45000, destacado: true, para: 'Para que tu sitio atraiga más clientes cada mes.', incluye: ['Todo lo del plan Esencial', '3 horas de cambios al mes', 'Informe de visitas y contactos (Analytics y Search Console)', 'Ficha de Google Maps al día, con 1 novedad al mes', 'Respuesta en menos de 24 horas'] },
+      { nombre: 'Pro', precio: 75000, para: 'Para negocios que venden online o cambian seguido.', incluye: ['Todo lo del plan Crecimiento', '6 horas de cambios al mes', '1 mejora de conversión al mes (nueva sección o prueba A/B)', 'SEO local mensual', 'Reunión de 30 minutos al mes', 'Respuesta el mismo día'] }
+    ];
+
     var SINTOMAS = ['Carga lento', 'Se ve mal en el celular', 'No aparece en Google', 'No puedo editarlo yo', 'No llegan consultas', 'Se ve anticuado', 'Quien lo hizo ya no responde'];
 
     // Logos: Simple Icons (CC0), en un solo color. Se muestran solo las más conocidas por clientes (TEC_VISIBLES).
@@ -1052,6 +1121,7 @@
     function wa(t) { return 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(t); }
     function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
     function svg(d, extra) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ' + (extra || '') + '>' + d + '</svg>'; }
+    function medir(ev, datos) { if (typeof window.medir === 'function') window.medir(ev, datos); }
     function conClase(icono, clase) { return icono.replace('<svg', '<svg class="' + clase + '"'); }
 
     var ICON = {
@@ -1522,7 +1592,7 @@
       var on = typeof forzar === 'boolean' ? forzar : !estado.extras.has(id);
       if (on === estado.extras.has(id)) return;
       if (on) { estado.extras.add(id); agregar(id); } else { estado.extras.delete(id); quitar(id); }
-      var b = $('#paso-2 [data-id="' + id + '"]'); if (b) b.setAttribute('aria-pressed', String(on));
+      var b = $('#cotizador-secciones [data-id="' + id + '"]'); if (b) b.setAttribute('aria-pressed', String(on));
       if (on && b && b.closest('#mas-opciones')) $('#mas-opciones').open = true;
     }
     function elegirTipo(id) {
@@ -1537,7 +1607,7 @@
     }
 
     $('#tipos').addEventListener('click', function (e) { var b = e.target.closest('.tipo'); if (b) elegirTipo(b.dataset.tipo); });
-    $('#paso-2').addEventListener('click', function (e) { var b = e.target.closest('.modulo'); if (!b) return; alternar(b.dataset.id); actualizar(); });
+    $('#cotizador-secciones').addEventListener('click', function (e) { var b = e.target.closest('.modulo'); if (!b) return; alternar(b.dataset.id); actualizar(); });
     $('#check-lista').addEventListener('click', function (e) { var b = e.target.closest('[data-agregar]'); if (!b) return; alternar(b.dataset.agregar, true); actualizar(); });
 
     /* ---------- Paso 3: hazlo tuyo ---------- */
@@ -1613,6 +1683,29 @@
       });
     })();
 
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a, button'); if (!a) return;
+      if (a.id === 'cta-whatsapp') medir('generate_lead', { metodo: 'cotizador', tipo_sitio: estado.tipo || '', valor: actuales.precio });
+      else if (a.dataset.plan) medir('generate_lead', { metodo: 'mantencion', plan: a.dataset.plan });
+      else if (a.id === 'agenda-link') medir('agendar_llamada', {});
+      else if (a.dataset.tipo) medir('select_content', { content_type: 'tipo_sitio', item_id: a.dataset.tipo });
+      else if (/wa\.me/.test(a.getAttribute('href') || '')) medir('contacto_whatsapp', { ubicacion: a.id || 'enlace' });
+      else if (/portal\.html/.test(a.getAttribute('href') || '')) medir('ir_portal', {});
+    }, true);
+
+    /* =========================================================
+       PLANES DE MANTENCIÓN
+       ========================================================= */
+    $('#planes').innerHTML = PLANES.map(function (pl, i) {
+      var d = pl.destacado;
+      return '<article class="reveal flex flex-col rounded-3xl p-7 ' + (d ? 'bg-cobalt text-white shadow-2xl shadow-cobalt/30' : 'bg-white ring-1 ring-slate-200/80') + '" style="transition-delay:' + i * 80 + 'ms">' +
+        '<div class="flex items-center justify-between gap-3"><h3 class="text-2xl font-bold tight">' + pl.nombre + '</h3>' + (d ? '<span class="rounded-full bg-blush px-3 py-1 text-xs font-semibold text-cobalt">el más elegido</span>' : '') + '</div>' +
+        '<p class="mt-2 text-sm ' + (d ? 'text-blush' : 'text-ink/65') + '">' + pl.para + '</p>' +
+        '<p class="mt-6"><span class="text-4xl font-extrabold tight">' + clp.format(pl.precio) + '</span><span class="text-sm ' + (d ? 'text-blush' : 'text-ink/65') + '"> /mes</span></p>' +
+        '<ul class="mt-6 flex-1 space-y-3 text-sm">' + pl.incluye.map(function (x) { return '<li class="flex items-start gap-2.5"><span class="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full ' + (d ? 'bg-white/20 text-white' : 'bg-[#E7F7EE] text-wa') + '" aria-hidden="true">' + conClase(ICON.check, 'size-3') + '</span>' + x + '</li>'; }).join('') + '</ul>' +
+        '<a href="' + wa('Hola Alonso 👋 Me interesa el plan de mantención ' + pl.nombre + ' (' + clp.format(pl.precio) + ' al mes). ¿Me cuentas cómo funciona?') + '" target="_blank" rel="noopener" data-plan="' + pl.nombre + '" class="mt-8 rounded-full px-6 py-4 text-center font-semibold transition ' + (d ? 'bg-white text-cobalt hover:bg-blush' : 'bg-sand hover:bg-cobalt hover:text-white') + '">Quiero el plan ' + pl.nombre + '</a></article>';
+    }).join('');
+
     /* =========================================================
        TESTIMONIOS Y MODO SIMULACIÓN
        ========================================================= */
@@ -1649,7 +1742,7 @@
        ========================================================= */
     $('#grid-casos').innerHTML = CASOS.map(function (c, i) {
       return '<article class="reveal group flex flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-cobalt/10" style="transition-delay:' + i * 80 + 'ms">' +
-        '<div class="relative overflow-hidden bg-sand"><img src="img/caso-' + c.id + '.jpg" width="1200" height="800" loading="lazy" decoding="async" alt="Vista del proyecto ' + c.nombre + '" class="aspect-[3/2] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />' +
+        '<div class="relative overflow-hidden bg-sand"><picture><source srcset="img/caso-' + c.id + '.webp" type="image/webp" /><img src="img/caso-' + c.id + '.jpg" width="1200" height="800" loading="lazy" decoding="async" alt="Vista del proyecto ' + c.nombre + '" class="aspect-[3/2] w-full object-cover transition duration-500 group-hover:scale-[1.03]" /></picture>' +
         '<span class="sim absolute top-3 left-3 rounded-full bg-ink/80 px-3 py-1 text-xs font-semibold text-white">Imagen referencial</span></div>' +
         '<div class="flex flex-1 flex-col p-7"><div class="flex flex-wrap gap-1.5"><span class="rounded-full bg-cobalt px-3 py-1 text-xs font-semibold text-white">' + c.tipo + '</span>' + c.stack.map(function (s) { return '<span class="rounded-full bg-sand px-3 py-1 text-xs font-medium text-ink/65">' + s + '</span>'; }).join('') + '</div>' +
         '<h3 class="mt-5 text-2xl font-bold tight">' + c.nombre + '</h3><p class="mt-2 flex-1 leading-relaxed text-ink/65">' + c.resumen + '</p>' +
@@ -1691,7 +1784,7 @@
       if (bc) {
         var c = CASOS.filter(function (x) { return x.id === bc.dataset.caso; })[0];
         $('#caso-tipo').textContent = c.tipo; $('#caso-titulo').textContent = c.nombre;
-        $('#caso-cuerpo').innerHTML = '<img src="img/caso-' + c.id + '.jpg" width="1200" height="800" alt="Vista del proyecto ' + c.nombre + '" class="aspect-[3/2] w-full rounded-2xl object-cover" />' + [['El desafío', c.desafio], ['La solución', c.solucion], ['El resultado', c.resultado]].map(function (b) {
+        $('#caso-cuerpo').innerHTML = '<picture><source srcset="img/caso-' + c.id + '.webp" type="image/webp" /><img src="img/caso-' + c.id + '.jpg" width="1200" height="800" alt="Vista del proyecto ' + c.nombre + '" class="aspect-[3/2] w-full rounded-2xl object-cover" /></picture>' + [['El desafío', c.desafio], ['La solución', c.solucion], ['El resultado', c.resultado]].map(function (b) {
           return '<div><h3 class="text-sm font-semibold text-cobalt">' + b[0] + '</h3><p class="mt-1 leading-relaxed text-ink/70">' + b[1] + '</p></div>';
         }).join('') + '<div class="flex flex-wrap gap-1.5">' + c.stack.map(function (s) { return '<span class="rounded-full bg-sand px-3 py-1 text-xs font-medium">' + s + '</span>'; }).join('') + '</div>';
         abrir(mCaso);
@@ -1700,6 +1793,7 @@
 
     $('#form-llamada').addEventListener('submit', function (e) {
       e.preventDefault();
+      if ($('#ll-web').value) return; // campo trampa: lo llenan los bots
       var inp = $('#ll-nombre'), n = inp.value.trim();
       if (!n) { inp.setAttribute('aria-invalid', 'true'); inp.focus(); return; }
       inp.removeAttribute('aria-invalid');
@@ -1710,6 +1804,7 @@
 
     $('#form-diagnostico').addEventListener('submit', function (e) {
       e.preventDefault();
+      if ($('#diag-web').value) return; // campo trampa: lo llenan los bots
       var err = $('#diag-error'), u = $('#diag-url'), nom = $('#diag-nombre'), url = null;
       var bruto = u.value.trim().replace(/^https?:\/\//i, '');
       try { var x = new URL('https://' + bruto); if (bruto && x.hostname.indexOf('.') > 0) url = x.href.replace(/\/$/, ''); } catch (_) {}
@@ -1718,6 +1813,7 @@
       if (!nom.value.trim()) { err.textContent = 'Cuéntame tu nombre para personalizar el video.'; err.classList.remove('hidden'); nom.setAttribute('aria-invalid', 'true'); nom.focus(); return; }
       var sint = sintomasMarcados();
       var msg = 'Hola Alonso 👋 Soy ' + nom.value.trim() + '. Quiero el diagnóstico gratuito en video (UX + velocidad) de mi sitio: ' + url + (sint.length ? '\n\nLo que noto: ' + sint.join(', ') + '.' : '');
+      medir('generate_lead', { metodo: 'diagnostico' });
       window.open(wa(msg), '_blank', 'noopener');
       $('#diag-mail').href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent('Diagnóstico gratuito: ' + url) + '&body=' + encodeURIComponent(msg);
       $('#diag-campos').classList.add('hidden');
@@ -1771,5 +1867,6 @@
     } else { $$('.reveal').forEach(function (el) { el.classList.add('is-visible'); }); }
   })();
   </script>
+  <script src="sitio.js" defer></script>
 </body>
 </html>

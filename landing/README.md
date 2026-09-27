@@ -9,12 +9,23 @@ Estética: editorial SaaS por bloques de color (cobalto `#2B44FF`, rosa `#FDE8F0
 ## Cómo verla
 Abre `index.html` en el navegador (doble clic). No necesita servidor ni instalación.
 
+## Páginas y archivos
+| Archivo | Qué es |
+|---|---|
+| `index.html` | La landing (prototipo con Tailwind por CDN). |
+| `portal.html` | Portal de clientes: cuentas, textos y subida de archivos (Supabase). Guía en [`portal/README.md`](portal/README.md). |
+| `privacidad.html` y `terminos.html` | Páginas legales. |
+| `404.html` | Página de error. |
+| `sitio.js` | Aviso de cookies y Google Analytics 4 (se carga solo con consentimiento). Pega tu ID en `GA4_ID`. |
+| `CHECKLIST-lanzamiento.md` | Los 20 puntos de lanzamiento, con su estado. |
+
 ## Simulaciones y publicación
 - **Modo simulación** (`CONFIG.modoSimulacion`): en el prototipo (`index.html`) está en `true` y muestra una foto, capturas y testimonios **de ejemplo**, todos marcados como tales. `npm run build` genera `dist/` con `false`: en la versión publicada solo aparecen los testimonios con `real: true`.
 - **Imágenes** en `img/`: `alonso.jpg`, `caso-*.jpg` y `og.jpg`. Hoy son referenciales, generadas con `npm run build:imagenes` a partir de `assets-fuente/` (requiere Playwright). Reemplázalas por tus fotos y capturas reales **con el mismo nombre**.
 - **Agenda:** `CONFIG.agenda` apunta a tu página de reservas de Google Calendar; el botón "Agendar llamada" la abre, con WhatsApp como alternativa.
 - **Fuentes autoalojadas** en `fonts/` (Plus Jakarta Sans y JetBrains Mono, licencia OFL): no depende de Google Fonts.
-- **Entrega para tu dominio:** `npm run build && npm run zip` genera `entrega/bascunan-digital-sitio.zip`, con `index.html` (CSS incluido), `img/`, `fonts/`, `robots.txt`, `sitemap.xml` y `.htaccess` (HTTPS, compresión y caché). Los pasos para publicarlo están en `../marketing/05-semana-1-dia-a-dia.md`.
+- **Imágenes WebP e íconos:** `npm run build:optimizar` (requiere `npm install`, usa sharp) genera los `.webp` de `img/` y los favicons.
+- **Entrega para tu dominio:** `npm run build && npm run zip` genera `entrega/bascunan-digital-sitio.zip`: las 5 páginas, `styles.css`, `sitio.js`, `img/`, `fonts/`, íconos, `robots.txt`, `sitemap.xml` y `.htaccess` (HTTPS, cabeceras de seguridad, 404, compresión y caché). Los pasos para publicarlo están en `../marketing/05-semana-1-dia-a-dia.md`.
 
 ## Cómo editar precios, plazos y textos
 Todo lo que cambia seguido está en el objeto `CONFIG`, al principio del `<script>` final:
@@ -58,7 +69,7 @@ Los colores y fuentes (tokens) se editan en un solo lugar: el bloque `<style typ
 
 | Rendimiento | Accesibilidad | Buenas prácticas | SEO |
 |:-:|:-:|:-:|:-:|
-| **100** | **100** | **100** | **100** |
+| **99** | **100** | **100** | **100** |
 
 FCP 1,2 s · LCP 1,5 s (celular, servidor local con compresión Brotli como la de un hosting real; sin compresión el rendimiento baja a ~91). Escritorio: 100 en todo. Medido con Lighthouse 13.5.
 
@@ -67,4 +78,5 @@ FCP 1,2 s · LCP 1,5 s (celular, servidor local con compresión Brotli como la d
 ## Pendiente antes de publicar
 1. Reemplazar `img/alonso.jpg` y `img/caso-*.jpg` por tu foto y capturas reales.
 2. Cargar testimonios reales (`TESTIMONIOS`, con `real: true`).
-3. Agregar analítica (por ejemplo, eventos al hacer clic en «Enviar esta cotización por WhatsApp»).
+3. Pegar el ID de Google Analytics 4 en `sitio.js`.
+4. Conectar Supabase para activar el portal de clientes (`portal/README.md`).
