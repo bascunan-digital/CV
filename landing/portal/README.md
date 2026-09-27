@@ -15,6 +15,17 @@ Tu sitio es estático (HTML), así que las cuentas y los archivos necesitan un s
 
 El plan gratuito alcanza de sobra para partir. Revisa los límites vigentes en supabase.com/pricing.
 
+## Estado de tu proyecto `bascunan-portal`
+- ✅ Proyecto creado (región São Paulo) y `supabase.sql` ejecutado.
+- ✅ Revisado por SQL:
+  - tabla, seguridad por usuario (RLS), permisos por columna, bucket privado `recursos` y creación automática del proyecto al registrarse;
+  - prueba simulada: el cliente edita lo suyo, no ve lo ajeno, no cambia su etapa y no lee tus notas.
+- ✅ Revisor de seguridad de Supabase: **0 avisos**, después de endurecer las funciones.
+- ✅ `portal.html` conectado (URL del proyecto y clave pública *publishable*).
+- ⏳ Te falta, en el panel de Supabase:
+  - **Authentication → URL Configuration:** Site URL `https://www.bascunan.digital/portal.html` y la misma dirección en Redirect URLs;
+  - correos en español y SMTP de tu dominio (ver [`correos.md`](correos.md)).
+
 ## Paso a paso (20 minutos)
 1. Crea una cuenta en **supabase.com** con tu Gmail → **New project**:
    - **Nombre:** `bascunan-portal`.

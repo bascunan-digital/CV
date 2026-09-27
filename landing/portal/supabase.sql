@@ -42,7 +42,7 @@ alter table public.proyectos
   );
 
 -- Fecha de actualización automática
-create or replace function public.tocar_actualizado() returns trigger language plpgsql as $$
+create or replace function public.tocar_actualizado() returns trigger language plpgsql set search_path = '' as $$
 begin new.actualizado_en = now(); return new; end $$;
 drop trigger if exists proyectos_actualizado on public.proyectos;
 create trigger proyectos_actualizado before update on public.proyectos
@@ -104,3 +104,8 @@ create policy "subir mis archivos" on storage.objects for insert to authenticate
 drop policy if exists "borrar mis archivos" on storage.objects;
 create policy "borrar mis archivos" on storage.objects for delete to authenticated
   using (bucket_id = 'recursos' and (storage.foldername(name))[1] = (select auth.uid())::text);
+
+-- 4) Endurecer funciones (recomendación del revisor de seguridad de Supabase) --
+-- Las funciones de trigger no deben poder llamarse desde la API.
+revoke execute on function public.crear_proyecto() from public, anon, authenticated;
+revoke execute on function public.tocar_actualizado() from public, anon, authenticated;

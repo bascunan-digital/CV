@@ -36,7 +36,7 @@
   <header class="bg-cobalt text-white">
     <div class="mx-auto flex h-[72px] max-w-6xl items-center justify-between gap-3 px-5 sm:px-8">
       <a href="index.html" class="flex items-center gap-2 text-lg font-bold tight">
-        <svg class="size-7" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#FDE8F0"/><path d="M9 7v14h5.5a3.5 3.5 0 0 0 0-7H9" fill="none" stroke="#2B44FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="size-7 shrink-0 rounded-[6px] ring-1 ring-white/25" viewBox="0 0 524 524" aria-hidden="true"><rect width="524" height="524" rx="112" fill="#0000FE"/><path fill="#fff" fill-rule="evenodd" d="M156 122H246.375C322.3 122 385 184.1 385 259.5C385 334.9 322.3 397 246.375 397H156ZM194 159H273.5C294.4 159 314.875 183.5 314.875 208.5C314.875 233.8 295.1 258.5 275 258.5C303.4 258.5 325 280.3 325 309C325 337.4 302.8 359 273.5 359H194Z"/></svg>
         <span>bascunan<span class="text-blush">.digital</span></span>
       </a>
       <div class="flex items-center gap-3 text-sm">
@@ -174,12 +174,12 @@
     'use strict';
     /* =========================================================
        CONFIGURACIÓN: pega aquí los datos de tu proyecto Supabase
-       (Project Settings → API). La "anon key" es pública por diseño:
+       (Project Settings → API). La clave pública (publishable o anon) es pública por diseño:
        la seguridad la dan las políticas RLS de portal/supabase.sql.
        NUNCA pongas aquí la "service_role key".
        ========================================================= */
-    var SUPABASE_URL = '';
-    var SUPABASE_ANON_KEY = '';
+    var SUPABASE_URL = 'https://bzdjczrniitqqztevvcs.supabase.co';
+    var SUPABASE_ANON_KEY = 'sb_publishable_PbnYQGI2k_-qOPKUwd5_6Q_8kMyPV_X'; // clave pública (publishable)
     var WHATSAPP = '56963660958';
     var BUCKET = 'recursos';
     var MAX_MB = 10;
@@ -205,7 +205,7 @@
         if (demo) { $('#aviso-demo').classList.remove('hidden'); return Promise.resolve(); }
         return new Promise(function (ok, mal) {
           var s = document.createElement('script');
-          s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+          s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js';
           s.onload = function () { sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); ok(); };
           s.onerror = mal; document.head.appendChild(s);
         });

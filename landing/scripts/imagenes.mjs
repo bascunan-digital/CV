@@ -13,7 +13,7 @@ const raiz = fileURLToPath(new URL('..', import.meta.url));
 const onda = readFileSync(raiz + 'index.html', 'utf8').match(/\.wave-cobalt-blush \{ background-image: (url\("[^"]+"\)); \}/)[1];
 
 const piezas = [
-  ['retrato', 800, 1000, 'img/alonso.jpg'],
+  // img/alonso.jpg ya es tu foto real: no se regenera
   ['caso-valeria', 1200, 800, 'img/caso-valeria.jpg'],
   ['caso-dav', 1200, 800, 'img/caso-dav.jpg'],
   ['caso-notas', 1200, 800, 'img/caso-notas.jpg'],
