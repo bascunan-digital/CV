@@ -1,6 +1,7 @@
 # CV — Alonso Bascuñán Loyola
 
 > También incluye [`landing/`](landing/): prototipo de landing page para vender servicios de diseño y desarrollo web.
+> Y [`marketing/`](marketing/): evaluación, posicionamiento, plan de Instagram de 30 días y captación activa de clientes.
 
 Diseñador UX/UI & Desarrollador Front-End (perfil híbrido) · Ingeniería aumentada con IA
 
