@@ -10,9 +10,14 @@ const img = new URL('img/', raiz);
 
 for (const archivo of readdirSync(img).filter((f) => f.endsWith('.jpg') && f !== 'og.jpg')) { // og.jpg queda en JPG: WhatsApp y Facebook lo leen mejor
   const salida = archivo.replace(/\.jpg$/, '.webp');
-  const info = await sharp(new URL(archivo, img).pathname).webp({ quality: 78, effort: 6 }).toFile(new URL(salida, img).pathname);
+  const calidad = archivo === 'alonso.jpg' ? 86 : 78; // tu foto va con más calidad
+  const info = await sharp(new URL(archivo, img).pathname).webp({ quality: calidad, effort: 6 }).toFile(new URL(salida, img).pathname);
   console.log('✓ img/' + salida, Math.round(info.size / 1024) + ' KB');
 }
+
+// Miniatura de tu foto para los avatares chicos del inicio (carga más rápido que la foto grande)
+await sharp(new URL('alonso.jpg', img).pathname).extract({ left: 0, top: 0, width: 1200, height: 1200 }).resize(120, 120).webp({ quality: 82 }).toFile(new URL('alonso-mini.webp', img).pathname);
+console.log('✓ img/alonso-mini.webp');
 
 const svg = readFileSync(new URL('favicon.svg', raiz));
 const png = (px) => sharp(svg, { density: 512 }).resize(px, px).png().toBuffer();

@@ -1,5 +1,7 @@
 # Correos del portal en español (para pegar en Supabase)
 
+> **Orden:** primero conecta el SMTP (sección del final). Sin SMTP propio, Supabase bloquea la edición de las plantillas y envía sus correos en inglés.
+
 Dónde: **Supabase → Authentication → Emails → Templates**. Por cada plantilla, pega el **asunto** y el **cuerpo**; en el cuerpo, usa la vista de código (HTML). No cambies `{{ .ConfirmationURL }}`: Supabase lo reemplaza por el enlace real.
 
 ---

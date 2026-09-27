@@ -22,9 +22,8 @@ El plan gratuito alcanza de sobra para partir. Revisa los límites vigentes en s
   - prueba simulada: el cliente edita lo suyo, no ve lo ajeno, no cambia su etapa y no lee tus notas.
 - ✅ Revisor de seguridad de Supabase: **0 avisos**, después de endurecer las funciones.
 - ✅ `portal.html` conectado (URL del proyecto y clave pública *publishable*).
-- ⏳ Te falta, en el panel de Supabase:
-  - **Authentication → URL Configuration:** Site URL `https://www.bascunan.digital/portal.html` y la misma dirección en Redirect URLs;
-  - correos en español y SMTP de tu dominio (ver [`correos.md`](correos.md)).
+- ✅ **Authentication → URL Configuration:** Site URL y Redirect URL en `https://www.bascunan.digital/portal.html`.
+- ⏳ Te falta: conectar el SMTP de `hola@bascunan.digital` y, recién ahí, pegar los correos en español. Supabase no deja editar las plantillas sin un SMTP propio (ver [`correos.md`](correos.md)).
 
 ## Paso a paso (20 minutos)
 1. Crea una cuenta en **supabase.com** con tu Gmail → **New project**:
