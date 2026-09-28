@@ -276,7 +276,7 @@
       salir: function () { if (demo) { var d = leerDemo(); d.sesion = null; guardarDemo(d); return Promise.resolve(); } return sb.auth.signOut(); },
       leerProyecto: function () {
         if (demo) return Promise.resolve(leerDemo().proyecto || { etapa: 'material' });
-        return sb.from('proyectos').select('nombre,negocio,whatsapp,rubro,comuna,instagram,dominio,tipo_sitio,color_1,color_2,referencias,texto_nosotros,texto_servicios,texto_faq,texto_contacto,etapa').eq('user_id', usuario.id).maybeSingle().then(function (r) { if (r.error) throw r.error; return r.data || { etapa: 'material' }; });
+        return sb.from('proyectos').select('nombre,negocio,whatsapp,rubro,comuna,instagram,dominio,tipo_sitio,color_1,color_2,referencias,texto_nosotros,texto_servicios,texto_faq,texto_contacto,etapa,mensaje_etapa,enlace_diseno,enlace_preview').eq('user_id', usuario.id).maybeSingle().then(function (r) { if (r.error) throw r.error; return r.data || { etapa: 'material' }; });
       },
       guardarProyecto: function (cambios) {
         if (demo) { var d = leerDemo(); d.proyecto = Object.assign(d.proyecto || {}, cambios); guardarDemo(d); return Promise.resolve(); }
