@@ -76,6 +76,45 @@ const CARRUSELES = {
   ],
   '09-diagnostico-gratis': [
     { tipo: 'cierre', titulo: '¿Tu sitio te hace perder clientes?', texto: 'Te lo reviso gratis: un video de 3 minutos con lo que está fallando y cómo arreglarlo. Sin compromiso.', cta: 'Escríbeme DIAGNÓSTICO 📲' }
+  ],
+  '10-mitos-sitio-web': [
+    { tipo: 'portada', kicker: 'Mitos vs. realidad', titulo: '5 mitos sobre tener un sitio web', pie: 'Desliza →' },
+    { tipo: 'punto', n: '1', titulo: '"Con Instagram me basta."', texto: 'Instagram te acerca. Tu sitio web cierra la venta y aparece en Google.' },
+    { tipo: 'punto', n: '2', titulo: '"Es carísimo."', texto: 'Una landing parte desde $190.000, en 3 días. Sin letra chica.' },
+    { tipo: 'punto', n: '3', titulo: '"Necesito saber de tecnología."', texto: 'Te dejo un panel a la medida: cambias textos, fotos y precios tú mismo.' },
+    { tipo: 'punto', n: '4', titulo: '"Una vez publicado, ya está listo."', texto: 'Un sitio necesita mantención, igual que un local: seguridad, respaldos y cambios.' },
+    { tipo: 'punto', n: '5', titulo: '"Todas las agencias son iguales."', texto: 'Conmigo diseñas y programas con la misma persona, sin intermediarios.' },
+    { tipo: 'cierre', titulo: '¿Cuál de estos creías tú?', texto: 'Cuéntamelo en los comentarios.', cta: 'Cotiza tu sitio · Link en la bio' }
+  ],
+  '11-preguntas-antes-cotizar': [
+    { tipo: 'portada', kicker: 'Antes de cotizar', titulo: '5 preguntas que debes hacerle a cualquiera que te cotice un sitio web', pie: 'Desliza →' },
+    { tipo: 'punto', n: '1', titulo: '¿El precio incluye el dominio y el hosting?', texto: 'Algunos lo cobran aparte y no te avisan.' },
+    { tipo: 'punto', n: '2', titulo: '¿Puedo editar los textos yo mismo?', texto: 'Si no, vas a depender de esa persona para cada cambio.' },
+    { tipo: 'punto', n: '3', titulo: '¿En cuántos días queda listo?', texto: 'Pide una fecha concreta, no un "depende".' },
+    { tipo: 'punto', n: '4', titulo: '¿Usan un maquetador visual (Elementor, Divi)?', texto: 'Cargan mucho código extra y dejan tu sitio más lento.' },
+    { tipo: 'punto', n: '5', titulo: '¿Qué pasa si dejo de pagar la mantención?', texto: 'Tienes que saber si el sitio sigue siendo tuyo.' },
+    { tipo: 'cierre', titulo: 'Yo te respondo estas 5 antes de que me las preguntes.', texto: 'Mira el detalle completo en mi cotizador.', cta: 'Link en la bio 👆' }
+  ],
+  '12-mantencion': [
+    { tipo: 'portada', kicker: 'Mantención mensual', titulo: 'Tu sitio también necesita mantención. Así funciona la mía', pie: 'Desliza →' },
+    { tipo: 'precio', meta: 'Para que nunca se caiga', nombre: 'Plan Esencial', precio: '$25.000', plazo: 'al mes' },
+    { tipo: 'precio', meta: 'Para atraer más clientes', nombre: 'Plan Crecimiento', precio: '$45.000', plazo: 'al mes' },
+    { tipo: 'precio', meta: 'Para vender online', nombre: 'Plan Pro', precio: '$75.000', plazo: 'al mes' },
+    { tipo: 'cierre', titulo: 'Sin permanencia.', texto: 'Monitoreo 24/7, respaldos, seguridad y horas de cambios incluidas, según el plan.', cta: 'Link en la bio 👆' }
+  ],
+  '13-antes-de-cotizar': [
+    { tipo: 'portada', kicker: 'Checklist', titulo: 'Ten esto listo antes de cotizar tu sitio (así avanzamos más rápido)', pie: 'Desliza →' },
+    { tipo: 'punto', n: '✓', titulo: 'Tu logo.', texto: 'En PNG o SVG, si lo tienes. Si no, lo vemos juntos.' },
+    { tipo: 'punto', n: '✓', titulo: 'Fotos de tu negocio.', texto: 'Local, equipo y productos o servicios. Con el celular alcanza.' },
+    { tipo: 'punto', n: '✓', titulo: 'Tus textos.', texto: 'Quiénes son, qué ofrecen y con precios, aunque sea en borrador.' },
+    { tipo: 'punto', n: '✓', titulo: '2 o 3 sitios que te gusten.', texto: 'No para copiarlos: para entender qué te gusta de cada uno.' },
+    { tipo: 'cierre', titulo: 'Con eso, partimos altiro.', texto: 'Lo subes todo a mi portal de clientes cuando quieras.', cta: 'Cotiza tu sitio · Link en la bio' }
+  ],
+  '14-pagespeed': [
+    { tipo: 'stat', numero: '90+', texto: 'PageSpeed garantizado', pie: 'En todos mis sitios, sin excepción' }
+  ],
+  '15-trabajo-directo': [
+    { tipo: 'cierre', titulo: 'Hablas conmigo, no con un ejecutivo de cuentas.', texto: 'Yo diseño, yo programo, yo te respondo. Sin intermediarios ni traspasos entre áreas.', cta: 'Escríbeme por WhatsApp 📲' }
   ]
 };
 
