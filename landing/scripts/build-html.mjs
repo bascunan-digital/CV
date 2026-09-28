@@ -8,8 +8,8 @@ import { readFileSync, writeFileSync, mkdirSync, cpSync } from 'node:fs';
 const raiz = new URL('../', import.meta.url);
 const dist = new URL('../dist/', import.meta.url);
 const DOMINIO = 'https://www.bascunan.digital';
-const PAGINAS = ['index.html', 'portal.html', 'privacidad.html', 'terminos.html', '404.html'];
-const EN_SITEMAP = ['', 'privacidad.html', 'terminos.html'];
+const PAGINAS = ['index.html', 'portal.html', 'cv.html', 'privacidad.html', 'terminos.html', '404.html'];
+const EN_SITEMAP = ['', 'cv.html', 'privacidad.html', 'terminos.html'];
 const ARCHIVOS = ['sitio.js', 'favicon.ico', 'favicon.svg', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'site.webmanifest'];
 
 const cdn = /\s*<!-- Tailwind CSS v4 vía CDN[^\n]*-->\s*<script src="https:\/\/cdn\.jsdelivr\.net\/npm\/@tailwindcss\/browser@4"><\/script>/;
