@@ -106,15 +106,23 @@
           <p class="text-sm font-semibold text-cobalt">Hola, <span id="saludo-nombre">bienvenido</span> 👋</p>
           <h1 class="mt-2 text-4xl leading-[1.05] font-bold tighter sm:text-5xl">Tu proyecto</h1>
         </div>
-        <a id="btn-avisar" href="#" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full bg-wa px-6 py-3.5 font-semibold text-white transition hover:bg-[#166534]">Avisarle a Alonso que subí material <span aria-hidden="true">→</span></a>
+        <div class="flex flex-col items-end gap-1.5">
+          <a id="btn-avisar" href="#" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full bg-wa px-6 py-3.5 font-semibold text-white transition hover:bg-[#166534]">Avisarle a Alonso que subí material <span aria-hidden="true">→</span></a>
+          <p id="avisar-nota" class="text-xs text-ink/55">Se abre WhatsApp con el mensaje listo: solo presiona enviar.</p>
+        </div>
       </div>
 
       <!-- Etapas -->
       <ol id="etapas" class="mt-8 grid gap-3 rounded-3xl bg-white p-5 ring-1 ring-slate-200/80 sm:grid-cols-5" aria-label="Etapas del proyecto"></ol>
+      <p class="mt-3 text-sm text-ink/65">
+        <strong class="text-ink">1. Material:</strong> completas todo aquí abajo. <strong class="text-ink">2. Diseño en Figma:</strong> yo diseño tu sitio y te muestro el avance por WhatsApp para que lo apruebes. <strong class="text-ink">3. Desarrollo:</strong> lo programo. <strong class="text-ink">4. Revisión:</strong> lo revisas en vivo antes de publicar. <strong class="text-ink">5. Publicado:</strong> tu sitio queda online.
+        De la etapa 2 en adelante te aviso yo por WhatsApp en cada paso; aquí siempre puedes ver en qué vamos.
+      </p>
 
       <!-- Progreso del material -->
       <div class="mt-4 rounded-3xl bg-white p-5 ring-1 ring-slate-200/80">
         <div class="flex items-center justify-between gap-3"><p class="font-semibold">Material para tu sitio</p><p class="font-mono text-sm"><span id="prog-n">0</span> %</p></div>
+        <p class="mt-1 text-sm text-ink/65">Mientras más completes aquí, mejor va a ser el análisis y el diseño de tu sitio.</p>
         <div class="mt-3 h-2.5 overflow-hidden rounded-full bg-sand" aria-hidden="true"><div id="prog-barra" class="h-full rounded-full bg-wa transition-all duration-500" style="width:0"></div></div>
         <ul id="prog-lista" class="mt-4 flex flex-wrap gap-2 text-sm"></ul>
       </div>
@@ -136,7 +144,7 @@
             <div><label for="p-color2" class="text-sm font-semibold">Color secundario</label><input id="p-color2" name="color_2" type="color" value="#FDE8F0" class="mt-2 h-12 w-full cursor-pointer rounded-2xl border border-slate-200 bg-white p-1" /></div>
             <div class="sm:col-span-2"><label for="p-referencias" class="text-sm font-semibold">Sitios que te gustan <span class="font-normal text-ink/65">(opcional)</span></label><textarea id="p-referencias" name="referencias" rows="3" maxlength="1000" placeholder="Pega 2 o 3 enlaces y cuéntame qué te gusta de cada uno." class="campo mt-2 resize-y"></textarea></div>
           </div>
-          <div class="mt-5 flex items-center gap-3"><button type="submit" class="rounded-full bg-cobalt px-6 py-3 font-semibold text-white hover:bg-cobalt-deep">Guardar</button><span class="estado text-sm text-ink/65" role="status"></span></div>
+          <div class="mt-5 flex items-center gap-3"><button type="submit" class="rounded-full bg-cobalt px-6 py-3 font-semibold text-white hover:bg-cobalt-deep">Guardar</button><span class="estado text-sm font-semibold text-ink/65" role="status"></span></div>
         </form>
 
         <!-- Textos -->
@@ -149,7 +157,7 @@
             <div><label for="t-faq" class="text-sm font-semibold">Preguntas que siempre te hacen</label><textarea id="t-faq" name="texto_faq" rows="3" maxlength="3000" placeholder="Ej: ¿Aceptan tarjeta? ¿Atienden los sábados? ¿Tienen estacionamiento?" class="campo mt-2 resize-y"></textarea></div>
             <div><label for="t-contacto" class="text-sm font-semibold">Horario, dirección y cómo llegar</label><textarea id="t-contacto" name="texto_contacto" rows="2" maxlength="1000" class="campo mt-2 resize-y"></textarea></div>
           </div>
-          <div class="mt-5 flex items-center gap-3"><button type="submit" class="rounded-full bg-cobalt px-6 py-3 font-semibold text-white hover:bg-cobalt-deep">Guardar</button><span class="estado text-sm text-ink/65" role="status"></span></div>
+          <div class="mt-5 flex items-center gap-3"><button type="submit" class="rounded-full bg-cobalt px-6 py-3 font-semibold text-white hover:bg-cobalt-deep">Guardar</button><span class="estado text-sm font-semibold text-ink/65" role="status"></span></div>
         </form>
       </div>
 
@@ -301,20 +309,28 @@
     }
     var abiertoEn = Date.now();
 
+    // Deja el botón "cargando" mientras la promesa está pendiente, para que no parezca colgado
+    function conCarga(boton, textoCargando, promesa) {
+      var textoOriginal = boton.textContent;
+      boton.disabled = true; boton.textContent = textoCargando;
+      return promesa.then(function (r) { boton.disabled = false; boton.textContent = textoOriginal; return r; },
+        function (err) { boton.disabled = false; boton.textContent = textoOriginal; throw err; });
+    }
     $('#form-ingresar').addEventListener('submit', function (e) {
       e.preventDefault(); if (!validar(this)) return;
-      var err = $('.error', this);
-      Datos.ingresar($('#in-correo').value.trim(), $('#in-clave').value).then(entrar).catch(function (x) { err.textContent = traducir(x); err.classList.remove('hidden'); });
+      var err = $('.error', this), boton = $('button[type=submit]', this);
+      conCarga(boton, 'Ingresando…', Datos.ingresar($('#in-correo').value.trim(), $('#in-clave').value)).then(entrar)
+        .catch(function (x) { err.textContent = traducir(x); err.classList.remove('hidden'); });
     });
     $('#form-crear').addEventListener('submit', function (e) {
       e.preventDefault();
       // Anti-spam: campo trampa lleno o formulario enviado en menos de 3 segundos
       if ($('#cr-web').value || Date.now() - abiertoEn < 3000) return;
       if (!validar(this)) return;
-      var err = $('.error', this), meta = { nombre: $('#cr-nombre').value.trim(), negocio: $('#cr-negocio').value.trim(), whatsapp: $('#cr-whatsapp').value.trim() };
-      Datos.crear($('#cr-correo').value.trim(), $('#cr-clave').value, meta).then(function (r) {
+      var err = $('.error', this), boton = $('button[type=submit]', this), meta = { nombre: $('#cr-nombre').value.trim(), negocio: $('#cr-negocio').value.trim(), whatsapp: $('#cr-whatsapp').value.trim() };
+      conCarga(boton, 'Creando cuenta…', Datos.crear($('#cr-correo').value.trim(), $('#cr-clave').value, meta)).then(function (r) {
         medir('sign_up', { method: 'portal' });
-        if (r.confirmar) { var ok = $('#acceso-ok'); ok.textContent = '¡Listo! Te envié un correo para confirmar tu cuenta. Ábrelo y vuelve a ingresar.'; ok.classList.remove('hidden'); $('#form-crear').reset(); }
+        if (r.confirmar) { var ok = $('#acceso-ok'); ok.textContent = '¡Listo! Te envié un correo para confirmar tu cuenta (revisa también Spam). Ábrelo y vuelve a ingresar.'; ok.classList.remove('hidden'); $('#form-crear').reset(); }
         else entrar();
       }).catch(function (x) { err.textContent = traducir(x); err.classList.remove('hidden'); });
     });
@@ -349,6 +365,7 @@
       }).join('');
       CATEGORIAS.forEach(function (c) { refrescarLista(c[0]); });
       $('#btn-avisar').href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent('Hola Alonso 👋 Soy ' + (proyecto.nombre || '') + (proyecto.negocio ? ' de ' + proyecto.negocio : '') + '. Subí material para mi sitio en el portal de clientes.');
+      $('#btn-avisar').addEventListener('click', function () { var n = $('#avisar-nota'); n.textContent = 'Se abrió WhatsApp: presiona enviar allá para que me llegue el aviso.'; n.classList.add('font-semibold', 'text-wa'); });
       progreso();
     }
     var archivosPorCat = {};
@@ -387,9 +404,15 @@
     function guardarForm(form) {
       var cambios = {};
       $$('[name]', form).forEach(function (el) { cambios[el.name] = el.value.trim(); });
-      var estado = $('.estado', form); estado.textContent = 'Guardando…';
-      Datos.guardarProyecto(cambios).then(function () { Object.assign(proyecto, cambios); estado.textContent = '✓ Guardado'; progreso(); setTimeout(function () { estado.textContent = ''; }, 2500); })
-        .catch(function (x) { estado.textContent = traducir(x); });
+      var boton = $('button[type=submit]', form), estado = $('.estado', form);
+      boton.disabled = true; boton.textContent = 'Guardando…';
+      estado.className = 'estado text-sm font-semibold text-ink/65'; estado.textContent = '';
+      Datos.guardarProyecto(cambios).then(function () {
+        Object.assign(proyecto, cambios); progreso();
+        estado.className = 'estado inline-flex items-center gap-1.5 rounded-full bg-[#E7F7EE] px-3 py-1 text-sm font-semibold text-[#14532D]'; estado.textContent = '✓ Guardado';
+        setTimeout(function () { estado.textContent = ''; estado.className = 'estado text-sm font-semibold text-ink/65'; }, 4000);
+      }).catch(function (x) { estado.className = 'estado text-sm font-semibold text-rose-600'; estado.textContent = traducir(x); })
+        .then(function () { boton.disabled = false; boton.textContent = 'Guardar'; });
     }
     ['#form-negocio', '#form-textos'].forEach(function (s) { $(s).addEventListener('submit', function (e) { e.preventDefault(); guardarForm(this); }); });
 
