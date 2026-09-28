@@ -39,6 +39,42 @@ const CARRUSELES = {
     { tipo: 'punto', n: '⚡', titulo: 'Qué hicimos', texto: 'Motor de reservas a medida, panel instalable como app y SEO local para aparecer en Google.' },
     { tipo: 'punto', n: '★', titulo: '4.9/5 en Google', texto: '38 reseñas respaldan una experiencia de reserva simple y rápida.' },
     { tipo: 'cierre', titulo: '¿Quieres algo así para tu negocio?', texto: 'Cotiza en 2 minutos o pide un diagnóstico gratis de tu sitio.', cta: 'Link en la bio 👆' }
+  ],
+  '04-web-vs-instagram': [
+    { tipo: 'portada', kicker: 'Que no te digan lo contrario', titulo: 'Instagram no es tuyo. Tu sitio web sí.', pie: 'Desliza →' },
+    { tipo: 'punto', n: '1', titulo: 'Instagram puede cerrar tu cuenta cuando quiera.', texto: 'Sin aviso ni explicación. Y ahí se va tu inversión de años.' },
+    { tipo: 'punto', n: '2', titulo: 'Tu sitio web es tuyo, para siempre.', texto: 'Nadie te lo puede quitar ni cambiar las reglas de un día para otro.' },
+    { tipo: 'punto', n: '3', titulo: 'Google indexa tu sitio, no tu perfil.', texto: 'Cuando buscan tu rubro en tu comuna, tu sitio aparece. Tu Instagram, no.' },
+    { tipo: 'cierre', titulo: 'Usa las dos, pero no dependas solo de una.', texto: 'Instagram te acerca. Tu sitio web cierra la venta.', cta: 'Cotiza tu sitio · Link en la bio' }
+  ],
+  '05-glosario': [
+    { tipo: 'portada', kicker: 'Guárdalo 📌', titulo: '6 palabras que te dicen las agencias (y qué significan de verdad)', pie: 'Desliza →' },
+    { tipo: 'punto', n: '1', titulo: 'Dominio', texto: 'La dirección de tu sitio, como tunegocio.cl. Se renueva cada año y queda a tu nombre.' },
+    { tipo: 'punto', n: '2', titulo: 'Hosting', texto: 'El espacio arrendado en internet donde vive tu sitio. Sin hosting, nadie puede verlo.' },
+    { tipo: 'punto', n: '3', titulo: 'Certificado SSL', texto: 'El candado junto a la dirección del sitio. Google y los navegadores lo exigen.' },
+    { tipo: 'punto', n: '4', titulo: 'SEO', texto: 'Todo lo que ayuda a que tu sitio aparezca en Google, sin pagar anuncios.' },
+    { tipo: 'punto', n: '5', titulo: 'Responsive', texto: 'El sitio se acomoda solo a celular, tablet y computador.' },
+    { tipo: 'punto', n: '6', titulo: 'CMS', texto: 'El panel desde el que editas tu sitio tú mismo, sin saber programar.' },
+    { tipo: 'cierre', titulo: 'Guárdalo para cuando cotices.', texto: '¿Tienes dudas con alguna palabra? Pregúntame.', cta: 'Escríbeme 📲' }
+  ],
+  '06-checklist-reservas': [
+    { tipo: 'portada', kicker: 'Checklist', titulo: '6 cosas que tu web de reservas necesita', pie: 'Desliza →' },
+    { tipo: 'punto', n: '✓', titulo: 'Botón de reservar bien visible.', texto: 'En la portada, no escondido en un menú.' },
+    { tipo: 'punto', n: '✓', titulo: 'Confirmación automática.', texto: 'Por WhatsApp o correo, sin que tú tengas que escribir nada.' },
+    { tipo: 'punto', n: '✓', titulo: 'Se ve perfecto en el celular.', texto: 'La mayoría de tus reservas van a llegar desde ahí.' },
+    { tipo: 'punto', n: '✓', titulo: 'Tú cambias precios y horarios.', texto: 'Sin depender de nadie ni pagar por cada cambio.' },
+    { tipo: 'punto', n: '✓', titulo: 'Aparece en Google Maps.', texto: 'SEO local, para que te encuentren buscando tu rubro y tu comuna.' },
+    { tipo: 'punto', n: '✓', titulo: 'Carga rápido.', texto: 'Puntaje 90+ en Google PageSpeed, garantizado.' },
+    { tipo: 'cierre', titulo: '¿Cuántas tiene el tuyo?', texto: 'Si te faltan 2 o más, cotiza el tuyo o pide un diagnóstico gratis.', cta: 'Link en la bio 👆' }
+  ],
+  '07-presentacion': [
+    { tipo: 'portada', kicker: 'Bienvenido 👋', titulo: 'Diseño y programo sitios web que llenan tu agenda por WhatsApp.', pie: 'Sígueme si tienes un negocio →' }
+  ],
+  '08-codigo-limpio': [
+    { tipo: 'cierre', titulo: '0% Elementor. 100% código limpio.', texto: 'Código a medida, optimizado para Google PageSpeed, con puntaje 90+ garantizado.', cta: 'Cotiza tu sitio → Link en la bio' }
+  ],
+  '09-opiniones': [
+    { tipo: 'stat', numero: '4.9/5', texto: '38 reseñas en Google', pie: 'Valeria Estética Integral' }
   ]
 };
 
@@ -77,6 +113,7 @@ function lamina(d, i, total) {
   if (d.tipo === 'punto') return `<div class="l centro" style="background:${ARENA};color:${TINTA}"><span class="n" style="background:${COBALTO};color:#fff">${d.n}</span><h2 style="font-size:92px">${d.titulo}</h2><p style="margin-top:48px;font-size:48px;color:#5E5953">${d.texto}</p><div class="onda onda-mini onda-sc" style="bottom:0"></div>${pie(COBALTO)}</div>`;
   if (d.tipo === 'precio') return `<div class="l centro" style="background:${ROSA};color:${TINTA}"><span class="kick" style="background:#fff;color:${COBALTO}">${d.meta}</span><h2 style="margin-top:70px;font-size:92px">${d.nombre}</h2><p style="margin-top:60px;font:600 36px J;color:#5E5953">desde</p><p style="font:800 150px/1 J;letter-spacing:-.05em;color:${COBALTO}">${d.precio}</p><p style="margin-top:40px;font:700 44px M;color:#15803D">${d.plazo}</p><div class="onda onda-mini onda-bc" style="bottom:0"></div>${pie(COBALTO)}</div>`;
   if (d.tipo === 'imagen') return `<div class="l centro" style="background:${ARENA};color:${TINTA}"><h2 style="font-size:72px">${d.titulo}</h2><img src="file://${landing}img/${d.img}" style="margin-top:70px;width:100%;border-radius:36px;box-shadow:0 40px 80px -30px rgba(15,23,42,.35)"><div class="onda onda-mini onda-sc" style="bottom:0"></div>${pie(COBALTO)}</div>`;
+  if (d.tipo === 'stat') return `<div class="l centro" style="background:${COBALTO};color:${ROSA};align-items:center;text-align:center"><span style="font:800 190px/1 J;letter-spacing:-.05em">${d.numero}</span><span style="margin-top:20px;font:700 44px J">${d.texto}</span><span style="margin-top:14px;font:600 30px M;opacity:.75">${d.pie}</span><div class="onda onda-bc" style="bottom:0"></div></div>`;
   return `<div class="l" style="background:${COBALTO};color:${ROSA}"><div class="onda onda-bc" style="top:0"></div><h2 style="margin-top:250px;font-size:92px">${d.titulo}</h2><p style="margin-top:48px;font-size:46px">${d.texto}</p><span class="cta" style="background:${ROSA};color:${COBALTO}">${d.cta}</span><span class="marca" style="color:#fff">@bascunan.digital</span>${cont}</div>`;
 }
 
