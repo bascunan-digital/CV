@@ -58,20 +58,25 @@ const base = `<style>
 .marca { position: absolute; left: 96px; bottom: 64px; font: 700 30px J; letter-spacing: -.02em; }
 .cont { position: absolute; right: 96px; bottom: 64px; font: 600 26px M; opacity: .7; }
 .onda { position: absolute; left: 0; right: 0; height: 168px; background-repeat: repeat-x; background-size: 108px 168px; }
+.onda-mini { height: 78px; background-size: 84px 130px; }
 h1 { font: 800 104px/1 J; letter-spacing: -.05em; } h2 { font: 800 78px/1.04 J; letter-spacing: -.045em; }
 p { font: 500 40px/1.4 J; } .kick { display: inline-block; align-self: flex-start; padding: 12px 28px; border-radius: 99px; font: 700 30px J; }
 .n { display: grid; place-items: center; width: 150px; height: 150px; border-radius: 40px; font: 800 80px J; margin-bottom: 70px; }
 .cta { align-self: flex-start; margin-top: 60px; padding: 30px 44px; border-radius: 99px; font: 800 42px J; }
-.onda-cb { background-image: ${onda('cobalt-blush')}; } .onda-bc { background-image: ${onda('blush-cobalt')}; }
+.onda-cb { background-image: ${onda('cobalt-blush')}; } .onda-bc { background-image: ${onda('blush-cobalt')}; } .onda-sc { background-image: ${onda('sand-cobalt')}; }
 .centro { justify-content: center; padding-bottom: 180px; }
+.pie { position: absolute; left: 96px; right: 96px; bottom: 100px; display: flex; align-items: center; justify-content: space-between; }
 </style>`;
 
+// Todas las láminas llevan al pie la misma onda que separa las secciones en bascunan.digital:
+// arena↔cobalto (onda-sc) sobre fondo arena, y blush↔cobalto (onda-bc) sobre fondo blush.
 function lamina(d, i, total) {
   const cont = `<span class="cont">${i + 1}/${total}</span>`;
+  const pie = (color) => `<div class="pie"><span style="font:700 30px J;letter-spacing:-.02em;color:${color}">@bascunan.digital</span><span style="font:600 26px M;opacity:.7;color:${color}">${i + 1}/${total}</span></div>`;
   if (d.tipo === 'portada') return `<div class="l" style="background:${COBALTO};color:${ROSA}"><span class="kick" style="background:${ROSA};color:${COBALTO}">${d.kicker}</span><h1 style="margin-top:80px">${d.titulo}</h1><p style="margin-top:auto;margin-bottom:190px;font-weight:700">${d.pie}</p><div class="onda onda-cb" style="bottom:0"></div><span style="position:absolute;right:96px;top:122px;font:700 30px J">@bascunan.digital</span></div>`;
-  if (d.tipo === 'punto') return `<div class="l centro" style="background:${ARENA};color:${TINTA}"><span class="n" style="background:${COBALTO};color:#fff">${d.n}</span><h2 style="font-size:92px">${d.titulo}</h2><p style="margin-top:48px;font-size:48px;color:#5E5953">${d.texto}</p><span class="marca" style="color:${COBALTO}">@bascunan.digital</span>${cont}</div>`;
-  if (d.tipo === 'precio') return `<div class="l centro" style="background:${ROSA};color:${TINTA}"><span class="kick" style="background:#fff;color:${COBALTO}">${d.meta}</span><h2 style="margin-top:70px;font-size:92px">${d.nombre}</h2><p style="margin-top:60px;font:600 36px J;color:#5E5953">desde</p><p style="font:800 150px/1 J;letter-spacing:-.05em;color:${COBALTO}">${d.precio}</p><p style="margin-top:40px;font:700 44px M;color:#15803D">${d.plazo}</p><span class="marca" style="color:${COBALTO}">@bascunan.digital</span>${cont}</div>`;
-  if (d.tipo === 'imagen') return `<div class="l centro" style="background:${ARENA};color:${TINTA}"><h2 style="font-size:72px">${d.titulo}</h2><img src="file://${landing}img/${d.img}" style="margin-top:70px;width:100%;border-radius:36px;box-shadow:0 40px 80px -30px rgba(15,23,42,.35)"><span class="marca" style="color:${COBALTO}">@bascunan.digital</span>${cont}</div>`;
+  if (d.tipo === 'punto') return `<div class="l centro" style="background:${ARENA};color:${TINTA}"><span class="n" style="background:${COBALTO};color:#fff">${d.n}</span><h2 style="font-size:92px">${d.titulo}</h2><p style="margin-top:48px;font-size:48px;color:#5E5953">${d.texto}</p><div class="onda onda-mini onda-sc" style="bottom:0"></div>${pie(COBALTO)}</div>`;
+  if (d.tipo === 'precio') return `<div class="l centro" style="background:${ROSA};color:${TINTA}"><span class="kick" style="background:#fff;color:${COBALTO}">${d.meta}</span><h2 style="margin-top:70px;font-size:92px">${d.nombre}</h2><p style="margin-top:60px;font:600 36px J;color:#5E5953">desde</p><p style="font:800 150px/1 J;letter-spacing:-.05em;color:${COBALTO}">${d.precio}</p><p style="margin-top:40px;font:700 44px M;color:#15803D">${d.plazo}</p><div class="onda onda-mini onda-bc" style="bottom:0"></div>${pie(COBALTO)}</div>`;
+  if (d.tipo === 'imagen') return `<div class="l centro" style="background:${ARENA};color:${TINTA}"><h2 style="font-size:72px">${d.titulo}</h2><img src="file://${landing}img/${d.img}" style="margin-top:70px;width:100%;border-radius:36px;box-shadow:0 40px 80px -30px rgba(15,23,42,.35)"><div class="onda onda-mini onda-sc" style="bottom:0"></div>${pie(COBALTO)}</div>`;
   return `<div class="l" style="background:${COBALTO};color:${ROSA}"><div class="onda onda-bc" style="top:0"></div><h2 style="margin-top:250px;font-size:92px">${d.titulo}</h2><p style="margin-top:48px;font-size:46px">${d.texto}</p><span class="cta" style="background:${ROSA};color:${COBALTO}">${d.cta}</span><span class="marca" style="color:#fff">@bascunan.digital</span>${cont}</div>`;
 }
 
@@ -91,8 +96,10 @@ for (const [nombre, laminas] of Object.entries(CARRUSELES)) {
 }
 mkdirSync(aqui + 'destacadas', { recursive: true });
 await pag.setViewportSize({ width: 1080, height: 1920 });
+// Instagram muestra las destacadas como un círculo recortado en el centro: las ondas van
+// pegadas arriba y abajo del ícono (dentro de esa zona), igual que separan secciones en el sitio.
 for (const [archivo, texto, icono] of DESTACADAS) {
-  await mostrar(`${base}<div style="width:1080px;height:1920px;background:${COBALTO};display:grid;place-items:center"><div style="display:grid;place-items:center;width:560px;height:560px;border-radius:50%;background:${ROSA}"><svg width="260" height="260" viewBox="0 0 24 24" fill="none" stroke="${COBALTO}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icono}</svg></div></div>`);
+  await mostrar(`${base}<div style="position:relative;width:1080px;height:1920px;background:${COBALTO};display:grid;place-items:center"><div class="onda onda-cb" style="top:596px;height:84px"></div><div style="position:relative;display:grid;place-items:center;width:560px;height:560px;border-radius:50%;background:${ROSA}"><svg width="260" height="260" viewBox="0 0 24 24" fill="none" stroke="${COBALTO}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icono}</svg></div><div class="onda onda-cb" style="top:1240px;height:84px"></div></div>`);
   await pag.screenshot({ path: `${aqui}destacadas/${archivo}.png` });
 }
 console.log('✓ destacadas', DESTACADAS.length);
