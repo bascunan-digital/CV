@@ -28,6 +28,10 @@ create table if not exists public.proyectos (
   etapa           text not null default 'material'
                   check (etapa in ('material', 'diseno', 'desarrollo', 'revision', 'publicado')),
   notas_internas  text,  -- solo para Alonso: el cliente no puede leerla ni editarla
+  -- Lo que Alonso le entrega al cliente: el cliente solo LEE estas 3, nunca las edita.
+  mensaje_etapa   text,  -- nota corta de Alonso, visible para el cliente ("ya diseñé tu home, revísala")
+  enlace_diseno   text,  -- link a Figma u otro, visible para el cliente
+  enlace_preview  text,  -- link al sitio en desarrollo/revisión, visible para el cliente
   creado_en       timestamptz not null default now(),
   actualizado_en  timestamptz not null default now()
 );
@@ -39,6 +43,12 @@ alter table public.proyectos
     coalesce(length(texto_nosotros), 0) <= 3000 and coalesce(length(texto_servicios), 0) <= 3000 and
     coalesce(length(texto_faq), 0) <= 3000 and coalesce(length(texto_contacto), 0) <= 1000 and
     coalesce(length(referencias), 0) <= 1000
+  );
+alter table public.proyectos drop constraint if exists largo_mensajes;
+alter table public.proyectos
+  add constraint largo_mensajes check (
+    coalesce(length(mensaje_etapa), 0) <= 600 and coalesce(length(enlace_diseno), 0) <= 300 and
+    coalesce(length(enlace_preview), 0) <= 300
   );
 
 -- Fecha de actualización automática
@@ -79,7 +89,7 @@ create policy "editar mi proyecto" on public.proyectos
 revoke all on public.proyectos from anon, authenticated;
 grant select (user_id, correo, nombre, negocio, whatsapp, rubro, comuna, instagram, dominio, tipo_sitio,
               color_1, color_2, referencias, texto_nosotros, texto_servicios, texto_faq, texto_contacto,
-              etapa, creado_en, actualizado_en)
+              etapa, mensaje_etapa, enlace_diseno, enlace_preview, creado_en, actualizado_en)
   on public.proyectos to authenticated;
 grant update (nombre, negocio, whatsapp, rubro, comuna, instagram, dominio, tipo_sitio,
               color_1, color_2, referencias, texto_nosotros, texto_servicios, texto_faq, texto_contacto)
@@ -93,17 +103,21 @@ values ('recursos', 'recursos', false, 10485760,
 on conflict (id) do update set public = false, file_size_limit = excluded.file_size_limit,
   allowed_mime_types = excluded.allowed_mime_types;
 
+-- El cliente puede LEER cualquier carpeta suya, incluida "entregas" (lo que Alonso le entrega).
 drop policy if exists "ver mis archivos" on storage.objects;
 create policy "ver mis archivos" on storage.objects for select to authenticated
   using (bucket_id = 'recursos' and (storage.foldername(name))[1] = (select auth.uid())::text);
 
+-- Pero solo sube y borra en sus 3 carpetas de siempre: "entregas" queda de solo lectura para él.
 drop policy if exists "subir mis archivos" on storage.objects;
 create policy "subir mis archivos" on storage.objects for insert to authenticated
-  with check (bucket_id = 'recursos' and (storage.foldername(name))[1] = (select auth.uid())::text);
+  with check (bucket_id = 'recursos' and (storage.foldername(name))[1] = (select auth.uid())::text
+              and (storage.foldername(name))[2] in ('logo', 'fotos', 'otros'));
 
 drop policy if exists "borrar mis archivos" on storage.objects;
 create policy "borrar mis archivos" on storage.objects for delete to authenticated
-  using (bucket_id = 'recursos' and (storage.foldername(name))[1] = (select auth.uid())::text);
+  using (bucket_id = 'recursos' and (storage.foldername(name))[1] = (select auth.uid())::text
+         and (storage.foldername(name))[2] in ('logo', 'fotos', 'otros'));
 
 -- 4) Endurecer funciones (recomendación del revisor de seguridad de Supabase) --
 -- Las funciones de trigger no deben poder llamarse desde la API.
