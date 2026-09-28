@@ -1,12 +1,13 @@
 /* =========================================================
    bascunan.digital · cookies y analítica (compartido por todas las páginas)
-   - Google Analytics 4 se carga SOLO si la persona acepta.
-   - Sin ID de GA4 configurado no hay cookies de analítica y el aviso no se muestra.
-   - window.medir(evento, datos) registra eventos (no hace nada sin consentimiento).
+   - Google Tag Manager (y lo que configures dentro, como GA4) se carga SOLO si la persona acepta.
+   - Sin ID de GTM configurado no hay cookies de analítica y el aviso no se muestra.
+   - window.medir(evento, datos) manda eventos al dataLayer (no hace nada sin consentimiento).
    ========================================================= */
 (function () {
   'use strict';
-  var GA4_ID = ''; // Pega aquí tu ID de medición, por ejemplo 'G-ABC123XYZ' (Analytics → Administrar → Flujos de datos)
+  var GTM_ID = 'GTM-MHZWSXLZ'; // Google Tag Manager → Administrador de contenedores
+
   var CLAVE = 'bd-cookies'; // guarda la elección: 'si' o 'no'
 
   var demo = window.BD_DEMO_COOKIES === true; // solo para mostrar el aviso en la vista previa
@@ -14,17 +15,15 @@
   function guardar(v) { try { localStorage.setItem(CLAVE, v); } catch (e) {} }
 
   var cargado = false;
-  function cargarGA() {
-    if (cargado || !GA4_ID) return; cargado = true;
+  function cargarGTM() {
+    if (cargado || !GTM_ID) return; cargado = true;
     window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { window.dataLayer.push(arguments); };
-    window.gtag('js', new Date());
-    window.gtag('config', GA4_ID, { anonymize_ip: true });
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
     var s = document.createElement('script'); s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA4_ID);
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent(GTM_ID);
     document.head.appendChild(s);
   }
-  window.medir = function (evento, datos) { if (cargado && window.gtag) window.gtag('event', evento, datos || {}); };
+  window.medir = function (evento, datos) { if (cargado) window.dataLayer.push(Object.assign({ event: evento }, datos || {})); };
 
   function aviso() {
     if (document.getElementById('aviso-cookies')) return;
@@ -39,7 +38,7 @@
     d.addEventListener('click', function (e) {
       var b = e.target.closest('[data-cookies]'); if (!b) return;
       guardar(b.dataset.cookies); d.remove();
-      if (b.dataset.cookies === 'si') cargarGA();
+      if (b.dataset.cookies === 'si') cargarGTM();
     });
   }
   // Permite cambiar la elección desde la política de privacidad
@@ -49,8 +48,8 @@
 
   function iniciar() {
     var eleccion = leer();
-    if (eleccion === 'si') cargarGA();
-    else if (!eleccion && (GA4_ID || demo)) aviso();
+    if (eleccion === 'si') cargarGTM();
+    else if (!eleccion && (GTM_ID || demo)) aviso();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 })();

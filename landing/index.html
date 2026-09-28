@@ -223,8 +223,7 @@
         <li><a class="nav-link rounded-lg px-3 py-2 transition hover:bg-white/10" href="#constructor">Cotizador</a></li>
         <li><a class="nav-link rounded-lg px-3 py-2 transition hover:bg-white/10" href="#diagnostico">Diagnóstico gratis</a></li>
         <li><a class="nav-link rounded-lg px-3 py-2 transition hover:bg-white/10" href="#proceso">Cómo trabajo</a></li>
-        <li><a class="nav-link rounded-lg px-3 py-2 transition hover:bg-white/10" href="#trabajos">Trabajos</a></li>
-        <li><a class="nav-link rounded-lg px-3 py-2 transition hover:bg-white/10" href="#mantencion">Mantención</a></li>
+                <li><a class="nav-link rounded-lg px-3 py-2 transition hover:bg-white/10" href="#mantencion">Mantención</a></li>
         <li><a class="nav-link rounded-lg px-3 py-2 transition hover:bg-white/10" href="#faq">Preguntas</a></li>
       </ul>
       <div class="flex items-center gap-2">
@@ -241,8 +240,7 @@
         <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#constructor">Cotizador</a></li>
         <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#diagnostico">Diagnóstico gratis</a></li>
         <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#proceso">Cómo trabajo</a></li>
-        <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#trabajos">Trabajos</a></li>
-        <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#mantencion">Mantención</a></li>
+                <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#mantencion">Mantención</a></li>
         <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="#faq">Preguntas</a></li>
         <li><a class="block rounded-xl px-3 py-3 hover:bg-white/10" href="portal.html">Portal de clientes</a></li>
         <li class="pt-3"><a href="#constructor" class="block rounded-full bg-white px-5 py-3.5 text-center text-base text-cobalt">Cotizar Sitio →</a></li>
@@ -277,7 +275,6 @@
               <span class="mt-1.5 flex items-center justify-between gap-3 text-lg leading-tight font-bold tight text-white">Diagnóstico gratis <span class="grid size-9 shrink-0 place-items-center rounded-full bg-blush text-cobalt transition group-hover:translate-x-1" aria-hidden="true">→</span></span>
             </a>
           </div>
-          <a href="#trabajos" class="reveal mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-blush underline decoration-blush/50 underline-offset-4 hover:decoration-blush">O mira trabajos reales <span aria-hidden="true">→</span></a>
           <p class="reveal mt-6 flex items-center gap-3 text-sm text-blush"><img src="img/alonso-mini.webp" width="40" height="40" alt="" class="size-10 shrink-0 rounded-full object-cover object-top ring-2 ring-blush" /><span>Hablas directo conmigo: <strong class="text-white">Alonso Bascuñán</strong></span></p>
           <dl class="reveal mt-10 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/15 pt-8 text-blush">
             <div><dt class="text-sm text-blush">Experiencia</dt><dd class="mt-0.5 text-2xl font-bold tight">15+ años</dd></div>
@@ -552,7 +549,7 @@
     </section>
 
     <!-- ===================== TRABAJOS (arena) ===================== -->
-    <section id="trabajos" class="bg-sand pb-24">
+    <section id="trabajos" class="bg-sand pb-24" style="display:none" aria-hidden="true"><!-- Oculta a propósito: sin trabajos reales que mostrar todavía. Quita el display:none cuando los tengas. -->
       <div class="mx-auto max-w-7xl px-5 sm:px-8">
         <div class="reveal flex flex-col justify-between gap-6 border-t border-ink/10 pt-20 md:flex-row md:items-end">
           <div class="max-w-2xl">
@@ -758,8 +755,7 @@
             <div>
               <p class="font-semibold">Sitio</p>
               <ul class="mt-4 space-y-2.5 text-ink/65">
-                <li><a class="hover:text-cobalt" href="#trabajos">Trabajos</a></li>
-                <li><a class="hover:text-cobalt" href="#sobre-mi">Sobre mí</a></li>
+                                <li><a class="hover:text-cobalt" href="#sobre-mi">Sobre mí</a></li>
                 <li><a class="hover:text-cobalt" href="#garantia">Garantía</a></li>
                 <li><a class="hover:text-cobalt" href="#faq">Preguntas</a></li>
                 <li><button type="button" data-abrir-glosario class="text-left hover:text-cobalt">Glosario</button></li>
@@ -1857,7 +1853,7 @@
           links.forEach(function (a) { a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + x.target.id)); });
         });
       }, { rootMargin: '-45% 0px -50% 0px' });
-      ['inicio', 'problema', 'proceso', 'diagnostico', 'constructor', 'trabajos', 'garantia', 'faq', 'contacto'].forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+      ['inicio', 'problema', 'proceso', 'diagnostico', 'constructor', 'garantia', 'faq', 'contacto'].forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
     })();
 
     if ('IntersectionObserver' in window && !reduceMotion) {
