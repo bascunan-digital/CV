@@ -6,7 +6,7 @@
    ========================================================= */
 (function () {
   'use strict';
-  var GTM_ID = 'GTM-MHZWSXLZ'; // Google Tag Manager → Administrador de contenedores
+  var GTM_ID = 'GTM-K7BZ8Z6R'; // Google Tag Manager → Administrador de contenedores
 
   var CLAVE = 'bd-cookies'; // guarda la elección: 'si' o 'no'
 
