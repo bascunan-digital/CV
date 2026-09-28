@@ -32,13 +32,14 @@ const CARRUSELES = {
     { tipo: 'precio', meta: 'Quiero reservas online', nombre: 'Súmale reservas + app', precio: '+$190.000', plazo: '+3 días' },
     { tipo: 'cierre', titulo: 'Arma el tuyo y mira el precio al instante.', texto: 'Cotizador en bascunan.digital: 3 clics, sin llamadas ni formularios eternos.', cta: 'Link en la bio 👆' }
   ],
-  '03-caso-valeria': [
-    { tipo: 'portada', kicker: 'Caso real', titulo: 'De agendar a mano por WhatsApp a reservas online 24/7', pie: 'Desliza →' },
-    { tipo: 'punto', n: '😩', titulo: 'Antes', texto: 'Cada reserva era un ir y venir de mensajes. Horas perdidas y clientas que no esperaban.' },
-    { tipo: 'imagen', titulo: 'Después: reservas online + app en el celular', img: 'caso-valeria.jpg' },
-    { tipo: 'punto', n: '⚡', titulo: 'Qué hicimos', texto: 'Motor de reservas a medida, panel instalable como app y SEO local para aparecer en Google.' },
-    { tipo: 'punto', n: '★', titulo: '4.9/5 en Google', texto: '38 reseñas respaldan una experiencia de reserva simple y rápida.' },
-    { tipo: 'cierre', titulo: '¿Quieres algo así para tu negocio?', texto: 'Cotiza en 2 minutos o pide un diagnóstico gratis de tu sitio.', cta: 'Link en la bio 👆' }
+  '03-como-trabajo': [
+    { tipo: 'portada', kicker: 'Sin sorpresas', titulo: 'Así es como trabajo, de la primera llamada a tu sitio publicado', pie: 'Desliza →' },
+    { tipo: 'punto', n: '1', titulo: 'Diagnóstico y estrategia', texto: 'Conversamos 15 minutos sobre tu negocio. Reviso tu sitio actual (si tienes) y definimos qué tiene que lograr el nuevo.' },
+    { tipo: 'punto', n: '2', titulo: 'Diseño editorial en Figma', texto: 'Diseño tu sitio a medida, pensado para el celular. Lo ves y lo apruebas antes de escribir una línea de código.' },
+    { tipo: 'punto', n: '3', titulo: 'Desarrollo aumentado con IA', texto: 'Programo tu sitio a mano, con la IA como copiloto para avanzar más rápido. Yo reviso cada línea antes de publicarla.' },
+    { tipo: 'punto', n: '4', titulo: 'Autoadministrable de verdad', texto: 'Te dejo un panel a la medida: cambias textos, fotos y precios tú mismo, sin miedo a romper nada.' },
+    { tipo: 'punto', n: '5', titulo: 'Lanzamiento, velocidad y SEO', texto: 'Publico tu sitio con PageSpeed 90+ garantizado y datos estructurados para Google.' },
+    { tipo: 'cierre', titulo: '¿Partimos con el tuyo?', texto: 'Cotiza en 2 minutos o pide un diagnóstico gratis de tu sitio actual.', cta: 'Link en la bio 👆' }
   ],
   '04-web-vs-instagram': [
     { tipo: 'portada', kicker: 'Que no te digan lo contrario', titulo: 'Instagram no es tuyo. Tu sitio web sí.', pie: 'Desliza →' },
@@ -73,8 +74,8 @@ const CARRUSELES = {
   '08-codigo-limpio': [
     { tipo: 'cierre', titulo: '0% Elementor. 100% código limpio.', texto: 'Código a medida, optimizado para Google PageSpeed, con puntaje 90+ garantizado.', cta: 'Cotiza tu sitio → Link en la bio' }
   ],
-  '09-opiniones': [
-    { tipo: 'stat', numero: '4.9/5', texto: '38 reseñas en Google', pie: 'Valeria Estética Integral' }
+  '09-diagnostico-gratis': [
+    { tipo: 'cierre', titulo: '¿Tu sitio te hace perder clientes?', texto: 'Te lo reviso gratis: un video de 3 minutos con lo que está fallando y cómo arreglarlo. Sin compromiso.', cta: 'Escríbeme DIAGNÓSTICO 📲' }
   ]
 };
 
@@ -82,7 +83,7 @@ const DESTACADAS = [
   ['trabajos', 'Trabajos', '<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/>'],
   ['precios', 'Precios', '<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.5"/>'],
   ['diagnostico', 'Diagnóstico', '<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>'],
-  ['opiniones', 'Opiniones', '<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>'],
+  ['como-trabajo', 'Cómo trabajo', '<path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>'],
   ['sobre-mi', 'Sobre mí', '<circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/>']
 ];
 

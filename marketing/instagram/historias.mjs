@@ -30,10 +30,10 @@ const DESTACADAS = {
     { tipo: 'texto', items: [['15+ años', 'diseñando para marcas e instituciones'], ['Diseño + código', 'de Figma al sitio publicado, sin intermediarios'], ['Docente', 'de diseño web en INACAP: explico en simple']] },
     { tipo: 'cierre', titulo: 'Hablas directo conmigo.', texto: 'No con un ejecutivo de cuentas ni una agencia. Yo diseño, yo programo, yo te respondo.', cta: 'Escríbeme por WhatsApp 📲' }
   ],
-  opiniones: [
-    { tipo: 'portada', kicker: 'Caso real', titulo: 'Lo que dicen mis clientes' },
-    { tipo: 'stat', numero: '4.9/5', texto: '38 reseñas en Google', pie: 'Valeria Estética Integral' },
-    { tipo: 'cierre', titulo: '¿Quieres algo así para tu negocio?', texto: 'Reservas online, panel instalable y SEO local desde el día 1.', cta: 'Link en la bio 👆' }
+  'como-trabajo': [
+    { tipo: 'portada', kicker: 'Sin sorpresas', titulo: 'De la primera llamada a tu sitio publicado' },
+    { tipo: 'pasos', items: [['1', 'Diagnóstico y estrategia', 'Conversamos 15 minutos y definimos qué tiene que lograr tu sitio.'], ['2', 'Diseño en Figma', 'Lo ves y lo apruebas antes de escribir una línea de código.'], ['3', 'Desarrollo', 'Lo programo a mano, con la IA como copiloto.'], ['4', 'Autoadministrable', 'Cambias textos, fotos y precios tú mismo.'], ['5', 'Lanzamiento', 'PageSpeed 90+ garantizado y SEO desde el día 1.']] },
+    { tipo: 'cierre', titulo: '¿Partimos con el tuyo?', texto: 'Cotiza en 2 minutos o pide un diagnóstico gratis de tu sitio actual.', cta: 'Link en la bio 👆' }
   ]
 };
 
