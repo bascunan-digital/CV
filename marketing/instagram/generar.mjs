@@ -134,10 +134,8 @@ for (const [nombre, laminas] of Object.entries(CARRUSELES)) {
 }
 mkdirSync(aqui + 'destacadas', { recursive: true });
 await pag.setViewportSize({ width: 1080, height: 1920 });
-// Instagram muestra las destacadas como un círculo recortado en el centro: las ondas van
-// pegadas arriba y abajo del ícono (dentro de esa zona), igual que separan secciones en el sitio.
 for (const [archivo, texto, icono] of DESTACADAS) {
-  await mostrar(`${base}<div style="position:relative;width:1080px;height:1920px;background:${COBALTO};display:grid;place-items:center"><div class="onda onda-cb" style="top:596px;height:84px"></div><div style="position:relative;display:grid;place-items:center;width:560px;height:560px;border-radius:50%;background:${ROSA}"><svg width="260" height="260" viewBox="0 0 24 24" fill="none" stroke="${COBALTO}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icono}</svg></div><div class="onda onda-cb" style="top:1240px;height:84px"></div></div>`);
+  await mostrar(`${base}<div style="width:1080px;height:1920px;background:${COBALTO};display:grid;place-items:center"><div style="display:grid;place-items:center;width:560px;height:560px;border-radius:50%;background:${ROSA}"><svg width="260" height="260" viewBox="0 0 24 24" fill="none" stroke="${COBALTO}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icono}</svg></div></div>`);
   await pag.screenshot({ path: `${aqui}destacadas/${archivo}.png` });
 }
 console.log('✓ destacadas', DESTACADAS.length);
