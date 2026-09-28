@@ -73,6 +73,9 @@
     html { scroll-padding-top: 5rem; }
     /* Contenido de ejemplo: visible solo con CONFIG.modoSimulacion = true */
     html:not(.simulacion) .sim { display: none !important; }
+    /* El menú móvil no es position:fixed (va en el flujo normal bajo el header), así que el aviso
+       de cookies (position:fixed) puede quedar encima de su botón "Cotizar Sitio". Se oculta mientras el menú está abierto. */
+    .menu-abierto #aviso-cookies { display: none; }
     body { background: #2B44FF; }
     .tight { letter-spacing: -0.03em; }
     .tighter { letter-spacing: -0.05em; }
@@ -1769,10 +1772,10 @@
     $$('dialog').forEach(function (d) { d.addEventListener('click', function (e) { if (e.target === d || e.target.closest('[data-cerrar]')) cerrar(d); }); });
 
     var btnMenu = $('#btn-menu'), menu = $('#menu-movil');
-    function cerrarMenu() { menu.classList.add('hidden'); btnMenu.setAttribute('aria-expanded', 'false'); btnMenu.setAttribute('aria-label', 'Abrir menú'); }
+    function cerrarMenu() { menu.classList.add('hidden'); btnMenu.setAttribute('aria-expanded', 'false'); btnMenu.setAttribute('aria-label', 'Abrir menú'); document.documentElement.classList.remove('menu-abierto'); }
 
     document.addEventListener('click', function (e) {
-      if (e.target.closest('[data-abrir-llamada]')) { cerrarMenu(); abrir(mLlamada); setTimeout(function () { $('#ll-nombre').focus(); }, 50); }
+      if (e.target.closest('[data-abrir-llamada]')) { cerrarMenu(); abrir(mLlamada); setTimeout(function () { $('#agenda-link').focus(); }, 50); }
       var p = e.target.closest('[data-preguntar]');
       if (p) window.open(wa('Hola Alonso 👋 ' + p.dataset.preguntar), '_blank', 'noopener');
       var bc = e.target.closest('[data-caso]');
@@ -1817,7 +1820,7 @@
 
     btnMenu.addEventListener('click', function () {
       if (btnMenu.getAttribute('aria-expanded') === 'true') { cerrarMenu(); return; }
-      menu.classList.remove('hidden'); btnMenu.setAttribute('aria-expanded', 'true'); btnMenu.setAttribute('aria-label', 'Cerrar menú');
+      menu.classList.remove('hidden'); btnMenu.setAttribute('aria-expanded', 'true'); btnMenu.setAttribute('aria-label', 'Cerrar menú'); document.documentElement.classList.add('menu-abierto');
     });
     $$('a', menu).forEach(function (a) { a.addEventListener('click', cerrarMenu); });
     var cab = $('#cabecera');
