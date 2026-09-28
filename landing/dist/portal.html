@@ -445,7 +445,8 @@
       if (v) Datos.verUrl(v.dataset.ver).then(function (url) { if (url) window.open(url, '_blank', 'noopener'); });
     });
 
-    /* Tooltip (?) de cada etapa */
+    /* Tooltip (?) de cada etapa (mismo criterio que el "?" de la landing: se cierra solo si haces scroll) */
+    var ayudaAbiertoEn = 0;
     function cerrarAyuda() { var p = $('#ayuda-pop'); if (p) p.remove(); $$('.ayuda[aria-expanded="true"]').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); }); }
     document.addEventListener('click', function (e) {
       var b = e.target.closest('.ayuda[data-ayuda]');
@@ -453,7 +454,7 @@
       var abierto = b.getAttribute('aria-expanded') === 'true';
       cerrarAyuda();
       if (abierto) return;
-      b.setAttribute('aria-expanded', 'true');
+      b.setAttribute('aria-expanded', 'true'); ayudaAbiertoEn = window.scrollY;
       var p = document.createElement('div');
       p.id = 'ayuda-pop'; p.setAttribute('role', 'tooltip'); p.textContent = ETAPAS[+b.dataset.ayuda][2];
       document.body.appendChild(p);
@@ -462,6 +463,7 @@
       p.style.left = left + 'px'; p.style.top = Math.min(r.bottom + 8, window.innerHeight - pr.height - 8) + 'px';
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrarAyuda(); });
+    window.addEventListener('scroll', function () { if ($('#ayuda-pop') && Math.abs(window.scrollY - ayudaAbiertoEn) > 60) cerrarAyuda(); }, { passive: true });
 
     function guardarForm(form) {
       var cambios = {};
