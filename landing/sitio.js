@@ -31,13 +31,19 @@
     d.id = 'aviso-cookies';
     d.setAttribute('role', 'dialog'); d.setAttribute('aria-live', 'polite'); d.setAttribute('aria-label', 'Aviso de cookies');
     d.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;z-index:90;max-width:420px;margin-left:auto;background:#1F1B18;color:#fff;border-radius:20px;padding:18px 20px;box-shadow:0 20px 50px -15px rgba(0,0,0,.45);font:14px/1.5 "Plus Jakarta Sans",system-ui,sans-serif';
-    d.innerHTML = '<p style="margin:0 0 12px"><strong>¿Me ayudas a mejorar el sitio?</strong><br>Uso cookies de Google Analytics solo para contar visitas y saber qué secciones sirven. No las uso para publicidad. <a href="privacidad.html#cookies" style="color:#FDE8F0;text-decoration:underline">Más información</a></p>' +
+    d.innerHTML = '<p style="margin:0 0 12px"><strong>¿Me ayudas a mejorar el sitio?</strong><br>Uso cookies de Google Analytics solo para contar visitas y saber qué secciones sirven. No las uso para publicidad. <a href="privacidad.html#cookies" style="color:#FDE8F0;text-decoration:underline">Más información sobre las cookies</a></p>' +
       '<div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" data-cookies="si" style="flex:1;min-width:120px;border:0;border-radius:999px;padding:11px 16px;background:#FDE8F0;color:#2B44FF;font-weight:700;font-size:14px;font-family:inherit;cursor:pointer">Aceptar</button>' +
       '<button type="button" data-cookies="no" style="flex:1;min-width:120px;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:11px 16px;background:transparent;color:#fff;font-weight:600;font-size:14px;font-family:inherit;cursor:pointer">Rechazar</button></div>';
-    document.body.appendChild(d);
+    // Se inserta justo después del enlace "Saltar al contenido" para que, navegando con teclado,
+    // aparezca al principio del orden de tabulación (position:fixed lo mantiene abajo en pantalla).
+    var salto = document.querySelector('a[href="#contenido"]');
+    if (salto && salto.parentNode) salto.insertAdjacentElement('afterend', d);
+    else document.body.insertBefore(d, document.body.firstChild);
+    document.documentElement.classList.add('cookies-visibles');
     d.addEventListener('click', function (e) {
       var b = e.target.closest('[data-cookies]'); if (!b) return;
       guardar(b.dataset.cookies); d.remove();
+      document.documentElement.classList.remove('cookies-visibles');
       if (b.dataset.cookies === 'si') cargarGTM();
     });
   }
