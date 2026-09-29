@@ -201,8 +201,9 @@
     #menu-movil.abierto nav .menu-item:nth-child(5) { animation-delay: .25s; }
     #menu-movil.abierto > .menu-item { animation-delay: .3s; }
     @keyframes menuItemIn { to { opacity: 1; transform: none; } }
-    .sin-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+    .sin-scrollbar { scrollbar-width: none; -ms-overflow-style: none; touch-action: pan-x pinch-zoom; overscroll-behavior-x: contain; }
     .sin-scrollbar::-webkit-scrollbar { display: none; }
+    .sin-scrollbar > * { scroll-snap-stop: always; }
     .punto-carrusel { width: 8px; height: 8px; border-radius: 999px; background: #ECEBE6; transition: background-color .2s, width .2s; }
     .punto-carrusel[data-activo="true"] { width: 22px; background: #2B44FF; }
     .faq-extra { display: none; }
@@ -214,6 +215,16 @@
     dialog::backdrop { background: rgba(15,23,42,.55); backdrop-filter: blur(6px); }
     dialog[open] { animation: modalIn .3s cubic-bezier(.2,.8,.2,1); }
     @keyframes modalIn { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: none; } }
+
+    /* La vista previa del cotizador es un modal en móvil (para no abrumar mientras se eligen
+       secciones), pero en escritorio vuelve a ser un bloque normal dentro de la grilla. */
+    @media (min-width: 1024px) {
+      dialog#vista-previa, dialog#vista-previa[open] {
+        display: block; position: static; inset: auto; max-width: none; width: auto;
+        margin: 0; padding: 0; background: transparent; overflow: visible; animation: none;
+      }
+      dialog#vista-previa::backdrop { display: none; }
+    }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -283,31 +294,13 @@
 
     <!-- ===================== HERO (cobalto) ===================== -->
     <section id="inicio" class="relative overflow-hidden bg-cobalt text-white">
-      <div class="mx-auto grid max-w-7xl items-center gap-16 px-5 pt-10 pb-16 sm:px-8 sm:pt-16 lg:grid-cols-12 lg:gap-10 lg:pb-24">
-        <div class="min-w-0 lg:col-span-6">
-          <h1 class="reveal mt-7 text-[1.6rem] leading-[1.05] font-extrabold tighter text-balance break-words text-blush min-[360px]:text-[1.85rem] min-[400px]:text-[2.4rem] sm:text-6xl lg:text-[3.7rem]">
-            Más que una web: un canal de ventas que controlas tú mismo.
-          </h1>
-          <p class="reveal mt-10 text-sm font-semibold text-blush">¿Cuál es tu caso?</p>
-          <div class="reveal mt-3 grid max-w-xl gap-3 sm:grid-cols-2">
-            <a href="#constructor" class="group flex flex-col rounded-3xl bg-white p-5 text-ink shadow-xl shadow-black/15 transition hover:-translate-y-0.5 hover:bg-blush">
-              <span class="text-xs font-semibold text-cobalt">Aún no tengo sitio web</span>
-              <span class="mt-1.5 flex items-center justify-between gap-3 text-lg leading-tight font-bold tight">Cotizar en 2 minutos <span class="grid size-9 shrink-0 place-items-center rounded-full bg-cobalt text-white transition group-hover:translate-x-1" aria-hidden="true">→</span></span>
-            </a>
-            <a href="#diagnostico" class="group flex flex-col rounded-3xl bg-cobalt-deep p-5 text-blush ring-1 ring-blush/40 transition hover:-translate-y-0.5 hover:ring-blush">
-              <span class="text-xs font-semibold">Ya tengo, pero no funciona</span>
-              <span class="mt-1.5 flex items-center justify-between gap-3 text-lg leading-tight font-bold tight text-white">Diagnóstico gratis <span class="grid size-9 shrink-0 place-items-center rounded-full bg-blush text-cobalt transition group-hover:translate-x-1" aria-hidden="true">→</span></span>
-            </a>
-          </div>
-          <dl class="reveal mt-10 grid grid-cols-3 gap-x-3 gap-y-2 border-t border-white/15 pt-8 text-blush sm:flex sm:flex-wrap sm:gap-x-10 sm:gap-y-5">
-            <div><dt class="text-xs text-blush sm:text-sm">Experiencia</dt><dd class="mt-0.5 text-lg font-bold tight sm:text-2xl">15+ años</dd></div>
-            <div><dt class="text-xs text-blush sm:text-sm">PageSpeed<button type="button" class="ayuda" data-ayuda="pagespeed"></button></dt><dd class="mt-0.5 text-lg font-bold tight sm:text-2xl">90+</dd></div>
-            <div><dt class="text-xs text-blush sm:text-sm">Entrega</dt><dd class="mt-0.5 text-lg font-bold tight sm:text-2xl">En días</dd></div>
-          </dl>
-        </div>
+      <div class="mx-auto grid max-w-7xl items-center gap-0 px-5 pt-10 pb-16 sm:px-8 sm:pt-16 lg:grid-cols-12 lg:gap-x-10 lg:pb-24">
+        <h1 class="reveal order-1 lg:order-none mt-7 lg:col-start-1 lg:row-start-1 lg:col-span-6 min-w-0 text-[1.6rem] leading-[1.05] font-extrabold tighter text-balance break-words text-blush min-[360px]:text-[1.85rem] min-[400px]:text-[2.4rem] sm:text-6xl lg:text-[3.7rem]">
+          Más que una web: un canal de ventas que controlas tú mismo.
+        </h1>
 
         <!-- Mockup: teléfono con conversación de cotización -->
-        <div class="relative lg:col-span-6" aria-hidden="true">
+        <div class="relative order-2 lg:order-none mt-10 lg:mt-0 lg:col-start-7 lg:row-start-1 lg:row-span-3 lg:col-span-6" aria-hidden="true">
           <div class="relative mx-auto w-[280px] text-ink sm:w-[310px]">
             <div class="rounded-[2.8rem] bg-ink p-2.5 shadow-2xl shadow-black/40 ring-1 ring-white/10">
               <div class="overflow-hidden rounded-[2.3rem] bg-[#F4F1EC]">
@@ -348,6 +341,26 @@
             </div>
           </div>
         </div>
+
+        <div class="min-w-0 order-3 lg:order-none lg:col-start-1 lg:row-start-2 lg:col-span-6">
+          <p class="reveal mt-10 text-sm font-semibold text-blush">¿Cuál es tu caso?</p>
+          <div class="reveal mt-3 grid max-w-xl gap-3 sm:grid-cols-2">
+            <a href="#constructor" class="group flex flex-col rounded-3xl bg-white p-5 text-ink shadow-xl shadow-black/15 transition hover:-translate-y-0.5 hover:bg-blush">
+              <span class="text-xs font-semibold text-cobalt">Aún no tengo sitio web</span>
+              <span class="mt-1.5 flex items-center justify-between gap-3 text-lg leading-tight font-bold tight">Cotizar en 2 minutos <span class="grid size-9 shrink-0 place-items-center rounded-full bg-cobalt text-white transition group-hover:translate-x-1" aria-hidden="true">→</span></span>
+            </a>
+            <a href="#diagnostico" class="group flex flex-col rounded-3xl bg-cobalt-deep p-5 text-blush ring-1 ring-blush/40 transition hover:-translate-y-0.5 hover:ring-blush">
+              <span class="text-xs font-semibold">Ya tengo, pero no funciona</span>
+              <span class="mt-1.5 flex items-center justify-between gap-3 text-lg leading-tight font-bold tight text-white">Diagnóstico gratis <span class="grid size-9 shrink-0 place-items-center rounded-full bg-blush text-cobalt transition group-hover:translate-x-1" aria-hidden="true">→</span></span>
+            </a>
+          </div>
+        </div>
+
+        <dl class="reveal order-4 lg:order-none lg:col-start-1 lg:row-start-3 lg:col-span-6 mt-10 grid grid-cols-3 gap-x-3 gap-y-2 border-t border-white/15 pt-8 text-blush sm:flex sm:flex-wrap sm:gap-x-10 sm:gap-y-5">
+          <div><dt class="text-xs text-blush sm:text-sm">Experiencia</dt><dd class="mt-0.5 text-lg font-bold tight sm:text-2xl">10+ años</dd></div>
+          <div><dt class="text-xs text-blush sm:text-sm">PageSpeed<button type="button" class="ayuda" data-ayuda="pagespeed"></button></dt><dd class="mt-0.5 text-lg font-bold tight sm:text-2xl">90+</dd></div>
+          <div><dt class="text-xs text-blush sm:text-sm">Entrega</dt><dd class="mt-0.5 text-lg font-bold tight sm:text-2xl">En días</dd></div>
+        </dl>
       </div>
     </section>
 
@@ -517,9 +530,10 @@
               </details>
             </div>
 
-            <div id="vista-previa" class="min-w-0 lg:col-span-7">
+            <dialog id="vista-previa" class="min-w-0 lg:col-span-7" aria-label="Así se vería tu sitio">
               <div class="lg:sticky lg:top-24">
                 <div class="mb-3 flex items-center gap-2 px-1 pt-2">
+                  <button type="button" data-cerrar class="grid size-9 shrink-0 place-items-center rounded-full text-ink/65 hover:bg-black/5 lg:hidden" aria-label="Cerrar vista previa"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
                   <p class="mr-auto text-sm font-semibold">Así se vería tu sitio</p>
                   <div class="seg" role="group" aria-label="Dispositivo">
                     <button type="button" data-disp="escritorio" aria-pressed="true" aria-label="Vista de escritorio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></button>
@@ -547,7 +561,7 @@
                   <ul id="check-lista" class="mt-2 flex flex-wrap gap-1.5"></ul>
                 </div>
               </div>
-            </div>
+            </dialog>
           </div>
 
           <!-- Barra de resumen (sticky) -->
@@ -565,7 +579,7 @@
               </div>
               <ul id="resumen-lista" class="hidden flex-1 flex-wrap gap-1.5 xl:flex" aria-label="Tu selección"></ul>
               <div class="flex gap-2 lg:ml-auto">
-                <a href="#vista-previa" class="grid size-14 shrink-0 place-items-center rounded-full text-white ring-1 ring-white/25 transition hover:bg-white/10 max-[359px]:hidden lg:hidden" aria-label="Ver cómo queda tu sitio"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></a>
+                <button type="button" data-abrir-vista-previa class="grid size-14 shrink-0 place-items-center rounded-full text-white ring-1 ring-white/25 transition hover:bg-white/10 max-[359px]:hidden lg:hidden" aria-label="Ver cómo queda tu sitio"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button>
                 <a id="cta-whatsapp" href="#" target="_blank" rel="noopener" class="group inline-flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full bg-wa px-5 py-4 text-center font-semibold text-white transition hover:bg-[#166534] sm:px-6">
                   <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8 8 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4 3.5 3.5 0 0 0-1.1 2.6 6 6 0 0 0 1.3 3.2 13.9 13.9 0 0 0 5.3 4.7c2 .8 2.7.9 3.7.8a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.2-.3-.2-.6-.4ZM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8Zm0-21.6A11.8 11.8 0 0 0 1.9 17.9L.2 24l6.3-1.6A11.8 11.8 0 1 0 12 .2Z"/></svg>
                   <span class="sm:hidden">Enviar por WhatsApp</span><span class="hidden sm:inline">Enviar esta cotización por WhatsApp</span> <span class="transition group-hover:translate-x-1" aria-hidden="true">→</span>
@@ -1565,10 +1579,23 @@
     }
 
     // Control escritorio/celular
+    var mqEscritorio = window.matchMedia('(min-width: 1024px)');
+    function aplicarDisp(disp) {
+      if (disp === 'movil') { sitio.style.width = ''; sitio.style.maxWidth = '340px'; sitio.style.removeProperty('zoom'); return; }
+      if (mqEscritorio.matches) { sitio.style.width = ''; sitio.style.maxWidth = ''; sitio.style.removeProperty('zoom'); return; }
+      // En pantallas angostas (el modal de vista previa en móvil) el propio contenedor ya es
+      // chico, así que "escritorio" no se notaba distinto de "móvil": ahora se renderiza a un
+      // ancho de referencia y se escala hacia abajo para que sí se vea como un sitio de escritorio.
+      var anchoRef = 960;
+      sitio.style.width = anchoRef + 'px';
+      sitio.style.maxWidth = anchoRef + 'px';
+      var disponible = lienzo.clientWidth - 32;
+      sitio.style.zoom = disponible > 0 ? Math.min(1, disponible / anchoRef) : 1;
+    }
     $$('[data-disp]').forEach(function (b) {
       b.addEventListener('click', function () {
         $$('[data-disp]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-        sitio.style.maxWidth = b.dataset.disp === 'movil' ? '340px' : '';
+        aplicarDisp(b.dataset.disp);
       });
     });
 
@@ -1832,7 +1859,7 @@
     /* =========================================================
        MODALES, FORMULARIOS Y NAVEGACIÓN
        ========================================================= */
-    var mLlamada = $('#modal-llamada'), mCaso = $('#modal-caso');
+    var mLlamada = $('#modal-llamada'), mCaso = $('#modal-caso'), mVista = $('#vista-previa');
     function abrir(d) { if (typeof d.showModal === 'function') d.showModal(); else d.setAttribute('open', ''); }
     function cerrar(d) { if (typeof d.close === 'function') d.close(); else d.removeAttribute('open'); }
     $$('dialog').forEach(function (d) { d.addEventListener('click', function (e) { if (e.target === d || e.target.closest('[data-cerrar]')) cerrar(d); }); });
@@ -1849,6 +1876,7 @@
 
     document.addEventListener('click', function (e) {
       if (e.target.closest('[data-abrir-llamada]')) { cerrarMenu(); abrir(mLlamada); setTimeout(function () { $('#agenda-link').focus(); }, 50); }
+      if (e.target.closest('[data-abrir-vista-previa]')) abrir(mVista);
       var p = e.target.closest('[data-preguntar]');
       if (p) window.open(wa('Hola Alonso 👋 ' + p.dataset.preguntar), '_blank', 'noopener');
       var bc = e.target.closest('[data-caso]');
