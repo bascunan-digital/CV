@@ -549,8 +549,9 @@
                     </div>
                     <span id="contador-secciones" class="hidden shrink-0 font-mono text-[11px] text-ink/65 sm:inline">5 secciones</span>
                   </div>
-                  <div id="lienzo" class="canvas h-[360px] overflow-y-auto bg-[#F4F2EE] p-4 sm:h-[440px] sm:p-6" role="region" aria-label="Vista previa del sitio"><div id="sitio" class="@container mx-auto w-full max-w-full"></div></div>
+                  <div id="lienzo" class="canvas h-[360px] overflow-x-hidden overflow-y-auto bg-[#F4F2EE] p-4 sm:h-[440px] sm:p-6" role="region" aria-label="Vista previa del sitio"><div id="sitio" class="@container mx-auto w-full max-w-full"></div></div>
                 </div>
+                <p id="aviso-desliza" class="mt-2 hidden items-center justify-center gap-1.5 text-center text-xs font-semibold text-cobalt"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7 3 12l5 5M16 7l5 5-5 5"/></svg>Desliza para ver el sitio de escritorio completo</p>
                 <div id="checklist" class="mt-3 rounded-3xl border border-slate-200/80 bg-white p-4">
                   <div class="flex items-center justify-between gap-3">
                     <p class="text-sm font-semibold">Claves para vender<button type="button" class="ayuda" data-ayuda="conversion"></button></p>
@@ -1580,17 +1581,30 @@
 
     // Control escritorio/celular
     var mqEscritorio = window.matchMedia('(min-width: 1024px)');
+    var avisoDesliza = $('#aviso-desliza');
     function aplicarDisp(disp) {
-      if (disp === 'movil') { sitio.style.width = ''; sitio.style.maxWidth = '340px'; sitio.style.removeProperty('zoom'); return; }
-      if (mqEscritorio.matches) { sitio.style.width = ''; sitio.style.maxWidth = ''; sitio.style.removeProperty('zoom'); return; }
+      lienzo.scrollLeft = 0;
+      if (disp === 'movil') {
+        sitio.style.width = ''; sitio.style.maxWidth = '340px';
+        lienzo.classList.remove('overflow-x-auto'); lienzo.classList.add('overflow-x-hidden');
+        if (avisoDesliza) { avisoDesliza.classList.remove('flex'); avisoDesliza.classList.add('hidden'); }
+        return;
+      }
+      if (mqEscritorio.matches) {
+        sitio.style.width = ''; sitio.style.maxWidth = '';
+        lienzo.classList.remove('overflow-x-auto'); lienzo.classList.add('overflow-x-hidden');
+        if (avisoDesliza) { avisoDesliza.classList.remove('flex'); avisoDesliza.classList.add('hidden'); }
+        return;
+      }
       // En pantallas angostas (el modal de vista previa en móvil) el propio contenedor ya es
-      // chico, así que "escritorio" no se notaba distinto de "móvil": ahora se renderiza a un
-      // ancho de referencia y se escala hacia abajo para que sí se vea como un sitio de escritorio.
+      // chico, así que "escritorio" no se notaba distinto de "móvil". Para que el contraste sea
+      // evidente, en vez de achicar el sitio de escritorio hasta que quepa (quedaba ilegible),
+      // se muestra a su ancho real y se puede recorrer deslizando en horizontal dentro del marco.
       var anchoRef = 960;
       sitio.style.width = anchoRef + 'px';
       sitio.style.maxWidth = anchoRef + 'px';
-      var disponible = lienzo.clientWidth - 32;
-      sitio.style.zoom = disponible > 0 ? Math.min(1, disponible / anchoRef) : 1;
+      lienzo.classList.remove('overflow-x-hidden'); lienzo.classList.add('overflow-x-auto');
+      if (avisoDesliza) { avisoDesliza.classList.remove('hidden'); avisoDesliza.classList.add('flex'); }
     }
     function seleccionarDisp(disp) {
       $$('[data-disp]').forEach(function (x) { x.setAttribute('aria-pressed', String(x.dataset.disp === disp)); });
