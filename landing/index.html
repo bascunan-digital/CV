@@ -562,7 +562,7 @@
     </section>
 
     <!-- ===================== MANTENCIÓN (arena) ===================== -->
-    <section id="mantencion" class="bg-sand py-24" aria-labelledby="mantencion-titulo">
+    <section id="mantencion" class="bg-sand pb-24" aria-labelledby="mantencion-titulo">
       <div class="mx-auto max-w-7xl px-5 sm:px-8">
         <div class="reveal flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div class="max-w-2xl">
@@ -630,7 +630,7 @@
             </a>
             <button type="button" data-abrir-llamada class="rounded-full bg-cobalt px-6 py-4 font-semibold text-white transition hover:bg-cobalt-deep">Agenda 15 min conmigo</button>
           </div>
-          <a href="cv.html" class="mt-4 inline-flex items-center gap-2 self-start text-sm font-semibold text-cobalt underline underline-offset-4 hover:text-cobalt-deep">Ver mi CV completo <span aria-hidden="true">→</span></a>
+          <a href="cv.html" class="mt-4 inline-flex items-center gap-2 self-start rounded-full bg-white px-6 py-4 font-semibold text-cobalt ring-1 ring-cobalt/20 transition hover:bg-blush">Ver mi CV completo <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -1184,7 +1184,7 @@
         ir(+b.dataset.i);
         marcar(+b.dataset.i);
       });
-      var actual = 0, auto = !reduceMotion, timer = null;
+      var actual = 0, auto = !reduceMotion, timer = null, visible = false;
       function avanzar() {
         if (!auto) return;
         actual = (actual + 1) % n;
@@ -1193,9 +1193,21 @@
       }
       function reprogramar() {
         clearInterval(timer);
-        if (auto && cont.scrollWidth > cont.clientWidth + 4) timer = setInterval(avanzar, 4200);
+        if (auto && visible && cont.scrollWidth > cont.clientWidth + 4) timer = setInterval(avanzar, 6000);
       }
-      reprogramar();
+      // El avance automático solo empieza cuando el visitante llega a la sección, no al cargar la página.
+      if ('IntersectionObserver' in window) {
+        var obsCarr = new IntersectionObserver(function (entradas, obs) {
+          if (!entradas[0].isIntersecting) return;
+          obs.disconnect();
+          visible = true;
+          reprogramar();
+        }, { threshold: 0.4 });
+        obsCarr.observe(cont);
+      } else {
+        visible = true;
+        reprogramar();
+      }
       cont.addEventListener('pointerdown', function () { auto = false; clearInterval(timer); });
       cont.addEventListener('scroll', function () {
         clearTimeout(cont._t);
