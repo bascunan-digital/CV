@@ -267,7 +267,7 @@
         <li><a class="nav-link rounded-lg px-3 py-2 transition hover:bg-white/10" href="#faq">Preguntas</a></li>
       </ul>
       <div class="flex items-center gap-2">
-        <a href="portal.html" class="hidden items-center gap-1.5 rounded-full px-3 py-2.5 text-sm font-semibold text-blush transition hover:bg-white/10 md:inline-flex"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>Ingresar</a>
+        <a href="portal.html" class="hidden items-center gap-1.5 rounded-full px-3 py-2.5 text-sm font-semibold text-blush transition hover:bg-white/10 md:inline-flex"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>Portal de clientes</a>
         <a href="#constructor" class="hidden items-center gap-1.5 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-cobalt transition hover:bg-blush sm:inline-flex">Cotizar Sitio <span aria-hidden="true">→</span></a>
         <button id="btn-menu" type="button" class="grid size-11 place-items-center rounded-full text-blush hover:bg-white/10 xl:hidden" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
           <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 9h14M5 15h14"/></svg>
@@ -1808,9 +1808,6 @@
         cerrarAyuda(); var m = $('#modal-glosario'); if (m.open) return;
         if (typeof m.showModal === 'function') m.showModal(); else m.setAttribute('open', '');
         $('#glosario-buscar').value = ''; pintarGlosario();
-        // En pantalla táctil no enfocamos el buscador para no abrir el teclado solo;
-        // en escritorio sí, para que se pueda escribir de inmediato.
-        if (window.matchMedia('(pointer: fine)').matches) $('#glosario-buscar').focus();
       });
     })();
 
