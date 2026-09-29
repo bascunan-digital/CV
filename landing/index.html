@@ -660,14 +660,16 @@
     <section id="portal" class="bg-sand pb-24" aria-labelledby="portal-titulo">
       <div class="mx-auto max-w-7xl px-5 sm:px-8">
         <div class="reveal overflow-hidden rounded-[2rem] bg-white p-6 ring-1 ring-slate-200/80 sm:p-10">
-          <span class="inline-block rounded-full bg-cobalt px-4 py-1 text-xs font-semibold text-white">portal de clientes</span>
-          <h2 id="portal-titulo" class="mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">Tu proyecto, ordenado en un solo lugar.</h2>
-          <div class="mt-6 grid items-center gap-8 lg:mt-8 lg:grid-cols-2">
-            <picture class="order-1 block overflow-hidden rounded-3xl ring-1 ring-slate-200/80 lg:order-2">
+          <div class="grid gap-8 lg:grid-cols-2 lg:items-start">
+            <div class="lg:col-start-1 lg:row-start-1">
+              <span class="inline-block rounded-full bg-cobalt px-4 py-1 text-xs font-semibold text-white">portal de clientes</span>
+              <h2 id="portal-titulo" class="mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">Tu proyecto, ordenado en un solo lugar.</h2>
+            </div>
+            <picture class="mt-2 block overflow-hidden rounded-3xl ring-1 ring-slate-200/80 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:mt-0">
               <source srcset="img/portal.webp" type="image/webp" />
               <img src="img/portal.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Vista del portal de clientes: etapas del proyecto, progreso del material y subida de archivos" class="aspect-[4/3] w-full object-cover object-top" />
             </picture>
-            <div class="order-2 mt-2 lg:order-1 lg:mt-0">
+            <div class="lg:col-start-1 lg:row-start-2">
               <p class="text-lg text-ink/70">Crea tu cuenta y adelanta tu sitio: sube tu logo, tus fotos y tus textos cuando puedas, sin correos ni mensajes perdidos.</p>
               <ul class="mt-6 space-y-3">
                 <li class="flex gap-3"><span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-[#E7F7EE] text-wa" aria-hidden="true">✓</span><span><strong>Guías para cada texto</strong>, con ejemplos: no necesitas saber de diseño.</span></li>
@@ -686,7 +688,7 @@
 
     <!-- ===================== FAQ (arena) ===================== -->
     <section id="faq" class="bg-sand pb-24">
-      <div class="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-12">
+      <div class="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:items-center">
         <div class="reveal lg:col-span-4">
           <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">preguntas frecuentes</span>
           <h2 class="mt-5 text-4xl leading-[1.05] font-bold tighter text-balance sm:text-5xl">Lo que todos preguntan antes de partir.</h2>

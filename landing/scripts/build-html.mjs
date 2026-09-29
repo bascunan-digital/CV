@@ -10,7 +10,7 @@ const dist = new URL('../dist/', import.meta.url);
 const DOMINIO = 'https://www.bascunan.digital';
 const PAGINAS = ['index.html', 'portal.html', 'cv.html', 'privacidad.html', 'terminos.html', '404.html'];
 const EN_SITEMAP = ['', 'cv.html', 'privacidad.html', 'terminos.html'];
-const ARCHIVOS = ['sitio.js', 'favicon.ico', 'favicon.svg', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'site.webmanifest'];
+const ARCHIVOS = ['sitio.js', 'favicon.ico', 'favicon.svg', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'site.webmanifest', 'cv-alonso-bascunan-es.pdf', 'cv-alonso-bascunan-en.pdf'];
 
 const cdn = /\s*<!-- Tailwind CSS v4 vía CDN[^\n]*-->\s*<script src="https:\/\/cdn\.jsdelivr\.net\/npm\/@tailwindcss\/browser@4"><\/script>/;
 const tokens = /\s*<!-- Tokens del sistema de diseño -->\s*<style type="text\/tailwindcss">[\s\S]*?<\/style>/;

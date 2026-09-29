@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="es-CL">
 <head>
+  <script>history.scrollRestoration = 'manual';</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CV de Alonso Bascuñán | bascunan.digital</title>
@@ -22,34 +23,104 @@
     .wave-top { background-repeat: repeat-x; background-position: top left; background-size: 72px 112px; }
     @media (max-width: 640px) { .wave-top { background-size: 54px 84px; } }
     .wave-blush-cobalt { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='112'%3E%3Crect width='72' height='40' fill='%23FDE8F0'/%3E%3Crect y='40' width='72' height='32' fill='%232B44FF'/%3E%3Crect y='72' width='72' height='40' fill='%23FDE8F0'/%3E%3Cpath fill='%232B44FF' d='M0 40C24.48 40 31.68 8 54.72 8H60.48Q65.52 8 65.52 15.04V40Z'/%3E%3Cpath fill='%23FDE8F0' d='M0 72C24.48 72 31.68 40 54.72 40H60.48Q65.52 40 65.52 47.04V72Z'/%3E%3Cpath fill='%232B44FF' d='M0 104C24.48 104 31.68 72 54.72 72H60.48Q65.52 72 65.52 79.04V104Z'/%3E%3Crect y='104' width='72' height='8' fill='%232B44FF'/%3E%3C/svg%3E"); }
+    /* ---------- Menú móvil a pantalla completa ---------- */
+    #menu-movil .menu-item { opacity: 0; transform: translateY(14px); }
+    #menu-movil.abierto .menu-item { animation: menuItemIn .45s cubic-bezier(.2,.8,.2,1) forwards; }
+    #menu-movil.abierto nav .menu-item:nth-child(1) { animation-delay: .05s; }
+    #menu-movil.abierto nav .menu-item:nth-child(2) { animation-delay: .1s; }
+    #menu-movil.abierto nav .menu-item:nth-child(3) { animation-delay: .15s; }
+    #menu-movil.abierto nav .menu-item:nth-child(4) { animation-delay: .2s; }
+    #menu-movil.abierto nav .menu-item:nth-child(5) { animation-delay: .25s; }
+    #menu-movil.abierto > .menu-item { animation-delay: .3s; }
+    @keyframes menuItemIn { to { opacity: 1; transform: none; } }
+    /* ---------- Selector de idioma ---------- */
+    .lang-en { display: none; }
+    html.en .lang-es { display: none; }
+    html.en .lang-en { display: revert; }
+    #sel-idioma button[aria-pressed="true"] { background: #fff; color: #2B44FF; }
+    #sel-idioma button[aria-pressed="false"] { color: #FDE8F0; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      #menu-movil .menu-item { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body class="bg-sand font-sans text-ink antialiased">
   <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-cobalt">Saltar al contenido</a>
 
-  <header class="bg-cobalt text-white">
-    <div class="mx-auto flex h-[72px] max-w-5xl items-center justify-between gap-3 px-5 sm:px-8">
-      <a href="index.html" class="flex items-center gap-2 text-lg font-bold tight">
+  <header id="cv-cabecera" class="sticky top-0 z-50 bg-cobalt text-white">
+    <div class="mx-auto flex h-[72px] max-w-5xl items-center justify-between gap-2 px-5 sm:px-8">
+      <a href="index.html" class="flex shrink-0 items-center gap-2 text-lg font-bold tight">
         <svg class="size-7 shrink-0 rounded-[6px] ring-1 ring-white/25" viewBox="0 0 524 524" aria-hidden="true"><rect width="524" height="524" rx="112" fill="#0000FE"/><path fill="#fff" fill-rule="evenodd" d="M156 122H246.375C322.3 122 385 184.1 385 259.5C385 334.9 322.3 397 246.375 397H156ZM194 159H273.5C294.4 159 314.875 183.5 314.875 208.5C314.875 233.8 295.1 258.5 275 258.5C303.4 258.5 325 280.3 325 309C325 337.4 302.8 359 273.5 359H194Z"/></svg>
         <span>bascunan<span class="text-blush">.digital</span></span>
       </a>
-      <a href="index.html#sobre-mi" class="rounded-full px-4 py-2 text-sm font-semibold text-blush transition hover:bg-white/10">← Volver al sitio</a>
+      <div class="flex items-center gap-1">
+        <a href="index.html#sobre-mi" class="hidden items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold text-blush transition hover:bg-white/10 sm:inline-flex"><span class="lang-es">← Volver al sitio</span><span class="lang-en">← Back to site</span></a>
+        <a href="index.html#sobre-mi" class="grid size-11 shrink-0 place-items-center rounded-full text-blush transition hover:bg-white/10 sm:hidden" aria-label="Volver al sitio">
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </a>
+        <button id="btn-menu" type="button" class="grid size-11 shrink-0 place-items-center rounded-full text-blush hover:bg-white/10" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
+          <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 9h14M5 15h14"/></svg>
+        </button>
+      </div>
     </div>
   </header>
+
+  <!-- ===================== MENÚ MÓVIL A PANTALLA COMPLETA ===================== -->
+  <div id="menu-movil" class="fixed inset-0 z-[60] hidden flex-col bg-cobalt" role="dialog" aria-modal="true" aria-label="Menú">
+    <div class="flex h-[72px] shrink-0 items-center justify-between px-5 sm:px-8">
+      <a href="index.html" class="flex items-center gap-2 text-lg font-bold tight text-white">
+        <svg class="size-7 shrink-0 rounded-[6px] ring-1 ring-white/25" viewBox="0 0 524 524" aria-hidden="true"><rect width="524" height="524" rx="112" fill="#0000FE"/><path fill="#fff" fill-rule="evenodd" d="M156 122H246.375C322.3 122 385 184.1 385 259.5C385 334.9 322.3 397 246.375 397H156ZM194 159H273.5C294.4 159 314.875 183.5 314.875 208.5C314.875 233.8 295.1 258.5 275 258.5C303.4 258.5 325 280.3 325 309C325 337.4 302.8 359 273.5 359H194Z"/></svg>
+        <span>bascunan<span class="text-blush">.digital</span></span>
+      </a>
+      <button id="btn-cerrar-menu" type="button" class="grid size-11 place-items-center rounded-full text-blush hover:bg-white/10" aria-label="Cerrar menú">
+        <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <nav class="flex flex-1 flex-col justify-center gap-1 overflow-y-auto px-8 sm:px-12" aria-label="Principal (móvil)">
+      <a class="menu-item flex items-baseline gap-3 border-b border-white/10 py-4 text-3xl font-bold tight text-white sm:text-4xl" href="index.html#proceso"><span class="font-mono text-sm font-medium text-blush/50">01</span>Cómo trabajo</a>
+      <a class="menu-item flex items-baseline gap-3 border-b border-white/10 py-4 text-3xl font-bold tight text-white sm:text-4xl" href="index.html#diagnostico"><span class="font-mono text-sm font-medium text-blush/50">02</span>Diagnóstico gratis</a>
+      <a class="menu-item flex items-baseline gap-3 border-b border-white/10 py-4 text-3xl font-bold tight text-white sm:text-4xl" href="index.html#constructor"><span class="font-mono text-sm font-medium text-blush/50">03</span>Cotizador</a>
+      <a class="menu-item flex items-baseline gap-3 border-b border-white/10 py-4 text-3xl font-bold tight text-white sm:text-4xl" href="index.html#mantencion"><span class="font-mono text-sm font-medium text-blush/50">04</span>Mantención</a>
+      <a class="menu-item flex items-baseline gap-3 py-4 text-3xl font-bold tight text-white sm:text-4xl" href="index.html#faq"><span class="font-mono text-sm font-medium text-blush/50">05</span>Preguntas</a>
+    </nav>
+    <div class="menu-item shrink-0 space-y-3 px-8 pt-2 pb-8 sm:px-12">
+      <a href="portal.html" class="flex items-center justify-center gap-1.5 rounded-full px-5 py-3.5 text-center text-base font-semibold text-blush ring-1 ring-white/25 hover:bg-white/10"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>Portal de clientes</a>
+      <a href="index.html#constructor" class="block rounded-full bg-white px-5 py-4 text-center text-base font-bold text-cobalt">Cotizar Sitio →</a>
+    </div>
+  </div>
 
   <main id="contenido">
     <!-- ===================== HERO ===================== -->
     <section class="bg-cobalt text-white">
-      <div class="mx-auto max-w-5xl px-5 pt-14 pb-16 sm:px-8 sm:pt-20 sm:pb-20">
-        <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold ring-1 ring-blush/40">CV digital · actualizado 2026</span>
-        <h1 class="mt-6 text-4xl leading-[1.05] font-extrabold tighter text-balance sm:text-6xl">Alonso Bascuñán</h1>
-        <p class="mt-4 max-w-2xl text-lg leading-relaxed text-blush sm:text-xl">Diseñador UX/UI &amp; Desarrollador Front-End con 10+ años transformando jerarquía editorial en código productivo. Uso IA como copiloto de desarrollo para extender mi ejecución hacia stacks full-stack completos, sin ceder el criterio de diseño y producto que es mi especialización real.</p>
-        <dl class="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-white/15 pt-8 sm:grid-cols-4">
-          <div><dd class="text-2xl font-extrabold tight sm:text-3xl">10+</dd><dt class="mt-0.5 text-sm text-blush">Años UX/UI &amp; Front-End</dt></div>
-          <div><dd class="text-2xl font-extrabold tight sm:text-3xl">ES / EN</dd><dt class="mt-0.5 text-sm text-blush">Entrega bilingüe</dt></div>
-          <div><dd class="text-2xl font-extrabold tight sm:text-3xl">100%</dd><dt class="mt-0.5 text-sm text-blush">Disponible remoto</dt></div>
-          <div><dd class="text-2xl font-extrabold tight sm:text-3xl">V Región</dd><dt class="mt-0.5 text-sm text-blush">Valparaíso, Chile</dt></div>
-        </dl>
+      <div class="mx-auto grid max-w-5xl gap-8 px-5 pt-10 pb-16 sm:px-8 sm:pt-14 sm:pb-20 lg:grid-cols-12 lg:items-center lg:gap-10">
+        <figure class="overflow-hidden rounded-[2rem] bg-white/10 lg:col-span-4">
+          <picture><source srcset="img/alonso.webp" type="image/webp" /><img src="img/alonso.jpg" width="1200" height="1500" loading="eager" decoding="async" alt="Alonso Bascuñán, diseñador y desarrollador web" class="aspect-[4/5] w-full object-cover object-top" /></picture>
+        </figure>
+        <div class="lg:col-span-8">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold ring-1 ring-blush/40"><span class="lang-es">CV digital · actualizado 2026</span><span class="lang-en">Digital CV · updated 2026</span></span>
+            <div id="sel-idioma" class="ml-auto inline-flex gap-0.5 rounded-full bg-white/10 p-1 text-xs font-bold" role="group" aria-label="Idioma del CV / CV language">
+              <button type="button" data-lang="es" class="rounded-full px-3 py-1.5 transition" aria-pressed="true">ES</button>
+              <button type="button" data-lang="en" class="rounded-full px-3 py-1.5 transition" aria-pressed="false">EN</button>
+            </div>
+          </div>
+          <h1 class="mt-5 text-4xl leading-[1.05] font-extrabold tighter text-balance sm:text-6xl">Alonso Bascuñán</h1>
+          <p class="lang-es mt-4 max-w-2xl text-lg leading-relaxed text-blush sm:text-xl">Diseñador UX/UI &amp; Desarrollador Front-End con 10+ años transformando jerarquía editorial en código productivo. Uso IA como copiloto de desarrollo para extender mi ejecución hacia stacks full-stack completos, sin ceder el criterio de diseño y producto que es mi especialización real.</p>
+          <p class="lang-en mt-4 max-w-2xl text-lg leading-relaxed text-blush sm:text-xl">UX/UI Designer &amp; Front-End Developer with 10+ years turning editorial hierarchy into production code. I use AI as a development copilot to extend my execution into full-stack builds, without giving up the design and product judgment that is my real specialty.</p>
+
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+            <a href="cv-alonso-bascunan-es.pdf" download class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-cobalt transition hover:bg-blush"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"/></svg>CV en PDF (Español)</a>
+            <a href="cv-alonso-bascunan-en.pdf" download class="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold text-white ring-1 ring-white/30 transition hover:bg-white/10"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"/></svg>CV in PDF (English)</a>
+          </div>
+
+          <dl class="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-white/15 pt-8 sm:flex sm:flex-wrap sm:gap-x-10 sm:gap-y-6">
+            <div><dd class="text-2xl font-extrabold tight sm:text-3xl">10+</dd><dt class="mt-0.5 text-sm text-blush"><span class="lang-es">Años UX/UI &amp; Front-End</span><span class="lang-en">Years UX/UI &amp; Front-End</span></dt></div>
+            <div><dd class="text-2xl font-extrabold tight sm:text-3xl">ES / EN</dd><dt class="mt-0.5 text-sm text-blush"><span class="lang-es">Entrega bilingüe</span><span class="lang-en">Bilingual delivery</span></dt></div>
+            <div><dd class="text-2xl font-extrabold tight sm:text-3xl">100%</dd><dt class="mt-0.5 text-sm text-blush"><span class="lang-es">Disponible remoto</span><span class="lang-en">Available remote</span></dt></div>
+            <div><dd class="text-2xl font-extrabold tight sm:text-3xl">V Región</dd><dt class="mt-0.5 text-sm text-blush">Valparaíso, Chile</dt></div>
+          </dl>
+        </div>
       </div>
     </section>
 
@@ -59,20 +130,27 @@
     <section class="bg-blush py-16 sm:py-20">
       <div class="mx-auto grid max-w-5xl gap-8 px-5 sm:px-8 lg:grid-cols-12">
         <div class="lg:col-span-8">
-          <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">perfil</span>
-          <h2 class="mt-5 text-3xl leading-[1.1] font-bold tighter text-balance sm:text-4xl">De la jerarquía editorial al código productivo.</h2>
-          <p class="mt-5 leading-relaxed text-ink/75">Mi carrera no empezó en el código: empezó en diseño editorial y museografía institucional, donde una jerarquía visual mal resuelta se nota de inmediato. Ese criterio —grid, tipografía, claridad del mensaje— es el que hoy aplico a interfaces digitales.</p>
-          <p class="mt-4 leading-relaxed text-ink/75">En más de una década he liderado el ciclo completo de diseño a código para clientes en Chile y Estados Unidos: sistemas de diseño, prototipado de alta fidelidad y desarrollo web a medida. Más recientemente extendí ese alcance a plataformas full-stack propias, usando IA como copiloto de desarrollo.</p>
-          <p class="mt-4 leading-relaxed text-ink/75">Trabajo en español nativo e inglés profesional, y estoy disponible para incorporarme a equipos remotos full-time, consultoría técnica puntual o colaboraciones freelance estratégicas a nivel global.</p>
+          <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25"><span class="lang-es">perfil</span><span class="lang-en">profile</span></span>
+          <h2 class="mt-5 text-3xl leading-[1.1] font-bold tighter text-balance sm:text-4xl"><span class="lang-es">De la jerarquía editorial al código productivo.</span><span class="lang-en">From editorial hierarchy to production code.</span></h2>
+          <div class="lang-es">
+            <p class="mt-5 leading-relaxed text-ink/75">Mi carrera no empezó en el código: empezó en diseño editorial y museografía institucional, donde una jerarquía visual mal resuelta se nota de inmediato. Ese criterio —grid, tipografía, claridad del mensaje— es el que hoy aplico a interfaces digitales.</p>
+            <p class="mt-4 leading-relaxed text-ink/75">En más de una década he liderado el ciclo completo de diseño a código para clientes en Chile y Estados Unidos: sistemas de diseño, prototipado de alta fidelidad y desarrollo web a medida. Más recientemente extendí ese alcance a plataformas full-stack propias, usando IA como copiloto de desarrollo.</p>
+            <p class="mt-4 leading-relaxed text-ink/75">Trabajo en español nativo e inglés profesional, y estoy disponible para incorporarme a equipos remotos full-time, consultoría técnica puntual o colaboraciones freelance estratégicas a nivel global.</p>
+          </div>
+          <div class="lang-en">
+            <p class="mt-5 leading-relaxed text-ink/75">My career didn't start in code: it started in editorial design and institutional museography, where a poorly resolved visual hierarchy shows immediately. That criterion —grid, typography, message clarity— is what I apply to digital interfaces today.</p>
+            <p class="mt-4 leading-relaxed text-ink/75">Over more than a decade I've led the full design-to-code cycle for clients in Chile and the United States: design systems, high-fidelity prototyping and custom web development. More recently I extended that scope to my own full-stack platforms, using AI as a development copilot.</p>
+            <p class="mt-4 leading-relaxed text-ink/75">I work in native Spanish and professional English, and I'm available to join remote full-time teams, one-off technical consulting or strategic freelance collaborations globally.</p>
+          </div>
         </div>
         <div class="rounded-3xl bg-white p-6 lg:col-span-4">
           <dl class="space-y-4 text-sm">
-            <div><dt class="font-semibold text-cobalt">Ubicación</dt><dd class="mt-0.5">Valparaíso, Chile (UTC-4)</dd></div>
-            <div><dt class="font-semibold text-cobalt">Correo</dt><dd class="mt-0.5 wrap-anywhere"><a href="mailto:hola@bascunan.digital" class="underline underline-offset-2">hola@bascunan.digital</a></dd></div>
-            <div><dt class="font-semibold text-cobalt">Teléfono</dt><dd class="mt-0.5">+56 9 6366 0958</dd></div>
-            <div><dt class="font-semibold text-cobalt">Portafolio</dt><dd class="mt-0.5"><a href="index.html" class="underline underline-offset-2">www.bascunan.digital</a></dd></div>
-            <div><dt class="font-semibold text-cobalt">Idiomas</dt><dd class="mt-0.5">Español — Nativo · Inglés — Profesional</dd></div>
-            <div><dt class="font-semibold text-cobalt">Modalidad</dt><dd class="mt-0.5">Remoto full-time · Consultoría · Freelance</dd></div>
+            <div><dt class="font-semibold text-cobalt"><span class="lang-es">Ubicación</span><span class="lang-en">Location</span></dt><dd class="mt-0.5">Valparaíso, Chile (UTC-4)</dd></div>
+            <div><dt class="font-semibold text-cobalt"><span class="lang-es">Correo</span><span class="lang-en">Email</span></dt><dd class="mt-0.5 wrap-anywhere"><a href="mailto:hola@bascunan.digital" class="underline underline-offset-2">hola@bascunan.digital</a></dd></div>
+            <div><dt class="font-semibold text-cobalt"><span class="lang-es">Teléfono</span><span class="lang-en">Phone</span></dt><dd class="mt-0.5">+56 9 6366 0958</dd></div>
+            <div><dt class="font-semibold text-cobalt"><span class="lang-es">Portafolio</span><span class="lang-en">Portfolio</span></dt><dd class="mt-0.5"><a href="index.html" class="underline underline-offset-2">www.bascunan.digital</a></dd></div>
+            <div><dt class="font-semibold text-cobalt"><span class="lang-es">Idiomas</span><span class="lang-en">Languages</span></dt><dd class="mt-0.5"><span class="lang-es">Español — Nativo · Inglés — Profesional</span><span class="lang-en">Spanish — Native · English — Professional</span></dd></div>
+            <div><dt class="font-semibold text-cobalt"><span class="lang-es">Modalidad</span><span class="lang-en">Availability</span></dt><dd class="mt-0.5"><span class="lang-es">Remoto full-time · Consultoría · Freelance</span><span class="lang-en">Full-time remote · Consulting · Freelance</span></dd></div>
           </dl>
         </div>
       </div>
@@ -81,44 +159,44 @@
     <!-- ===================== IA COMO COPILOTO ===================== -->
     <section class="bg-sand py-16 sm:py-20">
       <div class="mx-auto max-w-5xl px-5 sm:px-8">
-        <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">cómo trabajo con IA</span>
-        <h2 class="mt-5 max-w-2xl text-3xl leading-[1.1] font-bold tighter text-balance sm:text-4xl">Un perfil de origen editorial/UX que entrega arquitecturas full-stack.</h2>
+        <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25"><span class="lang-es">cómo trabajo con IA</span><span class="lang-en">how I work with AI</span></span>
+        <h2 class="mt-5 max-w-2xl text-3xl leading-[1.1] font-bold tighter text-balance sm:text-4xl"><span class="lang-es">Un perfil de origen editorial/UX que entrega arquitecturas full-stack.</span><span class="lang-en">An editorial/UX-rooted profile that ships full-stack architectures.</span></h2>
         <div class="mt-8 grid gap-4 sm:grid-cols-2">
           <div class="rounded-3xl bg-white p-6 sm:p-7">
-            <p class="text-xs font-semibold tracking-wide text-cobalt uppercase">Lo que decido yo</p>
-            <h3 class="mt-2 text-xl font-bold tight">Arquitectura, UX y producto</h3>
-            <p class="mt-2 leading-relaxed text-ink/70">Defino la estructura de información, el modelo de datos, las decisiones de UX y los criterios de calidad de cada proyecto. Esa capa de juicio no se delega.</p>
+            <p class="text-xs font-semibold tracking-wide text-cobalt uppercase"><span class="lang-es">Lo que decido yo</span><span class="lang-en">What I decide</span></p>
+            <h3 class="mt-2 text-xl font-bold tight"><span class="lang-es">Arquitectura, UX y producto</span><span class="lang-en">Architecture, UX and product</span></h3>
+            <p class="mt-2 leading-relaxed text-ink/70"><span class="lang-es">Defino la estructura de información, el modelo de datos, las decisiones de UX y los criterios de calidad de cada proyecto. Esa capa de juicio no se delega.</span><span class="lang-en">I define the information structure, the data model, UX decisions and the quality bar for every project. That layer of judgment isn't delegated.</span></p>
           </div>
           <div class="rounded-3xl bg-white p-6 sm:p-7">
-            <p class="text-xs font-semibold tracking-wide text-cobalt uppercase">Lo que acelera la IA</p>
-            <h3 class="mt-2 text-xl font-bold tight">Implementación fuera de mi core</h3>
-            <p class="mt-2 leading-relaxed text-ink/70">Uso Claude como copiloto de desarrollo para ejecutar con solvencia stacks backend fuera de mi especialización nuclear, manteniendo yo el control sobre cada decisión estructural.</p>
+            <p class="text-xs font-semibold tracking-wide text-cobalt uppercase"><span class="lang-es">Lo que acelera la IA</span><span class="lang-en">What AI accelerates</span></p>
+            <h3 class="mt-2 text-xl font-bold tight"><span class="lang-es">Implementación fuera de mi core</span><span class="lang-en">Implementation outside my core</span></h3>
+            <p class="mt-2 leading-relaxed text-ink/70"><span class="lang-es">Uso Claude como copiloto de desarrollo para ejecutar con solvencia stacks backend fuera de mi especialización nuclear, manteniendo yo el control sobre cada decisión estructural.</span><span class="lang-en">I use Claude as a development copilot to competently execute backend stacks outside my core specialization, while I keep control over every structural decision.</span></p>
           </div>
         </div>
-        <blockquote class="mt-6 rounded-2xl bg-graphite p-6 text-white/85">“Extiendo mi ejecución más allá del front-end usando IA como copiloto de desarrollo: diseño la arquitectura y tomo las decisiones de producto; la IA acelera la implementación en stacks fuera de mi especialización nuclear.”</blockquote>
+        <blockquote class="mt-6 rounded-2xl bg-graphite p-6 text-white/85"><span class="lang-es">“Extiendo mi ejecución más allá del front-end usando IA como copiloto de desarrollo: diseño la arquitectura y tomo las decisiones de producto; la IA acelera la implementación en stacks fuera de mi especialización nuclear.”</span><span class="lang-en">“I extend my execution beyond the front-end using AI as a development copilot: I design the architecture and make the product decisions; AI accelerates implementation in stacks outside my core specialization.”</span></blockquote>
       </div>
     </section>
 
     <!-- ===================== EXPERIENCIA ===================== -->
     <section class="bg-blush py-16 sm:py-20">
       <div class="mx-auto max-w-5xl px-5 sm:px-8">
-        <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">experiencia</span>
-        <h2 class="mt-5 text-3xl leading-[1.1] font-bold tighter text-balance sm:text-4xl">Trayectoria profesional.</h2>
+        <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25"><span class="lang-es">experiencia</span><span class="lang-en">experience</span></span>
+        <h2 class="mt-5 text-3xl leading-[1.1] font-bold tighter text-balance sm:text-4xl"><span class="lang-es">Trayectoria profesional.</span><span class="lang-en">Professional background.</span></h2>
         <div class="mt-8 space-y-4">
           <article class="rounded-3xl bg-white p-6 sm:p-7">
-            <div class="flex flex-wrap items-baseline justify-between gap-2"><h3 class="text-xl font-bold tight">Diseñador UX/UI &amp; Desarrollador Web</h3><span class="font-mono text-xs text-ink/60">2019 — Actualidad</span></div>
+            <div class="flex flex-wrap items-baseline justify-between gap-2"><h3 class="text-xl font-bold tight"><span class="lang-es">Diseñador UX/UI &amp; Desarrollador Web</span><span class="lang-en">UX/UI Designer &amp; Web Developer</span></h3><span class="font-mono text-xs text-ink/60"><span class="lang-es">2019 — Actualidad</span><span class="lang-en">2019 — Present</span></span></div>
             <p class="mt-1 text-sm font-semibold text-cobalt">Agencia La Vitamina · Viña del Mar</p>
-            <p class="mt-3 leading-relaxed text-ink/70">Lidero el ciclo completo de diseño a código para una cartera diversificada de proyectos web (WordPress a medida, Bootstrap 5, Tailwind CSS), sirviendo clientes en Chile y Estados Unidos. Diseño y prototipo interfaces de alta fidelidad en Figma y Adobe XD, estableciendo sistemas de diseño reutilizables.</p>
+            <p class="mt-3 leading-relaxed text-ink/70"><span class="lang-es">Lidero el ciclo completo de diseño a código para una cartera diversificada de proyectos web (WordPress a medida, Bootstrap 5, Tailwind CSS), sirviendo clientes en Chile y Estados Unidos. Diseño y prototipo interfaces de alta fidelidad en Figma y Adobe XD, estableciendo sistemas de diseño reutilizables.</span><span class="lang-en">I lead the full design-to-code cycle for a diversified portfolio of web projects (custom WordPress, Bootstrap 5, Tailwind CSS), serving clients in Chile and the United States. I design and prototype high-fidelity interfaces in Figma and Adobe XD, establishing reusable design systems.</span></p>
           </article>
           <article class="rounded-3xl bg-white p-6 sm:p-7">
-            <div class="flex flex-wrap items-baseline justify-between gap-2"><h3 class="text-xl font-bold tight">Diseñador Gráfico</h3><span class="font-mono text-xs text-ink/60">2014 — 2025</span></div>
-            <p class="mt-1 text-sm font-semibold text-cobalt">Museografía &amp; Difusión — Municipalidad de Viña del Mar</p>
-            <p class="mt-3 leading-relaxed text-ink/70">Dirigí la identidad visual completa de exposiciones de gran escala en el Museo Palacio Vergara, coordinando museografía física y catálogos editoriales. Base explícita de mi enfoque UX/UI actual: jerarquía tipográfica y composición editorial aplicadas a proyectos de alta exigencia institucional.</p>
+            <div class="flex flex-wrap items-baseline justify-between gap-2"><h3 class="text-xl font-bold tight"><span class="lang-es">Diseñador Gráfico</span><span class="lang-en">Graphic Designer</span></h3><span class="font-mono text-xs text-ink/60">2014 — 2025</span></div>
+            <p class="mt-1 text-sm font-semibold text-cobalt"><span class="lang-es">Museografía &amp; Difusión — Municipalidad de Viña del Mar</span><span class="lang-en">Museography &amp; Outreach — Viña del Mar City Council</span></p>
+            <p class="mt-3 leading-relaxed text-ink/70"><span class="lang-es">Dirigí la identidad visual completa de exposiciones de gran escala en el Museo Palacio Vergara, coordinando museografía física y catálogos editoriales. Base explícita de mi enfoque UX/UI actual: jerarquía tipográfica y composición editorial aplicadas a proyectos de alta exigencia institucional.</span><span class="lang-en">I directed the full visual identity of large-scale exhibitions at the Palacio Vergara Museum, coordinating physical museography and editorial catalogs. The explicit foundation of my current UX/UI approach: typographic hierarchy and editorial composition applied to high-demand institutional projects.</span></p>
           </article>
           <article class="rounded-3xl bg-white p-6 sm:p-7">
-            <div class="flex flex-wrap items-baseline justify-between gap-2"><h3 class="text-xl font-bold tight">Docente de Diseño &amp; Comunicaciones</h3><span class="font-mono text-xs text-ink/60">2020 — 2021</span></div>
+            <div class="flex flex-wrap items-baseline justify-between gap-2"><h3 class="text-xl font-bold tight"><span class="lang-es">Docente de Diseño &amp; Comunicaciones</span><span class="lang-en">Design &amp; Communications Lecturer</span></h3><span class="font-mono text-xs text-ink/60">2020 — 2021</span></div>
             <p class="mt-1 text-sm font-semibold text-cobalt">INACAP · Sede Valparaíso</p>
-            <p class="mt-3 leading-relaxed text-ink/70">Diseñé y dicté asignaturas de metodologías de diseño y tecnologías de maquetación, formando a nuevas generaciones en la traducción técnica del diseño a medios interactivos.</p>
+            <p class="mt-3 leading-relaxed text-ink/70"><span class="lang-es">Diseñé y dicté asignaturas de metodologías de diseño y tecnologías de maquetación, formando a nuevas generaciones en la traducción técnica del diseño a medios interactivos.</span><span class="lang-en">I designed and taught courses on design methodologies and layout technologies, training new generations in the technical translation of design into interactive media.</span></p>
           </article>
         </div>
       </div>
@@ -127,17 +205,17 @@
     <!-- ===================== STACK ===================== -->
     <section class="bg-sand py-16 sm:py-20">
       <div class="mx-auto max-w-5xl px-5 sm:px-8">
-        <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">stack</span>
-        <h2 class="mt-5 text-3xl leading-[1.1] font-bold tighter text-balance sm:text-4xl">Herramientas y tecnologías.</h2>
+        <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25"><span class="lang-es">stack</span><span class="lang-en">stack</span></span>
+        <h2 class="mt-5 text-3xl leading-[1.1] font-bold tighter text-balance sm:text-4xl"><span class="lang-es">Herramientas y tecnologías.</span><span class="lang-en">Tools &amp; technologies.</span></h2>
         <div class="mt-8 grid gap-4 sm:grid-cols-2">
           <div class="rounded-3xl bg-white p-6">
-            <p class="text-sm font-semibold text-cobalt">Diseño UX/UI &amp; producto</p>
+            <p class="text-sm font-semibold text-cobalt"><span class="lang-es">Diseño UX/UI &amp; producto</span><span class="lang-en">UX/UI Design &amp; product</span></p>
             <ul class="mt-3 flex flex-wrap gap-2 text-sm">
               <li class="rounded-full bg-sand px-3 py-1.5">Design Systems</li><li class="rounded-full bg-sand px-3 py-1.5">Information Architecture</li><li class="rounded-full bg-sand px-3 py-1.5">Prototyping</li><li class="rounded-full bg-sand px-3 py-1.5">Figma</li><li class="rounded-full bg-sand px-3 py-1.5">Adobe XD</li>
             </ul>
           </div>
           <div class="rounded-3xl bg-white p-6">
-            <p class="text-sm font-semibold text-cobalt">IA como copiloto de desarrollo</p>
+            <p class="text-sm font-semibold text-cobalt"><span class="lang-es">IA como copiloto de desarrollo</span><span class="lang-en">AI as development copilot</span></p>
             <ul class="mt-3 flex flex-wrap gap-2 text-sm">
               <li class="rounded-full bg-sand px-3 py-1.5">Claude</li><li class="rounded-full bg-sand px-3 py-1.5">Gemini</li><li class="rounded-full bg-sand px-3 py-1.5">AI Pair Programming</li><li class="rounded-full bg-sand px-3 py-1.5">AI-Augmented Engineering</li>
             </ul>
@@ -149,7 +227,7 @@
             </ul>
           </div>
           <div class="rounded-3xl bg-white p-6">
-            <p class="text-sm font-semibold text-cobalt">CMS, backend &amp; plataformas</p>
+            <p class="text-sm font-semibold text-cobalt"><span class="lang-es">CMS, backend &amp; plataformas</span><span class="lang-en">CMS, backend &amp; platforms</span></p>
             <ul class="mt-3 flex flex-wrap gap-2 text-sm">
               <li class="rounded-full bg-sand px-3 py-1.5">WordPress Core</li><li class="rounded-full bg-sand px-3 py-1.5">ACF / SCF</li><li class="rounded-full bg-sand px-3 py-1.5">PHP · MySQL</li><li class="rounded-full bg-sand px-3 py-1.5">NestJS · Prisma · PostgreSQL · Next.js</li>
             </ul>
@@ -161,7 +239,7 @@
             </ul>
           </div>
           <div class="rounded-3xl bg-white p-6">
-            <p class="text-sm font-semibold text-cobalt">Diseño gráfico &amp; editorial</p>
+            <p class="text-sm font-semibold text-cobalt"><span class="lang-es">Diseño gráfico &amp; editorial</span><span class="lang-en">Graphic &amp; editorial design</span></p>
             <ul class="mt-3 flex flex-wrap gap-2 text-sm">
               <li class="rounded-full bg-sand px-3 py-1.5">Illustrator</li><li class="rounded-full bg-sand px-3 py-1.5">Photoshop</li><li class="rounded-full bg-sand px-3 py-1.5">InDesign</li>
             </ul>
@@ -173,17 +251,17 @@
     <!-- ===================== FORMACIÓN ===================== -->
     <section class="bg-blush py-16 sm:py-20">
       <div class="mx-auto max-w-5xl px-5 sm:px-8">
-        <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25">formación</span>
-        <h2 class="mt-5 text-3xl leading-[1.1] font-bold tighter text-balance sm:text-4xl">Estudios.</h2>
+        <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/25"><span class="lang-es">formación</span><span class="lang-en">education</span></span>
+        <h2 class="mt-5 text-3xl leading-[1.1] font-bold tighter text-balance sm:text-4xl"><span class="lang-es">Estudios.</span><span class="lang-en">Studies.</span></h2>
         <div class="mt-8 grid gap-4 sm:grid-cols-2">
           <div class="rounded-3xl bg-white p-6">
             <p class="font-mono text-xs text-ink/60">2009 — 2014</p>
-            <h3 class="mt-1 text-lg font-bold tight">Título en Diseño Editorial</h3>
+            <h3 class="mt-1 text-lg font-bold tight"><span class="lang-es">Título en Diseño Editorial</span><span class="lang-en">Degree in Editorial Design</span></h3>
             <p class="mt-1 text-sm text-ink/65">INACAP · Sede Valparaíso</p>
           </div>
           <div class="rounded-3xl bg-white p-6">
             <p class="font-mono text-xs text-ink/60">2017 — 2018</p>
-            <h3 class="mt-1 text-lg font-bold tight">Título en Diseño Web &amp; Mobile</h3>
+            <h3 class="mt-1 text-lg font-bold tight"><span class="lang-es">Título en Diseño Web &amp; Mobile</span><span class="lang-en">Degree in Web &amp; Mobile Design</span></h3>
             <p class="mt-1 text-sm text-ink/65">INACAP · Sede Valparaíso</p>
           </div>
         </div>
@@ -193,11 +271,11 @@
     <!-- ===================== CONTACTO ===================== -->
     <section class="wave-top wave-blush-cobalt bg-cobalt text-blush">
       <div class="mx-auto max-w-5xl px-5 pt-36 pb-20 sm:px-8">
-        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold ring-1 ring-blush/40"><span class="size-2 rounded-full bg-green-400"></span>Disponible — remoto</span>
-        <h2 class="mt-6 max-w-2xl text-3xl leading-[1.1] font-bold tighter text-balance sm:text-4xl">¿Trabajamos juntos?</h2>
-        <p class="mt-4 max-w-xl leading-relaxed">Disponible para equipos remotos full-time, consultoría técnica puntual o colaboraciones freelance estratégicas a nivel global.</p>
+        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold ring-1 ring-blush/40"><span class="size-2 rounded-full bg-green-400"></span><span class="lang-es">Disponible — remoto</span><span class="lang-en">Available — remote</span></span>
+        <h2 class="mt-6 max-w-2xl text-3xl leading-[1.1] font-bold tighter text-balance sm:text-4xl"><span class="lang-es">¿Trabajamos juntos?</span><span class="lang-en">Let's work together?</span></h2>
+        <p class="mt-4 max-w-xl leading-relaxed"><span class="lang-es">Disponible para equipos remotos full-time, consultoría técnica puntual o colaboraciones freelance estratégicas a nivel global.</span><span class="lang-en">Available for remote full-time teams, one-off technical consulting or strategic freelance collaborations globally.</span></p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a href="https://wa.me/56963660958" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-cobalt transition hover:bg-blush">Escribirme por WhatsApp <span aria-hidden="true">→</span></a>
+          <a href="https://wa.me/56963660958" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-cobalt transition hover:bg-blush"><span class="lang-es">Escribirme por WhatsApp</span><span class="lang-en">Message me on WhatsApp</span> <span aria-hidden="true">→</span></a>
           <a href="mailto:hola@bascunan.digital" class="inline-flex items-center justify-center rounded-full px-7 py-4 font-semibold ring-1 ring-blush/40 transition hover:bg-white/10 hover:ring-blush">hola@bascunan.digital</a>
         </div>
       </div>
@@ -205,7 +283,52 @@
   </main>
 
   <footer class="bg-cobalt-deep px-5 py-8 text-center text-sm text-blush/80 sm:px-8">
-    <p>Alonso Bascuñán — CV digital · <a href="index.html" class="underline underline-offset-2 hover:text-white">bascunan.digital</a></p>
+    <p>Alonso Bascuñán — <span class="lang-es">CV digital</span><span class="lang-en">Digital CV</span> · <a href="index.html" class="underline underline-offset-2 hover:text-white">bascunan.digital</a></p>
   </footer>
+
+  <script>
+  (function () {
+    'use strict';
+    function $(s, c) { return (c || document).querySelector(s); }
+    function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
+
+    /* ---------- Selector de idioma ---------- */
+    var TITULOS = {
+      es: 'CV de Alonso Bascuñán | bascunan.digital',
+      en: 'Alonso Bascuñán — Résumé | bascunan.digital'
+    };
+    function setLang(l) {
+      document.documentElement.classList.toggle('en', l === 'en');
+      document.documentElement.lang = l === 'en' ? 'en' : 'es-CL';
+      document.title = TITULOS[l] || TITULOS.es;
+      $$('#sel-idioma button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === l)); });
+    }
+    $$('#sel-idioma button').forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.dataset.lang); });
+    });
+
+    /* ---------- Menú móvil a pantalla completa ---------- */
+    var btnMenu = $('#btn-menu'), menu = $('#menu-movil');
+    function cerrarMenu() {
+      menu.classList.remove('abierto');
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      btnMenu.setAttribute('aria-expanded', 'false'); btnMenu.setAttribute('aria-label', 'Abrir menú');
+      document.body.classList.remove('overflow-hidden');
+    }
+    btnMenu.addEventListener('click', function () {
+      if (btnMenu.getAttribute('aria-expanded') === 'true') { cerrarMenu(); return; }
+      menu.classList.remove('hidden');
+      menu.classList.add('flex');
+      void menu.offsetWidth;
+      menu.classList.add('abierto');
+      btnMenu.setAttribute('aria-expanded', 'true'); btnMenu.setAttribute('aria-label', 'Cerrar menú');
+      document.body.classList.add('overflow-hidden');
+    });
+    $('#btn-cerrar-menu').addEventListener('click', cerrarMenu);
+    $$('a', menu).forEach(function (a) { a.addEventListener('click', cerrarMenu); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && btnMenu.getAttribute('aria-expanded') === 'true') cerrarMenu(); });
+  })();
+  </script>
 </body>
 </html>
