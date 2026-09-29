@@ -397,10 +397,10 @@
         <h2 class="reveal max-w-3xl text-4xl leading-[1.05] font-bold tighter text-balance text-cobalt sm:text-5xl">Sin sitio, o con uno que no funciona, pierdes clientes todos los días.</h2>
 
         <div class="mt-10 grid gap-4 md:grid-cols-3">
-          <article class="reveal rounded-3xl bg-cobalt p-7 text-white">
-            <span class="grid size-12 place-items-center rounded-2xl bg-white/15"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <article class="reveal rounded-3xl bg-white p-7">
+            <span class="grid size-12 place-items-center rounded-2xl bg-blush text-cobalt"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
             <h3 class="mt-5 text-xl font-bold tight">No apareces en Google</h3>
-            <p class="mt-1.5 leading-relaxed text-blush">Cuando buscan tu servicio en Google o Maps, encuentran a tu competencia.</p>
+            <p class="mt-1.5 leading-relaxed text-ink/65">Cuando buscan tu servicio en Google o Maps, encuentran a tu competencia.</p>
           </article>
           <article class="reveal rounded-3xl bg-white p-7" style="transition-delay:80ms">
             <span class="grid size-12 place-items-center rounded-2xl bg-blush text-cobalt"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg></span>
@@ -1831,7 +1831,7 @@
         '<p class="mt-2 text-sm ' + (d ? 'text-blush' : 'text-ink/65') + '">' + pl.para + '</p>' +
         '<p class="mt-6"><span class="text-4xl font-extrabold tight">' + clp.format(pl.precio) + '</span><span class="text-sm ' + (d ? 'text-blush' : 'text-ink/65') + '"> /mes</span></p>' +
         '<ul class="mt-6 flex-1 space-y-3 text-sm">' + pl.incluye.map(function (x) { return '<li class="flex items-start gap-2.5"><span class="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full ' + (d ? 'bg-white/20 text-white' : 'bg-[#E7F7EE] text-wa') + '" aria-hidden="true">' + conClase(ICON.check, 'size-3') + '</span>' + x + '</li>'; }).join('') + '</ul>' +
-        '<a href="' + wa('Hola Alonso 👋 Me interesa el plan de mantención ' + pl.nombre + ' (' + clp.format(pl.precio) + ' al mes). ¿Me cuentas cómo funciona?') + '" target="_blank" rel="noopener" data-plan="' + pl.nombre + '" class="mt-8 rounded-full px-6 py-4 text-center font-semibold transition ' + (d ? 'bg-white text-cobalt hover:bg-blush' : 'bg-sand hover:bg-cobalt hover:text-white') + '">Quiero el plan ' + pl.nombre + '<span class="sr-only"> (se abre en otra pestaña)</span></a></article>';
+        '<a href="' + wa('Hola Alonso 👋 Me interesa el plan de mantención ' + pl.nombre + ' (' + clp.format(pl.precio) + ' al mes). ¿Me cuentas cómo funciona?') + '" target="_blank" rel="noopener" data-plan="' + pl.nombre + '" class="relative mt-8 rounded-full px-6 py-4 text-center font-semibold transition ' + (d ? 'bg-white text-cobalt hover:bg-blush' : 'bg-sand hover:bg-cobalt hover:text-white') + '">Quiero el plan ' + pl.nombre + '<span class="sr-only"> (se abre en otra pestaña)</span></a></article>';
     }).join('');
     armarCarrusel($('#planes'), $('#planes-puntos'), PLANES.length, PLANES.map(function (pl) { return 'Plan ' + pl.nombre + ', ' + clp.format(pl.precio) + ' al mes'; }));
 
