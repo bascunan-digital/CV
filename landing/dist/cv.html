@@ -1,7 +1,13 @@
 <!doctype html>
 <html lang="es-CL">
 <head>
-  <script>history.scrollRestoration = 'manual';</script>
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+    addEventListener('DOMContentLoaded', function () { window.scrollTo(0, 0); });
+    addEventListener('load', function () { window.scrollTo(0, 0); });
+    addEventListener('pageshow', function () { window.scrollTo(0, 0); });
+  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CV de Alonso Bascuñán | bascunan.digital</title>
@@ -93,11 +99,11 @@
   <main id="contenido">
     <!-- ===================== HERO ===================== -->
     <section class="bg-cobalt text-white">
-      <div class="mx-auto grid max-w-5xl gap-8 px-5 pt-10 pb-16 sm:px-8 sm:pt-14 sm:pb-20 lg:grid-cols-12 lg:items-center lg:gap-10">
-        <figure class="overflow-hidden rounded-[2rem] bg-white/10 lg:col-span-4">
-          <picture><source srcset="img/alonso.webp" type="image/webp" /><img src="img/alonso.jpg" width="1200" height="1500" loading="eager" decoding="async" alt="Alonso Bascuñán, diseñador y desarrollador web" class="aspect-[4/5] w-full object-cover object-top" /></picture>
+      <div class="mx-auto grid max-w-5xl gap-8 px-5 pt-10 pb-16 sm:px-8 sm:pt-14 sm:pb-20 lg:grid-cols-12 lg:items-stretch lg:gap-10">
+        <figure class="overflow-hidden rounded-[2rem] bg-white/10 lg:col-span-5">
+          <picture class="block h-full"><source srcset="img/alonso.webp" type="image/webp" /><img src="img/alonso.jpg" width="1200" height="1500" loading="eager" decoding="async" alt="Alonso Bascuñán, diseñador y desarrollador web" class="aspect-[4/5] h-full w-full object-cover object-top lg:aspect-auto" /></picture>
         </figure>
-        <div class="lg:col-span-8">
+        <div class="lg:col-span-7">
           <div class="flex flex-wrap items-center gap-3">
             <span class="inline-block rounded-full px-4 py-1 text-xs font-semibold ring-1 ring-blush/40"><span class="lang-es">CV digital · actualizado 2026</span><span class="lang-en">Digital CV · updated 2026</span></span>
             <div id="sel-idioma" class="ml-auto inline-flex gap-0.5 rounded-full bg-white/10 p-1 text-xs font-bold" role="group" aria-label="Idioma del CV / CV language">
