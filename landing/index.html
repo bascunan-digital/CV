@@ -1807,7 +1807,10 @@
         if (!e.target.closest('[data-abrir-glosario]')) return;
         cerrarAyuda(); var m = $('#modal-glosario'); if (m.open) return;
         if (typeof m.showModal === 'function') m.showModal(); else m.setAttribute('open', '');
-        $('#glosario-buscar').value = ''; pintarGlosario(); $('#glosario-buscar').focus();
+        $('#glosario-buscar').value = ''; pintarGlosario();
+        // En pantalla táctil no enfocamos el buscador para no abrir el teclado solo;
+        // en escritorio sí, para que se pueda escribir de inmediato.
+        if (window.matchMedia('(pointer: fine)').matches) $('#glosario-buscar').focus();
       });
     })();
 
