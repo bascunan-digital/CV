@@ -1,12 +1,14 @@
 /* =========================================================
    bascunan.digital · cookies y analítica (compartido por todas las páginas)
-   - Google Tag Manager (y lo que configures dentro, como GA4) se carga SOLO si la persona acepta.
-   - Sin ID de GTM configurado no hay cookies de analítica y el aviso no se muestra.
-   - window.medir(evento, datos) manda eventos al dataLayer (no hace nada sin consentimiento).
+   - Google Tag Manager, Microsoft Clarity y Meta Pixel se cargan SOLO si la persona acepta.
+   - Sin ningún ID configurado no hay cookies de analítica y el aviso no se muestra.
+   - window.medir(evento, datos) manda eventos al dataLayer de GTM (no hace nada sin consentimiento).
    ========================================================= */
 (function () {
   'use strict';
   var GTM_ID = 'GTM-K7BZ8Z6R'; // Google Tag Manager → Administrador de contenedores
+  var CLARITY_ID = ''; // Microsoft Clarity → Configuración del proyecto → Código de seguimiento (ej: 'abc123xyz')
+  var PIXEL_ID = ''; // Meta Events Manager → Orígenes de datos → Píxel → ID del píxel (solo números)
 
   var CLAVE = 'bd-cookies'; // guarda la elección: 'si' o 'no'
 
@@ -24,6 +26,31 @@
     document.head.appendChild(s);
   }
   window.medir = function (evento, datos) { if (cargado) window.dataLayer.push(Object.assign({ event: evento }, datos || {})); };
+
+  var clarityCargado = false;
+  function cargarClarity() {
+    if (clarityCargado || !CLARITY_ID) return; clarityCargado = true;
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, 'clarity', 'script', CLARITY_ID);
+  }
+
+  var pixelCargado = false;
+  function cargarPixel() {
+    if (pixelCargado || !PIXEL_ID) return; pixelCargado = true;
+    (function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+      t = b.createElement(e); t.async = true; t.src = v;
+      s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init', PIXEL_ID);
+    window.fbq('track', 'PageView');
+  }
+
+  function cargarTodo() { cargarGTM(); cargarClarity(); cargarPixel(); }
 
   function aviso() {
     if (document.getElementById('aviso-cookies')) return;
@@ -44,7 +71,7 @@
       var b = e.target.closest('[data-cookies]'); if (!b) return;
       guardar(b.dataset.cookies); d.remove();
       document.documentElement.classList.remove('cookies-visibles');
-      if (b.dataset.cookies === 'si') cargarGTM();
+      if (b.dataset.cookies === 'si') cargarTodo();
     });
   }
   // Permite cambiar la elección desde la política de privacidad
@@ -54,8 +81,8 @@
 
   function iniciar() {
     var eleccion = leer();
-    if (eleccion === 'si') cargarGTM();
-    else if (!eleccion && (GTM_ID || demo)) aviso();
+    if (eleccion === 'si') cargarTodo();
+    else if (!eleccion && (GTM_ID || CLARITY_ID || PIXEL_ID || demo)) aviso();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 })();
