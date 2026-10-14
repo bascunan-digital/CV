@@ -115,6 +115,84 @@ const CARRUSELES = {
   ],
   '15-trabajo-directo': [
     { tipo: 'cierre', titulo: 'Hablas conmigo, no con un ejecutivo de cuentas.', texto: 'Yo diseño, yo programo, yo te respondo. Sin intermediarios ni traspasos entre áreas.', cta: 'Escríbeme por WhatsApp 📲' }
+  ],
+  // Banco de preguntas reales de búsqueda (oct-2026): cada carrusel responde, tal cual,
+  // una pregunta real que la gente escribe en Google sobre sitios web y costos.
+  '16-hay-que-pagar': [
+    { tipo: 'portada', kicker: 'Sin letra chica', titulo: '¿Hay que pagar para tener una página web?', pie: 'Desliza →' },
+    { tipo: 'punto', n: '1', titulo: 'Sí, pero son dos pagos distintos.', texto: 'El diseño es un pago único. El dominio, el hosting y la mantención van aparte.' },
+    { tipo: 'precio', meta: 'Pago único', nombre: 'Diseño de tu sitio', precio: '$190.000', plazo: 'landing page' },
+    { tipo: 'punto', n: '2', titulo: 'Dominio y hosting van aparte.', texto: 'Quedan a tu nombre, no al mío — son tuyos para siempre.' },
+    { tipo: 'punto', n: '3', titulo: 'La mantención es opcional.', texto: 'Desde $25.000 al mes, para que el sitio nunca se caiga ni quede desactualizado.' },
+    { tipo: 'cierre', titulo: 'Entonces, ¿cuánto es?', texto: 'Depende del tipo de sitio y si quieres mantención. Te lo calculo gratis.', cta: 'Cotiza tu sitio · Link en la bio' }
+  ],
+  '17-tipos-de-sitio': [
+    { tipo: 'portada', kicker: 'Guárdalo 📌', titulo: '¿Cuáles son los tipos de páginas web?', pie: 'Desliza →' },
+    { tipo: 'precio', meta: 'Quiero que me contacten', nombre: 'Landing page', precio: '$190.000', plazo: '3 días' },
+    { tipo: 'precio', meta: 'Quiero mostrar mi empresa', nombre: 'Sitio corporativo', precio: '$390.000', plazo: '7 días' },
+    { tipo: 'precio', meta: 'Quiero mostrar mi trabajo', nombre: 'Portafolio profesional', precio: '$260.000', plazo: '4 días' },
+    { tipo: 'precio', meta: 'Quiero vender productos', nombre: 'Tienda online', precio: '$690.000', plazo: '12 días' },
+    { tipo: 'precio', meta: 'Quiero publicar contenido', nombre: 'Blog o portal', precio: '$420.000', plazo: '6 días' },
+    { tipo: 'precio', meta: 'Quiero lanzar mi software', nombre: 'Plataforma / SaaS', precio: '$1.500.000', plazo: '25 días' },
+    { tipo: 'cierre', titulo: '¿Cuál es el tuyo?', texto: 'Te ayudo a elegir según lo que necesitas lograr, no al revés.', cta: 'Cuéntame tu caso · Link en la bio' }
+  ],
+  '18-costo-en-chile': [
+    { tipo: 'portada', kicker: 'Sin sorpresas', titulo: '¿Cuánto cuesta tener una página web en Chile?', pie: 'Desliza →' },
+    { tipo: 'punto', n: '→', titulo: 'No es una sola cifra.', texto: 'Depende de lo que necesitas lograr, no del número de páginas.' },
+    { tipo: 'precio', meta: 'Quiero que me contacten', nombre: 'Landing page', precio: '$190.000', plazo: '3 días' },
+    { tipo: 'precio', meta: 'Quiero mostrar mi empresa', nombre: 'Sitio corporativo', precio: '$390.000', plazo: '7 días' },
+    { tipo: 'punto', n: '$', titulo: 'Esto es solo el diseño.', texto: 'Dominio y hosting van aparte. La mantención, si la quieres, es desde $25.000 al mes.' },
+    { tipo: 'cierre', titulo: '¿Quieres el número exacto?', texto: 'Arma tu sitio en el cotizador y mira el precio al instante, sin llamadas.', cta: 'Link en la bio 👆' }
+  ],
+  '19-que-se-necesita': [
+    { tipo: 'portada', kicker: 'Checklist', titulo: '¿Qué se necesita para crear un sitio web?', pie: 'Desliza →' },
+    { tipo: 'punto', n: '✓', titulo: 'Un dominio.', texto: 'Tu dirección en internet (ej. tunombre.cl). Se renueva cada año y queda a tu nombre.' },
+    { tipo: 'punto', n: '✓', titulo: 'Hosting.', texto: 'El espacio arrendado en internet donde vive tu sitio.' },
+    { tipo: 'punto', n: '✓', titulo: 'Diseño y desarrollo.', texto: 'La parte que yo hago: que se vea bien y funcione en el celular.' },
+    { tipo: 'punto', n: '✓', titulo: 'Contenido real tuyo.', texto: 'Textos, fotos y precios. Sin esto no hay sitio que valga.' },
+    { tipo: 'punto', n: '✓', titulo: 'Quien lo mantenga.', texto: 'Actualizaciones, respaldos y que nunca se caiga.' },
+    { tipo: 'cierre', titulo: '¿Tienes el contenido pero no el resto?', texto: 'Yo me encargo de todo lo técnico.', cta: 'Escríbeme por WhatsApp 📲' }
+  ],
+  '20-plataformas-gratuitas': [
+    { tipo: 'portada', kicker: 'Que no te digan lo contrario', titulo: '¿Cuáles son las plataformas gratuitas para crear páginas web?', pie: 'Desliza →' },
+    { tipo: 'punto', n: '1', titulo: 'Existen, y para empezar sirven.', texto: 'Google Sites, Wix, Carrd, entre otras. Parten en minutos y no cuesta nada probar.' },
+    { tipo: 'punto', n: '2', titulo: 'El límite: plantillas genéricas.', texto: 'Miles de negocios usan la misma que tú.' },
+    { tipo: 'punto', n: '3', titulo: 'El otro límite: el dominio.', texto: 'La versión gratis casi siempre trae tunombre.wixsite.com o publicidad ajena.' },
+    { tipo: 'punto', n: '4', titulo: 'Cuándo sí alcanzan.', texto: 'Si solo necesitas algo temporal o estás validando una idea.' },
+    { tipo: 'cierre', titulo: '¿Ya probaste una gratis y no te convenció?', texto: 'Te armo algo 100% tuyo, pensado para tu negocio.', cta: 'Cotiza tu sitio · Link en la bio' }
+  ],
+  '21-que-es-un-sitio-web': [
+    { tipo: 'portada', kicker: 'En simple', titulo: '¿Qué es un sitio web? Ejemplos', pie: 'Desliza →' },
+    { tipo: 'punto', n: '1', titulo: 'Landing page.', texto: 'Una sola pantalla con tu oferta y un botón de contacto.' },
+    { tipo: 'punto', n: '2', titulo: 'Sitio corporativo.', texto: 'Varias páginas que explican quién eres y qué haces.' },
+    { tipo: 'punto', n: '3', titulo: 'Tienda online.', texto: 'Catálogo, carro y pago, todo en un solo lugar.' },
+    { tipo: 'punto', n: '4', titulo: 'Portafolio.', texto: 'Tus trabajos mostrados como tú quieres, no como el feed los ordena.' },
+    { tipo: 'cierre', titulo: '¿Cuál se parece a lo que necesitas?', texto: 'Te ayudo a definirlo, sin tecnicismos.', cta: 'Escríbeme por WhatsApp 📲' }
+  ],
+  '22-desde-cero': [
+    { tipo: 'portada', kicker: 'Honesto', titulo: '¿Cómo crear mi propia página web desde cero?', pie: 'Desliza →' },
+    { tipo: 'punto', n: '1', titulo: 'Puedes hacerlo tú mismo.', texto: 'Hay plataformas gratis y tutoriales para empezar hoy.' },
+    { tipo: 'punto', n: '2', titulo: 'Lo que te ahorras: el diseño.', texto: 'Pero no el tiempo que te va a tomar.' },
+    { tipo: 'punto', n: '3', titulo: 'Lo que cuesta: prueba y error.', texto: 'Si no es lo tuyo, se nota en el resultado final.' },
+    { tipo: 'punto', n: '4', titulo: 'Contratar: pagas una vez.', texto: 'Y te llevas un sitio pensado para tu negocio, no una plantilla genérica.' },
+    { tipo: 'cierre', titulo: '¿Prefieres intentarlo tú o que lo arme yo?', texto: 'Las dos opciones están bien. Si eliges la segunda, aquí estoy.', cta: 'Escríbeme por WhatsApp 📲' }
+  ],
+  '23-tienda-online': [
+    { tipo: 'portada', kicker: 'Más que fotos', titulo: '¿Cómo puedo crear una tienda online?', pie: 'Desliza →' },
+    { tipo: 'punto', n: '1', titulo: 'No es solo "subir productos".', texto: 'Esa es la parte más fácil.' },
+    { tipo: 'punto', n: '2', titulo: 'Necesitas catálogo con filtros.', texto: 'Para que encuentren lo que buscan.' },
+    { tipo: 'punto', n: '3', titulo: 'Fichas de producto completas.', texto: 'Fotos, variantes, stock y precio claro.' },
+    { tipo: 'punto', n: '4', titulo: 'Un pago online que no falle.', texto: 'Ahí se pierden más ventas que en cualquier otra parte.' },
+    { tipo: 'precio', meta: 'Catálogo + carro + pago', nombre: 'Tienda online', precio: '$690.000', plazo: '12 días' },
+    { tipo: 'cierre', titulo: '¿Tienes productos listos para vender?', texto: 'Armamos tu tienda completa, no solo un catálogo bonito.', cta: 'Cotiza tu tienda · Link en la bio' }
+  ],
+  '24-quien-puede-crear': [
+    { tipo: 'portada', kicker: 'Cierre de mes', titulo: '¿Quién puede crear un sitio web?', pie: 'Desliza →' },
+    { tipo: 'punto', n: '1', titulo: 'Cualquiera puede hoy.', texto: 'Las herramientas gratis existen y son fáciles de empezar.' },
+    { tipo: 'punto', n: '2', titulo: 'Lo que cambia es el resultado.', texto: 'Cuando lo hace alguien que lo hace todos los días.' },
+    { tipo: 'punto', n: '3', titulo: 'Sabe qué se ve bien en celular.', texto: 'Más del 60% de quien te visita entra desde ahí.' },
+    { tipo: 'punto', n: '4', titulo: 'Sabe medir, no adivina.', texto: 'Qué funciona y qué no, con datos reales.' },
+    { tipo: 'cierre', titulo: '¿Quieres saber si el tuyo lo tiene?', texto: 'Te lo reviso gratis con la misma herramienta que usa Google.', cta: 'Escríbeme DIAGNÓSTICO 📲' }
   ]
 };
 
