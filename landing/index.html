@@ -947,17 +947,17 @@
         desafio: 'Un artista visual y arquitecto necesitaba una marca propia y un sitio editorial para mostrar sus acuarelas, con la posibilidad de sumar obras nuevas él mismo.',
         solucion: 'Diseñé su identidad de marca y un sitio editorial de principio a fin, con tipografía como protagonista, sobre un panel autoadministrable en WordPress para cargar cada obra con su ficha técnica.',
         resultado: 'Un portafolio con identidad propia que Ismael actualiza solo, obra por obra, sin depender de nadie.' },
-      { id: 'busca-arriendo', nombre: 'Busca Arriendo', tipo: 'Plataforma inmobiliaria', resumen: 'Portal regional donde inmobiliarias y corredores publican y administran sus propios arriendos y ventas.', metrica: 'Multi-corredor', metricaLabel: 'Publicación propia por cuenta', stack: ['Plataforma a medida', 'Panel de corredores'], demo: 'portal.bascunan.digital',
-        desafio: 'La región necesitaba un portal propio donde inmobiliarias y corredores pudieran publicar arriendos y ventas, sin depender solo de portales nacionales genéricos.',
-        solucion: 'Diseñé y programé una plataforma inmobiliaria completa: búsqueda por comuna y tipo de operación, fichas de propiedad y un panel para que cada corredor suba y administre sus propias publicaciones.',
-        resultado: 'Un portal propio de la región, listo para sumar inmobiliarias y corredores con su propia cuenta.' },
-      { id: 'clicmania', nombre: 'clicmania', tipo: 'WooCommerce a medida', resumen: 'Tienda online con identidad de marca propia, ofertas flash y productos a precio fijo bajo compra mínima.', metrica: '$1.000', metricaLabel: 'Productos "a Luca" sobre compra mínima', stack: ['WordPress', 'WooCommerce', 'Plugin a medida'], demo: 'tienda.bascunan.digital',
+      { id: 'busca-arriendo', nombre: 'Busca Arriendo', tipo: 'Identidad + plataforma', resumen: 'Marca y portal a nivel nacional donde inmobiliarias y corredores publican y administran sus propios arriendos y ventas.', metrica: 'Multi-corredor', metricaLabel: 'Publicación propia por cuenta', stack: ['Identidad de marca', 'Plataforma a medida', 'Panel de corredores'], demo: 'portal.bascunan.digital',
+        desafio: 'El mercado necesitaba un portal propio a nivel nacional donde inmobiliarias y corredores pudieran publicar arriendos y ventas, sin depender solo de portales genéricos.',
+        solucion: 'Diseñé la marca Busca Arriendo y programé una plataforma inmobiliaria completa: búsqueda por comuna y tipo de operación, fichas de propiedad y un panel para que cada corredor suba y administre sus propias publicaciones.',
+        resultado: 'Un portal propio a nivel nacional, listo para sumar inmobiliarias y corredores con su propia cuenta.' },
+      { id: 'clicmania', nombre: 'clicmania', tipo: 'Identidad + WooCommerce', resumen: 'Tienda online con identidad de marca propia, ofertas flash y productos a precio fijo bajo compra mínima.', metrica: '$1.000', metricaLabel: 'Productos "a Luca" sobre compra mínima', stack: ['Identidad de marca', 'WordPress', 'WooCommerce'], demo: 'tienda.bascunan.digital',
         desafio: 'Una tienda online necesitaba identidad propia y un sistema de ofertas flash y "productos a Luca" para competir por precio sin verse como una plantilla genérica.',
         solucion: 'Diseñé la marca clicmania y un tema WooCommerce a medida con un plugin propio (clicmania Core) para ofertas flash, productos a $1.000 sobre un monto mínimo de compra y envío gratis sobre $30.000.',
         resultado: 'Una tienda con identidad propia, lista para publicar ofertas y productos con sus propias reglas de negocio.' },
-      { id: 'alivida', nombre: 'Clínica Alivida', tipo: 'Identidad + WordPress', resumen: 'Marca, identidad y sitio para una clínica de dermoestética y rehabilitación de la piel, con tratamientos autoadministrables.', metrica: '5,0/5', metricaLabel: '20 reseñas en Google', estrellas: true, stack: ['Identidad de marca', 'WordPress', 'CPT'], demo: 'alivida.bascunan.digital',
-        desafio: 'Una clínica de dermoestética y rehabilitación de la piel necesitaba una identidad propia y un catálogo de tratamientos que su enfermera especialista pudiera actualizar sola.',
-        solucion: 'Diseñé su identidad de marca (logo e isotipo) y un sitio a medida, sobre un panel autoadministrable en WordPress para tratamientos, precios y reservas.',
+      { id: 'alivida', nombre: 'Clínica Alivida', tipo: 'WordPress a medida', resumen: 'Sitio a medida para una clínica de dermoestética y rehabilitación de la piel, con tratamientos autoadministrables, sobre la marca ya existente de la clienta.', metrica: '5,0/5', metricaLabel: '20 reseñas en Google', estrellas: true, stack: ['WordPress', 'CPT', 'ACF'], demo: 'alivida.bascunan.digital',
+        desafio: 'Una clínica de dermoestética y rehabilitación de la piel ya tenía su marca, pero necesitaba un sitio a la altura y un catálogo de tratamientos que su enfermera especialista pudiera actualizar sola.',
+        solucion: 'Diseñé un sitio a medida que usa la identidad ya existente de la clínica, sobre un panel autoadministrable en WordPress para tratamientos, precios y reservas.',
         resultado: 'Un sitio a la altura del posicionamiento de la clínica, con 20 reseñas en Google y calificación 5,0/5.' }
     ];
 
@@ -1877,8 +1877,8 @@
        CASOS
        ========================================================= */
     $('#grid-casos').innerHTML = CASOS.map(function (c, i) {
-      return '<article class="reveal group flex flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-cobalt/10" style="transition-delay:' + i * 80 + 'ms">' +
-        '<div class="relative overflow-hidden bg-sand"><picture><source srcset="img/caso-' + c.id + '.webp" type="image/webp" /><img src="img/caso-' + c.id + '.jpg" width="1200" height="800" loading="lazy" decoding="async" alt="Vista del proyecto ' + c.nombre + '" class="aspect-[3/2] w-full object-cover transition duration-500 group-hover:scale-[1.03]" /></picture>' +
+      return '<article class="reveal group flex flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white transition-shadow duration-300 hover:shadow-xl hover:shadow-cobalt/10" style="transition-delay:' + i * 80 + 'ms">' +
+        '<div class="relative overflow-hidden bg-sand"><picture><source srcset="img/caso-' + c.id + '.webp" type="image/webp" /><img src="img/caso-' + c.id + '.jpg" width="1200" height="800" loading="lazy" decoding="async" alt="Vista del proyecto ' + c.nombre + '" class="aspect-[3/2] w-full object-cover" /></picture>' +
         '<span class="sim absolute top-3 left-3 rounded-full bg-ink/80 px-3 py-1 text-xs font-semibold text-white">Imagen referencial</span></div>' +
         '<div class="flex flex-1 flex-col p-7"><div class="flex flex-wrap gap-1.5"><span class="rounded-full bg-cobalt px-3 py-1 text-xs font-semibold text-white">' + c.tipo + '</span>' + c.stack.map(function (s) { return '<span class="rounded-full bg-sand px-3 py-1 text-xs font-medium text-ink/65">' + s + '</span>'; }).join('') + '</div>' +
         '<h3 class="mt-5 text-2xl font-bold tight">' + c.nombre + '</h3><p class="mt-2 flex-1 leading-relaxed text-ink/65">' + c.resumen + '</p>' +
